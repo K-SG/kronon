@@ -32,7 +32,6 @@ public class Test extends HttpServlet {
 
 		String kronon = "kronon";
 		System.out.println(kronon);
-
 		String bbbbbbbbbbb = "aaaaa";
 
 		response.getWriter().append("Served at: ").append(request.getContextPath());
