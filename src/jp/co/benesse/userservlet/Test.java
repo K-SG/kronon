@@ -29,6 +29,7 @@ public class Test extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		String a = "aaaaa";
+		String bbbbbbbbbbb = "aaaaa";
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
