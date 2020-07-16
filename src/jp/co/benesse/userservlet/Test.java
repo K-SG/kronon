@@ -29,8 +29,12 @@ public class Test extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		String a = "aaaaa";
+<<<<<<< HEAD
 		String kronon = "kronon";
 		System.out.println(kronon);
+=======
+		String bbbbbbbbbbb = "aaaaa";
+>>>>>>> branch 'userbranch' of https://github.com/SugiKoki/kronon.git
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
