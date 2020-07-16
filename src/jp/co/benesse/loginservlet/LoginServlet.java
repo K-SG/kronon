@@ -1,5 +1,7 @@
 package jp.co.benesse.loginservlet;
 //test
+
+//test2
 import java.io.IOException;
 
 import javax.servlet.ServletException;
