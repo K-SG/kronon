@@ -1,5 +1,5 @@
 package jp.co.benesse.scheduleservlet;
-//やまもっちゃあああああああああああああああん
+//やまもっちゃあああああああああああん
 import java.io.IOException;
 
 import javax.servlet.ServletException;
