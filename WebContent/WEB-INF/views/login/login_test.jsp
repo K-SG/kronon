@@ -4,16 +4,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
 <title>Insert title here</title>
 </head>
 <body>
-
-
-<title>雛形</title>
-</head>
-<body>
-雛形だよ
-
+ログイン画面
 </body>
 </html>
