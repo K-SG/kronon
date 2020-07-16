@@ -34,10 +34,7 @@ public class Test extends HttpServlet {
 		System.out.println(kronon);
 
 		String bbbbbbbbbbb = "aaaaa";
-<<<<<<< HEAD
-=======
 
->>>>>>> branch 'userbranch' of https://github.com/SugiKoki/kronon.git
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
