@@ -1,5 +1,7 @@
-package jp.co.benesse.userservlet;
+package jp.co.benesse.loginservlet;
+//test
 
+//test2
 import java.io.IOException;
 
 import javax.servlet.ServletException;
@@ -9,16 +11,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class Test
+ * Servlet implementation class LoginServlet
  */
-@WebServlet("/Test")
-public class Test extends HttpServlet {
+@WebServlet("/LoginServlet")
+public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Test() {
+    public LoginServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -27,16 +29,7 @@ public class Test extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		String a = "aaaaa";
-
-		String kronon = "kronon";
-		System.out.println(kronon);
-
-		String bbbbbbbbbbb = "aaaaa";
-
-
-
+		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 

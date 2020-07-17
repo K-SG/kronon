@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import jp.co.benesse.dataaccess.value.ScheduleBean;
+
 public class ScheduleDAO {
 
 	/**
@@ -61,7 +62,7 @@ public class ScheduleDAO {
 	 * ※例外取得時にはRuntimeExceptionにラップし上位に送出する。<br>
 	 * [備 考] なし
 	 *
-	 * @param  予定インスタンス
+	 * @param 予定インスタンス
 	 * @return 書籍リスト重複判定フラグ
 	 */
 	public boolean isBooking(ScheduleBean scheduleBean) {
@@ -83,11 +84,11 @@ public class ScheduleDAO {
 			// 問い合わせ結果の取得
 			int count = 0;
 			while (resultSet.next()) {
-				//COUNT(*)を取得
+				// COUNT(*)を取得
 				count = resultSet.getInt(1);
 			}
 
-//			System.out.println("count = " + count);
+			// System.out.println("count = " + count);
 			if (count != 0) {
 				return true;
 			} else {
