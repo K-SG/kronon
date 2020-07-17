@@ -19,6 +19,10 @@ public class UserBean {
 	 * パスワード
 	 */
 	private String password;
+
+	/**
+	 * コンストラクタ
+	 */
 	public UserBean(int userId, String userName, String mail, String password) {
 		super();
 		this.userId = userId;
