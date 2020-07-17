@@ -48,7 +48,7 @@ public class ScheduleDAO {
 
 			return result;
 		} catch (SQLException e) {
-			throw new RuntimeException("USERテーブルのUPDATEに失敗しました", e);
+			throw new RuntimeException("SCHEDULEテーブルのUPDATEに失敗しました", e);
 		} finally {
 			try {
 				if (preparedStatement != null) {
@@ -68,11 +68,11 @@ public class ScheduleDAO {
 	 * [備 考] なし
 	 *
 	 * @param 予定インスタンス
-	 * @return 書籍リスト重複判定フラグ
+	 * @return 書籍リスト重複判定フラグ（重複があればtrueを返す）
 	 */
 	public boolean isBooking(ScheduleBean scheduleBean) {
+		PreparedStatement preparedStatement = null;
 		try {
-			PreparedStatement preparedStatement = null;
 
 			// SQLの定義
 			String sql = "SELECT COUNT(*) FROM SCHEDULE " + "WHERE ? < END_TIME AND START_TIME < ? "
@@ -93,14 +93,21 @@ public class ScheduleDAO {
 				count = resultSet.getInt(1);
 			}
 
-			// System.out.println("count = " + count);
 			if (count != 0) {
 				return true;
 			} else {
 				return false;
 			}
 		} catch (SQLException e) {
-			throw new RuntimeException("SELECTに失敗しました", e);
+			throw new RuntimeException("SCHEDULEテーブルのSELECTに失敗しました", e);
+		} finally {
+			try {
+				if (preparedStatement != null) {
+					preparedStatement.close();
+				}
+			} catch (SQLException e) {
+				throw new RuntimeException("ステートメントの解放に失敗しました", e);
+			}
 		}
 	}
 
@@ -114,8 +121,8 @@ public class ScheduleDAO {
 	 * @return 削除判定フラグ（削除されていればtrueを返す）
 	 */
 	public boolean isDeleted(int scheduleId) {
+		PreparedStatement preparedStatement = null;
 		try {
-			PreparedStatement preparedStatement = null;
 
 			// SQLの定義
 			String sql = "SELECT DELETE_FLAG FROM SCHEDULE WHERE SCHEDULE_ID = ?";
@@ -138,7 +145,15 @@ public class ScheduleDAO {
 				return false;
 			}
 		} catch (SQLException e) {
-			throw new RuntimeException("SELECTに失敗しました", e);
+			throw new RuntimeException("SCHEDULEテーブルのSELECTに失敗しました", e);
+		} finally {
+			try {
+				if (preparedStatement != null) {
+					preparedStatement.close();
+				}
+			} catch (SQLException e) {
+				throw new RuntimeException("ステートメントの解放に失敗しました", e);
+			}
 		}
 	}
 
@@ -162,8 +177,9 @@ public class ScheduleDAO {
 		Date sqlFirstDayOfMonth = Date.valueOf(firstDayOfMonth);
 		Date sqlLastDayOfMonth = Date.valueOf(lastDayOfMonth);
 
+		PreparedStatement preparedStatement = null;
 		try {
-			PreparedStatement preparedStatement = null;
+
 
 			// SQLの定義
 			String sql = "SELECT SCHEDULE_DATE,START_TIME,MIN(TITLE) FROM SCHEDULE "
@@ -196,7 +212,15 @@ public class ScheduleDAO {
 			}
 			return scheduleBeanList;
 		} catch (SQLException e) {
-			throw new RuntimeException("SELECTに失敗しました", e);
+			throw new RuntimeException("SCHEDULEテーブルのSELECTに失敗しました", e);
+		} finally {
+			try {
+				if (preparedStatement != null) {
+					preparedStatement.close();
+				}
+			} catch (SQLException e) {
+				throw new RuntimeException("ステートメントの解放に失敗しました", e);
+			}
 		}
 	}
 }
