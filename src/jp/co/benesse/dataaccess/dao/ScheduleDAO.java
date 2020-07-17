@@ -20,6 +20,10 @@ public class ScheduleDAO {
 	 */
 	private Connection connection;
 
+	/**
+	 * コンストラクタ
+	 * @param connection
+	 */
 	public ScheduleDAO(Connection connection) {
 		this.connection = connection;
 	}
@@ -89,6 +93,44 @@ public class ScheduleDAO {
 			preparedStatement.setString(5, title);
 			preparedStatement.setString(6, content);
 			preparedStatement.setInt(7, scheduleId);
+
+			// SQLの実行
+			int result = preparedStatement.executeUpdate();
+			return result;
+		} catch (SQLException e) {
+			throw new RuntimeException("SCHEDULEテーブルのUPDATEに失敗しました", e);
+		} finally {
+			try {
+				if (preparedStatement != null) {
+					preparedStatement.close();
+				}
+			} catch (SQLException e) {
+				throw new RuntimeException("ステートメントの解放に失敗しました", e);
+			}
+		}
+	}
+
+	/**
+	 * [機 能] 実績登録・修正メソッド<br>
+	 * [説 明] 実績時間と振り返りコメントを登録・修正する<br>
+	 * ※例外取得時にはRuntimeExceptionにラップし上位に送出する。<br>
+	 * [備 考] なし
+	 *
+	 * @param 予定ID、実績時間、振り返りコメント
+	 * @return 更新件数
+	 */
+	public int updateSchedule(int scheduleId, int actualTime ,String comment){
+		PreparedStatement preparedStatement = null;
+		try {
+			// SQLの定義
+			String sql = "UPDATE SCHEDULE SET (ACTUAL_TIME,COMMENT) "
+					+ "= (?,?) WHERE SCHEDULE_ID = ?";
+			// SQLの作成(準備)
+			preparedStatement = this.connection.prepareStatement(sql);
+			// SQLバインド変数への値設定
+			preparedStatement.setInt(1,actualTime);
+			preparedStatement.setString(2, comment);
+			preparedStatement.setInt(3, scheduleId);
 
 			// SQLの実行
 			int result = preparedStatement.executeUpdate();
