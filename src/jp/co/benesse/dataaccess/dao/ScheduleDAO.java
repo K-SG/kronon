@@ -5,6 +5,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Time;
 import java.time.LocalDate;
 import java.time.temporal.TemporalAdjusters;
 import java.util.ArrayList;
@@ -19,6 +20,10 @@ public class ScheduleDAO {
 	 */
 	private Connection connection;
 
+	/**
+	 * コンストラクタ
+	 * @param connection
+	 */
 	public ScheduleDAO(Connection connection) {
 		this.connection = connection;
 	}
@@ -33,7 +38,7 @@ public class ScheduleDAO {
 	 * @return 書籍リスト
 	 */
 	public int deleteSchedule(int scheduleId) {
-		// ステートメントの定義
+
 		PreparedStatement preparedStatement = null;
 		try {
 			// SQLの定義
@@ -48,12 +53,94 @@ public class ScheduleDAO {
 
 			return result;
 		} catch (SQLException e) {
-			throw new RuntimeException("USERテーブルのUPDATEに失敗しました", e);
+			throw new RuntimeException("SCHEDULEテーブルのUPDATEに失敗しました", e);
 		} finally {
 			try {
 				if (preparedStatement != null) {
 					preparedStatement.close();
 					System.out.println("ステートメントの解放に成功しました");
+				}
+			} catch (SQLException e) {
+				throw new RuntimeException("ステートメントの解放に失敗しました", e);
+			}
+		}
+	}
+
+	/**
+	 * [機 能] 予定更新メソッド<br>
+	 * [説 明] 予定を更新する<br>
+	 * ※例外取得時にはRuntimeExceptionにラップし上位に送出する。<br>
+	 * [備 考] なし
+	 *
+	 * @param 予定ID、予定日時、予定開始時間、予定終了時間、タイトル、内容、作業場所
+	 * @return 更新件数
+	 */
+	public int updateSchedule(int scheduleId, Date scheduleDate, Time startTime, Time endTime, String title,
+			String content,String place) {
+		// ステートメントの定義
+		PreparedStatement preparedStatement = null;
+		try {
+			// SQLの定義
+			String sql = "UPDATE SCHEDULE SET (SCHEDULE_DATE,START_TIME,END_TIME,PLACE,TITLE,CONTENT) "
+					+ "= (?,?,?,?,?,?) WHERE SCHEDULE_ID = ?";
+			// SQLの作成(準備)
+			preparedStatement = this.connection.prepareStatement(sql);
+			// SQLバインド変数への値設定
+			preparedStatement.setDate(1, scheduleDate);
+			preparedStatement.setTime(2, startTime);
+			preparedStatement.setTime(3, endTime);
+			preparedStatement.setString(4, place);
+			preparedStatement.setString(5, title);
+			preparedStatement.setString(6, content);
+			preparedStatement.setInt(7, scheduleId);
+
+			// SQLの実行
+			int result = preparedStatement.executeUpdate();
+			return result;
+		} catch (SQLException e) {
+			throw new RuntimeException("SCHEDULEテーブルのUPDATEに失敗しました", e);
+		} finally {
+			try {
+				if (preparedStatement != null) {
+					preparedStatement.close();
+				}
+			} catch (SQLException e) {
+				throw new RuntimeException("ステートメントの解放に失敗しました", e);
+			}
+		}
+	}
+
+	/**
+	 * [機 能] 実績登録・修正メソッド<br>
+	 * [説 明] 実績時間と振り返りコメントを登録・修正する<br>
+	 * ※例外取得時にはRuntimeExceptionにラップし上位に送出する。<br>
+	 * [備 考] なし
+	 *
+	 * @param 予定ID、実績時間、振り返りコメント
+	 * @return 更新件数
+	 */
+	public int updateSchedule(int scheduleId, int actualTime ,String comment){
+		PreparedStatement preparedStatement = null;
+		try {
+			// SQLの定義
+			String sql = "UPDATE SCHEDULE SET (ACTUAL_TIME,COMMENT) "
+					+ "= (?,?) WHERE SCHEDULE_ID = ?";
+			// SQLの作成(準備)
+			preparedStatement = this.connection.prepareStatement(sql);
+			// SQLバインド変数への値設定
+			preparedStatement.setInt(1,actualTime);
+			preparedStatement.setString(2, comment);
+			preparedStatement.setInt(3, scheduleId);
+
+			// SQLの実行
+			int result = preparedStatement.executeUpdate();
+			return result;
+		} catch (SQLException e) {
+			throw new RuntimeException("SCHEDULEテーブルのUPDATEに失敗しました", e);
+		} finally {
+			try {
+				if (preparedStatement != null) {
+					preparedStatement.close();
 				}
 			} catch (SQLException e) {
 				throw new RuntimeException("ステートメントの解放に失敗しました", e);
@@ -68,11 +155,11 @@ public class ScheduleDAO {
 	 * [備 考] なし
 	 *
 	 * @param 予定インスタンス
-	 * @return 書籍リスト重複判定フラグ
+	 * @return 書籍リスト重複判定フラグ（重複があればtrueを返す）
 	 */
 	public boolean isBooking(ScheduleBean scheduleBean) {
+		PreparedStatement preparedStatement = null;
 		try {
-			PreparedStatement preparedStatement = null;
 
 			// SQLの定義
 			String sql = "SELECT COUNT(*) FROM SCHEDULE " + "WHERE ? < END_TIME AND START_TIME < ? "
@@ -93,14 +180,21 @@ public class ScheduleDAO {
 				count = resultSet.getInt(1);
 			}
 
-			// System.out.println("count = " + count);
 			if (count != 0) {
 				return true;
 			} else {
 				return false;
 			}
 		} catch (SQLException e) {
-			throw new RuntimeException("SELECTに失敗しました", e);
+			throw new RuntimeException("SCHEDULEテーブルのSELECTに失敗しました", e);
+		} finally {
+			try {
+				if (preparedStatement != null) {
+					preparedStatement.close();
+				}
+			} catch (SQLException e) {
+				throw new RuntimeException("ステートメントの解放に失敗しました", e);
+			}
 		}
 	}
 
@@ -114,8 +208,8 @@ public class ScheduleDAO {
 	 * @return 削除判定フラグ（削除されていればtrueを返す）
 	 */
 	public boolean isDeleted(int scheduleId) {
+		PreparedStatement preparedStatement = null;
 		try {
-			PreparedStatement preparedStatement = null;
 
 			// SQLの定義
 			String sql = "SELECT DELETE_FLAG FROM SCHEDULE WHERE SCHEDULE_ID = ?";
@@ -138,7 +232,15 @@ public class ScheduleDAO {
 				return false;
 			}
 		} catch (SQLException e) {
-			throw new RuntimeException("SELECTに失敗しました", e);
+			throw new RuntimeException("SCHEDULEテーブルのSELECTに失敗しました", e);
+		} finally {
+			try {
+				if (preparedStatement != null) {
+					preparedStatement.close();
+				}
+			} catch (SQLException e) {
+				throw new RuntimeException("ステートメントの解放に失敗しました", e);
+			}
 		}
 	}
 
@@ -162,8 +264,9 @@ public class ScheduleDAO {
 		Date sqlFirstDayOfMonth = Date.valueOf(firstDayOfMonth);
 		Date sqlLastDayOfMonth = Date.valueOf(lastDayOfMonth);
 
+		PreparedStatement preparedStatement = null;
 		try {
-			PreparedStatement preparedStatement = null;
+
 
 			// SQLの定義
 			String sql = "SELECT SCHEDULE_DATE,START_TIME,MIN(TITLE) FROM SCHEDULE "
@@ -196,7 +299,15 @@ public class ScheduleDAO {
 			}
 			return scheduleBeanList;
 		} catch (SQLException e) {
-			throw new RuntimeException("SELECTに失敗しました", e);
+			throw new RuntimeException("SCHEDULEテーブルのSELECTに失敗しました", e);
+		} finally {
+			try {
+				if (preparedStatement != null) {
+					preparedStatement.close();
+				}
+			} catch (SQLException e) {
+				throw new RuntimeException("ステートメントの解放に失敗しました", e);
+			}
 		}
 	}
 }
