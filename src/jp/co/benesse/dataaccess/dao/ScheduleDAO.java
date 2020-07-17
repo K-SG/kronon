@@ -80,7 +80,7 @@ public class ScheduleDAO {
 			preparedStatement.setInt(4, scheduleBean.getUserId());
 			// SQLの実行
 			ResultSet resultSet = preparedStatement.executeQuery();
-			System.out.println("取得結果");
+
 			// 問い合わせ結果の取得
 			int count = 0;
 			while (resultSet.next()) {
@@ -90,6 +90,44 @@ public class ScheduleDAO {
 
 			// System.out.println("count = " + count);
 			if (count != 0) {
+				return true;
+			} else {
+				return false;
+			}
+		} catch (SQLException e) {
+			throw new RuntimeException("SELECTに失敗しました", e);
+		}
+	}
+
+	/**
+	 * [機 能] 削除判定メソッド<br>
+	 * [説 明] 予定が論理削除されているかどうかを判定する<br>
+	 * ※例外取得時にはRuntimeExceptionにラップし上位に送出する。<br>
+	 * [備 考] なし
+	 *
+	 * @param 予定ID
+	 * @return 削除判定フラグ（削除されていればtrueを返す）
+	 */
+	public boolean isDeleted(int scheduleId) {
+		try {
+			PreparedStatement preparedStatement = null;
+
+			// SQLの定義
+			String sql = "SELECT DELETE_FLAG FROM SCHEDULE WHERE SCHEDULE_ID = ?";
+			// SQLの作成(準備)
+			preparedStatement = this.connection.prepareStatement(sql);
+			preparedStatement.setInt(1, scheduleId);
+			// SQLの実行
+			ResultSet resultSet = preparedStatement.executeQuery();
+
+			String deleteFlag = "";
+
+			// 問い合わせ結果の取得
+			while (resultSet.next()) {
+				deleteFlag = resultSet.getString("DELETE_FLAG");
+			}
+
+			if (deleteFlag.equals("1")) {
 				return true;
 			} else {
 				return false;
