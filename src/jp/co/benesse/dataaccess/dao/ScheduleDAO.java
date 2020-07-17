@@ -1,9 +1,14 @@
 package jp.co.benesse.dataaccess.dao;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.temporal.TemporalAdjusters;
+import java.util.ArrayList;
+import java.util.List;
 
 import jp.co.benesse.dataaccess.value.ScheduleBean;
 
@@ -132,6 +137,64 @@ public class ScheduleDAO {
 			} else {
 				return false;
 			}
+		} catch (SQLException e) {
+			throw new RuntimeException("SELECTに失敗しました", e);
+		}
+	}
+
+	/**
+	 * [機 能] 見出し取得メソッド<br>
+	 * [説 明] 一か月間の各日付にて一番開始時間の早い予定のタイトルを取得する<br>
+	 * ※例外取得時にはRuntimeExceptionにラップし上位に送出する。<br>
+	 * [備 考] なし
+	 *
+	 * @param  当月の日付、利用者ID
+	 * @return 予定リスト
+	 */
+	public List<ScheduleBean> tooLongSQLSchedule(LocalDate scheduleDate, int userId) {
+		List<ScheduleBean> scheduleBeanList = new ArrayList<>();
+
+		// scheduleDateの月の初日と末日を取得
+		LocalDate firstDayOfMonth = scheduleDate.with(TemporalAdjusters.firstDayOfMonth());
+		LocalDate lastDayOfMonth = scheduleDate.with(TemporalAdjusters.lastDayOfMonth());
+
+		// 上記日付をsql.Date型に変換
+		Date sqlFirstDayOfMonth = Date.valueOf(firstDayOfMonth);
+		Date sqlLastDayOfMonth = Date.valueOf(lastDayOfMonth);
+
+		try {
+			PreparedStatement preparedStatement = null;
+
+			// SQLの定義
+			String sql = "SELECT SCHEDULE_DATE,START_TIME,MIN(TITLE) FROM SCHEDULE "
+					+ "WHERE USER_ID = ? AND DELETE_FLAG = '0' "
+					+ "AND SCHEDULE_DATE BETWEEN ? AND ? AND (SCHEDULE_DATE,START_TIME) IN ("
+					+ "SELECT SCHEDULE_DATE,MIN(START_TIME) FROM SCHEDULE GROUP BY SCHEDULE_DATE)"
+					+ "GROUP BY SCHEDULE_DATE,START_TIME";
+
+			// SQLの作成(準備)
+			preparedStatement = this.connection.prepareStatement(sql);
+			preparedStatement.setInt(1, userId);
+			preparedStatement.setDate(2, sqlFirstDayOfMonth);
+			preparedStatement.setDate(3, sqlLastDayOfMonth);
+
+			// SQLの実行
+			ResultSet resultSet = preparedStatement.executeQuery();
+
+			// 問い合わせ結果の取得
+			while (resultSet.next()) {
+				ScheduleBean scheduleBean = new ScheduleBean();
+
+				Date schDate = resultSet.getDate("schedule_date");
+				//MIN(TITLE)の列、つまりtitleの値を取得
+				String title = resultSet.getString(3);
+
+				scheduleBean.setScheduleDate(schDate);
+				scheduleBean.setTitle(title);
+
+				scheduleBeanList.add(scheduleBean);
+			}
+			return scheduleBeanList;
 		} catch (SQLException e) {
 			throw new RuntimeException("SELECTに失敗しました", e);
 		}
