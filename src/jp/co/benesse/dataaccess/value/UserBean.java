@@ -23,6 +23,8 @@ public class UserBean {
 	/**
 	 * コンストラクタ
 	 */
+	public UserBean(){}
+
 	public UserBean(int userId, String userName, String mail, String password) {
 		super();
 		this.userId = userId;
