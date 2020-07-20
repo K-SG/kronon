@@ -7,6 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-ログイン画面
+予定管理システム～くろのん～
+（株）くろ☆のす
+
+
 </body>
 </html>
