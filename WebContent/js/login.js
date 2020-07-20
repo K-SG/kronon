@@ -10,7 +10,7 @@ if (document.getElementById('mail').value=='' || password=='') {
 }
 
 if(popFlag=='1'){
-/*	$('.error1').text('エラー1')*/
+$('.error1').text('未入力');
 	$('.error-popup').fadeIn();
 }
 
