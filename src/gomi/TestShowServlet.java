@@ -1,4 +1,4 @@
-package jp.co.benesse.userservlet;
+package gomi;
 
 import java.io.IOException;
 
@@ -10,25 +10,35 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class UserNewServlet
+ * Servlet implementation class TestShowServlet
  */
-@WebServlet("/usernew")
-public class UserNewServlet extends HttpServlet {
+@WebServlet("/TestShowServlet")
+public class TestShowServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public TestShowServlet() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//doGetされたものをdoPostに変換
-		this.doPost(request, response);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/views/schedule/test_schedule.jsp");
+		dispatcher.forward(request, response);
+		return;
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//user_new.jsp(アカウント新規作成画面)にforwardする。
-		RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/view/web/user_new.jsp");
-		dispatcher.forward(request, response);
-		return;
+		// TODO Auto-generated method stub
+		doGet(request, response);
 	}
 
 }
