@@ -22,6 +22,7 @@ public class ScheduleDAO {
 
 	/**
 	 * コンストラクタ
+	 *
 	 * @param connection
 	 */
 	public ScheduleDAO(Connection connection) {
@@ -124,7 +125,7 @@ public class ScheduleDAO {
 	 * @return 更新件数
 	 */
 	public int updateSchedule(int scheduleId, Date scheduleDate, Time startTime, Time endTime, String title,
-			String content,String place) {
+			String content, String place) {
 		// ステートメントの定義
 		PreparedStatement preparedStatement = null;
 		try {
@@ -167,16 +168,15 @@ public class ScheduleDAO {
 	 * @param 予定ID、実績時間、振り返りコメント
 	 * @return 更新件数
 	 */
-	public int updateSchedule(int scheduleId, int actualTime ,String comment){
+	public int updateSchedule(int scheduleId, int actualTime, String comment) {
 		PreparedStatement preparedStatement = null;
 		try {
 			// SQLの定義
-			String sql = "UPDATE SCHEDULE SET (ACTUAL_TIME,COMMENT) "
-					+ "= (?,?) WHERE SCHEDULE_ID = ?";
+			String sql = "UPDATE SCHEDULE SET (ACTUAL_TIME,COMMENT) " + "= (?,?) WHERE SCHEDULE_ID = ?";
 			// SQLの作成(準備)
 			preparedStatement = this.connection.prepareStatement(sql);
 			// SQLバインド変数への値設定
-			preparedStatement.setInt(1,actualTime);
+			preparedStatement.setInt(1, actualTime);
 			preparedStatement.setString(2, comment);
 			preparedStatement.setInt(3, scheduleId);
 
@@ -198,7 +198,7 @@ public class ScheduleDAO {
 
 	/**
 	 * [機 能] 実績検索メソッド<br>
-	 * [説 明] 入力された日付とタイトルから実績を計算する<br>
+	 * [説 明] 入力された日付とタイトルから実績を取得する<br>
 	 * ※例外取得時にはRuntimeExceptionにラップし上位に送出する。<br>
 	 * [備 考] なし
 	 *
@@ -220,6 +220,69 @@ public class ScheduleDAO {
 			preparedStatement.setString(1, title);
 			preparedStatement.setDate(2, scheduleDate);
 			preparedStatement.setInt(3, userId);
+			// SQLの実行
+			ResultSet resultSet = preparedStatement.executeQuery();
+
+			// 問い合わせ結果の取得
+
+			while (resultSet.next()) {
+				ScheduleBean scheduleBean = new ScheduleBean();
+				scheduleBean.setScheduleId(resultSet.getInt("SCHEDULE_ID"));
+				scheduleBean.setUserId(userId);
+				scheduleBean.setScheduleDate(resultSet.getDate("SCHEDULE_DATE"));
+				scheduleBean.setStartTime(resultSet.getTime("START_TIME"));
+				scheduleBean.setEndTime(resultSet.getTime("END_TIME"));
+				scheduleBean.setUserName(resultSet.getString("USER_NAME"));
+				scheduleBean.setPlace(resultSet.getString("PLACE"));
+				scheduleBean.setTitle(resultSet.getString("TITLE"));
+				scheduleBean.setContent(resultSet.getString("CONTENT"));
+				scheduleBean.setActualTime(resultSet.getInt("ACTUAL_TIME"));
+				scheduleBean.setComment(resultSet.getString("COMMENT"));
+				scheduleBeanList.add(scheduleBean);
+			}
+
+			return scheduleBeanList;
+		} catch (SQLException e) {
+			throw new RuntimeException("SCHEDULEテーブルのSELECTに失敗しました", e);
+		} finally {
+			try {
+				if (preparedStatement != null) {
+					preparedStatement.close();
+				}
+			} catch (SQLException e) {
+				throw new RuntimeException("ステートメントの解放に失敗しました", e);
+			}
+		}
+	}
+
+	/**
+	 * [機 能] 予定取得メソッド<br>
+	 * [説 明] 一人分の一か月の予定を取得する<br>
+	 * ※例外取得時にはRuntimeExceptionにラップし上位に送出する。<br>
+	 * [備 考] なし
+	 *
+	 * @param 利用者ID、日付、タイトル
+	 * @return 予定リスト
+	 */
+	public List<ScheduleBean> getOneMonthSchedule(LocalDate scheduleDate, int userId) {
+		List<ScheduleBean> scheduleBeanList = new ArrayList<>();
+		LocalDate lastDayOfMonth = scheduleDate.with(TemporalAdjusters.lastDayOfMonth()); // 末日
+		LocalDate firstDayOfMonth = scheduleDate.with(TemporalAdjusters.firstDayOfMonth()); // 初日F
+		Date sqlLastDayOfMonth = Date.valueOf(lastDayOfMonth);
+		Date sqlFirstDayOfMonth = Date.valueOf(firstDayOfMonth);
+		PreparedStatement preparedStatement = null;
+		try {
+
+			// SQLの定義
+			String sql = "SELECT * FROM SCHEDULE INNER JOIN PUBLIC.USER ON PUBLIC.USER.USER_ID = SCHEDULE.USER_ID "
+					+ "WHERE DELETE_FLAG = '0' AND USER_ID = ? "
+					+ "AND SCHEDULE_DATE BETWEEN ? AND ? ORDER BY SCHEDULE_DATE,START_TIME";
+			// SQLの作成(準備)
+			preparedStatement = this.connection.prepareStatement(sql);
+			preparedStatement.setInt(1, userId);
+			preparedStatement.setDate(2, sqlFirstDayOfMonth);
+			preparedStatement.setDate(3, sqlLastDayOfMonth);
+
 			// SQLの実行
 			ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -357,7 +420,7 @@ public class ScheduleDAO {
 	 * ※例外取得時にはRuntimeExceptionにラップし上位に送出する。<br>
 	 * [備 考] なし
 	 *
-	 * @param  当月の日付、利用者ID
+	 * @param 当月の日付、利用者ID
 	 * @return 予定リスト
 	 */
 	public List<ScheduleBean> tooLongSQLSchedule(LocalDate scheduleDate, int userId) {
@@ -373,7 +436,6 @@ public class ScheduleDAO {
 
 		PreparedStatement preparedStatement = null;
 		try {
-
 
 			// SQLの定義
 			String sql = "SELECT SCHEDULE_DATE,START_TIME,MIN(TITLE) FROM SCHEDULE "
@@ -396,7 +458,7 @@ public class ScheduleDAO {
 				ScheduleBean scheduleBean = new ScheduleBean();
 
 				Date schDate = resultSet.getDate("schedule_date");
-				//MIN(TITLE)の列、つまりtitleの値を取得
+				// MIN(TITLE)の列、つまりtitleの値を取得
 				String title = resultSet.getString(3);
 
 				scheduleBean.setScheduleDate(schDate);
