@@ -275,7 +275,7 @@ public class ScheduleDAO {
 
 			// SQLの定義
 			String sql = "SELECT * FROM SCHEDULE INNER JOIN PUBLIC.USER ON PUBLIC.USER.USER_ID = SCHEDULE.USER_ID "
-					+ "WHERE DELETE_FLAG = '0' AND USER_ID = ? "
+					+ "WHERE DELETE_FLAG = '0' AND SCHEDULE.USER_ID = ? "
 					+ "AND SCHEDULE_DATE BETWEEN ? AND ? ORDER BY SCHEDULE_DATE,START_TIME";
 			// SQLの作成(準備)
 			preparedStatement = this.connection.prepareStatement(sql);
@@ -390,7 +390,7 @@ public class ScheduleDAO {
 
 			// SQLの定義
 			String sql = "SELECT * FROM SCHEDULE INNER JOIN PUBLIC.USER ON PUBLIC.USER.USER_ID = SCHEDULE.USER_ID "
-					+ "WHERE DELETE_FLAG = '0' AND USER_ID = ? AND SCHEDULE_DATE = ?"
+					+ "WHERE DELETE_FLAG = '0' AND SCHEDULE.USER_ID = ? AND SCHEDULE_DATE = ?"
 					+ "ORDER BY START_TIME";
 			// SQLの作成(準備)
 			preparedStatement = this.connection.prepareStatement(sql);
