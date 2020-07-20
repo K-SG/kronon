@@ -42,9 +42,9 @@ public class UserCreateServlet extends HttpServlet {
 
 			//メールアドレスかぶりの確認
 			if(userDAO.isBooking(mail)){
-				//かぶっていたらメールアドレス重複のポップアップが出るようにフラグ立て
+				//かぶっていたらメールアドレス重複のポップアップが出るようにフラグ立て。
 				request.setAttribute("popFlag",1);
-				//アカウント新規登録画面へ戻る
+				//アカウント新規登録画面へ戻る。
 				RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/view/user/user_new.jsp");
 				dispatcher.forward(request, response);
 			}
