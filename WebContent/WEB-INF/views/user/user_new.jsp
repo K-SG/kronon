@@ -47,7 +47,7 @@
 
 
 
-	<form action="usernew" method="post" name="user_create_form">
+	<form action="/user/usercreate" method="post" name="user_create_form">
 		<div class="user-create-input1">
 			<input type="text" name="userName" maxlength="15" placeholder="表示名" />
 		</div>
@@ -69,7 +69,6 @@
 			<input type="text" value="" name="password" maxlength="20" placeholder="パスワード確認" />
 		</div>
 		<div class="user-create-button"></div>
-
 
 
 
@@ -154,8 +153,6 @@
 </div>
 
 
-
-
 </c:if>
 
 
@@ -167,6 +164,6 @@
 <%--
 <%@ include file="../layout/common/footer.jsp" %> --%>
 <script src="js/common.js"></script>
-<script src="js/usernew.js"></script>
+<script src="js/user_new.js"></script>
 </body>
 </html>
