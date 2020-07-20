@@ -36,7 +36,7 @@ public class UserDAO {
 		int result = 0;
 		try {
 			// SQLの定義
-			String sql = "INSERT INTO 'user' (user_id,user_name,mail,password) values (nextval('user_id'),?,?,?)";
+			String sql = "INSERT INTO 'user' (user_id,user_name,mail,password) values (nextval('SEQ'),?,?,?)";
 			// SQLの作成(準備)
 			preparedStatement = this.connection.prepareStatement(sql);
 			// SQLバインド変数への値設定
