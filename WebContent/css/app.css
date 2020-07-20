@@ -1,0 +1,196 @@
+/* CSS Document */
+@import url(sanitize.css);
+
+/*本体*/
+body {
+	font-family : UD デジタル 教科書体 NK-B;
+	margin:0;
+	padding:0;
+	background-color: #FFD5A8;
+}
+/*ヘッダー部分*/
+header{
+	width:100vw;
+	margin:0;
+	padding:0;
+	position: fixed; /* ヘッダーを固定する */
+	top: 0; /* 上部から配置の基準位置を決める */
+	left: 0; /* 左から配置の基準位置を決める */
+}
+
+.top-head{
+  width: 9vh;
+  height: 9vh;
+  margin: 0;
+}
+ul.top-head {
+	display:table;
+	table-layout:fixed;
+	width:100vw;
+	background-color:#DE9B50;
+}
+ul.top-head li {
+	display:table-cell;
+	vertical-align:middle;
+}
+
+ul.top-head li a {
+    text-decoration:none;
+    color:#FFFFFF;
+}
+ul.top-head li a:hover {
+opacity: 0.5;
+}
+/*予定管理システム~くろのん~*/
+.system-name
+{
+	font-weight : bold;
+	font-size : 5.5vh;
+	color : #FFFFFF;
+}
+
+/*会社名☆ロゴ画像*/
+.company-name img.top-head-image
+{
+	background-repeat : no-repeat;
+	width: 8vh;
+	height: 8vh;
+	padding:0;
+}
+
+/*（株）くろ☆のす*/
+.company-name
+{
+	font-weight: bold;
+	font-size: 4vh;
+	text-align: right;
+	color: #FFFFFF;
+	padding-right: 4vh;
+	padding-left: 35vh;
+	padding-top: 0;
+}
+
+
+
+
+/*ナビゲーションバー*/
+ul.nav {
+  margin: 0;
+  padding: 0;
+  width:100vw;
+  background-color :rgba(222, 155, 80, 0.5);
+  color:#FFFFFFF;
+ }
+
+ul.nav li {
+  display: inline-block;
+  text-align: center;
+  font-size:3.5vh;
+  padding-top:2vh;
+  padding-bottom:2vh;
+  padding-right:2vh;
+  padding-left:2vh;
+  margin-top: 0;
+}
+
+
+ul.nav li a {
+	display: block;
+	text-decoration:none;
+	color:#FFFFFF;
+}
+
+ul.nav li:hover {
+	background-color:#d98425;
+}
+
+
+
+ul.nav li:last-child {
+  width:50vh;
+  text-align: center;
+}
+
+.nav .nav-right-user{
+	float: right;
+	padding-top:3vh;
+	padding-right: 4vh;
+	font-size: 3vh;
+	color:#FFFFFF;
+}
+
+.nav .nav-right-img{
+	float: right;
+	padding-right: 9vh;
+	padding-top:2vh;
+}
+
+.nav .nav-right {
+	float: right;
+}
+
+
+
+.nav .nav-right-img a{
+  position: relative;
+}
+.nav .nav-right-img a:hover{
+ opacity: 0.8;
+}
+
+.nav .nav-right-img a:after{
+  content: "";
+  position: absolute;
+  top: -3vh;
+  right: -4vw;
+  display: inline-block;
+  pointer-events: none;
+  width: 7vh;
+  height: 7vh;
+}
+
+.nav .nav-right-img a:hover:after{
+  background: url(../img/star/star_hyoko.png); /* 表示する画像 */
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center top;
+}
+
+
+
+
+
+
+
+
+/*本文*/
+article {
+	width:auto;
+	margin:0;
+	padding:0;
+	padding-top:20vh;
+	background-color: #FFD5A8;
+	font-size: 4vh;
+	height: auto;
+	color:#FFFFFF;
+}
+
+/*フッター*/
+footer{
+	width:100vw;
+	margin:0;
+	padding-top:1vh;
+	padding-bottom:1vh;
+	padding-right:3vh;
+	padding-left:0;
+	background-color: #DE9B50;
+	text-align: right;
+	color : #FFFFFF;
+	font-size: 3vh;
+	position: fixed; /* フッターを固定する */
+	bottom: 0; /* 上部から配置の基準位置を決める */
+	left: 0; /* 左から配置の基準位置を決める */
+
+}
+
+

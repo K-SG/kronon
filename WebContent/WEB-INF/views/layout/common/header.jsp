@@ -1,14 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
- <link rel="stylesheet" href="./css/app.css">
-<title>app.jsp</title>
-</head>
-<body>
-	<div class="content">
+
+
+ <div class="content">
 	<header>
 		<ul class="top-head">
 			<li class="system-name"><a href="#home">予定管理システム　～くろのん～</a></li>
@@ -23,23 +17,11 @@
 					<a href="#">
 					<img class="logout-icon" alt="ログアウト" src="./img/logout_icon.png"></a>
 
-				<!--<img alt="星画像" src="./img/star/star_hyoko.png">-->
-
 				</div>
 				<div class="nav-right-user">
 					○○としてログイン中</div>
 			</div>
 		</ul>
 	</header>
-	<article>
-
-ああ
 
 
-	</article>
-	<footer>
-      <small>&copy; 2020 Benesse.</small>
-    </footer>
-</div>
-</body>
-</html>
