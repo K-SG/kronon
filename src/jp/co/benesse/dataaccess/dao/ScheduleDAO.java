@@ -22,6 +22,7 @@ public class ScheduleDAO {
 
 	/**
 	 * コンストラクタ
+	 *
 	 * @param connection
 	 */
 	public ScheduleDAO(Connection connection) {
@@ -67,6 +68,54 @@ public class ScheduleDAO {
 	}
 
 	/**
+	 * [機 能] 予定登録メソッド<br>
+	 * [説 明] 予定を登録する<br>
+	 * ※例外取得時にはRuntimeExceptionにラップし上位に送出する。<br>
+	 * [備 考] なし
+	 *
+	 * @param 予定インスタンス
+	 * @return 登録件数
+	 */
+	public int registerSchedule(ScheduleBean scheduleBean) {
+
+		PreparedStatement preparedStatement = null;
+		try {
+			// SQLの定義
+			String sql = "INSERT INTO SCHEDULE (SCHEDULE_ID,USER_ID,SCHEDULE_DATE,"
+					+ "START_TIME,END_TIME,PLACE,TITLE,CONTENT,ACTUAL_TIME,COMMENT,DELETE_FLAG)"
+					+ "VALUES (?,?,?,?,?,?,?,?,?,?,'0')";
+			// SQLの作成(準備)
+			preparedStatement = this.connection.prepareStatement(sql);
+			// SQLバインド変数への値設定
+			preparedStatement.setInt(1, scheduleBean.getScheduleId());
+			preparedStatement.setInt(2, scheduleBean.getUserId());
+			preparedStatement.setDate(3, scheduleBean.getScheduleDate());
+			preparedStatement.setTime(4, scheduleBean.getStartTime());
+			preparedStatement.setTime(5, scheduleBean.getEndTime());
+			preparedStatement.setString(6, scheduleBean.getPlace());
+			preparedStatement.setString(7, scheduleBean.getTitle());
+			preparedStatement.setString(8, scheduleBean.getComment());
+			preparedStatement.setInt(9, scheduleBean.getActualTime());
+			preparedStatement.setString(10, scheduleBean.getDeleteFlag());
+			// SQLの実行
+			int result = preparedStatement.executeUpdate();
+
+			return result;
+		} catch (SQLException e) {
+			throw new RuntimeException("SCHEDULEテーブルのINSERTに失敗しました", e);
+		} finally {
+			try {
+				if (preparedStatement != null) {
+					preparedStatement.close();
+					System.out.println("ステートメントの解放に成功しました");
+				}
+			} catch (SQLException e) {
+				throw new RuntimeException("ステートメントの解放に失敗しました", e);
+			}
+		}
+	}
+
+	/**
 	 * [機 能] 予定更新メソッド<br>
 	 * [説 明] 予定を更新する<br>
 	 * ※例外取得時にはRuntimeExceptionにラップし上位に送出する。<br>
@@ -76,7 +125,7 @@ public class ScheduleDAO {
 	 * @return 更新件数
 	 */
 	public int updateSchedule(int scheduleId, Date scheduleDate, Time startTime, Time endTime, String title,
-			String content,String place) {
+			String content, String place) {
 		// ステートメントの定義
 		PreparedStatement preparedStatement = null;
 		try {
@@ -119,16 +168,15 @@ public class ScheduleDAO {
 	 * @param 予定ID、実績時間、振り返りコメント
 	 * @return 更新件数
 	 */
-	public int updateSchedule(int scheduleId, int actualTime ,String comment){
+	public int updateSchedule(int scheduleId, int actualTime, String comment) {
 		PreparedStatement preparedStatement = null;
 		try {
 			// SQLの定義
-			String sql = "UPDATE SCHEDULE SET (ACTUAL_TIME,COMMENT) "
-					+ "= (?,?) WHERE SCHEDULE_ID = ?";
+			String sql = "UPDATE SCHEDULE SET (ACTUAL_TIME,COMMENT) " + "= (?,?) WHERE SCHEDULE_ID = ?";
 			// SQLの作成(準備)
 			preparedStatement = this.connection.prepareStatement(sql);
 			// SQLバインド変数への値設定
-			preparedStatement.setInt(1,actualTime);
+			preparedStatement.setInt(1, actualTime);
 			preparedStatement.setString(2, comment);
 			preparedStatement.setInt(3, scheduleId);
 
@@ -137,6 +185,242 @@ public class ScheduleDAO {
 			return result;
 		} catch (SQLException e) {
 			throw new RuntimeException("SCHEDULEテーブルのUPDATEに失敗しました", e);
+		} finally {
+			try {
+				if (preparedStatement != null) {
+					preparedStatement.close();
+				}
+			} catch (SQLException e) {
+				throw new RuntimeException("ステートメントの解放に失敗しました", e);
+			}
+		}
+	}
+
+	/**
+	 * [機 能] 実績検索メソッド<br>
+	 * [説 明] 入力された日付とタイトルから実績を取得する<br>
+	 * ※例外取得時にはRuntimeExceptionにラップし上位に送出する。<br>
+	 * [備 考] なし
+	 *
+	 * @param 利用者ID、日付、タイトル
+	 * @return 予定リスト
+	 */
+	public List<ScheduleBean> selectSchedule(int userId, String dateStr, String title) {
+		List<ScheduleBean> scheduleBeanList = new ArrayList<>();
+		Date scheduleDate = Date.valueOf(dateStr);
+
+		PreparedStatement preparedStatement = null;
+		try {
+
+			// SQLの定義
+			String sql = "SELECT * FROM SCHEDULE INNER JOIN PUBLIC.USER ON PUBLIC.USER.USER_ID = SCHEDULE.USER_ID "
+					+ "WHERE DELETE_FLAG = '0' AND (TITLE LIKE '%?%' OR SCHEDULE_DATE = ?) AND SCHEDULE.USER_ID = ?";
+			// SQLの作成(準備)
+			preparedStatement = this.connection.prepareStatement(sql);
+			preparedStatement.setString(1, title);
+			preparedStatement.setDate(2, scheduleDate);
+			preparedStatement.setInt(3, userId);
+			// SQLの実行
+			ResultSet resultSet = preparedStatement.executeQuery();
+
+			// 問い合わせ結果の取得
+
+			while (resultSet.next()) {
+				ScheduleBean scheduleBean = new ScheduleBean();
+				scheduleBean.setScheduleId(resultSet.getInt("SCHEDULE_ID"));
+				scheduleBean.setUserId(userId);
+				scheduleBean.setScheduleDate(resultSet.getDate("SCHEDULE_DATE"));
+				scheduleBean.setStartTime(resultSet.getTime("START_TIME"));
+				scheduleBean.setEndTime(resultSet.getTime("END_TIME"));
+				scheduleBean.setUserName(resultSet.getString("USER_NAME"));
+				scheduleBean.setPlace(resultSet.getString("PLACE"));
+				scheduleBean.setTitle(resultSet.getString("TITLE"));
+				scheduleBean.setContent(resultSet.getString("CONTENT"));
+				scheduleBean.setActualTime(resultSet.getInt("ACTUAL_TIME"));
+				scheduleBean.setComment(resultSet.getString("COMMENT"));
+				scheduleBeanList.add(scheduleBean);
+			}
+
+			return scheduleBeanList;
+		} catch (SQLException e) {
+			throw new RuntimeException("SCHEDULEテーブルのSELECTに失敗しました", e);
+		} finally {
+			try {
+				if (preparedStatement != null) {
+					preparedStatement.close();
+				}
+			} catch (SQLException e) {
+				throw new RuntimeException("ステートメントの解放に失敗しました", e);
+			}
+		}
+	}
+
+	/**
+	 * [機 能] 予定取得メソッド<br>
+	 * [説 明] 一人分の一か月の予定を取得する<br>
+	 * ※例外取得時にはRuntimeExceptionにラップし上位に送出する。<br>
+	 * [備 考] なし
+	 *
+	 * @param 利用者ID、日付、タイトル
+	 * @return 予定リスト
+	 */
+	public List<ScheduleBean> getOneMonthSchedule(LocalDate scheduleDate, int userId) {
+		List<ScheduleBean> scheduleBeanList = new ArrayList<>();
+		LocalDate lastDayOfMonth = scheduleDate.with(TemporalAdjusters.lastDayOfMonth()); // 末日
+		LocalDate firstDayOfMonth = scheduleDate.with(TemporalAdjusters.firstDayOfMonth()); // 初日
+		Date sqlLastDayOfMonth = Date.valueOf(lastDayOfMonth);
+		Date sqlFirstDayOfMonth = Date.valueOf(firstDayOfMonth);
+		PreparedStatement preparedStatement = null;
+		try {
+
+			// SQLの定義
+			String sql = "SELECT * FROM SCHEDULE INNER JOIN PUBLIC.USER ON PUBLIC.USER.USER_ID = SCHEDULE.USER_ID "
+					+ "WHERE DELETE_FLAG = '0' AND USER_ID = ? "
+					+ "AND SCHEDULE_DATE BETWEEN ? AND ? ORDER BY SCHEDULE_DATE,START_TIME";
+			// SQLの作成(準備)
+			preparedStatement = this.connection.prepareStatement(sql);
+			preparedStatement.setInt(1, userId);
+			preparedStatement.setDate(2, sqlFirstDayOfMonth);
+			preparedStatement.setDate(3, sqlLastDayOfMonth);
+
+			// SQLの実行
+			ResultSet resultSet = preparedStatement.executeQuery();
+
+			// 問い合わせ結果の取得
+
+			while (resultSet.next()) {
+				ScheduleBean scheduleBean = new ScheduleBean();
+				scheduleBean.setScheduleId(resultSet.getInt("SCHEDULE_ID"));
+				scheduleBean.setUserId(userId);
+				scheduleBean.setScheduleDate(resultSet.getDate("SCHEDULE_DATE"));
+				scheduleBean.setStartTime(resultSet.getTime("START_TIME"));
+				scheduleBean.setEndTime(resultSet.getTime("END_TIME"));
+				scheduleBean.setUserName(resultSet.getString("USER_NAME"));
+				scheduleBean.setPlace(resultSet.getString("PLACE"));
+				scheduleBean.setTitle(resultSet.getString("TITLE"));
+				scheduleBean.setContent(resultSet.getString("CONTENT"));
+				scheduleBean.setActualTime(resultSet.getInt("ACTUAL_TIME"));
+				scheduleBean.setComment(resultSet.getString("COMMENT"));
+				scheduleBeanList.add(scheduleBean);
+			}
+
+			return scheduleBeanList;
+		} catch (SQLException e) {
+			throw new RuntimeException("SCHEDULEテーブルのSELECTに失敗しました", e);
+		} finally {
+			try {
+				if (preparedStatement != null) {
+					preparedStatement.close();
+				}
+			} catch (SQLException e) {
+				throw new RuntimeException("ステートメントの解放に失敗しました", e);
+			}
+		}
+	}
+
+	/**
+	 * [機 能] 予定取得メソッド<br>
+	 * [説 明] 予定IDから一件の予定を取得する<br>
+	 * ※例外取得時にはRuntimeExceptionにラップし上位に送出する。<br>
+	 * [備 考] なし
+	 *
+	 * @param 予定ID
+	 * @return 予定インスタンス
+	 */
+	public ScheduleBean getScheduleByScheduleId(int scheduleId) {
+		ScheduleBean scheduleBean = new ScheduleBean();
+		PreparedStatement preparedStatement = null;
+		try {
+
+			// SQLの定義
+			String sql = "SELECT * FROM SCHEDULE INNER JOIN PUBLIC.USER ON PUBLIC.USER.USER_ID = SCHEDULE.USER_ID "
+					+ "WHERE DELETE_FLAG = '0' AND SCHEDULE_ID = ? ";
+
+			// SQLの作成(準備)
+			preparedStatement = this.connection.prepareStatement(sql);
+			preparedStatement.setInt(1, scheduleId);
+
+			// SQLの実行
+			ResultSet resultSet = preparedStatement.executeQuery();
+
+			// 問い合わせ結果の取得
+
+			while (resultSet.next()) {
+				scheduleBean.setScheduleId(resultSet.getInt("SCHEDULE_ID"));
+				scheduleBean.setUserId(resultSet.getInt("USER_ID"));
+				scheduleBean.setScheduleDate(resultSet.getDate("SCHEDULE_DATE"));
+				scheduleBean.setStartTime(resultSet.getTime("START_TIME"));
+				scheduleBean.setEndTime(resultSet.getTime("END_TIME"));
+				scheduleBean.setUserName(resultSet.getString("USER_NAME"));
+				scheduleBean.setPlace(resultSet.getString("PLACE"));
+				scheduleBean.setTitle(resultSet.getString("TITLE"));
+				scheduleBean.setContent(resultSet.getString("CONTENT"));
+				scheduleBean.setActualTime(resultSet.getInt("ACTUAL_TIME"));
+				scheduleBean.setComment(resultSet.getString("COMMENT"));
+			}
+
+			return scheduleBean;
+		} catch (SQLException e) {
+			throw new RuntimeException("SCHEDULEテーブルのSELECTに失敗しました", e);
+		} finally {
+			try {
+				if (preparedStatement != null) {
+					preparedStatement.close();
+				}
+			} catch (SQLException e) {
+				throw new RuntimeException("ステートメントの解放に失敗しました", e);
+			}
+		}
+	}
+
+	/**
+	 * [機 能] 予定取得メソッド<br>
+	 * [説 明] 一人分の一日の予定を取得する<br>
+	 * ※例外取得時にはRuntimeExceptionにラップし上位に送出する。<br>
+	 * [備 考] なし
+	 *
+	 * @param 利用者ID、日付、タイトル
+	 * @return 予定リスト
+	 */
+	public List<ScheduleBean> getOneDaySchedule(LocalDate scheduleDate, int userId) {
+		List<ScheduleBean> scheduleBeanList = new ArrayList<>();
+		Date sqlScheduleDate = Date.valueOf(scheduleDate);
+		PreparedStatement preparedStatement = null;
+		try {
+
+			// SQLの定義
+			String sql = "SELECT * FROM SCHEDULE INNER JOIN PUBLIC.USER ON PUBLIC.USER.USER_ID = SCHEDULE.USER_ID "
+					+ "WHERE DELETE_FLAG = '0' AND USER_ID = ? AND SCHEDULE_DATE = ?"
+					+ "ORDER BY START_TIME";
+			// SQLの作成(準備)
+			preparedStatement = this.connection.prepareStatement(sql);
+			preparedStatement.setInt(1, userId);
+			preparedStatement.setDate(2, sqlScheduleDate);
+
+			// SQLの実行
+			ResultSet resultSet = preparedStatement.executeQuery();
+
+			// 問い合わせ結果の取得
+
+			while (resultSet.next()) {
+				ScheduleBean scheduleBean = new ScheduleBean();
+				scheduleBean.setScheduleId(resultSet.getInt("SCHEDULE_ID"));
+				scheduleBean.setUserId(userId);
+				scheduleBean.setScheduleDate(resultSet.getDate("SCHEDULE_DATE"));
+				scheduleBean.setStartTime(resultSet.getTime("START_TIME"));
+				scheduleBean.setEndTime(resultSet.getTime("END_TIME"));
+				scheduleBean.setUserName(resultSet.getString("USER_NAME"));
+				scheduleBean.setPlace(resultSet.getString("PLACE"));
+				scheduleBean.setTitle(resultSet.getString("TITLE"));
+				scheduleBean.setContent(resultSet.getString("CONTENT"));
+				scheduleBean.setActualTime(resultSet.getInt("ACTUAL_TIME"));
+				scheduleBean.setComment(resultSet.getString("COMMENT"));
+				scheduleBeanList.add(scheduleBean);
+			}
+
+			return scheduleBeanList;
+		} catch (SQLException e) {
+			throw new RuntimeException("SCHEDULEテーブルのSELECTに失敗しました", e);
 		} finally {
 			try {
 				if (preparedStatement != null) {
@@ -250,7 +534,7 @@ public class ScheduleDAO {
 	 * ※例外取得時にはRuntimeExceptionにラップし上位に送出する。<br>
 	 * [備 考] なし
 	 *
-	 * @param  当月の日付、利用者ID
+	 * @param 当月の日付、利用者ID
 	 * @return 予定リスト
 	 */
 	public List<ScheduleBean> tooLongSQLSchedule(LocalDate scheduleDate, int userId) {
@@ -266,7 +550,6 @@ public class ScheduleDAO {
 
 		PreparedStatement preparedStatement = null;
 		try {
-
 
 			// SQLの定義
 			String sql = "SELECT SCHEDULE_DATE,START_TIME,MIN(TITLE) FROM SCHEDULE "
@@ -289,7 +572,7 @@ public class ScheduleDAO {
 				ScheduleBean scheduleBean = new ScheduleBean();
 
 				Date schDate = resultSet.getDate("schedule_date");
-				//MIN(TITLE)の列、つまりtitleの値を取得
+				// MIN(TITLE)の列、つまりtitleの値を取得
 				String title = resultSet.getString(3);
 
 				scheduleBean.setScheduleDate(schDate);
