@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
- <link rel="stylesheet" href="./css/schedule_new.css">
+ <link rel="stylesheet" href="../../css/schedule_new.css">
 <%@ include file="../layout/common/link.jsp" %>
 <title>予定登録</title>
 </head>
