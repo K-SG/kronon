@@ -4,10 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link href="css/app.css" rel="stylesheet" type="text/css">
-<link href="css/common.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<%@ include file="common/link.jsp" %>
 <title>Insert title here</title>
 </head>
 <body>
@@ -17,6 +14,27 @@
 
 <!-- ここにコードを書く -->
 
+
+
+
+<!--本当に戻りますかポップアップ------------------------------------------------------------------->
+<div class="popup-wrapper back-popup">
+  <div class="pop-container">
+    <div class="close-popup"> <i class="fa fa-2x fa-times"></i> </div>
+    <div class="pop-container-inner">
+      <div class="message-container">
+        <p>内容は保存されないよ。</p>
+        <h2 class="message-title">本当に戻る？</h2>
+      </div>
+      <a href="#"><div class="ok-button">OK</div></a>
+      <div class="ng-button close-popup">キャンセル</div>
+      <img src="img/star/star_angry.png" class="pop-img-top"> </div>
+  </div>
+</div>
+<!--本当に戻りますかポップアップここまで------------------------------------------------------------------->
+
+<!--本当に戻りますかポップアップ表示用ボタン---->
+<div class="ok-button back-popup-button">戻る</div>
 
 
 
