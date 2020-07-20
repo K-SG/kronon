@@ -57,19 +57,16 @@ public class ScheduleBean {
 	 */
 	private String estimateTime;
 
-	@Override
-	public String toString() {
-		return "ScheduleBean [scheduleId=" + scheduleId + ", userId=" + userId + ", scheduleDate=" + scheduleDate
-				+ ", startTime=" + startTime + ", endTime=" + endTime + ", place=" + place + ", title=" + title
-				+ ", content=" + content + ", actualTime=" + actualTime + ", comment=" + comment + ", deleteFlag="
-				+ deleteFlag + ", userName=" + userName + "]";
-	}
-	public ScheduleBean() {
+	/**
+	 * コンストラクタ
+	 */
+	public ScheduleBean() {}
 
-	}
+	/**
+	 * コンストラクタ
+	 */
 	public ScheduleBean(int scheduleId, int userId, Date scheduleDate, Time startTime, Time endTime, String place,
 			String title, String content, int actualTime, String comment, String deleteFlag, String userName) {
-		super();
 		this.scheduleId = scheduleId;
 		this.userId = userId;
 		this.scheduleDate = scheduleDate;
@@ -83,6 +80,10 @@ public class ScheduleBean {
 		this.deleteFlag = deleteFlag;
 		this.userName = userName;
 	}
+
+	/**
+	 * コンストラクタ
+	 */
 	public ScheduleBean(int scheduleId, int userId, Date scheduleDate, Time startTime, Time endTime, String place,
 			String title, String content, int actualTime, String comment, String deleteFlag) {
 		super();
@@ -175,6 +176,14 @@ public class ScheduleBean {
 	}
 	public void setEstimateTime(String estimateTime) {
 		this.estimateTime = estimateTime;
+	}
+
+	@Override
+	public String toString() {
+		return "ScheduleBean [scheduleId=" + scheduleId + ", userId=" + userId + ", scheduleDate=" + scheduleDate
+				+ ", startTime=" + startTime + ", endTime=" + endTime + ", place=" + place + ", title=" + title
+				+ ", content=" + content + ", actualTime=" + actualTime + ", comment=" + comment + ", deleteFlag="
+				+ deleteFlag + ", userName=" + userName + "]";
 	}
 
 }
