@@ -17,11 +17,11 @@
 					<a href="#">
 					<img class="logout-icon" alt="ログアウト" src="./img/logout_icon.png"></a>
 
-				<!--<img alt="星画像" src="./img/star/star_hyoko.png">-->
-
 				</div>
 				<div class="nav-right-user">
 					○○としてログイン中</div>
 			</div>
 		</ul>
 	</header>
+
+
