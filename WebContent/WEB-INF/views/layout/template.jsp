@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -12,103 +12,18 @@
 </head>
 <body>
 
-<%@ include file="design/header.jsp" %>
-	<article>
+<%@ include file="common/header.jsp" %>
+<article>
 
-	<!--エラーまたは完了ポップアップ------------------------------------------------------------------->
-<div class="popup-wrapper error-popup">
-  <div class="pop-container">
-    <div class="close-popup"> <i class="fa fa-2x fa-times"></i> </div>
-    <div class="pop-container-inner">
-      <div class="message-container">
-        <p>メールアドレス・パスワードが違うよ。</p>
-      </div>
-      <div class="ok-button close-popup">OK</div>
-      <img src="img/kronon/kronon_question.png" class="pop-img"> </div>
-  </div>
-</div>
-<!--エラーまたは完了ポップアップここまで-------------------------------------------------------------->
-
-<!--エラーまたは完了ポップアップ表示用ボタン--->
-<div class="ok-button small-popup-button">エラー/完了</div>
+<!-- ここにコードを書く -->
 
 
 
-<!--本当に戻りますかポップアップ------------------------------------------------------------------->
-<div class="popup-wrapper back-popup">
-  <div class="pop-container">
-    <div class="close-popup"> <i class="fa fa-2x fa-times"></i> </div>
-    <div class="pop-container-inner">
-      <div class="message-container">
-        <p>内容は保存されないよ。</p>
-        <h2 class="message-title">本当に戻る？</h2>
-      </div>
-      <a href="#"><div class="ok-button">OK</div></a>
-      <div class="ng-button close-popup">キャンセル</div>
-      <img src="img/star/star_angry.png" class="pop-img-top"> </div>
-  </div>
-</div>
-<!--本当に戻りますかポップアップここまで------------------------------------------------------------------->
-
-<!--エラーまたは完了ポップアップ表示用ボタン---->
-<div class="ok-button large-popup-button">新規登録</div>
 
 
 
-<!--内容確認ポップアップ----------------------------------------------------------------->
-<div class="popup-wrapper confirm-popup">
-  <div class="pop-container pop-container-large">
-    <div class="close-popup"> <i class="fa fa-2x fa-times"></i> </div>
-    <div class="pop-container-inner">
-      <div class="message-container-large">
-        <h2 class="message-title">この内容で登録するよ。</h2>
-        <table class="popup-table">
-          <tr>
-            <th class="th">名前：</th>
-            <td>樋口</td>
-          </tr>
-          <tr>
-            <th>予定日時：</th>
-            <td>2020/7/11(月) 10:00-11:00</td>
-          </tr>
-          <tr>
-            <th>タイトル：</th>
-            <td>外部設計レビュー</td>
-          </tr>
-          <tr>
-            <th class="last-table">内容：</th>
-            <td class="last-table">森岡さん作成外部設計書レビュー<br>
-              〆切7/13</td>
-          </tr>
-        </table>
-      </div>
-      <a href="#"><div class="ok-button">OK</div></a>
-      <div class="ng-button close-popup">キャンセル</div>
-      <img src="img/kronon/kronon_question.png" class="pop-img"> </div>
-  </div>
-</div>
-<!--内容確認ポップアップここまで----------------------------------------------------------------->
-
-<!--エラーまたは完了ポップアップ表示用ボタン----->
-<div class="ok-button back-popup-button">戻る</div>
-
-
-
-<h1>てすと</h1>
-<h1>てすと</h1>
-<h1>てすと</h1>
-<h1>てすと</h1>
-<h1>てすと</h1>
-<h1>てすと</h1>
-<h1>てすと</h1>
-<h1>てすと</h1>
-<h1>てすと</h1>
-<h1>てすと</h1>
-<h1>てすと</h1>
-<h1>てすと</h1>
-<h1>てすと</h1>
 </article>
-<%@ include file="design/footer.jsp" %>
+<%@ include file="common/footer.jsp" %>
 <script src="js/common.js"></script>
 </body>
 </html>

@@ -6,6 +6,10 @@ body {
   font-family: UD デジタル 教科書体 NK-B;
 }
 
+article{
+	color:#000000;
+}
+
 /********************************************************************/
 /*ここからポップアップ関連のCSS*/
 
@@ -49,10 +53,12 @@ body {
 
 .message-container p{
 	font-size:1.8vw;
+	color:#000000;
 }
 
 .message-title{
 	font-size: 1.8vw;
+	color:#000000;
 }
 
 
