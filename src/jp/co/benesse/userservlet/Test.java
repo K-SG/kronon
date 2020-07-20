@@ -2,6 +2,7 @@ package jp.co.benesse.userservlet;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -37,7 +38,9 @@ public class Test extends HttpServlet {
 
 
 
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		RequestDispatcher dispatcher = request.getRequestDispatcher("views/user/gitTest.jsp");
+		dispatcher.forward(request, response);
+		return;
 	}
 
 	/**
