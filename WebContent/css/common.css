@@ -1,0 +1,176 @@
+
+/* 共通パーツ */
+/* 基本的にこのファイルは編集しない */
+
+body {
+  font-family: UD デジタル 教科書体 NK-B;
+}
+
+/********************************************************************/
+/*ここからポップアップ関連のCSS*/
+
+.pop-container {
+  position: absolute;
+  top: 20vh;
+  left: 32vw;
+  background: #FFFFE3;
+  background: rgba(255, 255, 227, 1);
+  border-style: Solid;
+  border-color: #DE9B50;
+  border-color: rgba(222, 155, 80, 1);
+  border-width: 0.3vw;
+  width: 29vw;
+  height: auto;
+  border-radius: 2vw;
+  text-align: center;
+  vertical-align: middle;
+  margin: auto;
+  padding: 3vw;
+}
+
+/*内容確認ポップアップなど、要素が多いとき*/
+.pop-container-large{
+	width:40vw !important;
+	left:26vw;
+	top:10vh;
+}
+
+.pop-container-inner{
+	position: relative;
+}
+
+.message-container {
+  width: 22vw;
+  margin: auto;
+  text-align: center;
+  margin-bottom: 4vw;
+  font-size: 1.2vw;
+}
+
+.message-container p{
+	font-size:1.8vw;
+}
+
+.message-title{
+	font-size: 1.8vw;
+}
+
+
+/*ポップアップに表示する画像右下*/
+.pop-img {
+  background-image: url(image.png);
+  background-repeat: no-repeat;
+  position: absolute;
+  right: -1.5vw;
+  bottom: -1.5vw;
+  width: 9vw;
+}
+
+/*ポップアップに表示する画像左上*/
+.pop-img-top{
+  background-image: url(image.png);
+  background-repeat: no-repeat;
+  position: absolute;
+  left: -2vw;
+  top: -4vw;
+  width: 7vw;
+}
+
+/*OKボタン*/
+.ok-button {
+  display: inline-block;
+  width: 10vw;
+  padding: 0.8vw;
+  background-color: #DE9B50;
+  border: none;
+  border-radius: 0.8vw;
+  color: white;
+  margin: auto;
+  cursor: pointer;
+  text-align: center;
+  font-size: 1.5vw;
+}
+
+/*NGボタン*/
+.ng-button {
+  display: inline-block;
+  width: 10vw;
+  padding: 0.8vw;
+  background-color: #DE9B50;
+	opacity:0.5;
+  border: none;
+  border-radius: 0.8vw;
+  color: white;
+  margin: auto;
+  cursor: pointer;
+  text-align: center;
+  font-size: 1.5vw;
+	margin-left:1vw;
+}
+
+/*モーダル*/
+.popup-wrapper {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(255, 255, 255, 0.6);
+  z-index: 100;
+  display: none;
+}
+
+/*閉じるボタン*/
+.fa-times {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  color: #DE9B50;
+	opacity:0.5;
+  cursor: pointer;
+}
+
+
+
+
+.popup-table{
+	font-size:1.4vw;
+}
+
+
+.popup-table{
+	border-collapse:collapse;
+	text-align: left;
+	margin-top:2vw;
+	margin-bottom: 2vw;
+}
+
+/*th, td{
+	border-bottom: 1px solid black;
+}*/
+
+
+.popup-table th{
+	width:10vw;
+	padding:0.5vw 0.1vw;
+	border-bottom: 0.1vw #888888 solid;
+	margin:0;
+}
+
+.popup-table td{
+	width:30vw;
+	padding:1.2vw 0vw;
+	border-bottom: 0.1vw #888888 solid;
+	margin:0;
+}
+
+.last-table{
+	width:30vw;
+	padding:1vw 0vw;
+	border-bottom: none !important;
+	margin:0;
+}
+
+/********************************************************************/
+/*ここまでポップアップ関連のCSS*/
+
