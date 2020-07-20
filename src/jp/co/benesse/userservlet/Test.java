@@ -36,7 +36,7 @@ public class Test extends HttpServlet {
 
 
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher("views/user/gitTest.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/views/user/gitTest.jsp");
 		dispatcher.forward(request, response);
 		return;
 	}
