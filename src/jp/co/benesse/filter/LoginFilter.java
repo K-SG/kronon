@@ -9,9 +9,6 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  * [機 能] ログインフィルター<br>
@@ -32,16 +29,16 @@ public class LoginFilter implements Filter {
 
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
-		// セッションが存在しない場合NULLを返す
-		HttpSession session = ((HttpServletRequest) request).getSession(false);
-
-		if (session.getAttribute("userBean") != null) {
-			// セッションがNULLでなければ、通常どおりの遷移
-			chain.doFilter(request, response);
-		} else {
-			// セッションがNullならば、ログイン画面へ飛ばす
-			((HttpServletResponse) response).sendRedirect("/login");
-		}
+//		// セッションが存在しない場合NULLを返す
+//		HttpSession session = ((HttpServletRequest) request).getSession(false);
+//
+//		if (session.getAttribute("userBean") != null) {
+//			// セッションがNULLでなければ、通常どおりの遷移
+//			chain.doFilter(request, response);
+//		} else {
+//			// セッションがNullならば、ログイン画面へ飛ばす
+//			((HttpServletResponse) response).sendRedirect("/login");
+//		}
 	}
 
 	public void init(FilterConfig fConfig) throws ServletException {
