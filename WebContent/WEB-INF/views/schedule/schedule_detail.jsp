@@ -7,9 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-ログイン画面
-追加
-マージチャレンジ
-マージチャレンジ2
+
 </body>
 </html>
