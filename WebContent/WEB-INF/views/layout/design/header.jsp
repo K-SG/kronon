@@ -14,8 +14,10 @@
 	  		<li><a href="#">実績確認</a></li>
 			<div class="nav-right">
 				<div class="nav-right-img">
-					<a href="logout">
+					<a href="#">
 					<img class="logout-icon" alt="ログアウト" src="./img/logout_icon.png"></a>
+
+				<!--<img alt="星画像" src="./img/star/star_hyoko.png">-->
 
 				</div>
 				<div class="nav-right-user">
@@ -23,5 +25,3 @@
 			</div>
 		</ul>
 	</header>
-
-

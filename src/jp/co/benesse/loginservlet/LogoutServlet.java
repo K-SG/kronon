@@ -1,8 +1,7 @@
-package jp.co.benesse.userservlet;
+package jp.co.benesse.loginservlet;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,14 +9,24 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class UserNewServlet
+ * Servlet implementation class LogoutServlet
  */
-@WebServlet("/usernew")
-public class UserNewServlet extends HttpServlet {
+@WebServlet("/logout")
+public class LogoutServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public LogoutServlet() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//doGetされたものをdoPostに変換
 		this.doPost(request, response);
 	}
 
@@ -25,10 +34,9 @@ public class UserNewServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//user_new.jsp(アカウント新規作成画面)にforwardする。
-		RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/view/web/user_new.jsp");
-		dispatcher.forward(request, response);
-		return;
+		// TODO Auto-generated method stub
+		request.getSession().invalidate();
+		response.sendRedirect("login");
 	}
 
 }

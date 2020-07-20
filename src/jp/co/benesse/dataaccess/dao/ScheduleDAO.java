@@ -67,6 +67,54 @@ public class ScheduleDAO {
 	}
 
 	/**
+	 * [機 能] 予定登録メソッド<br>
+	 * [説 明] 予定を登録する<br>
+	 * ※例外取得時にはRuntimeExceptionにラップし上位に送出する。<br>
+	 * [備 考] なし
+	 *
+	 * @param 予定
+	 * @return 登録件数
+	 */
+	public int registerSchedule(ScheduleBean scheduleBean) {
+
+		PreparedStatement preparedStatement = null;
+		try {
+			// SQLの定義
+			String sql = "INSERT INTO SCHEDULE (SCHEDULE_ID,USER_ID,SCHEDULE_DATE,"
+					+ "START_TIME,END_TIME,PLACE,TITLE,CONTENT,ACTUAL_TIME,COMMENT,DELETE_FLAG)"
+					+ "VALUES (?,?,?,?,?,?,?,?,?,?,'0')";
+			// SQLの作成(準備)
+			preparedStatement = this.connection.prepareStatement(sql);
+			// SQLバインド変数への値設定
+			preparedStatement.setInt(1, scheduleBean.getScheduleId());
+			preparedStatement.setInt(2, scheduleBean.getUserId());
+			preparedStatement.setDate(3, scheduleBean.getScheduleDate());
+			preparedStatement.setTime(4, scheduleBean.getStartTime());
+			preparedStatement.setTime(5, scheduleBean.getEndTime());
+			preparedStatement.setString(6, scheduleBean.getPlace());
+			preparedStatement.setString(7, scheduleBean.getTitle());
+			preparedStatement.setString(8, scheduleBean.getComment());
+			preparedStatement.setInt(9, scheduleBean.getActualTime());
+			preparedStatement.setString(10, scheduleBean.getDeleteFlag());
+			// SQLの実行
+			int result = preparedStatement.executeUpdate();
+
+			return result;
+		} catch (SQLException e) {
+			throw new RuntimeException("SCHEDULEテーブルのINSERTに失敗しました", e);
+		} finally {
+			try {
+				if (preparedStatement != null) {
+					preparedStatement.close();
+					System.out.println("ステートメントの解放に成功しました");
+				}
+			} catch (SQLException e) {
+				throw new RuntimeException("ステートメントの解放に失敗しました", e);
+			}
+		}
+	}
+
+	/**
 	 * [機 能] 予定更新メソッド<br>
 	 * [説 明] 予定を更新する<br>
 	 * ※例外取得時にはRuntimeExceptionにラップし上位に送出する。<br>

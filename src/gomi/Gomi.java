@@ -1,8 +1,6 @@
-package jp.co.benesse.userservlet;
+package gomi;
 
 import java.io.IOException;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,25 +8,34 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class UserNewServlet
+ * Servlet implementation class Gomi
  */
-@WebServlet("/usernew")
-public class UserNewServlet extends HttpServlet {
+@WebServlet("/Gomi")
+public class Gomi extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public Gomi() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
 
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//doGetされたものをdoPostに変換
-		this.doPost(request, response);
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//user_new.jsp(アカウント新規作成画面)にforwardする。
-		RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/view/web/user_new.jsp");
-		dispatcher.forward(request, response);
-		return;
+		// TODO Auto-generated method stub
+		doGet(request, response);
 	}
 
 }
