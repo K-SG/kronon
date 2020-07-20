@@ -23,5 +23,4 @@ public class ScheduleNewServlet extends HttpServlet {
 		dispatcher.forward(request, response);
 		return;
 	}
-
 }
