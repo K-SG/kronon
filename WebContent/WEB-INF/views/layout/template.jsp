@@ -4,10 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link href="css/app.css" rel="stylesheet" type="text/css">
-<link href="css/common.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<%@ include file="common/link.jsp" %>
 <title>Insert title here</title>
 </head>
 <body>
@@ -18,6 +15,39 @@
 <!-- ここにコードを書く -->
 
 
+
+
+  <div class=white-text>
+    <div class=blackboard>
+
+      <table class=schedule_detail>
+
+        <tr>
+          <td>名前：〇〇〇〇〇〇〇〇〇</td>
+          <td>実績：2時間30分</td>
+        </tr>
+
+        <tr>
+          <td>2020/07/11(月) 11:00～12:00</td>
+          <td class=show-place>作業（オフィス）</td>
+        </tr>
+
+        <tr>
+          <td colspan="2">
+            外部設計書レビュー
+          </td>
+        </tr>
+
+        <tr>
+          <td colspan="2">
+            森岡さん作成の外部設計書
+          </td>
+        </tr>
+
+      </table>
+
+    </div>
+  </div>
 
 
 
