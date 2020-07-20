@@ -6,6 +6,7 @@ body {
   font-family: UD デジタル 教科書体 NK-B;
 }
 
+<<<<<<< HEAD
 /********************************************************************/
 /*ここからポップアップ関連のCSS*/
 
@@ -53,6 +54,61 @@ body {
 
 .message-title{
 	font-size: 1.8vw;
+=======
+article{
+	color:#000000;
+}
+
+/********************************************************************/
+/*ここからポップアップ関連のCSS*/
+
+.pop-container {
+  position: absolute;
+  top: 20vh;
+  left: 32vw;
+  background: #FFFFE3;
+  background: rgba(255, 255, 227, 1);
+  border-style: Solid;
+  border-color: #DE9B50;
+  border-color: rgba(222, 155, 80, 1);
+  border-width: 0.3vw;
+  width: 29vw;
+  height: auto;
+  border-radius: 2vw;
+  text-align: center;
+  vertical-align: middle;
+  margin: auto;
+  padding: 3vw;
+}
+
+/*内容確認ポップアップなど、要素が多いとき*/
+.pop-container-large{
+	width:40vw !important;
+	left:26vw;
+	top:10vh;
+}
+
+.pop-container-inner{
+	position: relative;
+}
+
+.message-container {
+  width: 22vw;
+  margin: auto;
+  text-align: center;
+  margin-bottom: 4vw;
+  font-size: 1.2vw;
+}
+
+.message-container p{
+	font-size:1.8vw;
+	color:#000000;
+}
+
+.message-title{
+	font-size: 1.8vw;
+	color:#000000;
+>>>>>>> refs/remotes/origin/master
 }
 
 
