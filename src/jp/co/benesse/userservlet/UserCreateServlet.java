@@ -69,7 +69,7 @@ public class UserCreateServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		session.setAttribute("userName",userBean.getUserName());
 		session.setAttribute("userId",userBean.getUserId());
-		//新規登録完了ポップアップを出すためのフラグを立てる
+		//新規登録完了ポップアップを出すためのフラグを立てる。
 		request.setAttribute("popFlag",0);
 		//user_new.jsp(アカウント新規作成画面)にforwardする。
 		RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/view/user/user_new.jsp");
