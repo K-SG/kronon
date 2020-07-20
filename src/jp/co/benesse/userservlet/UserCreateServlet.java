@@ -35,10 +35,12 @@ public class UserCreateServlet extends HttpServlet {
 		String mail = request.getParameter("mail");
 		String password = request.getParameter("password");
 		ConnectionManager connectionManager = new ConnectionManager();
+
+		UserDAO userDAO = null;
 		try{
 			Connection connection = connectionManager.getConnection();
 			// UserDAOの作成
-			UserDAO userDAO = new UserDAO(connection);
+			userDAO = new UserDAO(connection);
 
 			//メールアドレスかぶりの確認
 			if(userDAO.isBooking(mail)){
