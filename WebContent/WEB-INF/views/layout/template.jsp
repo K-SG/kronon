@@ -17,25 +17,37 @@
 
 
 
-<!--本当に戻りますかポップアップ------------------------------------------------------------------->
-<div class="popup-wrapper back-popup">
-  <div class="pop-container">
-    <div class="close-popup"> <i class="fa fa-2x fa-times"></i> </div>
-    <div class="pop-container-inner">
-      <div class="message-container">
-        <p>内容は保存されないよ。</p>
-        <h2 class="message-title">本当に戻る？</h2>
-      </div>
-      <a href="#"><div class="ok-button">OK</div></a>
-      <div class="ng-button close-popup">キャンセル</div>
-      <img src="img/star/star_angry.png" class="pop-img-top"> </div>
+  <div class=white-text>
+    <div class=blackboard>
+
+      <table class=schedule_detail>
+
+        <tr>
+          <td>名前：〇〇〇〇〇〇〇〇〇</td>
+          <td>実績：2時間30分</td>
+        </tr>
+
+        <tr>
+          <td>2020/07/11(月) 11:00～12:00</td>
+          <td class=show-place>作業（オフィス）</td>
+        </tr>
+
+        <tr>
+          <td colspan="2">
+            外部設計書レビュー
+          </td>
+        </tr>
+
+        <tr>
+          <td colspan="2">
+            森岡さん作成の外部設計書
+          </td>
+        </tr>
+
+      </table>
+
+    </div>
   </div>
-</div>
-<!--本当に戻りますかポップアップここまで------------------------------------------------------------------->
-
-<!--本当に戻りますかポップアップ表示用ボタン---->
-<div class="ok-button back-popup-button">戻る</div>
-
 
 
 
