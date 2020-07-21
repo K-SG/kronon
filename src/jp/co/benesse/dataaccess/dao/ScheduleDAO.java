@@ -446,14 +446,20 @@ public class ScheduleDAO {
 		try {
 
 			// SQLの定義
-			String sql = "SELECT COUNT(*) FROM SCHEDULE " + "WHERE ? < END_TIME AND START_TIME < ? "
+			String sql = "SELECT COUNT(*) FROM SCHEDULE " + "WHERE (? < END_TIME AND START_TIME < ?) "
+					+ "OR (START_TIME < ? AND END_TIME > ?)"
+					+ "OR (START_TIME > ? AND END_TIME < ?)"
 					+ "AND SCHEDULE_DATE = ? AND USER_ID = ? AND DELETE_FLAG = '0'";
 			// SQLの作成(準備)
 			preparedStatement = this.connection.prepareStatement(sql);
 			preparedStatement.setTime(1, scheduleBean.getStartTime());
 			preparedStatement.setTime(2, scheduleBean.getEndTime());
-			preparedStatement.setDate(3, scheduleBean.getScheduleDate());
-			preparedStatement.setInt(4, scheduleBean.getUserId());
+			preparedStatement.setTime(3, scheduleBean.getStartTime());
+			preparedStatement.setTime(4, scheduleBean.getEndTime());
+			preparedStatement.setTime(5, scheduleBean.getStartTime());
+			preparedStatement.setTime(6, scheduleBean.getEndTime());
+			preparedStatement.setDate(7, scheduleBean.getScheduleDate());
+			preparedStatement.setInt(8, scheduleBean.getUserId());
 			// SQLの実行
 			ResultSet resultSet = preparedStatement.executeQuery();
 
