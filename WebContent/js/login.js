@@ -1,15 +1,26 @@
 $(function () {
 
-$(document).ready(function(){
-	let popFlag = document.getElementById('flag').value;
-    console.log(popFlag);
-	if(popFlag==2){
-		popFlag=3;
-		console.log(popFlag);
-		$('.error-popup').fadeIn();
-		return;
+	history.pushState(null, null, location.href);
+	window.addEventListener('popstate', (e) => {
+	  history.go(1);
+	});
+
+if(window.performance){
+	if(performance.navigation.type===1){
+
+	} else{
+		$(document).ready(function(){
+			let popFlag = document.getElementById('flag').value;
+		    console.log(popFlag);
+			if(popFlag==2){
+				popFlag=3;
+				console.log(popFlag);
+				$('.error-popup').fadeIn();
+				return;
+			}
+		});
 	}
-});
+}
 
 $('.login-button').click(function () {
 	let mail = document.getElementById('login_mail').value;
