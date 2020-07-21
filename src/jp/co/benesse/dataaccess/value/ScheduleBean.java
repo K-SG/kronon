@@ -58,6 +58,11 @@ public class ScheduleBean {
 	private String estimateTime;
 
 	/**
+	 * json整形用
+	 */
+	private String jsonDate;
+
+	/**
 	 * コンストラクタ
 	 */
 	public ScheduleBean() {}
@@ -176,6 +181,14 @@ public class ScheduleBean {
 	}
 	public void setEstimateTime(String estimateTime) {
 		this.estimateTime = estimateTime;
+	}
+
+	public String getJsonDate() {
+		return jsonDate;
+	}
+
+	public void setJsonDate(String jsonDate) {
+		this.jsonDate = jsonDate;
 	}
 
 	@Override

@@ -44,7 +44,7 @@
 	width:2.5vw;
 }
 
-.month{
+#month{
 	padding-left:10vw;
 	width:41vw;
 	font-size:3vw;
@@ -53,7 +53,7 @@
 	color:#666;
 }
 
-.year{
+#year{
 		width:8vw;
 	font-size:1.4vw;
 	text-align: right;
@@ -121,6 +121,7 @@ tbody td:first-child {
   td.disabled {
     /*opacity: 0.3;*/
 	  color:#CCC;
+	  cursor:default;
   }
 
   td.today {

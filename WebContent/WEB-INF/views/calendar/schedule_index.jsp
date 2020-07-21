@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <%@ include file="/WEB-INF/views/layout/common/link.jsp" %>
-<link rel="stylesheet" href="css/calendar.css">
+<link rel="stylesheet" href="../css/calendar.css">
 <title>予定確認</title>
 </head>
 <body>
@@ -13,20 +14,21 @@
 <%@ include file="/WEB-INF/views/layout/common/header.jsp" %>
 <article>
 
-<!-- ここにコードを書く -->
+<input type="hidden" id="list" value='${json}' style="display:none">
 
+<%  %>
 
  <div class="calendar-container">
       <div class="calendar-container-inner">
         <div class="calendar-title">
-          <div class="title-content"><img src="img/left_button.png" alt="left" class="left triangle-button"></div>
+          <div class="title-content"><img src="../img/left_button.png" alt="left" class="left triangle-button"></div>
           <div class="title-content">
-            <h2 class="month">7</h2>
+            <h2 id="month"><c:out value="${month}"/></h2>
           </div>
           <div class="title-content">
-            <h3 class="year">2020</h3>
+            <h3 id="year"><c:out value="${year}"/></h3>
           </div>
-          <div class="title-content"><img src="img/right_button.png" alt="right" class="right triangle-button"></div>
+          <div class="title-content"><img src="../img/right_button.png" alt="right" class="right triangle-button"></div>
           <div class="clear"></div>
         </div>
         <table class="calendar">
@@ -56,13 +58,12 @@
         </table>
       </div>
     </div>
-
-
+<input type="hidden" id="date_servlet"  value='${date}' style="display:none">
 
 </article>
 <%@ include file="/WEB-INF/views/layout/common/footer.jsp" %>
-<script src="js/common/common.js"></script>
-<script src="js/calendar2.js"></script>
-<script src="js/calendar_event.js"></script>
+<script src="../js/common/common.js"></script>
+<script src="../js/calendar2.js"></script>
+<script src="../js/calendar_event.js"></script>
 </body>
 </html>

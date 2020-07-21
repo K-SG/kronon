@@ -1,51 +1,30 @@
 "use strict";
-let array = [{
-    date: "2020-07-17",
-    title: "GitGitGitGitGitGitGit"
-  },
-  {
-    date: "2020-07-10",
-    title: "飲み会"
-  },
-  {
-    date: "2020-07-19",
-    title: "祭り"
-  },
-  {
-    date: "2020-07-05",
-    title: "レビュー"
-  },
-  {
-    date: "2020-08-07",
-    title: "花火"
-  },
-  {
-    date: "2020-09-27",
-    title: "ライブ"
-  },
-  {
-    date: "2020-09-28",
-    title: "ライブ"
-  },
-  {
-    date: "2020-10-12",
-    title: "運動会"
-  },
-  {
-    date: "2020-11-30",
-    title: "大掃除"
-  },
-  {
-    date: "2020-12-25",
-    title: "メリクリ"
-  },
-]
+
+
+const json = document.getElementById("list");
+console.log(json);
+console.log((json.value).toString());
+//「kronooon」を「"」に置換。全置換の場合は正規表現で//で挟みgをつける
+const json_replace = (json.value).toString().replace(/krnooon/g,'"');
+console.log(json_replace);
+//jsonライブラリの関数を使って、文字列を扱いやすい形に
+let array = JSON.parse(json_replace);
+console.log("start");
+console.log(array);
+console.log("end");
 
 
 {
-  const today = new Date(); //今日の日付
-  let year = today.getFullYear(); //2020
-  let month = today.getMonth(); //7-1
+/*  const today = new Date(); //今日の日付
+ *
+*/  let year = document.getElementById("year").textContent; //2020
+  let month = document.getElementById("month").textContent -1; ; //7-1
+/*
+  const day_challenge = new Date();
+  day_challenge.setMonth()*/
+
+  console.log("year:"+ year);
+  console.log("month:"+ month);
 
   //次の月の分の日付
   function getCalenderTail() {
@@ -101,10 +80,10 @@ let array = [{
       });
     }
 
-    //当月の当日のみ文字を太くする
+/*    //当月の当日のみ文字を太くする
     if (year === today.getFullYear() && month === today.getMonth()) {
       dates[today.getDate() - 1].isToday = true;
-    }
+    }*/
 
 
     return dates;
@@ -168,7 +147,7 @@ let array = [{
           }
           /*          console.log(check);*/
           //if (obj.date == day.substring(0, 4) + "-" + day.substring(5, 7) + "-" + check) {
-          if (obj.date == year + "-" + ("0" + (month + 1)).slice(-2) + "-" + check) {
+          if (obj.jsonDate == year + "-" + ("0" + (month + 1)).slice(-2) + "-" + check) {
             /*td.textContent += `${obj.title}`;*/
 
             // 追加する要素を作成します
