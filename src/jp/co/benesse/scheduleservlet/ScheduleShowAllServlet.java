@@ -1,4 +1,4 @@
-package jp.co.benesse.scheduletableservlet;
+package jp.co.benesse.scheduleservlet;
 
 import java.io.IOException;
 import java.sql.Connection;
