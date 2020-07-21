@@ -82,21 +82,19 @@ public class ScheduleDAO {
 		try {
 			// SQLの定義
 			String sql = "INSERT INTO SCHEDULE (SCHEDULE_ID,USER_ID,SCHEDULE_DATE,"
-					+ "START_TIME,END_TIME,PLACE,TITLE,CONTENT,ACTUAL_TIME,COMMENT,DELETE_FLAG)"
-					+ "VALUES (?,?,?,?,?,?,?,?,?,?,'0')";
+					+ "START_TIME,END_TIME,PLACE,TITLE,CONTENT,DELETE_FLAG)"
+					+ "VALUES (NEXTVAL('SEQ'),?,?,?,?,?,?,?,'0')";
 			// SQLの作成(準備)
 			preparedStatement = this.connection.prepareStatement(sql);
 			// SQLバインド変数への値設定
-			preparedStatement.setInt(1, scheduleBean.getScheduleId());
-			preparedStatement.setInt(2, scheduleBean.getUserId());
-			preparedStatement.setDate(3, scheduleBean.getScheduleDate());
-			preparedStatement.setTime(4, scheduleBean.getStartTime());
-			preparedStatement.setTime(5, scheduleBean.getEndTime());
-			preparedStatement.setString(6, scheduleBean.getPlace());
-			preparedStatement.setString(7, scheduleBean.getTitle());
-			preparedStatement.setString(8, scheduleBean.getComment());
-			preparedStatement.setInt(9, scheduleBean.getActualTime());
-			preparedStatement.setString(10, scheduleBean.getDeleteFlag());
+			preparedStatement.setInt(1, scheduleBean.getUserId());
+			preparedStatement.setDate(2, scheduleBean.getScheduleDate());
+			preparedStatement.setTime(3, scheduleBean.getStartTime());
+			preparedStatement.setTime(4, scheduleBean.getEndTime());
+			preparedStatement.setString(5, scheduleBean.getPlace());
+			preparedStatement.setString(6, scheduleBean.getTitle());
+			preparedStatement.setString(7, scheduleBean.getContent());
+
 			// SQLの実行
 			int result = preparedStatement.executeUpdate();
 
