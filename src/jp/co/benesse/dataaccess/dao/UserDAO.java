@@ -36,7 +36,7 @@ public class UserDAO {
 		int result = 0;
 		try {
 			// SQLの定義
-			String sql = "INSERT INTO 'user' (user_id,user_name,mail,password) values (nextval('SEQ_USER'),?,?,?)";
+			String sql = "INSERT INTO public.user (user_id,user_name,mail,password) values (nextval('SEQ_USER'),?,?,?)";
 			// SQLの作成(準備)
 			preparedStatement = this.connection.prepareStatement(sql);
 			// SQLバインド変数への値設定
@@ -76,7 +76,7 @@ public class UserDAO {
 		PreparedStatement preparedStatement = null;
 		try {
 			// SQLの定義
-			String sql = "SELECT * FROM 'user' WHERE mail = ? and password = ?";
+			String sql = "SELECT * FROM public.user WHERE mail = ? and password = ?";
 			// SQLの作成(準備)
 			preparedStatement = this.connection.prepareStatement(sql);
 			// SQLバインド変数への値設定
@@ -120,7 +120,7 @@ public class UserDAO {
 	public Boolean  isBooking(String mail){
 		PreparedStatement preparedStatement = null;
 		try {
-			String sql = "SELECT COUNT(*) FROM 'user' WHERE mail = ?";
+			String sql = "SELECT COUNT(*) FROM public.user WHERE mail = ?";
 			preparedStatement = this.connection.prepareStatement(sql);
 			preparedStatement.setString(1, mail);
 			// SQLの実行
