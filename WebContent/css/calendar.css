@@ -1,0 +1,160 @@
+
+.calendar-title{
+	width:56vw;
+	margin:auto;
+	margin-top:0vw;
+}
+
+.title-content{
+	float:left;
+	display:inline-block;
+}
+
+.clear{
+	clear:left;
+}
+
+.calendar-container{
+	position: relative;
+	height:max(40vw,73vh);
+	margin:0;
+	margin-bottom: 8vh;
+	border:solid #000 0.1vw;
+}
+.calendar-container-inner{
+	  position: absolute;  /*要素を浮かす*/
+  /*relativeを指定した親要素を支点とした位置をすべて0に指定↓*/
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto; /*上下左右中央に*/
+  width: 60vw; /*widthの指定は必須*/
+  height:36vw; /*heightの指定は必須*/
+	border-radius: 1vw;
+/*	border:solid #999 1vw;*/
+	background-color:bisque;
+
+/*	background-color: #467021;
+	border:solid #5E4222 1vw;*/
+	padding:1vw 3vw;
+}
+
+.triangle-button{
+	width:2.5vw;
+}
+
+.month{
+	padding-left:10vw;
+	width:41vw;
+	font-size:3vw;
+	text-align: center;
+	margin:auto;
+	color:#666;
+}
+
+.year{
+		width:8vw;
+	font-size:1.4vw;
+	text-align: right;
+	margin:auto;
+	margin-right:2vw;
+	color:#666;
+	margin-top:1.5vw;
+}
+
+table{
+    border-collapse: collapse;
+    border: 0.2vw solid #DE9B50;
+	margin:auto;
+
+}
+
+/*
+thead,tfoot{
+}
+*/
+
+
+th,td{
+	width:8vw;
+    text-align: center;
+	font-size:1.2vw;
+	border : solid #BBB 0.1vw;
+
+}
+
+.youbi{
+	height:3vh;
+	background: #DE9B50;
+}
+
+.calendar #title{
+	height:8vh;
+	background: white;
+	color:#666;
+	font-size:1.6vw;
+}
+
+td{
+	height:5vw;
+	background-color:white;
+	color:#666;
+	vertical-align: top;
+	cursor: pointer;
+}
+
+tbody td:first-child {
+    /*color: red;*/
+	background-color:#F8E0E1;
+  }
+
+  tbody td:last-child {
+    /*color: blue;*/
+	  background-color:#DFE4F4;
+  }
+
+  tfoot {
+    font-weight: bold;
+  }
+
+  td.disabled {
+    /*opacity: 0.3;*/
+	  color:#CCC;
+  }
+
+  td.today {
+    font-weight: bold;
+  }
+
+  #prev,
+  #next,
+  #today {
+    cursor: pointer;
+    user-select: none;
+  }
+
+td .date{
+	margin:0 auto;
+	margin-top:0.2vw;
+}
+
+td .yotei{
+	width:7vw;
+	height:1.6vw;
+	padding:0 0.5vw;
+	font-size:1vw;
+	margin:0.2vw 0.3vw;
+	border:0.05vw solid #666;
+	border-radius: 0.3vw;
+	white-space: nowrap;
+ 	overflow: hidden;
+	text-overflow: ellipsis;
+	background-color: #FFFFE3;
+}
+
+
+
+.cell-active{
+	background-color:antiquewhite !important;
+}
