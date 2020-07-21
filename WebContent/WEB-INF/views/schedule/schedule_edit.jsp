@@ -1,12 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
- <link rel="stylesheet" href="../../css/schedule_new.css">
+ <link rel="stylesheet" href="../../css/schedule_edit.css">
 <%@ include file="../layout/common/link.jsp" %>
-<title>予定登録</title>
+<title>予定修正</title>
 </head>
 <body>
 
@@ -14,12 +15,12 @@
 
 	<article>
 		<div class="schedule-regist-area">
-			<div class="schedule-regist-font-lev0">予定登録</div>
+			<div class="schedule-regist-font-lev0">予定修正</div>
 			<div class="schedule-regist-border"></div>
 			<div class="schedule-regist-area-1">
 				<div class="schedule-regist-area-1-block">
 					<div class="schedule-regist-font-lev1">日付<span>*</span></div>
-					<div class="schedule-regist-date-area"><input name="date" type="date" /></div>
+					<div class="schedule-regist-date-area"><input name="date" type="date" value="${date}"/></div>
 				</div>
 				<div class="schedule-regist-area-1-block">
 					<div class="schedule-regist-font-lev1">開始時刻<span>*</span></div>
@@ -100,14 +101,14 @@
 			<div class="schedule-regist-area-3">
 				<div class="schedule-regist-font-lev1">タイトル<span>*</span></div>
 				<div class="schedule-regist-title">
-					<textarea name="title" rows="1" cols="40" maxlength="100" placeholder="予定のタイトルを100字以内で入力してください"></textarea>
+					<textarea name="title" rows="1" cols="40" maxlength="100" placeholder="予定のタイトルを100字以内で入力してください"><c:out value="${title}" /></textarea>
 				</div>
 			</div>
 
 			<div class="schedule-regist-area-4">
 				<div class="schedule-regist-font-lev1">内容<span>*</span></div>
 				<div class="schedule-regist-content">
-					<textarea name="content" rows="13" cols="40" maxlength="1440" placeholder="予定の内容を1440字以内で入力してください"></textarea>
+					<textarea name="content" rows="13" cols="40" maxlength="1440" placeholder="予定の内容を1440字以内で入力してください"><c:out value="${content}" /></textarea>
 				</div>
 			</div>
 		</div>
