@@ -83,8 +83,8 @@ public class UserDAO {
 			// SQLの作成(準備)
 			preparedStatement = this.connection.prepareStatement(sql);
 			// SQLバインド変数への値設定
-			preparedStatement.setString(1, mail);
-			preparedStatement.setString(2, password);
+			preparedStatement.setString(1, "'"+mail+"'");
+			preparedStatement.setString(2, "'"+password+"'");
 			//SQLの実行
 			ResultSet resultSet = preparedStatement.executeQuery();
 			while(resultSet.next()) {
