@@ -15,7 +15,7 @@ import java.security.NoSuchAlgorithmException;
 public class CryptographyLogic {
 	/**
 	* 文字列をハッシュ化するメソッド
-	*
+	*[備 考] 例外発生時にはRuntimeExceptionにラップし、上位に送出する<br>
 	* @param text ハッシュ化するテキスト
 	*
 	* @return ハッシュ化した計算値(16進数)
@@ -28,6 +28,7 @@ public class CryptographyLogic {
 	        md = MessageDigest.getInstance("SHA-256");
 	    } catch (NoSuchAlgorithmException e) {
 	        System.out.println("指定された暗号化アルゴリズムがありません");
+	        throw new RuntimeException("暗号化に失敗しました");
 	    }
 	    md.update(text.getBytes());
 
