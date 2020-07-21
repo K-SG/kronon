@@ -1,0 +1,246 @@
+
+
+/*本文*/
+article {
+	width:auto;
+	margin:0;
+	padding:0;
+	padding-top:20vh;
+	background-color: #FFD5A8;
+	font-size: 4vh;
+	height: auto;
+	color:#FFFFFF;
+}
+
+
+
+
+/*予定登録ルーズリーフエリアの枠*/
+.schedule-regist-area
+{
+	background-image:url("../img/loose_leaf.png");
+	background-repeat: no-repeat;
+	margin-left:25vw;
+	width: 53vw;
+	height: 65vh;
+	float:left;
+	background-size: 95%;
+}
+
+
+
+/*[予定登録]の文字*/
+.schedule-regist-font-lev0
+{
+	font-family : UD デジタル 教科書体 NK-B;
+	font-weight : bold;
+	font-size : 3vh;
+	color : #333333;
+	color : rgb(51, 51, 51);
+	width: 40vw;
+	height: 7vh;
+	text-align: center;
+	padding-top:3vh;
+	margin-right: 10vh;
+	float:right;
+}
+
+/*[予定登録]の下線*/
+.schedule-regist-border
+{
+	border-style : Solid;
+	border-color : #333333;
+	border-color : rgba(51, 51, 51, 1);
+	border-width : 1px;
+	width: 40vw;
+	margin-right: 10vh;
+	float:right;
+}
+
+
+
+/*1段目:日付・時刻のエリア*/
+.schedule-regist-area-1 {
+	width: 45vw;
+	height: 10vh;
+	float:right;
+	text-align: left;
+	margin-top:2vh;
+}
+/*1段目のエリアの各エリアの幅:日付・開始時刻・終了時刻*/
+.schedule-regist-area-1-block {
+	width: 14vw;
+	height: 10vh;
+	float:left;
+	text-align: left;
+	margin-top: 1vh;
+}
+/*2段目:場所のエリア*/
+.schedule-regist-area-2 {
+	width: 45vw;
+	height: 9vh;
+	float:right;
+	text-align: left;
+}
+/*3段目:タイトルのエリア*/
+.schedule-regist-area-3 {
+	width: 45vw;
+	height: 9vh;
+	float:right;
+	text-align: left;
+}
+/*4段目:内容のエリア*/
+.schedule-regist-area-4 {
+	width: 45vw;
+	height: 20vh;
+	float:right;
+	text-align: left;
+}
+
+/*日付などのフォント*/
+.schedule-regist-font-lev1
+{
+  font-family : UD デジタル 教科書体 NK-B;
+  font-weight : bold;
+  font-size : 2vh;
+  color : #333333;
+  color : rgb(51, 51, 51);
+}
+
+/*必須マーク*/
+.schedule-regist-font-lev1 span
+{
+  font-family : 小塚ゴシック Pr6N;
+  font-size : 2vh;
+  color : #FF1002;
+  color : rgb(255, 16, 2);
+}
+
+
+/*日付入力枠*/
+.schedule-regist-date-area input
+{
+	border-style : Solid;
+	border-color : #333333;
+	border-color : rgba(51, 51, 51, 1);
+	border-width : 1px;
+	border-radius : 5px;
+	-moz-border-radius : 5px;
+	-webkit-border-radius : 5px;
+	font-family : 小塚ゴシック Pr6N;
+	font-size : 2vh;
+	color :  #888888;
+	width: 10vw;
+	height: 4vh;
+	float: left;
+}
+/*開始時刻/終了時刻の[時]と[分]のプルダウン*/
+.schedule-regist-time select
+{
+	border-style : Solid;
+	border-color : #333333;
+	border-color : rgba(51, 51, 51, 1);
+	border-width : 1px;
+	border-radius : 5px;
+	-moz-border-radius : 5px;
+	-webkit-border-radius : 5px;
+	float: left;
+	width: 3vw;
+	height: 4vh;
+	font-family : 小塚ゴシック Pr6N;
+	font-size : 2vh;
+	color :  #888888;
+}
+/*開始時刻/終了時刻の[時]と[分]の文字*/
+.schedule-regist-time-text {
+	font-family : UD デジタル 教科書体 NK-B;
+	font-weight : bold;
+	font-size : 2vh;
+	color : #333333;
+	color : rgb(51, 51, 51);
+	float: left;
+	width: 2vw;
+	height: 4vh;
+	margin-top:1vh;
+}
+
+/*場所*/
+.schedule-regist-place select
+{
+	border-style : Solid;
+	border-color : #333333;
+	border-color : rgba(51, 51, 51, 1);
+	border-width : 1px;
+	border-radius : 5px;
+	-moz-border-radius : 5px;
+	-webkit-border-radius : 5px;
+	float: left;
+	width: 20vw;
+	height: 4vh;
+	font-family : 小塚ゴシック Pr6N;
+	font-size : 2vh;
+	color :  #888888;
+}
+
+/*タイトル*/
+.schedule-regist-title textarea
+{
+	border-style : Solid;
+	border-color : #333333;
+	border-color : rgba(51, 51, 51, 1);
+	border-width : 1px;
+	border-radius : 5px;
+	-moz-border-radius : 5px;
+	-webkit-border-radius : 5px;
+	font-family : 小塚ゴシック Pr6N;
+	font-size : 2vh;
+	color :  #888888;
+	width: 40vw;
+	height: 4vh;
+	float:left;
+	margin-right:2.5vw;
+}
+
+
+/*内容*/
+.schedule-regist-content textarea
+{
+	border-style : Solid;
+	border-color : #333333;
+	border-color : rgba(51, 51, 51, 1);
+	border-width : 1px;
+	border-radius : 5px;
+	-moz-border-radius : 5px;
+	-webkit-border-radius : 5px;
+	font-family : 小塚ゴシック Pr6N;
+	font-size : 2vh;
+	color :  #888888;
+	width: 40vw;
+	height: 15vh;
+	float:left;
+	margin-right:2.5vw;
+}
+
+
+/*くろのんバンザイ画像の配置*/
+.kronon-banzai img{
+	float:right;
+	width: 17vw;
+	height:auto;
+	margin-top: 30vh;
+	margin-left:3vw;
+}
+/*ボタン配置*/
+.schedule-regist-button{
+	float:left;
+	margin-left:35vw;
+}
+/*登録*/
+.schedule-regist-button-left{
+	float:left;
+}
+/*キャンセル*/
+.schedule-regist-button-right{
+	float:left;
+	margin-left:15vw;
+}
