@@ -47,74 +47,116 @@
 
 
 
-	<form action="/user/usercreate" method="post" name="user_create_form">
+	<!-- <form action="/user/usercreate" method="post" name="user_create_form"> -->
+
+	<form action="/user/usercreate" method="post" name="user_create_form" onsubmit="return checkUserCreate()">
 		<div class="user-create-input1">
-			<input type="text" name="userName" maxlength="15" placeholder="表示名" />
+			<input type="text" id="userName" maxlength="15" placeholder="表示名" />
 		</div>
-		<input type="submit" value="送信" onclick="chkEmp(this.form.userName.value)">
-		</form>
-		<form action="/user/usercreate" method="post" name="user_create_form">
+		<!-- <input type="submit" value="送信" onclick="chkEmp(this.form.userName.value)"> -->
+		<!-- </form> -->
+		<!-- <form action="/user/usercreate" method="post" name="user_create_form"> -->
 		<div class="user-create-input2">
 	<!-- 		<input type="text" value="" name="mail" maxlength="100" placeholder="メールアドレス" />
 	 -->
-    	<input type="text" name="mail" size="100" maxlength="100"   placeholder="メールアドレス" />
+    	<input type="text" id="mail" size="100" maxlength="100"   placeholder="メールアドレス" />
 		</div>
-		 <input type="button" value="メールアドレスチェック" onclick="chkRegEmail(this.form.mail.value)" />
+		 <!-- <input type="button" value="メールアドレスチェック" onclick="chkRegEmail(this.form.mail.value)" /> -->
 
 
 		<div class="user-create-input3">
-			<input type="text" value="" name="password0" maxlength="20" placeholder="パスワード" />
+			<input type="text" id="password1" maxlength="20" placeholder="パスワード" />
 		</div>
 		<div class="user-create-input4">
-			<input type="text" value="" name="password" maxlength="20" placeholder="パスワード確認" />
+			<input type="text" id="password2" maxlength="20" placeholder="パスワード確認" />
 		</div>
 		<div class="user-create-button"></div>
 
 
+		 <!--エラーまたは完了ポップアップ表示用ボタン---->
+  			<div class="ok-button large-popup-button">新規登録</div>
+  			<!--
+  			<input class="ok-button large-popup-button" type="submit" value="新規登録"/> -->
 
-<c:if test="${popFlag==1}">
-<!--エラーまたは完了ポップアップ------------------------------------------------------------------->
-<div class="popup-wrapper error-popup">
+  			<input type="submit" value="新規登録"/>
+
+</form>
+
+
+
+
+
+
+<!--空欄チェックポップアップ--popFlag1----------------------------------------------------------------->
+<div id="emp-error" class="popup-wrapper error-popup">
 	<div class="pop-container">
 	  <div class="close-popup"> <i class="fa fa-2x fa-times"></i> </div>
 	  <div class="pop-container-inner">
 		<div class="message-container">
-		  <p>このメールアドレスは既に登録されているよ！</p>
+		  <p>入力されていない項目があるよ！</p>
 		</div>
 		<div class="ok-button close-popup">OK</div>
 		<img src="../img/kronon_question.png" class="pop-img"> </div>
 	</div>
   </div>
-  <!--エラーまたは完了ポップアップここまで-------------------------------------------------------------->
-
-  <!--エラーまたは完了ポップアップ表示用ボタン--->
-  <div class="ok-button small-popup-button">エラー/完了</div>
-</c:if>
+  <!--空欄チェックポップアップここまで-------------------------------------------------------------->
 
 
-  <!--本当に戻りますかポップアップ------------------------------------------------------------------->
-  <div class="popup-wrapper back-popup">
+
+
+<!--メール入力条件チェックポップアップ-------popFlag2------------------------------------------------------------>
+<div id="mail-error" class="popup-wrapper error-popup">
 	<div class="pop-container">
 	  <div class="close-popup"> <i class="fa fa-2x fa-times"></i> </div>
 	  <div class="pop-container-inner">
 		<div class="message-container">
-		  <p>内容は保存されないよ。</p>
-		  <h2 class="message-title">本当に戻る？</h2>
+		  <p>メールアドレスが不正だよ！</p>
 		</div>
-		<a href="#"><div class="ok-button">OK</div></a>
-		<div class="ng-button close-popup">キャンセル</div>
-		<img src="../img/star_angry.png" class="pop-img-top"> </div>
+		<div class="ok-button close-popup">OK</div>
+		<img src="../img/kronon_question.png" class="pop-img"> </div>
 	</div>
   </div>
-  <!--本当に戻りますかポップアップここまで------------------------------------------------------------------->
-
-  <!--エラーまたは完了ポップアップ表示用ボタン---->
-  <div class="ok-button large-popup-button">新規登録</div>
+  <!--メール入力条件チェックポップアップここまで-------------------------------------------------------------->
 
 
-<c:if test="${popFlag!=0}">
-  <!--内容確認ポップアップ----------------------------------------------------------------->
-  <div class="popup-wrapper confirm-popup">
+
+
+<!--パスワード入力条件チェックポップアップ-------popFlag3------------------------------------------------------------>
+<div id="pass-check-error" class="popup-wrapper error-popup">
+	<div class="pop-container">
+	  <div class="close-popup"> <i class="fa fa-2x fa-times"></i> </div>
+	  <div class="pop-container-inner">
+		<div class="message-container">
+		  <p>パスワードの条件を満たしていないよ！</p>
+		</div>
+		<div class="ok-button close-popup">OK</div>
+		<img src="../img/kronon_question.png" class="pop-img"> </div>
+	</div>
+  </div>
+  <!--パスワード入力条件チェックポップアップここまで-------------------------------------------------------------->
+
+
+
+
+
+  <!--パスワード不一致チェックポップアップ-------popFlag4------------------------------------------------------------>
+<div id="pass-notsame-error" class="popup-wrapper error-popup">
+	<div class="pop-container">
+	  <div class="close-popup"> <i class="fa fa-2x fa-times"></i> </div>
+	  <div class="pop-container-inner">
+		<div class="message-container">
+		  <p>パスワードが一致していないよ！</p>
+		</div>
+		<div class="ok-button close-popup">OK</div>
+		<img src="../img/kronon_question.png" class="pop-img"> </div>
+	</div>
+  </div>
+  <!--パスワード不一致チェックポップアップここまで-------------------------------------------------------------->
+
+
+
+<!--内容確認ポップアップ----------------------------------------------------------------->
+  <div id="confirm-pop" class="popup-wrapper confirm-popup">
 	<div class="pop-container pop-container-large">
 	  <div class="close-popup"> <i class="fa fa-2x fa-times"></i> </div>
 	  <div class="pop-container-inner">
@@ -123,7 +165,7 @@
 		  <table class="popup-table">
 			<tr>
 			  <th class="th">名前：</th>
-			  <td><c:out value="${userBean.userName}" /></td>
+			  <td><%-- <c:out value="${userBean.userName}" /> --%></td>
 			</tr>
 			<tr>
 			  <th>予定日時：</th>
@@ -147,17 +189,50 @@
   </div>
   <!--内容確認ポップアップここまで----------------------------------------------------------------->
 
+
+
+
+
+
+
+
+<%--   <!--エラーまたは完了ポップアップ表示用ボタン--->
+  <div  class="ok-button small-popup-button">エラー/完了</div>
+</c:if> --%>
+
+
+  <!--本当に戻りますかポップアップ------------------------------------------------------------------->
+  <div class="popup-wrapper back-popup">
+	<div class="pop-container">
+	  <div class="close-popup"> <i class="fa fa-2x fa-times"></i> </div>
+	  <div class="pop-container-inner">
+		<div class="message-container">
+		  <p>内容は保存されないよ。</p>
+		  <h2 class="message-title">本当に戻る？</h2>
+		</div>
+		<a href="#"><div class="ok-button">OK</div></a>
+		<div class="ng-button close-popup">キャンセル</div>
+		<img src="../img/star_angry.png" class="pop-img-top"> </div>
+	</div>
+  </div>
+  <!--本当に戻りますかポップアップここまで------------------------------------------------------------------->
+
+
+<%--
+<c:if test="${popFlag!=0}"> --%>
+
+
   <div class="user-create-button-return">
   <!--エラーまたは完了ポップアップ表示用ボタン----->
   <div class="ok-button back-popup-button">戻る</div>
 </div>
 
+<%--
+</c:if> --%>
 
-</c:if>
 
-
-
-</form>
+<!--
+</form> -->
 </div>
 
 </article>
