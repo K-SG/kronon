@@ -83,16 +83,18 @@ public class UserDAO {
 			// SQLの作成(準備)
 			preparedStatement = this.connection.prepareStatement(sql);
 			// SQLバインド変数への値設定
-			preparedStatement.setString(1, "'"+mail+"'");
-			preparedStatement.setString(2, "'"+password+"'");
+			preparedStatement.setString(1, mail);
+			preparedStatement.setString(2, password);
+
+
 			//SQLの実行
 			ResultSet resultSet = preparedStatement.executeQuery();
 			while(resultSet.next()) {
 			userBean = new UserBean();
 			//userIdの取得
-			int userId = resultSet.getInt("userId");
+			int userId = resultSet.getInt("user_Id");
 			//userNameの取得
-			String userName = resultSet.getString("userName");
+			String userName = resultSet.getString("user_Name");
 			userBean.setUserId(userId);
 			userBean.setUserName(userName);
 			}
