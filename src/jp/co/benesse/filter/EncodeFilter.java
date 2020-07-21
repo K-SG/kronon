@@ -22,7 +22,7 @@ import javax.servlet.annotation.WebFilter;
 @WebFilter("/*")
 public class EncodeFilter implements Filter {
 
-    public EncodeFilter() { }
+    public EncodeFilter() {}
 	public void destroy() {}
 
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
