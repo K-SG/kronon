@@ -9,7 +9,6 @@ $(document).ready(function(){
 		$('.error-popup').fadeIn();
 		return;
 	}
-
 });
 
 $('.login-button').click(function () {
