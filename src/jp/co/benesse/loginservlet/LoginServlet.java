@@ -31,11 +31,14 @@ public class LoginServlet extends HttpServlet {
 
 		String mail = request.getParameter("mail");
 		String password = request.getParameter("password");
-		String hash = CryptographyLogic.encryptStr(password);
+		String hash;
+
+
 		ConnectionManager connectionManager = new ConnectionManager();
 		UserBean userBean = new UserBean();
 
 		try {
+			hash= CryptographyLogic.encryptStr(password);
 			Connection connection = connectionManager.getConnection();
 			UserDAO userDAO = new UserDAO(connection);
 			userBean = userDAO.findUser(mail, hash);
