@@ -22,6 +22,7 @@ if(popFlag=='2'){
 }
 
 
+
 });
 
 $('.close-popup').click(function () {
