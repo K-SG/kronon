@@ -11,6 +11,7 @@ import java.time.temporal.TemporalAdjusters;
 import java.util.ArrayList;
 import java.util.List;
 
+import jp.co.benesse.calc.Calc;
 import jp.co.benesse.dataaccess.value.ScheduleBean;
 
 public class ScheduleDAO {
@@ -235,6 +236,7 @@ public class ScheduleDAO {
 				scheduleBean.setContent(resultSet.getString("CONTENT"));
 				scheduleBean.setActualTime(resultSet.getInt("ACTUAL_TIME"));
 				scheduleBean.setComment(resultSet.getString("COMMENT"));
+				scheduleBean.setEstimateTime(Calc.calcEstimateTime(scheduleBean));
 				scheduleBeanList.add(scheduleBean);
 			}
 
@@ -292,6 +294,7 @@ public class ScheduleDAO {
 				scheduleBean.setContent(resultSet.getString("CONTENT"));
 				scheduleBean.setActualTime(resultSet.getInt("ACTUAL_TIME"));
 				scheduleBean.setComment(resultSet.getString("COMMENT"));
+				scheduleBean.setEstimateTime(Calc.calcEstimateTime(scheduleBean));
 				scheduleBeanList.add(scheduleBean);
 			}
 
@@ -349,7 +352,9 @@ public class ScheduleDAO {
 				scheduleBean.setContent(resultSet.getString("CONTENT"));
 				scheduleBean.setActualTime(resultSet.getInt("ACTUAL_TIME"));
 				scheduleBean.setComment(resultSet.getString("COMMENT"));
+				scheduleBean.setEstimateTime(Calc.calcEstimateTime(scheduleBean));
 				scheduleBeanList.add(scheduleBean);
+
 			}
 
 			return scheduleBeanList;
@@ -412,6 +417,7 @@ public class ScheduleDAO {
 				scheduleBean.setContent(resultSet.getString("CONTENT"));
 				scheduleBean.setActualTime(resultSet.getInt("ACTUAL_TIME"));
 				scheduleBean.setComment(resultSet.getString("COMMENT"));
+				scheduleBean.setEstimateTime(Calc.calcEstimateTime(scheduleBean));
 				scheduleBeanList.add(scheduleBean);
 			}
 
