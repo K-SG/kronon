@@ -28,6 +28,7 @@ public class CryptographyLogic {
 	        md = MessageDigest.getInstance("SHA-256");
 	    } catch (NoSuchAlgorithmException e) {
 	        System.out.println("指定された暗号化アルゴリズムがありません");
+	        throw new RuntimeException("暗号化に失敗しました");
 	    }
 	    md.update(text.getBytes());
 
