@@ -26,8 +26,8 @@
 </div>
 
 
-<input type="text" name="mail" id="mail" class="login_textbox" placeholder="メールアドレス"><br>
-<input type="text" name="password" id="pass" class="login_textbox" placeholder="パスワード"><br>
+<input type="text" name="mail" id="login_mail" class="login_textbox" placeholder="メールアドレス" value=${mail} ><br>
+<input type="password" name="password" id="login_pass" class="login_textbox" placeholder="パスワード"><br>
 
 <!-- <form action="login"> -->
 <!-- <input type="submit" class="login-button" value="ログイン"> -->
@@ -52,7 +52,7 @@
     <div class="close-popup"> <i class="fa fa-2x fa-times"></i> </div>
     <div class="pop-container-inner">
       <div class="message-container">
-        <p class=error1>メールアドレス・パスワードが違うよ。</p>
+        <p class=login_msg>メールアドレス・パスワードが違うよ。</p>
       </div>
       <div class="ok-button close-popup">OK</div>
       <img src="img/kronon/kronon_question.png" class="pop-img"> </div>
