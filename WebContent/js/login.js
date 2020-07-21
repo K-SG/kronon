@@ -1,18 +1,16 @@
 $(function () {
 
 $(document).ready(function(){
-
+	let popFlag = document.getElementById('flag').value;
+    console.log(popFlag);
 	if(popFlag==2){
-		let popFlag = document.getElementById('flag').value;
-	    console.log(popFlag);
-		$('.error-popup').fadeIn();
 		popFlag=3;
+		console.log(popFlag);
+		$('.error-popup').fadeIn();
 		return;
 	}
 
 });
-
-
 
 $('.login-button').click(function () {
 	let mail = document.getElementById('login_mail').value;
@@ -23,10 +21,6 @@ if (mail=='' || password=='') {
 }else{
 		popFlag='0';
 }
-
-
-
-
 
 if(popFlag=='0'){
 	  $('.login-form').submit();
