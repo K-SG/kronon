@@ -4,16 +4,20 @@ $('.login-button').click(function () {
 	let mail = document.getElementById('login_mail').value;
 	let password = document.getElementById('login_pass').value;
 
+
+if (mail=='' || password=='') {
+		popFlag='1';
+}else{
+		popFlag='0';
+}
+
+
 if(popFlag==2){
 	$('.error-popup').fadeIn();
 	return;
 }
 
-if (mail=='' || password=='') {
-	popFlag='1';
-}else{
-	popFlag='0';
-}
+
 
 if(popFlag=='0'){
 	  $('.login-form').submit();
