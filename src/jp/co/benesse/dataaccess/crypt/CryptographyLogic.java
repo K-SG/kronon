@@ -15,7 +15,7 @@ import java.security.NoSuchAlgorithmException;
 public class CryptographyLogic {
 	/**
 	* 文字列をハッシュ化するメソッド
-	*[備 考] 例外発生時にはRuntimeExceptionにラップし、上位に送出する<br>
+	*[備 考] 例外発生時にはRuntimeExceptionにラップし、上位に送出する。<br>
 	* @param text ハッシュ化するテキスト
 	*
 	* @return ハッシュ化した計算値(16進数)
