@@ -34,7 +34,9 @@ public class AcutualUpdateServlet extends HttpServlet {
 		int actualTime = Integer.parseInt(actualHourStr) * 60 + Integer.parseInt(actualMinuteStr);
 		int scheduleId = Integer.parseInt(scheduleIdStr);
 
+		//ポップアップ用のフラグ
 		int popFlag = 0;
+
 		ConnectionManager connectionManager = new ConnectionManager();
 
 		try {
@@ -47,8 +49,12 @@ public class AcutualUpdateServlet extends HttpServlet {
 				return;
 			}
 
-			// 実績、振り返りコメントを更新
-			scheduleDAO.updateSchedule(scheduleId, actualTime, comment);
+			// 実績、振り返りコメントを更新。更新件数0件の場合はエラー画面へフォワード
+			if(scheduleDAO.updateSchedule(scheduleId, actualTime, comment) != 1){
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/error/error.jsp");
+				dispatcher.forward(request, response);
+				return;
+			}
 			connectionManager.commit();
 
 			// 更新しましたポップアップのフラグをセット
