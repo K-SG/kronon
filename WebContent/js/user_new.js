@@ -3,6 +3,46 @@
 
 
 
+     //初期表示は非表示
+    document.getElementById("emp-error").style.display = "none";
+    const empError = document.getElementById("emp-error");
+     document.getElementById("mail-error").style.display = "none";
+     const mailError = document.getElementById("mail-error");
+     document.getElementById("pass-check-error").style.display = "none";
+     const passCheckError = document.getElementById("pass-check-error");
+     document.getElementById("pass-notsame-error").style.display = "none";
+     const passNotSameError = document.getElementById("pass-notsame-error");
+
+
+
+
+
+
+      //初期表示は非表示
+      document.getElementById("confirm-pop").style.display = "none";
+      const confirmPop = document.getElementById("comfirm-pop");
+
+
+//$('user-create-button').click(
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     function checkUserCreate() {
     	let popFlag=0;//0confirm 1emp-error 2mail-error 3pass-checkerror 4pass-notsame-error
@@ -17,8 +57,6 @@
     	const UserPass1 = inputUserPass1.value;
     	const inputUserPass2 = document.getElementById("password2");
     	const UserPass2 = inputUserPass2.value;
-
-
 
     	if(UserName=="" || UserMail=="" || UserPass1=="" || UserPass2==""){
     	  //alert("空欄があります");
@@ -72,46 +110,57 @@
      		//return true;
      	}
        //-------------------------------------------------------パスワード一致チェック↑------------
-    	 //console.log("4通過");
-    	 //console.log(checkCnt);
-    	 if(checkCnt===4){
-    		 popFlag=0;
-    		 confirmPop.style.display = "block";
-    		 //return true;
-    		 //return false;
+    	 console.log("4通過");
+    	 console.log(checkCnt);
+
+
+
+    	 if(popFlag===0 && checkCnt===4){
+    		 alert("");
+    		 //window.confirm();
+    		 //confirmPop.style.display = "block";
+
+
+
+
+
+
+    		//共通パーツ
+    		//基本的にここをさわらない
+
+    		// JavaScript Document
+    		$(function () {
+    		  $('.small-popup-button').click(function () {
+    		    $('.error-popup').fadeIn();
+    		  });
+
+    		  $('.large-popup-button').click(function () {
+    		    $('.confirm-popup').fadeIn();
+    		  });
+
+    		  $('.back-popup-button').click(function () {
+    		    $('.back-popup').fadeIn();
+    		  });
+
+
+    		  // 閉じるボタン
+    		  $('.close-popup').click(function () {
+    		    $('.confirm-popup').fadeOut();
+    		    $('.error-popup').fadeOut();
+    		    $('.back-popup').fadeOut();
+    		  })
+
+
+    		});
+
+
+
+
+
+
+    		 return false;
     	 }
 
 
-
-
-
-
-
+    	 //$('user-create-form').submit();
     }
-
-
-
-
-     //初期表示は非表示
-    document.getElementById("emp-error").style.display = "none";
-    const empError = document.getElementById("emp-error");
-     document.getElementById("mail-error").style.display = "none";
-     const mailError = document.getElementById("mail-error");
-     document.getElementById("pass-check-error").style.display = "none";
-     const passCheckError = document.getElementById("pass-check-error");
-     document.getElementById("pass-notsame-error").style.display = "none";
-     const passNotSameError = document.getElementById("pass-notsame-error");
-
-
-
-
-
-
-      //初期表示は非表示
-      document.getElementById("confirm-pop").style.display = "none";
-      const confirmPop = document.getElementById("comfirm-pop");
-
-
-
-
-
