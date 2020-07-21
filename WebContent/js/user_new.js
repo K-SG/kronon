@@ -20,7 +20,7 @@
 
 
 
-    	/*if(UserName=="" || UserMail=="" || UserPass1=="" || UserPass2==""){
+    	if(UserName=="" || UserMail=="" || UserPass1=="" || UserPass2==""){
     	  //alert("空欄があります");
     	  popFlag=1;
      	  // blockで表示
@@ -80,66 +80,6 @@
     		 //return true;
     		 //return false;
     	 }
-
-*/
-
-
-
-
-    	if(UserName=="" || UserMail=="" || UserPass1=="" || UserPass2==""){
-
-      	  popFlag=1;
-
-      	}else {
-      		checkCnt++;
-
-      	}
-      	//-------------------------------------------------------空欄かどうかのチェック↑--
-
-      	//----メールチェック↓---------------------------------------------------------------
-      	 if (!UserMail.match(/^[A-Za-z0-9]+[\w-]+@[\w\.-]+\.\w{2,}$/)){
-      		popFlag=2;
-
-      	}else {
-      		checkCnt++;
-
-      	}
-      	//--------------------------------------------------------メールチェック↑-----------
-       	//----パスワード条件チェック↓---------------------------------------------------------------
-      	//8字以上? // 英字の大文字と小文字含む？//英字と数字を含む？
-      	 if (UserPass1.length < 8 || !UserPass1.match(/([a-z].*[A-Z])|([A-Z].*[a-z])/) || !UserPass1.match(/([a-zA-Z])/) && password.match(/([0-9])/)){
-
-      		 popFlag=3;
-
-      	 }else {
-       		checkCnt++;
-        }
-         //--------------------------------------------------------パスワード条件チェック↑-----------
-      	 //----パスワード一致チェック↓---------------------------------------------------------------
-      	 if (UserPass1!==UserPass2){
-
-       		popFlag=4;
-
-       	 }else {
-       		checkCnt++;
-
-       	}
-         //-------------------------------------------------------パスワード一致チェック↑------------
-      	 if(checkCnt===4){
-      		 popFlag=0;
-      	 }
-
-
-if(popFlag===0){confirmPop.style.display = "block";
-return false;}
-else if(popFlag===1){empError.style.display = "block";
-return false;}
-else if(popFlag===2){mailError.style.display = "block";
-return false;}
-else if(popFlag===3){passCheckError.style.display = "block";
-return false;}
-else if(popFlag===4){passNotSameError.style.display = "block";
-return false;}
 
 
 
