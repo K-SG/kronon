@@ -8,26 +8,13 @@
 <link href="css/app.css" rel="stylesheet" type="text/css">
 <link href="css/common.css" rel="stylesheet" type="text/css">
 <link href="css/usernew_popup.css" rel="stylesheet" type="text/css">
+<link href="css/jquery.confirm.css" rel="stylesheet">
 <link href="css/user_new.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="./jquery.confirm/jquery.confirm/jquery.confirm.js"></script>
+
 <title>アカウント作成</title>
-
-
-        <!-- ↓JavaScriptの処理を追加 -->
-        <script type="text/javascript">
-            function check(){
-                if (user_create_form.userName.value == ""){
-                    //条件に一致する場合(メールアドレスが空の場合)
-                    alert("メールアドレスを入力してください");    //エラーメッセージを出力
-                    return false;    //送信ボタン本来の動作をキャンセルします
-                }else{
-                    //条件に一致しない場合(メールアドレスが入力されている場合)
-                    return true;    //送信ボタン本来の動作を実行します
-                }
-            }
-        </script>
-
 
 </head>
 <body>
@@ -47,21 +34,15 @@
 
 
 
-	<!-- <form action="/user/usercreate" method="post" name="user_create_form"> -->
 
-	<form action="/user/usercreate" method="post" name="user_create_form" onsubmit="return checkUserCreate()">
+	<form action="/user/usercreate" method="post" id="user_create_form" onsubmit="return checkUserCreate()">
 		<div class="user-create-input1">
 			<input type="text" id="userName" maxlength="15" placeholder="表示名" />
 		</div>
-		<!-- <input type="submit" value="送信" onclick="chkEmp(this.form.userName.value)"> -->
-		<!-- </form> -->
-		<!-- <form action="/user/usercreate" method="post" name="user_create_form"> -->
 		<div class="user-create-input2">
-	<!-- 		<input type="text" value="" name="mail" maxlength="100" placeholder="メールアドレス" />
-	 -->
+
     	<input type="text" id="mail" size="100" maxlength="100"   placeholder="メールアドレス" />
 		</div>
-		 <!-- <input type="button" value="メールアドレスチェック" onclick="chkRegEmail(this.form.mail.value)" /> -->
 
 
 		<div class="user-create-input3">
@@ -73,14 +54,15 @@
 		<div class="user-create-button"></div>
 
 
-		 <!--エラーまたは完了ポップアップ表示用ボタン---->
-  			<div class="ok-button large-popup-button">新規登録</div>
+		 <!--エラーまたは完了ポップアップ表示用ボタン----><!--
+  			<div class="ok-button large-popup-button">新規登録</div> -->
   			<!--
   			<input class="ok-button large-popup-button" type="submit" value="新規登録"/> -->
 
-  			<input type="submit" value="新規登録"/>
+  			<input type="submit" value="新規登録" id="user-create-button"  class="ok-button large-popup-button"/>
+  			<!-- <button id="user-create-button" value="新規登録"></button> -->
 
-</form>
+	</form>
 
 
 
@@ -239,6 +221,7 @@
 <%--
 <%@ include file="../layout/common/footer.jsp" %> --%>
 <script src="js/common.js"></script>
+<script src="js/jquery.confirm.js"></script>
 <script src="js/user_new.js"></script>
 </body>
 </html>
