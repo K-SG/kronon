@@ -16,7 +16,6 @@ console.log(popFlag);
 
 if(popFlag=='0'){
 	  $('.login-form').submit();
-/*    document.login-form.submit();*/
 } else if(popFlag=='1'){
     $('.login_msg').html('入力されていない<br>項目があるよ');
 	$('.error-popup').fadeIn();
