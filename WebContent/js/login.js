@@ -23,8 +23,6 @@ if(popFlag=='2'){
 	popFlag='0';
 }
 
-
-
 });
 
 $('.close-popup').click(function () {
@@ -34,8 +32,5 @@ $('.close-popup').click(function () {
     let password = document.getElementById('login_pass');
 	password.value='';
   });
-
-
-
 
 });
