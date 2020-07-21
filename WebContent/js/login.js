@@ -1,9 +1,22 @@
 $(function () {
+
+$(document).ready(function(){
+
+	if(popFlag==2){
+		let popFlag = document.getElementById('flag').value;
+	    console.log(popFlag);
+		$('.error-popup').fadeIn();
+		popFlag=3;
+		return;
+	}
+
+});
+
+
+
 $('.login-button').click(function () {
-	let popFlag = document.getElementById('flag').value;
 	let mail = document.getElementById('login_mail').value;
 	let password = document.getElementById('login_pass').value;
-
 
 if (mail=='' || password=='') {
 		popFlag='1';
@@ -12,10 +25,6 @@ if (mail=='' || password=='') {
 }
 
 
-if(popFlag==2){
-	$('.error-popup').fadeIn();
-	return;
-}
 
 
 
