@@ -3,9 +3,9 @@
 .user-create-content{
 	text-align:center;
 	margin-left:30vw;
-	margin-top:10vh;
+	margin-top:0vh;
 	width: 40vw;
-	height:80vh;
+	height:60vh;
 }
 .user-create-area1
 {
@@ -102,17 +102,30 @@
 	border:none;
 	margin-bottom:4vh;
 }
-.user-create-button
-{
-
-}
 
 .user-create-button-return
 {
 	float:left;
-	background-image : url(./img/back_buttom.png);
-	/*CSS に参照される画像を作成するには、「選択した CSS を書き出し」コマンドを使用します。*/
-	background-repeat : no-repeat;
+	margin-left: 5vh;
 
+}
+
+//新規登録ボタン
+#user-create-button {
+  display: inline-block;
+  width: 10vw;
+  padding: 0.8vw;
+  background-color: #DE9B50;
+  border: none;
+  border-radius: 0.8vw;
+  color: white;
+  margin: auto;
+  cursor: pointer;
+  text-align: center;
+  font-size: 1.5vw;
+  font-family : UD デジタル 教科書体 NK-B;
+}
+input #user-create-button{
+	font-family : UD デジタル 教科書体 NK-B;
 }
 
