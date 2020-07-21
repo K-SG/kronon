@@ -11,6 +11,10 @@
 	margin-top: -6vh;
 }
 
+.logo_login{
+	width: 10vw;
+}
+
 .login_company{
 	margin-top: -2.5vh;
 	margin-bottom: 2.5vh;
@@ -18,10 +22,6 @@
 
 .login_account{
 	margin-bottom: 2vh;
-}
-
-.logo_login{
-	width: 10vw;
 }
 
 .login_textbox{
@@ -32,6 +32,16 @@
 	padding-left: 0.6vw;
 	margin-bottom: 2vh;
 	font-size: 1.4vw;
+}
+
+input::-webkit-input-placeholder {
+    color: #999999;
+    padding-left: 0vw;
+    font-size: 1vw;
+}
+
+input[type="text"]:focus {
+  outline: 0;
 }
 
 .login-button {
@@ -65,14 +75,4 @@
   margin-bottom: 8vh;
   cursor: pointer;
   font-size: 1.5vw;
-}
-
-input::-webkit-input-placeholder {
-    color: #999999;
-    padding-left: 0vw;
-    font-size: 1vw;
-}
-
-input[type="text"]:focus {
-  outline: 0;
 }
