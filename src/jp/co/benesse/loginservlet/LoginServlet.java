@@ -35,7 +35,6 @@ public class LoginServlet extends HttpServlet {
 		ConnectionManager connectionManager = new ConnectionManager();
 		UserBean userBean = new UserBean();
 
-
 		try {
 			Connection connection = connectionManager.getConnection();
 			UserDAO userDAO = new UserDAO(connection);
@@ -56,9 +55,9 @@ public class LoginServlet extends HttpServlet {
 			response.sendRedirect("/user/calendar");
 			return;
 
-
-		}
-		finally {
+		}catch(RuntimeException e){
+			throw e;
+		}finally {
 			connectionManager.closeConnection();
 		}
 
