@@ -203,9 +203,8 @@ public class ScheduleDAO {
 	 * @param 利用者ID、日付、タイトル
 	 * @return 予定リスト
 	 */
-	public List<ScheduleBean> selectSchedule(int userId, LocalDate localScheduleDate, String title) {
+	public List<ScheduleBean> selectSchedule(int userId, Date scheduleDate, String title) {
 		List<ScheduleBean> scheduleBeanList = new ArrayList<>();
-		Date scheduleDate = Date.valueOf(localScheduleDate);
 
 		PreparedStatement preparedStatement = null;
 		try {
@@ -262,9 +261,8 @@ public class ScheduleDAO {
 	 * @param 利用者ID、日付
 	 * @return 予定リスト
 	 */
-	public List<ScheduleBean> selectSchedule(int userId, LocalDate localScheduleDate) {
+	public List<ScheduleBean> selectSchedule(int userId, Date scheduleDate) {
 		List<ScheduleBean> scheduleBeanList = new ArrayList<>();
-		Date scheduleDate = Date.valueOf(localScheduleDate);
 
 		PreparedStatement preparedStatement = null;
 		try {
