@@ -48,17 +48,17 @@
 			</div>
 
 
-			<form action="/user/usercreate" method="post" id="user_create_form"
+			<form action="user/usercreate" method="post" id="user_create_form"
 				onsubmit="return checkUserCreate()">
 				<div class="user-create-input1">
-					<input type="text" id="userName" maxlength="15" placeholder="表示名" />
+					<input type="text" id="userName" name="userName" maxlength="15" placeholder="表示名" />
 				</div>
 				<div class="user-create-input2">
-					<input type="text" id="mail" size="100" maxlength="100"
+					<input type="text" id="mail" name="mail" size="100" maxlength="100"
 						placeholder="メールアドレス" />
 				</div>
 				<div class="user-create-input3">
-					<input type="password" id="password1" maxlength="20"
+					<input type="password" id="password1" name=password maxlength="20"
 						placeholder="パスワード" />
 				</div>
 				<div class="user-create-input4">
@@ -66,10 +66,13 @@
 						placeholder="パスワード確認" />
 				</div>
 				<div class="user-create-button"></div>
+
+				<input type="hidden" id="flag" value=${popFlag}>
+
 				<input type="submit" value="新規登録" id="user-create-button"
 					class="ok-button" onclick="onButtonClick();" />
 
-
+	</form>
 
 				<!--空欄チェックポップアップ--popFlag1----------------------------------------------------------------->
 				<div id="emp-error" class="popup-wrapper error-popup">
@@ -145,6 +148,22 @@
 				</div>
 				<!--パスワード不一致チェックポップアップここまで-------------------------------------------------------------->
 
+				<!--メール登録済みチェックポップアップ-------popFlag1←修正------------------------------------------------------------>
+				<div id="mail-same-error" class="popup-wrapper error-popup">
+					<div class="pop-container">
+						<div class="close-popup">
+							<i class="fa fa-2x fa-times"></i>
+						</div>
+						<div class="pop-container-inner">
+							<div class="message-container">
+								<p>メールアドレスが既に登録されているよ！</p>
+							</div>
+							<div class="ok-button close-popup">OK</div>
+							<img src="img/kronon/kronon_question.png" class="pop-img">
+						</div>
+					</div>
+				</div>
+				<!--メール登録済みチェックポップアップここまで-------------------------------------------------------------->
 
 
 				<!--内容確認ポップアップ----------------------------------------------------------------->
@@ -171,7 +190,7 @@
 									</tr>
 								</table>
 							</div>
-							<a href="#"><div class="ok-button">OK</div></a>
+							<a href="user/usercreate"><div class="ok-button">OK</div></a>
 							<div class="ng-button close-popup">キャンセル</div>
 							<img src="img/kronon/kronon_question.png" class="pop-img">
 						</div>
@@ -192,7 +211,7 @@
 								<p>内容は保存されないよ。</p>
 								<h2 class="message-title">本当に戻る？</h2>
 							</div>
-							<a href="#"><div class="ok-button">OK</div></a>
+							<a href="LoginServlet"><div class="ok-button">OK</div></a>
 							<div class="ng-button close-popup">キャンセル</div>
 							<img src="img/star/star_angry.png" class="pop-img-top">
 						</div>
@@ -201,7 +220,7 @@
 				<!--本当に戻りますかポップアップここまで------------------------------------------------------------------->
 
 
-			</form>
+
 		</div>
 
 
