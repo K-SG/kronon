@@ -34,6 +34,11 @@ public class UserCreateServlet extends HttpServlet {
 		String userName = request.getParameter("userName");
 		String mail = request.getParameter("mail");
 		String password = request.getParameter("password");
+		System.out.println(userName);
+		System.out.println(mail);
+		System.out.println(password);
+
+
 		ConnectionManager connectionManager = new ConnectionManager();
 
 		UserDAO userDAO = null;
@@ -46,6 +51,7 @@ public class UserCreateServlet extends HttpServlet {
 			if(userDAO.isBooking(mail)){
 				//かぶっていたらメールアドレス重複のポップアップが出るようにフラグ立て。
 				request.setAttribute("popFlag",1);
+
 				//アカウント新規登録画面へ戻る。
 				RequestDispatcher dispatcher = request.getRequestDispatcher("../WEB-INF/views/user/user_new.jsp");
 				dispatcher.forward(request, response);
@@ -54,11 +60,13 @@ public class UserCreateServlet extends HttpServlet {
 			//新規登録をするために
 			int result = userDAO.createUser(userName,mail,password);
 			if(result!=1){
+
 				RequestDispatcher dispatcher = request.getRequestDispatcher("../WEB-INF/views/error/error.jsp");
 				dispatcher.forward(request, response);
 			}
 		}
 		catch(RuntimeException e){
+			System.out.println("通過");
 			RequestDispatcher dispatcher = request.getRequestDispatcher("../WEB-INF/views/error/error.jsp");
 			dispatcher.forward(request, response);
 			return;
