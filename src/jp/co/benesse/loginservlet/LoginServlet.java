@@ -42,10 +42,12 @@ public class LoginServlet extends HttpServlet {
 			Connection connection = connectionManager.getConnection();
 			UserDAO userDAO = new UserDAO(connection);
 			userBean = userDAO.findUser(mail, hash);
+			System.out.println(userBean);
 
 
 			if(userBean == null){
 				request.setAttribute("popFlag", 2);
+				request.setAttribute("mail",mail);
 				RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/views/login/login.jsp");
 				dispatcher.forward(request, response);
 				return;
