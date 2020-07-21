@@ -39,6 +39,7 @@ public class LoginServlet extends HttpServlet {
 
 		try {
 			hash= CryptographyLogic.encryptStr(password);
+			System.out.println(hash);
 			Connection connection = connectionManager.getConnection();
 			UserDAO userDAO = new UserDAO(connection);
 			userBean = userDAO.findUser(mail, hash);
