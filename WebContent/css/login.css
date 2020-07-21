@@ -1,0 +1,77 @@
+@CHARSET "UTF-8";
+
+.login{
+	text-align: center;
+	color: white;
+}
+
+.login_title{
+	font-size: 2.5vw;
+	margin-top: -6vh;
+}
+
+.login_company{
+	font-size: 1.4vw;
+	margin-top: -2.5vh;
+	margin-bottom: 2.5vh;
+}
+
+.login_account{
+	font-size: 1.4vw;
+	margin-bottom: 2vh;
+}
+
+.logo_login{
+	width: 10vw;
+}
+
+.login_textbox{
+	border-radius: 0.8vw;
+	border: none;
+	height: 6vh;
+	width: 30vw;
+	padding-left: 0.6vw;
+	margin-bottom: 2vh;
+	font-size: 1.4vw;
+}
+
+.login-button {
+	display: inline-block;
+	width: 30.5vw;
+	height: 4vh;
+	background-color: #DE9B50;
+	opacity:0.5;
+	border: solid white;
+	border-radius: 0.8vw;
+	color: white;
+	margin-top: 0.7vh;
+	margin-bottom: 8vh;
+	cursor: pointer;
+	font-size: 1.4vw;
+    padding-top: 2vh;
+}
+
+.register-button {
+  display: inline-block;
+  width: 15.5vw;
+  height: 7vh;
+  background-color: #DE9B50;
+  opacity:0.5;
+  border: solid white;
+  border-radius: 0.8vw;
+  color: white;
+  margin-top: 0.7vh;
+  margin-bottom: 8vh;
+  cursor: pointer;
+  font-size: 1.4vw;
+}
+
+input::-webkit-input-placeholder {
+    color: #999999;
+    padding-left: 0vw;
+    font-size: 1vw;
+}
+
+input[type="text"]:focus {
+  outline: 0;
+}
