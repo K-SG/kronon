@@ -62,7 +62,7 @@
 </article>
 <%@ include file="/WEB-INF/views/layout/common/footer.jsp" %>
 <script src="js/common/common.js"></script>
-<script src="js/calendar.js"></script>
+<script src="js/calendar2.js"></script>
 <script src="js/calendar_event.js"></script>
 </body>
 </html>
