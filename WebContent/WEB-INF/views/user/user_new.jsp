@@ -190,7 +190,16 @@
 									</tr>
 								</table>
 							</div>
-							<a href="user/usercreate"><div class="ok-button">OK</div></a>
+							<form action="user/usercreate" method="post">
+							<!-- <a href="user/usercreate"> -->
+
+    						<input type="hidden" name="userName" value=target1>
+    						<input type="hidden" name="mail" value=target2>
+							<input type="hidden" name="password" value=target3>
+
+							<div class="ok-button">OK</div>
+							<!-- </a> -->
+							</form>
 							<div class="ng-button close-popup">キャンセル</div>
 							<img src="img/kronon/kronon_question.png" class="pop-img">
 						</div>
