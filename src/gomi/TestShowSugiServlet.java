@@ -10,16 +10,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class TestShowServlet
+ * Servlet implementation class TestShowSugiServlet
  */
-@WebServlet("/TestShowServlet")
-public class TestShowServlet extends HttpServlet {
+@WebServlet("/TestShowSugiServlet")
+public class TestShowSugiServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public TestShowServlet() {
+    public TestShowSugiServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,7 +28,7 @@ public class TestShowServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/views/schedule/show.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/views/schedule/test_schedule.jsp");
 		dispatcher.forward(request, response);
 		return;
 	}
