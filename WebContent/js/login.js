@@ -1,12 +1,10 @@
-let popFlag ='0';
-
 
 
 $(function () {
 $('.login-button').click(function () {
+	let popFlag = document.getElementById('flag').value;
 	let mail = document.getElementById('login_mail').value;
 	let password = document.getElementById('login_pass').value;
-    console.log(mail);
 
 if (mail=='' || password=='') {
 	popFlag='1';

@@ -25,11 +25,10 @@ pageEncoding="UTF-8"%>
         （株）くろ☆のす
       </div>
 
-
-      <input type="text" name="mail" id="login_mail" class="login_textbox" placeholder="メールアドレス" value=${mail} ><br>
-      <input type="password" name="password" id="login_pass" class="login_textbox" placeholder="パスワード"><br>
-
-      <form action="login">
+      <form action="login" method="post">
+        <input type="text" name="mail" id="login_mail" class="login_textbox" placeholder="メールアドレス" maxlength = "100" value=${mail}><br>
+        <input type="password" name="password" id="login_pass" class="login_textbox" placeholder="パスワード" maxlength = "20"><br>
+        <input type="hidden" id="flag" value=${popFlag}>
         <input type="button" class="login-button" value="ログイン">
       </form>
       <!-- <div class="login-button">ログイン</div> -->
