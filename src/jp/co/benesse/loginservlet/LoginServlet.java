@@ -1,5 +1,5 @@
 package jp.co.benesse.loginservlet;
-
+//loginservletのプッシュ確認
 import java.io.IOException;
 import java.sql.Connection;
 
@@ -57,7 +57,8 @@ public class LoginServlet extends HttpServlet {
 			return;
 
 
-		} finally {
+		}
+		finally {
 			connectionManager.closeConnection();
 		}
 
