@@ -30,35 +30,42 @@ public class ScheduleShowAllServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
+
+		//SessionからユーザーIDを取ってくる
 		int userId= (int) session.getAttribute("userId");
-		int flag = (int) request.getAttribute("flag");
+		//どこからこのサーブレットに来たか判断するためのフラグを取ってくる
+		String flag = (String) request.getAttribute("flag");
 		List<ArrayList<ScheduleBean>> getOneDayScheduleLists = new ArrayList<>();
 		List<ScheduleBean> getOneDayScheduleList = new ArrayList<>();
 		LocalDate scheduleDate;
-		if(flag==0){
-			scheduleDate = (LocalDate)request.getAttribute("scheduleDate");
-			scheduleDate = scheduleDate.minus(Period.ofDays(1));
+		if(flag.equals('0')){	//先日ボタンが押されたとき
+			scheduleDate = (LocalDate)request.getAttribute("scheduleDate");	//日付取得
+			scheduleDate = scheduleDate.minus(Period.ofDays(1));//日付を-1する
 		}
-		else if(flag==1){
-			scheduleDate = (LocalDate)request.getAttribute("scheduleDate");
-			scheduleDate = scheduleDate.plus(Period.ofDays(1));
+		else if(flag.equals('1')){		//翌日ボタンが押されたとき
+			scheduleDate = (LocalDate)request.getAttribute("scheduleDate");//日付取得
+			scheduleDate = scheduleDate.plus(Period.ofDays(1));//日付を+1する
 		}
-		else{
-			scheduleDate=LocalDate.now();
+		else{	//それ以外
+			scheduleDate=LocalDate.now();//今日の日付取得
 		}
+		//日付をリクエスト領域にセットする
 		request.setAttribute("scheduleDate",scheduleDate);
+
 		ConnectionManager connectionManager = new ConnectionManager();
 		ScheduleDAO scheduleDAO = null;
 		try{
 			Connection connection = connectionManager.getConnection();
 			scheduleDAO = new ScheduleDAO(connection);
 			if(userId<=5){
+				//まずはログインユーザーの予定を取得する
 				getOneDayScheduleList = scheduleDAO.getOneDaySchedule(scheduleDate,userId);
 				getOneDayScheduleLists.add((ArrayList<ScheduleBean>)getOneDayScheduleList);
 
 			}
 			for(int i=0;i<5;i++){
 				if(i!=userId){
+					//まずはログインユーザー以外の予定を取得する
 					getOneDayScheduleList = scheduleDAO.getOneDaySchedule(scheduleDate,i);
 					getOneDayScheduleLists.add((ArrayList<ScheduleBean>)getOneDayScheduleList);
 				}
