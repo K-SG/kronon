@@ -7,6 +7,7 @@ import java.time.Period;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -29,12 +30,10 @@ public class ScheduleShowAllServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		String userId= (String) session.getAttribute("userId");
-		int flag = (int) session.getAttribute("flag");
-
-
-		ScheduleBean scheduleBean =new ScheduleBean();
-		List<ArrayList<ScheduleBean>> getOneDayScheduleLists = new ArrayList<ArrayList<ScheduleBean>>();
+		int userId= (int) session.getAttribute("userId");
+		int flag = (int) request.getAttribute("flag");
+		List<ArrayList<ScheduleBean>> getOneDayScheduleLists = new ArrayList<>();
+		List<ScheduleBean> getOneDayScheduleList = new ArrayList<>();
 		LocalDate scheduleDate;
 		if(flag==0){
 			scheduleDate = (LocalDate)request.getAttribute("scheduleDate");
@@ -52,10 +51,27 @@ public class ScheduleShowAllServlet extends HttpServlet {
 		ScheduleDAO scheduleDAO = null;
 		try{
 			Connection connection = connectionManager.getConnection();
+			scheduleDAO = new ScheduleDAO(connection);
+			if(userId<=5){
+				getOneDayScheduleList = scheduleDAO.getOneDaySchedule(scheduleDate,userId);
+				getOneDayScheduleLists.add((ArrayList<ScheduleBean>)getOneDayScheduleList);
 
+			}
+			for(int i=0;i<5;i++){
+				if(i!=userId){
+					getOneDayScheduleList = scheduleDAO.getOneDaySchedule(scheduleDate,i);
+					getOneDayScheduleLists.add((ArrayList<ScheduleBean>)getOneDayScheduleList);
+				}
+			}
+			RequestDispatcher dispatcher = request.getRequestDispatcher("../WEB-INF/view/error/schedule_show.jsp");
+			dispatcher.forward(request, response);
 	}catch(RuntimeException e){
-
+		RequestDispatcher dispatcher = request.getRequestDispatcher("../WEB-INF/view/error/error.jsp");
+		dispatcher.forward(request, response);
 	}
+		finally{
+			connectionManager.closeConnection();
+		}
 
 }
 }
