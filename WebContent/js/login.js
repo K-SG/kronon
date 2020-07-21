@@ -8,15 +8,20 @@ $('.login-button').click(function () {
 
 if (mail=='' || password=='') {
 	popFlag='1';
-}
-
-if(popFlag=='1'){
-    $('.login_msg').html('入力されていない<br>項目があるよ');
-	$('.error-popup').fadeIn();
+}else{
 	popFlag='0';
 }
 
-if(popFlag=='2'){
+console.log(popFlag);
+
+if(popFlag=='0'){
+	  $('.login-form').submit();
+/*    document.login-form.submit();*/
+} else if(popFlag=='1'){
+    $('.login_msg').html('入力されていない<br>項目があるよ');
+	$('.error-popup').fadeIn();
+	popFlag='0';
+} else if(popFlag=='2'){
 	$('.error-popup').fadeIn();
 	popFlag='0';
 }
@@ -31,5 +36,7 @@ $('.close-popup').click(function () {
     let password = document.getElementById('login_pass');
 	password.value='';
   });
+
+
 
 });

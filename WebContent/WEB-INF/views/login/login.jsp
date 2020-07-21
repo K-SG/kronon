@@ -27,7 +27,7 @@ pageEncoding="UTF-8"%>
 
 
 
-      <form action="login" method="post">
+      <form action="login" method="post" class="login-form">
         <input type="text" name="mail" id="login_mail" class="login_textbox" placeholder="メールアドレス" maxlength = "100" value=${mail}><br>
         <input type="password" name="password" id="login_pass" class="login_textbox" placeholder="パスワード" maxlength = "20"><br>
         <input type="hidden" id="flag" value=${popFlag}>
