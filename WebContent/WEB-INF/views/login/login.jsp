@@ -33,7 +33,6 @@ pageEncoding="UTF-8"%>
       </form>
       <!-- <div class="login-button">ログイン</div> -->
 
-
       <div class="login_account">
         アカウントを持っていないかな？
       </div>
