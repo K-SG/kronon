@@ -17,10 +17,8 @@ public class TestScheduleEdit extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setAttribute("date", "2020-7-24");
-		request.setAttribute("title", "BBQ");
-		request.setAttribute("content","豊洲でBBQ" );
-		RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/views/schedule/schedule_edit.jsp");
+
+		RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/views/schedule/schedule_new.jsp");
 		dispatcher.forward(request, response);
 		return;
 	}
