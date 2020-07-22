@@ -40,6 +40,10 @@ public class ScheduleBean {
 	 */
 	private int actualTime;
 	/**
+	 * 実績時間「hh時間mm分」
+	 */
+	private String actualTimeStr;
+	/**
 	 * 振り返りコメント
 	 */
 	private String comment;
@@ -158,6 +162,12 @@ public class ScheduleBean {
 	}
 	public void setActualTime(int actualTime) {
 		this.actualTime = actualTime;
+	}
+	public String getActualTimeStr() {
+		return actualTimeStr;
+	}
+	public void setActualTimeStr(String actualTimeStr) {
+		this.actualTimeStr = actualTimeStr;
 	}
 	public String getComment() {
 		return comment;

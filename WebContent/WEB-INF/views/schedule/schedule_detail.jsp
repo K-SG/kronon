@@ -5,11 +5,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link href="/kronon/css/common/app.css" rel="stylesheet" type="text/css">
-<link href="/kronon/css/common/common.css" rel="stylesheet" type="text/css">
-<link href="/kronon/css/common/blackboard.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<link href="/kronon/css/scheduledetail.css" rel="stylesheet" type="text/css">
+<%@ include file="../layout/common/link.jsp" %>
 <title>予定詳細画面</title>
 
 </head>
@@ -24,7 +21,7 @@
       <table class=schedule_detail>
 
         <tr>
-          <td><c:out value="${sessionScope.userName}" /></td>
+          <td><c:out value="${owner}" /></td>
           <td><c:out value="${actualTime}" /></td>
         </tr>
 
@@ -46,19 +43,17 @@
 			<td class=show-place3><c:out value="${place}" /></td>
 			</c:if>
 
-
-          <td class=show-place><c:out value="${place}" /></td>
         </tr>
 
         <tr>
           <td colspan="2">
-            外部設計書レビュー
+            <c:out value="${title}" />
           </td>
         </tr>
 
         <tr>
           <td colspan="2">
-            森岡さん作成の外部設計書
+            <c:out value="${content}" />
           </td>
         </tr>
 
@@ -66,6 +61,73 @@
 
     </div>
   </div>
+<div class="kronon-banzai"><img alt="banzai" src="./img/kronon/kronon_banzai.png"></div>
+<div class="ok-button back-popup-button">戻る</div>
+
+
+<div class="flex_test-box">
+    <div class="flex_test-item">
+        <div class="ok-button">修正</div>
+    </div>
+    <div class="flex_test-item">
+        <div class="ok-button">実績入力</div>
+    </div>
+    <div class="flex_test-item">
+       <div class="ok-button large-popup-button">削除</div>
+    </div>
+</div>
+
+
+<c:if test="${owner=={sessionScope.userName}}" >
+<div class="flex_test-box">
+    <div class="flex_test-item">
+        <div class="ok-button">修正</div>
+    </div>
+    <div class="flex_test-item">
+        <div class="ok-button">実績入力</div>
+    </div>
+    <div class="flex_test-item">
+       <div class="ok-button large-popup-button">削除</div>
+    </div>
+</div>
+</c:if>
+
+
+<!--内容確認ポップアップ----------------------------------------------------------------->
+<div class="popup-wrapper confirm-popup">
+  <div class="pop-container pop-container-large">
+    <div class="close-popup"> <i class="fa fa-2x fa-times"></i> </div>
+    <div class="pop-container-inner">
+      <div class="message-container-large">
+        <h2 class="message-title">この内容を本当に削除する？</h2>
+        <table class="popup-table">
+          <tr>
+            <th class="th">名前：</th>
+            <td>樋口</td>
+          </tr>
+          <tr>
+            <th>予定日時：</th>
+            <td>2020/7/11(月) 10:00-11:00</td>
+          </tr>
+          <tr>
+            <th>タイトル：</th>
+            <td>外部設計レビュー</td>
+          </tr>
+          <tr>
+            <th class="last-table">内容：</th>
+            <td class="last-table">森岡さん作成外部設計書レビュー<br>
+              〆切7/13</td>
+          </tr>
+        </table>
+      </div>
+      <a href="#"><div class="ok-button">OK</div></a>
+      <div class="ng-button close-popup">キャンセル</div>
+      <img src="img/kronon/kronon_question.png" class="pop-img"> </div>
+  </div>
+</div>
+<!--内容確認ポップアップここまで----------------------------------------------------------------->
+
+
 
 </article>
 <%@ include file="/WEB-INF/views/layout/common/footer.jsp" %>
