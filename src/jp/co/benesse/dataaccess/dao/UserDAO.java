@@ -90,14 +90,15 @@ public class UserDAO {
 			//SQLの実行
 			ResultSet resultSet = preparedStatement.executeQuery();
 			while(resultSet.next()) {
-			userBean = new UserBean();
-			//userIdの取得
-			int userId = resultSet.getInt("user_Id");
-			//userNameの取得
-			String userName = resultSet.getString("user_Name");
-			userBean.setUserId(userId);
-			userBean.setUserName(userName);
+				userBean = new UserBean();
+				//userIdの取得
+				int userId = resultSet.getInt("user_Id");
+				//userNameの取得
+				String userName = resultSet.getString("user_Name");
+				userBean.setUserId(userId);
+				userBean.setUserName(userName);
 			}
+			System.out.println(userBean.getUserId()+"aaaaaaaaaaaaa");
 		return userBean;
 	} catch (SQLException e) {
 		throw new RuntimeException("'user'テーブルのSELECTに失敗しました", e);
