@@ -7,8 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form>
-<input type=text>
+予定詳細に飛ぶページのテスト
+<form action="/user/scheduledetail" method="post">
+<input type=text id="id">
 </form>
 </body>
 </html>
