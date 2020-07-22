@@ -1,8 +1,16 @@
 "use strict"
 
-$(document).ready( function(){
-alert('jQuery');
-});
+$(function () {
+
+  /*リロード・戻るボタンが押されているか判定し、ポップアップ非表示にする*/
+
+      $(document).ready(function(){
+        let popFlag = document.getElementById('flag').value;
+        if(popFlag==1){
+          $('.error-popup').fadeIn();
+          return;
+        }
+  }
 
 /*
 
