@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class TestShowServlet
@@ -28,6 +29,17 @@ public class TestShowServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		request.setAttribute("owner", "樋口");
+		request.setAttribute("actualTime", "2時間");
+		request.setAttribute("scheduleDate", "2020/07/11");
+		request.setAttribute("startTime", "10:00");
+		request.setAttribute("endTime", "11:00");
+		request.setAttribute("place", "在宅");
+		request.setAttribute("title", "テスト");
+		request.setAttribute("content", "テストテスト");
+		HttpSession session = request.getSession(true);
+		session.setAttribute("userName", "樋口");
 		RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/views/schedule/schedule_detail.jsp");
 		dispatcher.forward(request, response);
 		return;

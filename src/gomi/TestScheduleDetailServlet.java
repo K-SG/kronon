@@ -28,6 +28,7 @@ public class TestScheduleDetailServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 		RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/views/schedule/test_schedule_detail.jsp");
 		dispatcher.forward(request, response);
 		return;
