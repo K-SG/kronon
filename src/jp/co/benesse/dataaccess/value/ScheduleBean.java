@@ -40,6 +40,10 @@ public class ScheduleBean {
 	 */
 	private int actualTime;
 	/**
+	 * 実績時間「hh時間mm分」
+	 */
+	private String actualTimeStr;
+	/**
 	 * 振り返りコメント
 	 */
 	private String comment;
@@ -56,6 +60,12 @@ public class ScheduleBean {
 	 * 見積時間「hh時間mm分」
 	 */
 	private String estimateTime;
+
+	/**
+	 * json整形用に使う「hh時間mm分」
+	 */
+	private String jsonDate;
+
 
 	/**
 	 * コンストラクタ
@@ -153,6 +163,12 @@ public class ScheduleBean {
 	public void setActualTime(int actualTime) {
 		this.actualTime = actualTime;
 	}
+	public String getActualTimeStr() {
+		return actualTimeStr;
+	}
+	public void setActualTimeStr(String actualTimeStr) {
+		this.actualTimeStr = actualTimeStr;
+	}
 	public String getComment() {
 		return comment;
 	}
@@ -176,6 +192,12 @@ public class ScheduleBean {
 	}
 	public void setEstimateTime(String estimateTime) {
 		this.estimateTime = estimateTime;
+	}
+	public String getJsonDate() {
+		return jsonDate;
+	}
+	public void setJsonDate(String jsonDate) {
+		this.jsonDate = jsonDate;
 	}
 
 	@Override
