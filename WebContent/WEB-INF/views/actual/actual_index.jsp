@@ -59,7 +59,7 @@
 				<div class="pop-container-inner">
 					<div class="message-container">
 						<!--  メッセージを分岐未入力、日付おかしい-->
-						<p>メールアドレス・パスワードが違うよ。</p>
+						<p>日付かタイトルを入力してね</p>
 					</div>
 					<div class="ok-button close-popup">OK</div>
 					<img src="img/kronon/kronon_question.png" class="pop-img">
