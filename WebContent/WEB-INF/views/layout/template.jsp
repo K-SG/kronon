@@ -4,12 +4,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<%@ include file="/WEB-INF/views/layout/common/link.jsp" %>
+<%@ include file="common/link.jsp" %>
 <title>Insert title here</title>
 </head>
 <body>
 
-<%@ include file="/WEB-INF/views/layout/common/header.jsp" %>
+<%@ include file="common/header.jsp" %>
 <article>
 
 <!-- ここにコードを書く -->
@@ -20,7 +20,7 @@
 
 
 </article>
-<%@ include file="/WEB-INF/views/layout/common/footer.jsp" %>
+<%@ include file="common/footer.jsp" %>
 <script src="js/common/common.js"></script>
 </body>
 </html>
