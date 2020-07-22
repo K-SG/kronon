@@ -38,7 +38,7 @@ public class UserDAO {
 			// SQLの定義
 
 
-			String sql = "INSERT INTO public.user (user_id,user_name,mail,password) values (nextval('SEQ_USER'),?,?,?)";
+			String sql = "INSERT INTO PUBLIC.USER (USER_ID,USER_NAME,MAIL,PASSWORD) VALUES (NEXTVAL('SEQ_USER'),?,?,?)";
 
 			// SQLの作成(準備)
 			preparedStatement = this.connection.prepareStatement(sql);
@@ -79,7 +79,7 @@ public class UserDAO {
 		PreparedStatement preparedStatement = null;
 		try {
 			// SQLの定義
-			String sql = "SELECT * FROM public.user WHERE mail = ? and password = ?";
+			String sql = "SELECT * FROM PUBLIC.USER WHERE MAIL = ? AND PASSWORD = ?";
 			// SQLの作成(準備)
 			preparedStatement = this.connection.prepareStatement(sql);
 			// SQLバインド変数への値設定
@@ -90,13 +90,13 @@ public class UserDAO {
 			//SQLの実行
 			ResultSet resultSet = preparedStatement.executeQuery();
 			while(resultSet.next()) {
-			userBean = new UserBean();
-			//userIdの取得
-			int userId = resultSet.getInt("user_Id");
-			//userNameの取得
-			String userName = resultSet.getString("user_Name");
-			userBean.setUserId(userId);
-			userBean.setUserName(userName);
+				userBean = new UserBean();
+				//userIdの取得
+				int userId = resultSet.getInt("USER_ID");
+				//userNameの取得
+				String userName = resultSet.getString("USER_NAME");
+				userBean.setUserId(userId);
+				userBean.setUserName(userName);
 			}
 		return userBean;
 	} catch (SQLException e) {
@@ -126,14 +126,14 @@ public class UserDAO {
 		PreparedStatement preparedStatement = null;
 		String userName = null;
 		try {
-			String sql = "SELECT user_name FROM 'user' WHERE userId = ?";
+			String sql = "SELECT USER_NAME FROM PUBLIC.USER WHERE USER_ID = ?";
 			preparedStatement = this.connection.prepareStatement(sql);
 			preparedStatement.setInt(1, userId);
 			// SQLの実行
 			ResultSet resultSet = preparedStatement.executeQuery();
 			// 問い合わせ結果の取得
 			if (resultSet.next()) {
-				userName = resultSet.getString("useName");
+				userName = resultSet.getString("USER_NAME");
 			}
 			if(userName==null){
 				throw new RuntimeException("ユーザーが存在しませんでした");

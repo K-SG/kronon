@@ -325,6 +325,9 @@ public class ScheduleDAO {
 	 */
 	public List<ScheduleBean> selectSchedule(int userId, String title) {
 		List<ScheduleBean> scheduleBeanList = new ArrayList<>();
+		if (title.contains("%")) {
+			title = title.replace("%", "\\%");
+		}
 
 		PreparedStatement preparedStatement = null;
 		try {
