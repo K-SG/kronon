@@ -92,15 +92,15 @@ public class UserDAO {
 			while(resultSet.next()) {
 			userBean = new UserBean();
 			//userIdの取得
-			int userId = resultSet.getInt("user_Id");
+			int userId = resultSet.getInt("USER_ID");
 			//userNameの取得
-			String userName = resultSet.getString("user_Name");
+			String userName = resultSet.getString("USER_NAME");
 			userBean.setUserId(userId);
 			userBean.setUserName(userName);
 			}
 		return userBean;
 	} catch (SQLException e) {
-		throw new RuntimeException("'user'テーブルのSELECTに失敗しました", e);
+		throw new RuntimeException("userテーブルのSELECTに失敗しました", e);
 	} finally {
 		try {
 			if (preparedStatement != null) {
