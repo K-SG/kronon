@@ -51,7 +51,8 @@ public class UserCreateServlet extends HttpServlet {
 			if(userDAO.isBooking(mail)){
 				//かぶっていたらメールアドレス重複のポップアップが出るようにフラグ立て。
 				request.setAttribute("popFlag",1);
-
+				//request.setAttribute("userName", userName);//追加
+				//request.setAttribute("mail", mail);//追加
 				//アカウント新規登録画面へ戻る。
 				RequestDispatcher dispatcher = request.getRequestDispatcher("../WEB-INF/views/user/user_new.jsp");
 				dispatcher.forward(request, response);
@@ -63,7 +64,24 @@ public class UserCreateServlet extends HttpServlet {
 
 				RequestDispatcher dispatcher = request.getRequestDispatcher("../WEB-INF/views/error/error.jsp");
 				dispatcher.forward(request, response);
+				return;
 			}
+
+
+			UserBean userBean = new UserBean();
+
+			userBean = userDAO.findUser(mail,password);//500エラー
+			System.out.println("find通過");
+			HttpSession session = request.getSession();
+			session.setAttribute("userName",userBean.getUserName());
+			session.setAttribute("userId",userBean.getUserId());
+
+			//新規登録完了ポップアップを出すためのフラグを立てる。
+			request.setAttribute("popFlag",0);
+			//user_new.jsp(アカウント新規作成画面)にforwardする。
+			RequestDispatcher dispatcher = request.getRequestDispatcher("../WEB-INF/views/user/user_new.jsp");
+			dispatcher.forward(request, response);
+			return;
 		}
 		catch(RuntimeException e){
 			System.out.println("通過");
@@ -74,17 +92,9 @@ public class UserCreateServlet extends HttpServlet {
 		finally{
 			connectionManager.closeConnection();
 		}
-		UserBean userBean = new UserBean();
-		userBean = userDAO.findUser(mail,password);
-		HttpSession session = request.getSession();
-		session.setAttribute("userName",userBean.getUserName());
-		session.setAttribute("userId",userBean.getUserId());
-		//新規登録完了ポップアップを出すためのフラグを立てる。
-		request.setAttribute("popFlag",0);
-		//user_new.jsp(アカウント新規作成画面)にforwardする。
-		RequestDispatcher dispatcher = request.getRequestDispatcher("../WEB-INF/views/user/user_new.jsp");
-		dispatcher.forward(request, response);
-		return;
+
+
+
 	}
 
 }

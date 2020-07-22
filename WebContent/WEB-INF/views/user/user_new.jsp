@@ -35,9 +35,18 @@
 <title>アカウント作成</title>
 
 </head>
+<%-- 	<%
+		String userName = request.getParameter("userName");
+		String mail = request.getParameter("mail");
+		String password = request.getParameter("password");
+		String popFlagStr = (String)request.getParameter("popFlag");
+	    int popFlag = Integer.parseInt(popFlagStr);
+	%> --%>
 <body>
 
 	<article>
+
+
 
 		<div class="user-create-content">
 			<div class="user-create-area1">予定管理システム～くろのん～</div>
@@ -49,32 +58,30 @@
 
 
 			<form action="user/usercreate" method="post" id="user_create_form"
-				onsubmit="return checkUserCreate()">
+				onsubmit="return checkUserCreate()" name="user_create_form">
 				<div class="user-create-input1">
-					<input type="text" id="userName" name="userName" maxlength="15" placeholder="表示名" />
+					<input type="text" id="userName" name="userName" maxlength="15" placeholder="表示名" value=${userName } >
+
 				</div>
 				<div class="user-create-input2">
 					<input type="text" id="mail" name="mail" size="100" maxlength="100"
-						placeholder="メールアドレス" />
+						placeholder="メールアドレス" value=${mail } >
 				</div>
 				<div class="user-create-input3">
 					<input type="password" id="password1" name=password maxlength="20"
-						placeholder="パスワード" />
+						placeholder="パスワード" value=${password } >
 				</div>
 				<div class="user-create-input4">
 					<input type="password" id="password2" maxlength="20"
-						placeholder="パスワード確認" />
+						placeholder="パスワード確認" value=${password } >
 				</div>
-				<div class="user-create-button"></div>
 
-				<input type="hidden" id="flag" value=${popFlag}>
 
-				<input type="submit" value="新規登録" id="user-create-button"
-					class="ok-button" onclick="onButtonClick();" />
+				<input type="hidden" id="flag" value=${popFlag }>
 
-	</form>
+<!-- 新規登録ボタン 下に配置 -->
 
-				<!--空欄チェックポップアップ--popFlag1----------------------------------------------------------------->
+				<!--空欄チェックポップアップ--popFlag2----------------------------------------------------------------->
 				<div id="emp-error" class="popup-wrapper error-popup">
 					<div class="pop-container">
 						<div class="close-popup">
@@ -92,9 +99,7 @@
 				<!--空欄チェックポップアップここまで-------------------------------------------------------------->
 
 
-
-
-				<!--メール入力条件チェックポップアップ-------popFlag2------------------------------------------------------------>
+				<!--メール入力条件チェックポップアップ-------popFlag3------------------------------------------------------------>
 				<div id="mail-error" class="popup-wrapper error-popup">
 					<div class="pop-container">
 						<div class="close-popup">
@@ -112,9 +117,7 @@
 				<!--メール入力条件チェックポップアップここまで-------------------------------------------------------------->
 
 
-
-
-				<!--パスワード入力条件チェックポップアップ-------popFlag3------------------------------------------------------------>
+				<!--パスワード入力条件チェックポップアップ-------popFlag4------------------------------------------------------------>
 				<div id="pass-check-error" class="popup-wrapper error-popup">
 					<div class="pop-container">
 						<div class="close-popup">
@@ -131,7 +134,7 @@
 				</div>
 				<!--パスワード入力条件チェックポップアップここまで-------------------------------------------------------------->
 
-				<!--パスワード不一致チェックポップアップ-------popFlag4------------------------------------------------------------>
+				<!--パスワード不一致チェックポップアップ-------popFlag5------------------------------------------------------------>
 				<div id="pass-notsame-error" class="popup-wrapper error-popup">
 					<div class="pop-container">
 						<div class="close-popup">
@@ -148,7 +151,7 @@
 				</div>
 				<!--パスワード不一致チェックポップアップここまで-------------------------------------------------------------->
 
-				<!--メール登録済みチェックポップアップ-------popFlag1←修正------------------------------------------------------------>
+				<!--メール登録済みチェックポップアップ-------popFlag1------------------------------------------------------------>
 				<div id="mail-same-error" class="popup-wrapper error-popup">
 					<div class="pop-container">
 						<div class="close-popup">
@@ -166,7 +169,25 @@
 				<!--メール登録済みチェックポップアップここまで-------------------------------------------------------------->
 
 
-				<!--内容確認ポップアップ----------------------------------------------------------------->
+				<!--登録完了チェックポップアップ-------popFlag1------------------------------------------------------------>
+				<div id="input-cmp" class="popup-wrapper error-popup">
+					<div class="pop-container">
+						<div class="close-popup">
+							<i class="fa fa-2x fa-times"></i>
+						</div>
+						<div class="pop-container-inner">
+							<div class="message-container">
+								<p>登録が完了したよ！</p>
+							</div>
+							<div class="ok-button close-popup">OK</div>
+							<img src="img/kronon/kronon_question.png" class="pop-img">
+						</div>
+					</div>
+				</div>
+				<!--登録完了チェックポップアップここまで-------------------------------------------------------------->
+
+
+				<!--内容確認ポップアップ--------------------popFlag6--------------------------------------------->
 				<div id="confirm-pop" class="popup-wrapper confirm-popup">
 					<div class="pop-container pop-container-large">
 						<div class="close-popup">
@@ -191,25 +212,26 @@
 								</table>
 							</div>
 
+							<!-- <form action="user/usercreate" method="post"> -->
 
-							<form action="user/usercreate" method="post">
-							<!-- <a href="user/usercreate"> -->
+    					  <%-- <input type="hidden" name="userName" value=${userName }>
+    						<input type="hidden" name="mail" value=${mail }>
+							<input type="hidden" name="password" value=${password }> --%>
 
-    						<input type="hidden" name="userName" value=target1>
-    						<input type="hidden" name="mail" value=target2>
-							<input type="hidden" name="password" value=target3>
-							<input type="submit" value="OK" id="user-create-button"
-							class="ok-button"/>
+							<input type="button" id="user-create-button2"
+							class="ok-button" value="OK" onclick="clickEvent()" />
 
-							<div class="ok-button">OK</div>
-							<!-- </a> -->
-							</form>
+							<!-- <button name="btnClickEvent" onclick="clickEvent()">送信したい</button> -->
+							 <!-- <div class="ok-button">OK</div> -->
+							<!-- </form> -->
+
 
 							<div class="ng-button close-popup">キャンセル</div>
 							<img src="img/kronon/kronon_question.png" class="pop-img">
 						</div>
 					</div>
 				</div>
+
 				<!--内容確認ポップアップここまで----------------------------------------------------------------->
 
 
@@ -232,6 +254,14 @@
 					</div>
 				</div>
 				<!--本当に戻りますかポップアップここまで------------------------------------------------------------------->
+
+<!-- 新規登録のボタン -->
+				<!-- <input type="button" value="新規登録" id="user-create-button"
+					class="ok-button" onclick="onButtonClick();" /> -->
+					<input type="submit" value="新規登録" id="user-create-button"
+					class="ok-button" onclick="onButtonClick();" >
+
+	 		</form>
 
 
 
