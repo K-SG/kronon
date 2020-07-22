@@ -16,7 +16,6 @@
 
 <input type="hidden" id="list" value='${json}' style="display:none">
 
-<%  %>
 
  <div class="calendar-container">
       <div class="calendar-container-inner">
