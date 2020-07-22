@@ -1,38 +1,45 @@
-let popFlag ='0';
-
 $(function () {
-$('.login-button').click(function () {
-	let mail = document.getElementById('login_mail').value;
-	let password = document.getElementById('login_pass').value;
-    console.log(mail);
 
-if (mail=='' || password=='') {
-	popFlag='1';
-}
+  /*DBと照合した後のエラーポップアップ表示*/
+  $(document).ready(function () {
 
-if(popFlag=='1'){
-    $('.login_msg').html('入力されていない<br>項目があるよ');
-	$('.error-popup').fadeIn();
-	popFlag='0';
-}
+	let popFlag = document.getElementById('flag').value;
 
-if(popFlag=='2'){
-	$('.error-popup').fadeIn();
-	popFlag='0';
-}
+    if(popFlag == 2){
+    	$('.error-popup').fadeIn();
+    	return;
+    	}
+    });
 
+  /*ログインボタンを押下した際の空白エラーチェックとポップアップ表示*/
+  $('.login-button').click(function () {
 
-});
+    let mail = document.getElementById('login_mail').value;
+    let password = document.getElementById('login_pass').value;
 
-$('.close-popup').click(function () {
-    $('.confirm-popup').fadeOut();
-    $('.error-popup').fadeOut();
-    $('.back-popup').fadeOut();
-    let password = document.getElementById('login_pass');
-	password.value='';
+    if(mail == '' || password == ''){
+      popFlag = 1;
+    }else{
+      popFlag = 0;
+    }
+
+    if(popFlag == 0){
+      $('.login-form').submit();
+    }
+
+    if(popFlag == 1){
+      $('.login_msg').html('入力されていない<br>項目があるよ');
+      $('.error-popup').fadeIn();
+      popFlag = 0;
+      return;
+    }
   });
 
-
-
+  /*ポップアップを閉じる際の動き*/
+  $('.close-popup').click(function () {
+    $('.error-popup').fadeOut();
+    let password = document.getElementById('login_pass');
+    password.value = '';
+  });
 
 });

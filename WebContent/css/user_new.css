@@ -1,0 +1,115 @@
+.user-create-content{
+	text-align:center;
+	margin-left:30vw;
+	margin-top:0vh;
+	width: 40vw;
+	height:80vh;
+}
+.user-create-area1
+{
+  font-family : UD デジタル 教科書体 NK-B;
+  font-weight : bold;
+  font-size : 5vh;
+  color : #FFFFFF;
+  color : rgb(255, 255, 255);
+}
+.user-create-area2
+{
+  font-family : UD デジタル 教科書体 NK-B;
+  font-weight : bold;
+  font-size : 4vh;
+  color : #FFFFFF;
+  color : rgb(255, 255, 255);
+  margin-top:2vh;
+}
+
+
+.user-create-area3
+{
+  font-family : UD デジタル 教科書体 NK-B;
+  font-weight : bold;
+  font-size : 2vh;
+  color : #FFFFFF;
+  color : rgb(255, 255, 255);
+  margin-top:2vh;
+}
+.user-create-input1 input
+{
+	background : #FFFFFF;
+	background : rgba(255, 255, 255, 1);
+	border-radius : 10px;
+	-moz-border-radius : 10px;
+	-webkit-border-radius : 10px;
+	width: 50vh;
+	height:6vh;
+	font-size:2vh;
+	margin-top:2vh;
+	padding-left:1vh;
+	border:none;
+
+}
+
+.user-create-input2 input
+{
+	background : #FFFFFF;
+	background : rgba(255, 255, 255, 1);
+
+	border-radius : 10px;
+	-moz-border-radius : 10px;
+	-webkit-border-radius : 10px;
+	width: 50vh;
+	height:6vh;
+	font-size:2vh;
+	margin-top:2vh;
+	padding-left:1vh;
+	border:none;
+
+}
+
+.user-create-input3 input
+{
+	background : #FFFFFF;
+	background : rgba(255, 255, 255, 1);
+
+	border-radius : 10px;
+	-moz-border-radius : 10px;
+	-webkit-border-radius : 10px;
+	width: 50vh;
+	height:6vh;
+	font-size:2vh;
+	margin-top:2vh;
+	padding-left:1vh;
+	border:none;
+
+
+}
+
+.user-create-input4 input
+{
+	background : #FFFFFF;
+	background : rgba(255, 255, 255, 1);
+
+	border-radius : 10px;
+	-moz-border-radius : 10px;
+	-webkit-border-radius : 10px;
+	width: 50vh;
+	height:6vh;
+	font-size:2vh;
+	margin-top:2vh;
+	padding-left:1vh;
+	border:none;
+	margin-bottom:4vh;
+}
+.user-create-button
+{
+
+}
+
+.user-create-button-return
+{
+	float:left;
+	background-image : url(./img/back_buttom.png);
+	/*CSS に参照される画像を作成するには、「選択した CSS を書き出し」コマンドを使用します。*/
+	background-repeat : no-repeat;
+
+}
