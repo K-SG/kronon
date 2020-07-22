@@ -537,8 +537,6 @@ public class ScheduleDAO {
 			return scheduleBeanList;
 		} catch (SQLException e) {
 			throw new RuntimeException("SCHEDULEテーブルのSELECTに失敗しました", e);
-=======
->>>>>>> refs/heads/login
 		} finally {
 			try {
 				if (preparedStatement != null) {
