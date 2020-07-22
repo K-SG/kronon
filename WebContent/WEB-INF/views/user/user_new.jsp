@@ -5,11 +5,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link href="css/app.css" rel="stylesheet" type="text/css">
-<link href="css/common.css" rel="stylesheet" type="text/css">
-<link href="css/usernew_popup.css" rel="stylesheet" type="text/css">
-<link href="css/jquery.confirm.css" rel="stylesheet">
-<link href="css/user_new.css" rel="stylesheet" type="text/css">
+<link href="/kronon/css/app.css" rel="stylesheet" type="text/css">
+<link href="/kronon/css/common.css" rel="stylesheet" type="text/css">
+<link href="/kronon/css/usernew_popup.css" rel="stylesheet" type="text/css">
+<link href="/kronon/css/jquery.confirm.css" rel="stylesheet">
+<link href="/kronon/css/user_new.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 <script
@@ -35,13 +35,7 @@
 <title>アカウント作成</title>
 
 </head>
-<%-- 	<%
-		String userName = request.getParameter("userName");
-		String mail = request.getParameter("mail");
-		String password = request.getParameter("password");
-		String popFlagStr = (String)request.getParameter("popFlag");
-	    int popFlag = Integer.parseInt(popFlagStr);
-	%> --%>
+
 <body>
 
 	<article>
@@ -65,7 +59,7 @@
 				</div>
 				<div class="user-create-input2">
 					<input type="text" id="mail" name="mail" size="100" maxlength="100"
-						placeholder="メールアドレス" value=${mail } >
+						placeholder="メールアドレス" value=${mail }>
 				</div>
 				<div class="user-create-input3">
 					<input type="password" id="password1" name=password maxlength="20"
@@ -77,7 +71,7 @@
 				</div>
 
 
-				<input type="hidden" id="flag" value=${popFlag }>
+				<input type="text" id="flag" value=${popFlag }>
 
 <!-- 新規登録ボタン 下に配置 -->
 
@@ -269,7 +263,7 @@
 
 
 		<div class="user-create-button-return">
-			<img alt="戻る" src="img/back_buttom.png" class="back-popup-button">
+			<img alt="戻る" src="/kronon/img/back_buttom.png" class="back-popup-button">
 		</div>
 
 

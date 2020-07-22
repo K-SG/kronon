@@ -1,7 +1,8 @@
 "use strict"
 
-
-
+$(document).ready( function(){
+alert('jQuery');
+});
 
 /*
 
@@ -114,22 +115,6 @@ console.log("sssssss");
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 	 //初期は非表示
 	document.getElementById("emp-error").style.display = "none";
 	const empError = document.getElementById("emp-error");
@@ -153,9 +138,12 @@ console.log("sssssss");
 
 
 
+
+
     function checkUserCreate() {
-    	let popFlag=0;//0confirm 1emp-error 2mail-error 3pass-checkerror 4pass-notsame-error
+    	//let popFlag=0;//0confirm 1emp-error 2mail-error 3pass-checkerror 4pass-notsame-error
     	let checkCnt=0;
+    	 let popFlag = document.getElementById("flag").value;
     	//空欄かどうかのチェック--------------------------------------------------------
     	const inputUserName = document.getElementById("userName");
     	const UserName = inputUserName.value;
@@ -166,7 +154,7 @@ console.log("sssssss");
     	const inputUserPass2 = document.getElementById("password2");
     	const UserPass2 = inputUserPass2.value;
 
-    	popFlag = document.getElementById("flag").value;
+
 
     	if(UserName=="" || UserMail=="" || UserPass1=="" || UserPass2==""){
 
@@ -233,9 +221,9 @@ console.log("sssssss");
         	 }else {
         		return true;
     	 }
-    	 popFlag=0;
+    	 //popFlag=0;
     	 if(popFlag==0){
-    	      $('.input_error1_msg').html('登録が完了したよ');
+    	     // $('.input_error1_msg').html('登録が完了したよ');
     	      inputCmp.style.display = "block";
     	      $('.error-popup').fadeIn();
     	      $('.user-create-button').submit();

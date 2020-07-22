@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+ <link rel="stylesheet" href="css/error.css">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <%@ include file="../layout/common/link.jsp" %>
 <title>Insert title here</title>
@@ -13,7 +14,7 @@
 <article>
 
 	<div class="error-msg"><p>お探しのページは見つからなかったよ</p></div>
-	<div class="kronon-komatta"><img alt="プリン" src="./img/kronon/kronon_komatta.png"></div>
+	<div class="kronon-komatta"><img alt="プリン" src="../img/kronon/kronon_komatta.png"></div>
 
 </article>
 <%@ include file="../layout/common/footer.jsp" %>

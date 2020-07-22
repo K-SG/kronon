@@ -39,6 +39,11 @@ public class UserCreateServlet extends HttpServlet {
 		System.out.println(password);
 
 
+
+		request.setAttribute("userName", userName);//追加
+		request.setAttribute("mail", mail);//追加
+		request.setAttribute("password", password);//追加
+
 		ConnectionManager connectionManager = new ConnectionManager();
 
 		UserDAO userDAO = null;
@@ -47,15 +52,18 @@ public class UserCreateServlet extends HttpServlet {
 			// UserDAOの作成
 			userDAO = new UserDAO(connection);
 
+
+
+
 			//メールアドレスかぶりの確認
 			if(userDAO.isBooking(mail)){
 				//かぶっていたらメールアドレス重複のポップアップが出るようにフラグ立て。
 				request.setAttribute("popFlag",1);
-				//request.setAttribute("userName", userName);//追加
-				//request.setAttribute("mail", mail);//追加
+
 				//アカウント新規登録画面へ戻る。
 				RequestDispatcher dispatcher = request.getRequestDispatcher("../WEB-INF/views/user/user_new.jsp");
 				dispatcher.forward(request, response);
+				return;
 			}
 
 			//新規登録をするために
