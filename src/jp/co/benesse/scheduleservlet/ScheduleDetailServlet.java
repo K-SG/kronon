@@ -40,7 +40,7 @@ public class ScheduleDetailServlet extends HttpServlet {
 			ScheduleDAO scheduleDAO = new ScheduleDAO(connection);
 
 			if (scheduleDAO.isDeleted(id)){
-				RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/views/error/error.jsp");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("../WEB-INF/views/error/error.jsp");
 				dispatcher.forward(request, response);
 				return;
 			}
