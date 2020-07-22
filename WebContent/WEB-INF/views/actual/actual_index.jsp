@@ -31,13 +31,14 @@
 			<input name="title" type="text" maxlength="100" />
 		</div>
 		<div class=search-button>
-			検索<img alt="検索" src="../img/search_icon.png">
+			<div class = "word">検索</div>
+			<div><img id = "search-img" alt="検索" src="../img/search_icon.png"></div>
 		</div>
 	</div>
 
-<div id = "actual-content">
+<div id = "actual-content" align=center>
 	<div class="title-content">
-		<img src="../img/left_button.png" alt="left"  id="left" class="left triangle-button">
+		<img src="../img/left_button.png" alt="left"  id="left" >
 	</div>
 	<div>
 		<div class="actual-content">
@@ -45,7 +46,7 @@
     	</div>
 	</div>
 	<div class="title-content">
-		<img src="../img/right_button.png" alt="right" id="right" class="right triangle-button">
+		<img src="../img/right_button.png" alt="right" id="right" >
 	</div>
 	<table border="1" >
 		<thead>
@@ -105,6 +106,6 @@
 	<%@ include file="/WEB-INF/views/layout/common/footer.jsp"%>
 	<script src="../js/common/common.js"></script>
 	<script src="../js/actual_index.js"></script>
-	<!-- <script src="../js/calendar_event.js"></script> -->
+	<script src="../js/popup.js"></script>
 </body>
 </html>

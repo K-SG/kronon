@@ -271,18 +271,18 @@ article {
 .search-button img {
 	width:3vh;
 	margin-left:0.5vw;
-}
 
+
+}
 
 #actual-title{
 	margin-top:10vh;
 	margin-bottom:3vh;
-	margin-left:20vw;
 }
 
 /*見出しと一覧*/
 #actual-content{
-
+	color:#454545;
 }
 
 /*実績確認ルーズリーフ全体の枠*/

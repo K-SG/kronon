@@ -9,17 +9,18 @@ $(function() {
     console.log(month);
 
 	// 先月の実績一覧へ
-	$('.left').click(function() {
+	$('#left').click(function() {
 //		alert("先月へ");
 //		window.location.href = `../user/actualindex?flag=0&date=${date_servlet}`;
 		window.location.href = `../user/actualindex?flag=0&date=${date_servlet}`;
 	})
 
 	//次月の実績一覧へ
-	$('.right').click(function() {
+	$('#right').click(function() {
 //		alert("次月へ");
 //		window.location.href = `../user/actualindex?flag=1&date=${date_servlet}`;
 		window.location.href = `../user/actualindex?flag=1&date=${date_servlet}`;
 	})
 
 });
+
