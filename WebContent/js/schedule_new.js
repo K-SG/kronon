@@ -33,6 +33,9 @@ $(function () {
     let place = document.getElementById('new_place').value;
     let title=document.getElementById('title').value;
     let content=document.getElementById('content').value;
+
+    let d = new Date(date);
+    let weekday = '日月火水木金土'[d.getDay()];
     //リリース年と月の取得
     let releaseYear = 2020;
     let releaseMonth = 8;
@@ -56,7 +59,7 @@ $(function () {
 
 //    console.log(date,startHour,startMin,endHour,endMin,place,title,content);
 
-    if(date==""||startHour=='' || startMin=='' || endHour=='' || endMin=='' || place=='' || title=='' || content==''){
+    if(date==""||startHour=='' || startMin=='' || endHour=='' || endMin=='' || place=='' || title==''){
     	popFlag='1';
 
     }else if((startHour*60+startMin)-(endHour*60+endMin)>=0){
@@ -79,7 +82,7 @@ $(function () {
     	popFlag='0';
     }
     if(popFlag==='0'){
-        $('#time-msg').html(year + '/' + month + '/' + day +'　'+ startHour +':'+ startMin +'～'+ endHour +':'+ endMin);
+        $('#time-msg').html(year + '/' + month + '/' + day +'(' + weekday + ')' + startHour +':'+ startMin +'～'+ endHour +':'+ endMin);
     	$('.confirm-popup').fadeIn();
         popFlag='0';
         return;
@@ -97,6 +100,12 @@ $(function () {
         return;
     }
   });
+
+  /*確認ポップアップのOKを押した際の動き*/
+  $('#confirm-ok').click(function () {
+      $('.schedule-new-form').submit();
+      return;
+});
 
     /*キャンセルボタンを押した際のポップアップ表示*/
     $('#cancel-button').click(function () {

@@ -107,7 +107,7 @@
 			</div>
 
 			<div class="schedule-regist-area-4">
-				<div class="schedule-regist-font-lev1">内容<span>*</span></div>
+				<div class="schedule-regist-font-lev1">内容</div>
 				<div class="schedule-regist-content">
 					<textarea name="content" id="content" rows="13" cols="40" maxlength="1440" placeholder="予定の内容を1440字以内で入力してください"></textarea>
 				</div>
@@ -155,7 +155,7 @@
 				<p>内容は保存されないよ。</p>
 				<h2 class="message-title">本当に戻る？</h2>
 			  </div>
-			  <a href="#"><div class="ok-button">OK</div></a>
+			  <a href="user/scheduledetail?id=${userId}"><div class="ok-button">OK</div></a>
 			  <div class="ng-button close-popup">キャンセル</div>
 			  <img src="../img/star_angry.png" class="pop-img-top"> </div>
 		  </div>
@@ -178,20 +178,19 @@
 				  </tr>
 				  <tr>
 					<th>予定日時：</th>
-					<td id="time-msg">2020/7/11(月) 10:00-11:00</td>
+					<td id="time-msg"></td>
 				  </tr>
 				  <tr>
 					<th>タイトル：</th>
-					<td id="title-msg">外部設計レビュー</td>
+					<td id="title-msg"></td>
 				  </tr>
 				  <tr>
 					<th class="last-table">内容：</th>
-					<td class="last-table" id="content-msg">森岡さん作成外部設計書レビュー<br>
-					  〆切7/13</td>
+					<td class="last-table" id="content-msg"></td>
 				  </tr>
 				</table>
 			  </div>
-			  <a href="#"><div class="ok-button">OK</div></a>
+			  <input type="button" class="ok-button"  id="confirm-ok" value="OK">
 			  <div class="ng-button close-popup">キャンセル</div>
 			  <img src="../img/kronon_question.png" class="pop-img"> </div>
 		  </div>
