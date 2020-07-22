@@ -5,6 +5,11 @@ const start_month = new Date(2020,6);//2020/07
 const end_month = new Date(2021,5);//2021/06
 ////////////////////////////////////////////
 
+//祝日
+const holidays = [[2020,[1,[1,13]],[2,[11,23]],[3,[20]],[4,[29]],[5,[3,4,5,6]],[6,[]],[7,[23,24]],[8,[10]],[9,[21,22]],[10,[]],[11,[3,23]],[12,[]]]
+,[2021,[1,[1,11]],[2,[11,23]],[3,[20]],[4,[29]],[5,[3,4,5]],[6,[]],[7,[19]],[8,[11]],[9.[20]],[10,[11]],[11,[3,23]],[12,[]]]];
+console.log("祝日"+holidays[1][3][1]);
+
 
 const json = document.getElementById("list");
 console.log(json);
@@ -199,6 +204,14 @@ console.log("end");
 
         if (date.isDisabled) {
           td.classList.add("disabled");
+        }else{
+
+	        //祝日に色付け
+	        for(let i=0;i<holidays[year-2020][month+1][1].length;i++){
+	        	if(holidays[year-2020][month+1][1][i] === date.date){
+	        		td.classList.add("holiday");
+	        	}
+	        }
         }
 
         tr.appendChild(td);
@@ -206,6 +219,8 @@ console.log("end");
       });
       document.querySelector("tbody").appendChild(tr);
     });
+
+
   }
 
   function createCalender() {

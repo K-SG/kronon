@@ -55,7 +55,19 @@
       </tr>
     </tfoot>-->
         </table>
-      </div>
+
+		<div class="kronon-speak-container">
+			<div class="kronon-speak">
+				<div class="arrow-container">
+					<div class="arrow_box">
+						おはよう★<br>今日はどんな予定があるの？
+					</div>
+				</div>
+				<img src="/kronon/img/kronon/kronon_prin.png" class="kronon-img">
+			</div>
+		</div>
+
+	</div>
     </div>
 <input type="hidden" id="date_servlet"  value='${date}' style="display:none">
 

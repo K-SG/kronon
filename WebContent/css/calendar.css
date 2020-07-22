@@ -1,4 +1,5 @@
 
+
 .calendar-title{
 	width:56vw;
 	margin:auto;
@@ -10,16 +11,19 @@
 	display:inline-block;
 }
 
+
 .clear{
 	clear:left;
+	height:4vw;
 }
 
 .calendar-container{
 	position: relative;
 	height:max(40vw,73vh);
 	margin:0;
+	width:80vw;
 	margin-bottom: 8vh;
-	border:solid #000 0.1vw;
+/* 	border:solid #000 0.1vw; */
 }
 .calendar-container-inner{
 	  position: absolute;  /*要素を浮かす*/
@@ -30,14 +34,14 @@
   left: 0;
   margin: auto; /*上下左右中央に*/
   width: 60vw; /*widthの指定は必須*/
-  height:36vw; /*heightの指定は必須*/
+  height:38vw; /*heightの指定は必須*/
 	border-radius: 1vw;
 /*	border:solid #999 1vw;*/
 	background-color:bisque;
 
 /*	background-color: #467021;
 	border:solid #5E4222 1vw;*/
-	padding:1vw 3vw;
+	padding:1.5vw 3vw;
 }
 
 .triangle-button{
@@ -49,8 +53,10 @@
 }
 
 #month{
+	position:absolute;
+	left:18vw;
 	padding-left:10vw;
-	width:41vw;
+	width:10vw;
 	font-size:3vw;
 	text-align: center;
 	margin:auto;
@@ -58,6 +64,8 @@
 }
 
 #year{
+		position:absolute;
+	right:8vw;
 		width:8vw;
 	font-size:1.4vw;
 	text-align: right;
@@ -65,6 +73,17 @@
 	margin-right:2vw;
 	color:#666;
 	margin-top:1.5vw;
+}
+#left{
+			position:absolute;
+	left:5vw;
+	cursor:pointer;
+}
+
+#right{
+			position:absolute;
+	right:5vw;
+	cursor:pointer;
 }
 
 table{
@@ -76,7 +95,7 @@ table{
 
 /*
 thead,tfoot{
-}
+}vw;
 */
 
 
@@ -108,15 +127,19 @@ td{
 	vertical-align: top;
 	cursor: pointer;
 }
-
+/*日曜日  */
 tbody td:first-child {
     /*color: red;*/
 	background-color:#F8E0E1;
   }
-
+/* 土曜日 */
   tbody td:last-child {
     /*color: blue;*/
 	  background-color:#DFE4F4;
+  }
+
+  td.holiday{
+  background-color:#F8E0E1 !important;
   }
 
   tfoot {
@@ -146,7 +169,7 @@ td .date{
 }
 
 td .yotei{
-	width:7vw;
+	width:6vw;
 	height:1.6vw;
 	padding:0 0.5vw;
 	font-size:1vw;
@@ -163,4 +186,73 @@ td .yotei{
 
 .cell-active{
 	background-color:antiquewhite !important;
+}
+
+
+
+/* .kronon-speak-container{
+	padding:0.5vw;;
+	margin:0;
+	float:right;
+	width:20vw;
+	height:70vh;
+	position:relative;
+} */
+
+.kronon-speak{
+	width:18vw;
+	position:absolute;
+	bottom:6vh;
+	right:2vw;
+	position:fixed;
+}
+
+.kronon-img{
+	float:bottom;
+	width:100%;
+/*	position:absolute;
+	bottom:0vh;
+	right:2vw;*/
+}
+
+
+.arrow-container{
+			float:bottom;
+	padding:0 1vw;
+	width:100%;
+	position:relative;
+}
+
+/*吹き出し*/
+.arrow_box{
+	margin-bottom:2vw;
+    position:relative;
+    width:15vw;
+    height:7vw;;
+    background:#DE9B50;
+    padding:1.5vw 1vw ;
+    text-align:center;
+    color:#FFFFFF;
+    font-size:1.5vw;
+    font-weight:bold;
+    border-radius:1vw;
+    font-size:1.8vw;
+}
+.arrow_box:after{
+    border: solid transparent;
+    content:'';
+    height:0;
+    width:0;
+    pointer-events:none;
+    position:absolute;
+    border-color: rgba(0, 153, 255, 0);
+    border-top-width:1.8vw;
+    border-bottom-width:1.8vw;
+    border-left-width:1vw;
+    border-right-width:1vw;
+	margin-top:-0.2vw;
+    margin-left: 0vw;
+    border-top-color:#DE9B50;
+    top:100%;
+    left:50%;
 }
