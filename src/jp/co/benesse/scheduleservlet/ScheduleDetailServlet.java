@@ -8,6 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import jp.co.benesse.dataaccess.cm.ConnectionManager;
+import jp.co.benesse.dataaccess.value.ScheduleBean;
+
 /**
  * Servlet implementation class ScheduleDetailServlet
  */
@@ -15,17 +18,19 @@ import javax.servlet.http.HttpServletResponse;
 public class ScheduleDetailServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+	/*	int id = request.getParameter("id");*/
+
+		ConnectionManager connectionManager = new ConnectionManager();
+		ScheduleBean scheduleBean = new ScheduleBean();
+
+
 
 	}
 
