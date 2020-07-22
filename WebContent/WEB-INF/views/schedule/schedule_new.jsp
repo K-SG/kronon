@@ -164,7 +164,6 @@
 
 
 
-
 		<!--内容確認ポップアップ----------------------------------------------------------------->
 		<div class="popup-wrapper confirm-popup">
 		  <div class="pop-container pop-container-large">
