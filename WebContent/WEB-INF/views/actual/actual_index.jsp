@@ -33,8 +33,9 @@
 			</tr>
 		</thead>
 		<tbody>
-		<c:forEach var="scheduleBeanList" items="${scheduleBeanList}">
 
+		<c:forEach var="scheduleBeanList" items="${scheduleBeanList}">
+		<c:out value="${errorMsg}" />
 				<tr>
 					<td><c:out value="${scheduleBeanList.scheduleDate}" /></td>
 					<td><c:out value="${scheduleBeanList.title}" /></td>

@@ -37,12 +37,13 @@ public class ActualIndexServlet extends HttpServlet {
 		int userId = 1;
 //		String userName = (String) session.getAttribute("userId");
 		String dateStr = request.getParameter("date");
+		String errorMsg = null;
 
 		LocalDate date;
 		List<ScheduleBean> scheduleBeanList = new ArrayList<>();
 
 		// 遷移元の判定フラグ
-		String flag = "";
+		String flag = request.getParameter("flag");
 
 		ConnectionManager connectionManager = new ConnectionManager();
 		ScheduleDAO scheduleDAO;
@@ -66,8 +67,12 @@ public class ActualIndexServlet extends HttpServlet {
 			scheduleDAO = new ScheduleDAO(connection);
 			scheduleBeanList = scheduleDAO.getOneMonthSchedule(date, userId);
 
+			if(scheduleBeanList.size() == 0){
+				errorMsg = "検索結果は0件でした";
+				request.setAttribute("errorMsg", errorMsg);
+			}
 			// リクエストスコープにセット
-			request.setAttribute("date", date);
+//			request.setAttribute("date", date);
 			request.setAttribute("month", date.getMonthValue());
 			request.setAttribute("year", date.getYear());
 			request.setAttribute("scheduleBeanList", scheduleBeanList);
