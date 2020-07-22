@@ -507,8 +507,7 @@ public class ScheduleDAO {
 
 			// SQLの定義
 			String sql = "SELECT * FROM SCHEDULE INNER JOIN PUBLIC.USER ON PUBLIC.USER.USER_ID = SCHEDULE.USER_ID "
-					+ "WHERE DELETE_FLAG = '0' AND SCHEDULE.USER_ID = ? AND SCHEDULE_DATE = ?"
-					+ "ORDER BY START_TIME";
+					+ "WHERE DELETE_FLAG = '0' AND SCHEDULE.USER_ID = ? AND SCHEDULE_DATE = ?" + "ORDER BY START_TIME";
 			// SQLの作成(準備)
 			preparedStatement = this.connection.prepareStatement(sql);
 			preparedStatement.setInt(1, userId);
@@ -563,12 +562,12 @@ public class ScheduleDAO {
 		try {
 
 			// SQLの定義
-			String sql = "SELECT COUNT(*) FROM SCHEDULE " + "WHERE SCHEDULE_DATE = ? AND USER_ID = ? AND DELETE_FLAG = '0'"
-					//判定したい予定の終了時間＜=既存予定の開始時間
+			String sql = "SELECT COUNT(*) FROM SCHEDULE "
+					+ "WHERE SCHEDULE_DATE = ? AND USER_ID = ? AND DELETE_FLAG = '0'"
+					// 判定したい予定の終了時間＜=既存予定の開始時間
 					+ "AND NOT ((? <= START_TIME) "
-					//既存予定の終了時間＜=判定したい予定の開始時間
+					// 既存予定の終了時間＜=判定したい予定の開始時間
 					+ "OR (END_TIME <= ?))";
-
 
 			// SQLの作成(準備)
 			preparedStatement = this.connection.prepareStatement(sql);
@@ -700,6 +699,8 @@ public class ScheduleDAO {
 
 				scheduleBean.setScheduleDate(schDate);
 				scheduleBean.setTitle(title);
+				// JSON用に日付を整形して格納
+				scheduleBean.setJsonDate(scheduleBean.getScheduleDate().toString());
 
 				scheduleBeanList.add(scheduleBean);
 			}
