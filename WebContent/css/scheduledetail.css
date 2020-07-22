@@ -1,0 +1,22 @@
+.kronon-banzai img{
+	float:right;
+	width: 17vw;
+	height:auto;
+	margin-top: 30vh;
+	margin-left:3vw;
+}
+
+
+.flex_test-box {
+	margin-left: 24vw;
+    display: flex;              /* フレックスボックスにする */
+    justify-content:center;
+    align-items: center;
+}
+
+.flex_test-item {
+    padding: 1vw;
+    margin:  1vw;              /* 外側の余白 */
+
+
+}
