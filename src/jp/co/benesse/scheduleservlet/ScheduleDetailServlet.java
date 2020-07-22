@@ -29,7 +29,6 @@ public class ScheduleDetailServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-
 		int id = Integer.parseInt(request.getParameter("id"));
 
 		ConnectionManager connectionManager = new ConnectionManager();
