@@ -34,50 +34,51 @@ public class CalendarServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		String flag=request.getParameter("flag");
-		String userIdStr = "1";
+		String flag = request.getParameter("flag");
 		String dateStr = request.getParameter("date");
-		LocalDate date;
+		String userIdStr = "1";
+
+		// 本来はこっち
+		// String userIdStr = (String)session.getAttribute("userId");
 		int userId = Integer.parseInt(userIdStr);
+
+		LocalDate date;
 		List<ScheduleBean> scheduleBeanList = new ArrayList<>();
+
 		ObjectMapper mapper = new ObjectMapper();
 		ConnectionManager connectionManager = new ConnectionManager();
 
-		if(flag == null || dateStr == null){// ログイン画面から
+		if (flag == null || dateStr == null) {// ログイン画面から
 			date = LocalDate.now();
-		}
-		else if (flag.equals("0")) {// 前月
-			date=LocalDate.parse(dateStr, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+		} else if (flag.equals("0")) {// 前月
+			date = LocalDate.parse(dateStr, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 			LocalDate firstDayOfMonth = date.with(TemporalAdjusters.firstDayOfMonth()); // 初日
-			date = firstDayOfMonth.minusDays(1);//先月の末日
+			date = firstDayOfMonth.minusDays(1);// 先月の末日
 		} else if (flag.equals("1")) {// 翌月
-			date=LocalDate.parse(dateStr, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+			date = LocalDate.parse(dateStr, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 			LocalDate lastDayOfMonth = date.with(TemporalAdjusters.lastDayOfMonth()); // 末日
-			date = lastDayOfMonth.plusDays(1);//次月の初日
+			date = lastDayOfMonth.plusDays(1);// 次月の初日
 		} else {// ログイン画面から
 			date = LocalDate.now();
 		}
 
-		/*String date_str = date.toString();*/
-		request.setAttribute("date", date);
-		request.setAttribute("month", date.getMonthValue());
-		request.setAttribute("year", date.getYear());
-
-		System.out.println(date.getMonthValue());
 		try {
 			Connection connection = connectionManager.getConnection();
 			ScheduleDAO scheduleDAO = new ScheduleDAO(connection);
 			scheduleBeanList = scheduleDAO.tooLongSQLSchedule(date, userId);
 
-			for(ScheduleBean sBean :scheduleBeanList){
+			for (ScheduleBean sBean : scheduleBeanList) {
 				sBean.setJsonDate(sBean.getScheduleDate().toString());
 			}
 
+			//Beanのリスト→JSON形式の整形
 			String json = mapper.writeValueAsString(scheduleBeanList);
-			String json_replace = json.replaceAll("\"","krnooon");
+			String json_replace = json.replaceAll("\"", "krnooon");
 			request.setAttribute("json", json_replace);
-
-
+			request.setAttribute("date", date);
+			request.setAttribute("month", date.getMonthValue());
+			request.setAttribute("year", date.getYear());
+			System.out.println(date.getMonthValue());
 			System.out.println(json);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("../WEB-INF/views/calendar/schedule_index.jsp");
 			dispatcher.forward(request, response);
