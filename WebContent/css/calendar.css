@@ -44,6 +44,10 @@
 	width:2.5vw;
 }
 
+.hidden-button{
+	display:none !important;
+}
+
 #month{
 	padding-left:10vw;
 	width:41vw;

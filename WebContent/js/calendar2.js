@@ -1,5 +1,10 @@
 "use strict";
 
+///////////////////////////////////////////
+const start_month = new Date(2020,6);//2020/07
+const end_month = new Date(2021,5);//2021/06
+////////////////////////////////////////////
+
 
 const json = document.getElementById("list");
 console.log(json);
@@ -17,7 +22,8 @@ console.log("end");
 {
 /*  const today = new Date(); //今日の日付
  *
-*/  let year = document.getElementById("year").textContent; //2020
+*/
+  let year = document.getElementById("year").textContent; //2020
   let month = document.getElementById("month").textContent -1; ; //7-1
 /*
   const day_challenge = new Date();
@@ -25,6 +31,24 @@ console.log("end");
 
   console.log("year:"+ year);
   console.log("month:"+ month);
+
+
+  console.log(start_month.getMonth());
+  console.log(start_month.getYear());
+  console.log(start_month.getMonth() == month);
+  console.log(start_month.getYear()+1900 == year);
+//指定された3年間外にアクセスできないように、端では左右ボタンを表示しない
+  if((start_month.getMonth() == month)&&(start_month.getYear()+1900 == year)){
+	  const left_button = document.getElementById("left");
+	  left_button.style.display = 'none';
+  }
+  if((end_month.getMonth() == month)&&(end_month.getYear()+1900 == year)){
+	  const right_button = document.getElementById("right");
+	  right_button.style.display = 'none';
+  }
+
+
+
 
   //次の月の分の日付
   function getCalenderTail() {
@@ -154,7 +178,7 @@ console.log("end");
             var newElement2 = document.createElement("p"); // p要素作成
             var newContent2 = document.createTextNode(`${obj.title}`); // テキストノードを作成
             newElement2.appendChild(newContent2); // p要素にテキストノードを追加
-            newElement2.setAttribute("class", "yotei"); // p要素にidを設定
+            newElement2.setAttribute("class", "yotei"); // p要素にclassを設定
 
             // ----------------------------
             // 親要素の最後の子要素を追加します

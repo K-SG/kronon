@@ -20,14 +20,14 @@
  <div class="calendar-container">
       <div class="calendar-container-inner">
         <div class="calendar-title">
-          <div class="title-content"><img src="../img/left_button.png" alt="left" class="left triangle-button"></div>
+          <div class="title-content"><img src="../img/left_button.png" alt="left"  id="left" class="left triangle-button"></div>
           <div class="title-content">
             <h2 id="month"><c:out value="${month}"/></h2>
           </div>
           <div class="title-content">
             <h3 id="year"><c:out value="${year}"/></h3>
           </div>
-          <div class="title-content"><img src="../img/right_button.png" alt="right" class="right triangle-button"></div>
+          <div class="title-content"><img src="../img/right_button.png" alt="right" id="right" class="right triangle-button"></div>
           <div class="clear"></div>
         </div>
         <table class="calendar">
