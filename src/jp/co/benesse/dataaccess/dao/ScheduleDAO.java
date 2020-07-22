@@ -23,7 +23,6 @@ public class ScheduleDAO {
 
 	/**
 	 * コンストラクタ
-	 *
 	 * @param connection
 	 */
 	public ScheduleDAO(Connection connection) {
@@ -74,7 +73,7 @@ public class ScheduleDAO {
 	 * ※例外取得時にはRuntimeExceptionにラップし上位に送出する。<br>
 	 * [備 考] なし
 	 *
-	 * @param 予定インスタンス
+	 * @param 予定
 	 * @return 登録件数
 	 */
 	public int registerSchedule(ScheduleBean scheduleBean) {
@@ -124,7 +123,7 @@ public class ScheduleDAO {
 	 * @return 更新件数
 	 */
 	public int updateSchedule(int scheduleId, Date scheduleDate, Time startTime, Time endTime, String title,
-			String content, String place) {
+			String content,String place) {
 		// ステートメントの定義
 		PreparedStatement preparedStatement = null;
 		try {
@@ -167,15 +166,16 @@ public class ScheduleDAO {
 	 * @param 予定ID、実績時間、振り返りコメント
 	 * @return 更新件数
 	 */
-	public int updateSchedule(int scheduleId, int actualTime, String comment) {
+	public int updateSchedule(int scheduleId, int actualTime ,String comment){
 		PreparedStatement preparedStatement = null;
 		try {
 			// SQLの定義
-			String sql = "UPDATE SCHEDULE SET (ACTUAL_TIME,COMMENT) " + "= (?,?) WHERE SCHEDULE_ID = ?";
+			String sql = "UPDATE SCHEDULE SET (ACTUAL_TIME,COMMENT) "
+					+ "= (?,?) WHERE SCHEDULE_ID = ?";
 			// SQLの作成(準備)
 			preparedStatement = this.connection.prepareStatement(sql);
 			// SQLバインド変数への値設定
-			preparedStatement.setInt(1, actualTime);
+			preparedStatement.setInt(1,actualTime);
 			preparedStatement.setString(2, comment);
 			preparedStatement.setInt(3, scheduleId);
 
@@ -237,6 +237,7 @@ public class ScheduleDAO {
 				scheduleBean.setActualTime(resultSet.getInt("ACTUAL_TIME"));
 				scheduleBean.setComment(resultSet.getString("COMMENT"));
 				scheduleBean.setEstimateTime(Calc.calcEstimateTime(scheduleBean));
+				scheduleBean.setActualTimeStr(Calc.calcActualTime(scheduleBean));
 				scheduleBeanList.add(scheduleBean);
 			}
 
@@ -295,6 +296,7 @@ public class ScheduleDAO {
 				scheduleBean.setActualTime(resultSet.getInt("ACTUAL_TIME"));
 				scheduleBean.setComment(resultSet.getString("COMMENT"));
 				scheduleBean.setEstimateTime(Calc.calcEstimateTime(scheduleBean));
+				scheduleBean.setActualTimeStr(Calc.calcActualTime(scheduleBean));
 				scheduleBeanList.add(scheduleBean);
 			}
 
@@ -353,6 +355,7 @@ public class ScheduleDAO {
 				scheduleBean.setActualTime(resultSet.getInt("ACTUAL_TIME"));
 				scheduleBean.setComment(resultSet.getString("COMMENT"));
 				scheduleBean.setEstimateTime(Calc.calcEstimateTime(scheduleBean));
+				scheduleBean.setActualTimeStr(Calc.calcActualTime(scheduleBean));
 				scheduleBeanList.add(scheduleBean);
 
 			}
@@ -418,6 +421,7 @@ public class ScheduleDAO {
 				scheduleBean.setActualTime(resultSet.getInt("ACTUAL_TIME"));
 				scheduleBean.setComment(resultSet.getString("COMMENT"));
 				scheduleBean.setEstimateTime(Calc.calcEstimateTime(scheduleBean));
+				scheduleBean.setActualTimeStr(Calc.calcActualTime(scheduleBean));
 				scheduleBeanList.add(scheduleBean);
 			}
 
@@ -474,6 +478,7 @@ public class ScheduleDAO {
 				scheduleBean.setContent(resultSet.getString("CONTENT"));
 				scheduleBean.setActualTime(resultSet.getInt("ACTUAL_TIME"));
 				scheduleBean.setComment(resultSet.getString("COMMENT"));
+				scheduleBean.setActualTimeStr(Calc.calcActualTime(scheduleBean));
 			}
 
 			return scheduleBean;
@@ -531,6 +536,7 @@ public class ScheduleDAO {
 				scheduleBean.setContent(resultSet.getString("CONTENT"));
 				scheduleBean.setActualTime(resultSet.getInt("ACTUAL_TIME"));
 				scheduleBean.setComment(resultSet.getString("COMMENT"));
+				scheduleBean.setActualTimeStr(Calc.calcActualTime(scheduleBean));
 				scheduleBeanList.add(scheduleBean);
 			}
 
@@ -656,7 +662,7 @@ public class ScheduleDAO {
 	 * ※例外取得時にはRuntimeExceptionにラップし上位に送出する。<br>
 	 * [備 考] なし
 	 *
-	 * @param 当月の日付、利用者ID
+	 * @param  当月の日付、利用者ID
 	 * @return 予定リスト
 	 */
 	public List<ScheduleBean> tooLongSQLSchedule(LocalDate scheduleDate, int userId) {
@@ -672,6 +678,7 @@ public class ScheduleDAO {
 
 		PreparedStatement preparedStatement = null;
 		try {
+
 
 			// SQLの定義
 			String sql = "SELECT SCHEDULE_DATE,START_TIME,MIN(TITLE) FROM SCHEDULE "
@@ -694,7 +701,7 @@ public class ScheduleDAO {
 				ScheduleBean scheduleBean = new ScheduleBean();
 
 				Date schDate = resultSet.getDate("schedule_date");
-				// MIN(TITLE)の列、つまりtitleの値を取得
+				//MIN(TITLE)の列、つまりtitleの値を取得
 				String title = resultSet.getString(3);
 
 				scheduleBean.setScheduleDate(schDate);
