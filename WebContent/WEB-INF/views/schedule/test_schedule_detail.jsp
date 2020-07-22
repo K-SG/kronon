@@ -8,8 +8,8 @@
 </head>
 <body>
 予定詳細に飛ぶページのテスト
-<form action="/user/scheduledetail" method="post">
-<input type=text id="id">
+<form action="user/scheduledetail" method="get">
+<input type="text" name="id">
 </form>
 </body>
 </html>
