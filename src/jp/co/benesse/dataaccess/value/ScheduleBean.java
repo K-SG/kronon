@@ -2,8 +2,6 @@ package jp.co.benesse.dataaccess.value;
 import java.sql.Date;
 import java.sql.Time;
 
-import jp.co.benesse.calc.Calc;
-
 public class ScheduleBean {
 	/**
 	 * 予定ID
@@ -162,11 +160,14 @@ public class ScheduleBean {
 	public int getActualTime() {
 		return actualTime;
 	}
-	public String getActualTimeStr() {
-		return Calc.calcActualTime(this);
-	}
 	public void setActualTime(int actualTime) {
 		this.actualTime = actualTime;
+	}
+	public String getActualTimeStr() {
+		return actualTimeStr;
+	}
+	public void setActualTimeStr(String actualTimeStr) {
+		this.actualTimeStr = actualTimeStr;
 	}
 	public String getComment() {
 		return comment;
