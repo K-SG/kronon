@@ -67,9 +67,10 @@ public class CalendarServlet extends HttpServlet {
 			ScheduleDAO scheduleDAO = new ScheduleDAO(connection);
 			scheduleBeanList = scheduleDAO.tooLongSQLSchedule(date, userId);
 
-			for (ScheduleBean sBean : scheduleBeanList) {
-				sBean.setJsonDate(sBean.getScheduleDate().toString());
-			}
+//			//JSON用に日付を整形して格納
+//			for (ScheduleBean sBean : scheduleBeanList) {
+//				sBean.setJsonDate(sBean.getScheduleDate().toString());
+//			}
 
 			//Beanのリスト→JSON形式の整形
 			String json = mapper.writeValueAsString(scheduleBeanList);
