@@ -107,6 +107,45 @@ public class UserDAO {
 		}
 	}
 }
+	/**
+	 * [機 能] ユーザー名取得メソッド<br>
+	 * [説 明] ユーザーIDからユーザー名を取得する<br>
+	 * ※例外取得時にはRuntimeExceptionにラップし上位に送出する。<br>
+	 * [備 考] なし
+	 *
+	 * @param メールアドレス
+	 * @return メアド重複判定フラグ（重複があればtrueを返す）
+	 */
+	public String getUserName(int userId){
+		PreparedStatement preparedStatement = null;
+		String userName = null;
+		try {
+			String sql = "SELECT user_name FROM 'user' WHERE userId = ?";
+			preparedStatement = this.connection.prepareStatement(sql);
+			preparedStatement.setInt(1, userId);
+			// SQLの実行
+			ResultSet resultSet = preparedStatement.executeQuery();
+			// 問い合わせ結果の取得
+			if (resultSet.next()) {
+				userName = resultSet.getString("useName");
+			}
+			if(userName==null){
+				throw new RuntimeException("ユーザーが存在しませんでした");
+			}
+			return userName;
+		} catch (SQLException e) {
+			throw new RuntimeException("'user'テーブルのSELECTに失敗しました", e);
+		} finally {
+			try {
+				if (preparedStatement != null) {
+					preparedStatement.close();
+					System.out.println("ステートメントの解放に成功しました");
+				}
+			} catch (SQLException e) {
+				throw new RuntimeException("ステートメントの解放に失敗しました", e);
+			}
+		}
+	}
 
 	/**
 	 * [機 能] メアド重複判定メソッド<br>
