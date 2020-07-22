@@ -39,7 +39,7 @@ public class TestShowServlet extends HttpServlet {
 		request.setAttribute("title", "テスト");
 		request.setAttribute("content", "テストテスト");
 		HttpSession session = request.getSession(true);
-		session.setAttribute("userName", "樋口");
+		session.setAttribute("userName", "森岡");
 		RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/views/schedule/schedule_detail.jsp");
 		dispatcher.forward(request, response);
 		return;

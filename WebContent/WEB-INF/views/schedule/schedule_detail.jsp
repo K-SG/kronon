@@ -63,22 +63,8 @@
 <div class="kronon-banzai"><img alt="banzai" src="./img/kronon/kronon_banzai.png"></div>
 <div class="ok-button back-popup-button">戻る</div>
 
-<!--
-<div class="flex_test-box">
-    <div class="flex_test-item">
-        <div class="ok-button">修正</div>
-    </div>
-    <div class="flex_test-item">
-        <div class="ok-button">実績入力</div>
-    </div>
-    <div class="flex_test-item">
-       <div class="ok-button large-popup-button">削除</div>
-    </div>
-</div>
--->
-${sessionScope.userName }
-<c:set var="loginUser" value="${sessionScope.userName }}" />
-<c:if test="${owner==loginUser}" >
+
+<c:if test="${owner== userName}" >
 <div class="flex_test-box">
     <div class="flex_test-item">
         <div class="ok-button">修正</div>
