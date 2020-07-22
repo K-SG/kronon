@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.time.temporal.TemporalAdjusters;
 import java.util.ArrayList;
 import java.util.List;
@@ -48,18 +49,24 @@ public class CalendarServlet extends HttpServlet {
 		ObjectMapper mapper = new ObjectMapper();
 		ConnectionManager connectionManager = new ConnectionManager();
 
-		if (flag == null || dateStr == null) {// ログイン画面から
-			date = LocalDate.now();
-		} else if (flag.equals("0")) {// 前月
-			date = LocalDate.parse(dateStr, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-			LocalDate firstDayOfMonth = date.with(TemporalAdjusters.firstDayOfMonth()); // 初日
-			date = firstDayOfMonth.minusDays(1);// 先月の末日
-		} else if (flag.equals("1")) {// 翌月
-			date = LocalDate.parse(dateStr, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-			LocalDate lastDayOfMonth = date.with(TemporalAdjusters.lastDayOfMonth()); // 末日
-			date = lastDayOfMonth.plusDays(1);// 次月の初日
-		} else {// ログイン画面から
-			date = LocalDate.now();
+		try {
+			if (flag == null || dateStr == null) {// ログイン画面から
+				date = LocalDate.now();
+			} else if (flag.equals("0")) {// 前月
+				date = LocalDate.parse(dateStr, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+				LocalDate firstDayOfMonth = date.with(TemporalAdjusters.firstDayOfMonth()); // 初日
+				date = firstDayOfMonth.minusDays(1);// 先月の末日
+			} else if (flag.equals("1")) {// 翌月
+				date = LocalDate.parse(dateStr, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+				LocalDate lastDayOfMonth = date.with(TemporalAdjusters.lastDayOfMonth()); // 末日
+				date = lastDayOfMonth.plusDays(1);// 次月の初日
+			} else {// ログイン画面から
+				date = LocalDate.now();
+			}
+		} catch (DateTimeParseException e) {
+			RequestDispatcher dispatcher = request.getRequestDispatcher("../WEB-INF/views/error/error.jsp");
+			dispatcher.forward(request, response);
+			return;
 		}
 
 		try {
