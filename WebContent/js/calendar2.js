@@ -221,6 +221,8 @@ console.log("end");
     });
 
 
+
+
   }
 
   function createCalender() {
@@ -232,3 +234,19 @@ console.log("end");
   createCalender();
 
 }
+
+
+//くろのんメッセージ
+//時間帯に応じて変わるよ
+let nt = new Date();
+let hr = nt.getHours();
+const message = document.getElementById("kronon-message");
+if((hr>=4)&&(hr<11)){
+	  message.innerHTML="<p>おはよう★<br>今日はどんな予定があるの？</p>";
+}else if((hr>=11)&&(hr<18)){
+	  message.innerHTML="<p>こんにちは★<br>お仕事がんばってね。</p>";
+}else{
+	  message.innerHTML="<p>こんばんは。<br>まだまだ働こうね★</p>";
+}
+
+

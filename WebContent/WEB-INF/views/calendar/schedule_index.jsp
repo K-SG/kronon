@@ -59,8 +59,8 @@
 		<div class="kronon-speak-container">
 			<div class="kronon-speak">
 				<div class="arrow-container">
-					<div class="arrow_box">
-						おはよう★<br>今日はどんな予定があるの？
+					<div class="arrow_box" id="kronon-message">
+						<!-- おはよう★<br>今日はどんな予定があるの？ -->
 					</div>
 				</div>
 				<img src="/kronon/img/kronon/kronon_prin.png" class="kronon-img">
