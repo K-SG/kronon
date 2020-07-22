@@ -86,6 +86,7 @@ public class CalendarServlet extends HttpServlet {
 			request.setAttribute("year", date.getYear());
 //			System.out.println(date.getMonthValue());
 //			System.out.println(json);
+
 			RequestDispatcher dispatcher = request.getRequestDispatcher("../WEB-INF/views/calendar/schedule_index.jsp");
 			dispatcher.forward(request, response);
 		} catch (RuntimeException e) {
