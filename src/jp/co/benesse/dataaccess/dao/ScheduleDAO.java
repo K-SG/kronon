@@ -237,6 +237,7 @@ public class ScheduleDAO {
 				scheduleBean.setActualTime(resultSet.getInt("ACTUAL_TIME"));
 				scheduleBean.setComment(resultSet.getString("COMMENT"));
 				scheduleBean.setEstimateTime(Calc.calcEstimateTime(scheduleBean));
+				scheduleBean.setActualTimeStr(Calc.calcActualTime(scheduleBean));
 				scheduleBeanList.add(scheduleBean);
 			}
 
@@ -295,6 +296,7 @@ public class ScheduleDAO {
 				scheduleBean.setActualTime(resultSet.getInt("ACTUAL_TIME"));
 				scheduleBean.setComment(resultSet.getString("COMMENT"));
 				scheduleBean.setEstimateTime(Calc.calcEstimateTime(scheduleBean));
+				scheduleBean.setActualTimeStr(Calc.calcActualTime(scheduleBean));
 				scheduleBeanList.add(scheduleBean);
 			}
 
@@ -353,6 +355,7 @@ public class ScheduleDAO {
 				scheduleBean.setActualTime(resultSet.getInt("ACTUAL_TIME"));
 				scheduleBean.setComment(resultSet.getString("COMMENT"));
 				scheduleBean.setEstimateTime(Calc.calcEstimateTime(scheduleBean));
+				scheduleBean.setActualTimeStr(Calc.calcActualTime(scheduleBean));
 				scheduleBeanList.add(scheduleBean);
 
 			}
@@ -418,6 +421,7 @@ public class ScheduleDAO {
 				scheduleBean.setActualTime(resultSet.getInt("ACTUAL_TIME"));
 				scheduleBean.setComment(resultSet.getString("COMMENT"));
 				scheduleBean.setEstimateTime(Calc.calcEstimateTime(scheduleBean));
+				scheduleBean.setActualTimeStr(Calc.calcActualTime(scheduleBean));
 				scheduleBeanList.add(scheduleBean);
 			}
 
@@ -474,6 +478,7 @@ public class ScheduleDAO {
 				scheduleBean.setContent(resultSet.getString("CONTENT"));
 				scheduleBean.setActualTime(resultSet.getInt("ACTUAL_TIME"));
 				scheduleBean.setComment(resultSet.getString("COMMENT"));
+				scheduleBean.setActualTimeStr(Calc.calcActualTime(scheduleBean));
 			}
 
 			return scheduleBean;
@@ -531,6 +536,7 @@ public class ScheduleDAO {
 				scheduleBean.setContent(resultSet.getString("CONTENT"));
 				scheduleBean.setActualTime(resultSet.getInt("ACTUAL_TIME"));
 				scheduleBean.setComment(resultSet.getString("COMMENT"));
+				scheduleBean.setActualTimeStr(Calc.calcActualTime(scheduleBean));
 				scheduleBeanList.add(scheduleBean);
 			}
 
