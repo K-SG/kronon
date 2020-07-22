@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,13 +24,30 @@
       <table class=schedule_detail>
 
         <tr>
-          <td><c:out value="${userName}" /></td>
-          <td>実績：2時間30分</td>
+          <td><c:out value="${sessionScope.userName}" /></td>
+          <td><c:out value="${actualTime}" /></td>
         </tr>
 
         <tr>
-          <td>2020/07/11(月) 11:00～12:00</td>
-          <td class=show-place>作業（オフィス）</td>
+          <td><c:out value="${scheduleDate}" />
+          <c:out value="${startTime}" />～
+          <c:out value="${endTime}" /></td>
+
+
+          	<c:if test="${place=='オフィス'}" >
+			<td class=show-place1><c:out value="${place}" /></td>
+			</c:if>
+
+			<c:if test="${place=='在宅'}" >
+			<td class=show-place2><c:out value="${place}" /></td>
+			</c:if>
+
+			<c:if test="${place=='外出'}" >
+			<td class=show-place3><c:out value="${place}" /></td>
+			</c:if>
+
+
+          <td class=show-place><c:out value="${place}" /></td>
         </tr>
 
         <tr>
