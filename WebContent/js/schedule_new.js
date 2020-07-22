@@ -32,6 +32,12 @@ $(function () {
     let place = document.getElementById('new_place').value;
     let title=document.getElementById('title').value;
     let content=document.getElementById('content').value;
+    //リリース年と月の取得
+    let releaseYear = 2020;
+    let releaseMonth = 8;
+    //サービス終了年と月の取得
+    let releaseLastYear = 2023;
+    let releaseLastMonth = 8;
   //年、月、日をそれぞれ取得
     let year = date.substring(0, 4);
     let month = date.substring(5, 7);
@@ -43,6 +49,13 @@ $(function () {
     if (day.slice(0, 1) == 0) {
         day = day.substring(1, 2);
     }
+  //月初、月末の日付を取得
+    let firstDayOfMonth = new Date(year, month - 1, 1).getDate();
+    let lastDayOfMonth = new Date(year, month, 0).getDate();
+
+    console.log("月初は" + firstDayOfMonth + "日");
+    console.log("月末は" + lastDayOfMonth + "日");
+
 
     console.log(date,startHour,startMin,endHour,endMin,place,title,content);
 
@@ -50,6 +63,20 @@ $(function () {
     	popFlag='1';
     	console.log(popFlag);
     }else if((startHour*60+startMin)-(endHour*60+endMin)>=0){
+    	//終了時間よりも開始時間のほうが遅かったら
+    	console.log("開始時間のほうが遅い");
+    	popFlag='2';
+    }else if(!(firstDayOfMonth <= day && day <= lastDayOfMonth)){
+    	//存在しない日付を入力したら（2/31など）
+    	console.log("存在しない日付");
+    	popFlag='2';
+    }else if(year < releaseYear || (year == releaseYear && month < releaseMonth)){
+    	//リリース前の日付を選択したら
+    	console.log("リリース前の日付");
+    	popFlag='2';
+    }else if(year > releaseLastYear || (year == releaseLastYear && month > releaseLastMonth)){
+    	//サービス終了後の日付を選択したら
+    	console.log("サービス終了後の日付");
     	popFlag='2';
     }else{
     	popFlag='0';
