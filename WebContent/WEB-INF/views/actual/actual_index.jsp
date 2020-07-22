@@ -13,7 +13,20 @@
 
 <%@ include file="/WEB-INF/views/layout/common/header.jsp" %>
 <article>
-
+<!--エラーまたは完了ポップアップ------------------------------------------------------------------->
+<div class="popup-wrapper error-popup">
+  <div class="pop-container">
+    <div class="close-popup"> <i class="fa fa-2x fa-times"></i> </div>
+    <div class="pop-container-inner">
+      <div class="message-container">
+      <!--  メッセージを分岐未入力、日付おかしい-->
+        <p>メールアドレス・パスワードが違うよ。</p>
+      </div>
+      <div class="ok-button close-popup">OK</div>
+      <img src="img/kronon/kronon_question.png" class="pop-img"> </div>
+  </div>
+</div>
+<!--エラーまたは完了ポップアップここまで-------------------------------------------------------------->
 </article>
 <%@ include file="/WEB-INF/views/layout/common/footer.jsp" %>
 <script src="../js/common/common.js"></script>
