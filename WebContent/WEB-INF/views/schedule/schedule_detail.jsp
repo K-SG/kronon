@@ -24,7 +24,7 @@
       <table class=schedule_detail>
 
         <tr>
-          <td><c:out value="${sessionScope.userName}" /></td>
+          <td><c:out value="${owner}" /></td>
           <td><c:out value="${actualTime}" /></td>
         </tr>
 
@@ -46,19 +46,17 @@
 			<td class=show-place3><c:out value="${place}" /></td>
 			</c:if>
 
-
-          <td class=show-place><c:out value="${place}" /></td>
         </tr>
 
         <tr>
           <td colspan="2">
-            外部設計書レビュー
+            <c:out value="${title}" />
           </td>
         </tr>
 
         <tr>
           <td colspan="2">
-            森岡さん作成の外部設計書
+            <c:out value="${content}" />
           </td>
         </tr>
 
@@ -66,6 +64,16 @@
 
     </div>
   </div>
+
+<div class="ok-button">修正</div>
+<div class="ok-button">実績入力</div>
+<div class="ok-button">戻る</div>
+
+<c:if test="${owner=={sessionScope.userName}}" >
+<div class="ok-button">修正</div>
+<div class="ok-button">実績入力</div>
+<div class="ok-button">戻る</div>
+</c:if>
 
 </article>
 <%@ include file="/WEB-INF/views/layout/common/footer.jsp" %>
