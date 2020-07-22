@@ -34,16 +34,19 @@ public class Test {
 		String t1 = c1.getColor(2);
 		assertThat(t1,is("青"));
 	}
+	//UserDAO
 	@org.junit.Test
 	public void userfindTest() {
 		ConnectionManager connectionManager = new ConnectionManager();
 		Connection connection = connectionManager.getConnection();
 		UserDAO userDAO = new UserDAO(connection);
-
 		UserBean bean=userDAO.findUser("test@email.com",  CryptographyLogic.encryptStr("9KY7fxp3e"));
 		assertThat(bean.getUserName(),is("test"));
 		assertThat(bean.getUserId(),is(2));
-		
+	}
+	@org.junit.Test
+	public void userCreateTest(){
+
 	}
 
 }

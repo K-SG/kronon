@@ -98,7 +98,6 @@ public class UserDAO {
 				userBean.setUserId(userId);
 				userBean.setUserName(userName);
 			}
-			System.out.println(userBean.getUserId()+"aaaaaaaaaaaaa");
 		return userBean;
 	} catch (SQLException e) {
 		throw new RuntimeException("'user'テーブルのSELECTに失敗しました", e);
