@@ -700,6 +700,8 @@ public class ScheduleDAO {
 
 				scheduleBean.setScheduleDate(schDate);
 				scheduleBean.setTitle(title);
+				//JSON用に日付を整形して格納
+				scheduleBean.setJsonDate(scheduleBean.getScheduleDate().toString());
 
 				scheduleBeanList.add(scheduleBean);
 			}
