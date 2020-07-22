@@ -67,20 +67,18 @@ public class CalendarServlet extends HttpServlet {
 			ScheduleDAO scheduleDAO = new ScheduleDAO(connection);
 			scheduleBeanList = scheduleDAO.tooLongSQLSchedule(date, userId);
 
-//			//JSON用に日付を整形して格納
-//			for (ScheduleBean sBean : scheduleBeanList) {
-//				sBean.setJsonDate(sBean.getScheduleDate().toString());
-//			}
-
 			//Beanのリスト→JSON形式の整形
 			String json = mapper.writeValueAsString(scheduleBeanList);
 			String json_replace = json.replaceAll("\"", "krnooon");
+
+			//リクエストスコープにセット
 			request.setAttribute("json", json_replace);
 			request.setAttribute("date", date);
 			request.setAttribute("month", date.getMonthValue());
+
 			request.setAttribute("year", date.getYear());
-			System.out.println(date.getMonthValue());
-			System.out.println(json);
+//			System.out.println(date.getMonthValue());
+//			System.out.println(json);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("../WEB-INF/views/calendar/schedule_index.jsp");
 			dispatcher.forward(request, response);
 		} catch (RuntimeException e) {
