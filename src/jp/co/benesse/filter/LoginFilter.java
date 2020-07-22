@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 //package jp.co.benesse.filter;
 //
 //import java.io.IOException;
@@ -50,7 +50,7 @@
 //	}
 //
 //}
-=======
+
 /*package jp.co.benesse.filter;
 
 import java.io.IOException;
@@ -103,4 +103,4 @@ public class LoginFilter implements Filter {
 
 }
 */
->>>>>>> refs/remotes/origin/master
+
