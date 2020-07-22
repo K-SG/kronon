@@ -29,15 +29,21 @@ public class ActualIndexServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		//セッションスコープから値を取得
 		HttpSession session = request.getSession();
 		String userIdStr = (String) session.getAttribute("userId");
 		int userId = Integer.parseInt(userIdStr);
+		String userName = (String) session.getAttribute("userId");
+
+		List<ScheduleBean> scheduleBeanList = new ArrayList<>();
+		LocalDate scheduleDate = LocalDate.now();
 		// 遷移元の判定フラグ
 		String flag = "";
+
 		ConnectionManager connectionManager = new ConnectionManager();
-		List<ScheduleBean> scheduleBeanList = new ArrayList<>();
+
 		ScheduleDAO scheduleDAO;
-		LocalDate scheduleDate = LocalDate.now();
+
 		try {
 			Connection connection = connectionManager.getConnection();
 			scheduleDAO = new ScheduleDAO(connection);
