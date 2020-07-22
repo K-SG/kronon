@@ -42,6 +42,10 @@ public class ScheduleBean {
 	 */
 	private int actualTime;
 	/**
+	 * 実績時間「hh時間mm分」
+	 */
+	private String actualTimeStr;
+	/**
 	 * 振り返りコメント
 	 */
 	private String comment;
