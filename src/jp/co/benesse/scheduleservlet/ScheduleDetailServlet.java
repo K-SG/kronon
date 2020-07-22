@@ -17,9 +17,6 @@ import jp.co.benesse.dataaccess.cm.ConnectionManager;
 import jp.co.benesse.dataaccess.dao.ScheduleDAO;
 import jp.co.benesse.dataaccess.value.ScheduleBean;
 
-/**
- * Servlet implementation class ScheduleDetailServlet
- */
 @WebServlet("/user/scheduledetail")
 public class ScheduleDetailServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -41,19 +38,20 @@ public class ScheduleDetailServlet extends HttpServlet {
 
 			Connection connection = connectionManager.getConnection();
 			ScheduleDAO scheduleDAO = new ScheduleDAO(connection);
-			scheduleBean = scheduleDAO.getScheduleByScheduleId(id);
 
-			if (scheduleBean.getDeleteFlag().equals("1")) {
+			if (scheduleDAO.isDeleted(id)){
 				RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/views/error/error.jsp");
 				dispatcher.forward(request, response);
 				return;
 			}
 
+			scheduleBean = scheduleDAO.getScheduleByScheduleId(id);
 			String actualTime = Calc.calcActualTime(scheduleBean);
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
 			String scheduleDate = sdf.format(scheduleBean.getScheduleDate());
 
 			HttpSession session = request.getSession(true);
+			session.setAttribute("owner", scheduleBean.getUserName());
 			session.setAttribute("actualTime", actualTime);
 			session.setAttribute("schduleDate", scheduleDate);
 			session.setAttribute("startTime", scheduleBean.getStartTime());
