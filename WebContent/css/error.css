@@ -1,0 +1,14 @@
+@CHARSET "UTF-8";
+
+#error-msg{
+	margin-top: 10vh;
+	margin-left: 10vw;
+	color: black;
+	font-size: 3vw;
+}
+
+#error-img{
+	width: 50vh;
+	margin-top: 2vh;
+	margin-left: 65vw;
+}
