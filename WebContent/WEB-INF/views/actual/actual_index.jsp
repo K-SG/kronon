@@ -13,6 +13,12 @@
 
 <%@ include file="/WEB-INF/views/layout/common/header.jsp" %>
 <article>
+
+
+
+
+
+
 <!--エラーまたは完了ポップアップ------------------------------------------------------------------->
 <div class="popup-wrapper error-popup">
   <div class="pop-container">
