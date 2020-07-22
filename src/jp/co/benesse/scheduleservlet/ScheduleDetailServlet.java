@@ -43,7 +43,6 @@ public class ScheduleDetailServlet extends HttpServlet {
 			ScheduleDAO scheduleDAO = new ScheduleDAO(connection);
 			scheduleBean = scheduleDAO.getScheduleByScheduleId(id);
 
-
 			if (scheduleBean.getDeleteFlag().equals("1")) {
 				RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/views/error/error.jsp");
 				dispatcher.forward(request, response);
