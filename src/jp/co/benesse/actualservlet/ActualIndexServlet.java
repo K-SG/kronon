@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.time.temporal.TemporalAdjusters;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,11 +32,11 @@ public class ActualIndexServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// セッションスコープから値を取得
-//		HttpSession session = request.getSession();
-//		String userIdStr = (String) session.getAttribute("userId");
-//		int userId = Integer.parseInt(userIdStr);
+		// HttpSession session = request.getSession();
+		// String userIdStr = (String) session.getAttribute("userId");
+		// int userId = Integer.parseInt(userIdStr);
 		int userId = 1;
-//		String userName = (String) session.getAttribute("userId");
+		// String userName = (String) session.getAttribute("userId");
 		String dateStr = request.getParameter("date");
 
 		LocalDate date;
@@ -47,21 +48,24 @@ public class ActualIndexServlet extends HttpServlet {
 		ConnectionManager connectionManager = new ConnectionManager();
 		ScheduleDAO scheduleDAO;
 
-		if (flag == null || dateStr == null) {// 実績確認画面以外から
-			date = LocalDate.now();
-		} else if (flag.equals("0")) {// 前月
-			date = LocalDate.parse(dateStr, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-			LocalDate firstDayOfMonth = date.with(TemporalAdjusters.firstDayOfMonth()); // 初日
-			date = firstDayOfMonth.minusDays(1);// 先月の末日
-
-		    System.out.println("先月末"+date);
-		} else if (flag.equals("1")) {// 翌月
-			date = LocalDate.parse(dateStr, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-			LocalDate lastDayOfMonth = date.with(TemporalAdjusters.lastDayOfMonth()); // 末日
-			date = lastDayOfMonth.plusDays(1);// 次月の初日
-			 System.out.println("来月初"+date);
-		} else {// 実績確認画面以外から
-			date = LocalDate.now();
+		try {
+			if (flag == null || dateStr == null) {// 実績確認画面以外から
+				date = LocalDate.now();
+			} else if (flag.equals("0")) {// 前月
+				date = LocalDate.parse(dateStr, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+				LocalDate firstDayOfMonth = date.with(TemporalAdjusters.firstDayOfMonth()); // 初日
+				date = firstDayOfMonth.minusDays(1);// 先月の末日
+			} else if (flag.equals("1")) {// 翌月
+				date = LocalDate.parse(dateStr, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+				LocalDate lastDayOfMonth = date.with(TemporalAdjusters.lastDayOfMonth()); // 末日
+				date = lastDayOfMonth.plusDays(1);// 次月の初日
+			} else {// 実績確認画面以外から
+				date = LocalDate.now();
+			}
+		} catch (DateTimeParseException e) {
+			RequestDispatcher dispatcher = request.getRequestDispatcher("../WEB-INF/views/error/error.jsp");
+			dispatcher.forward(request, response);
+			return;
 		}
 
 		try {

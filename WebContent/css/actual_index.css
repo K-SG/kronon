@@ -417,9 +417,6 @@ article {
 }
 
 
-
-
-
 /*コメント*/
 .actual-input-comment textarea
 {
@@ -468,16 +465,18 @@ article {
 
 
 
+/*月送りボタン*/
+#left{
+			position:absolute;
+	left:5vw;
+	cursor:pointer;
+}
 
-
-
-
-
-
-
-
-
-
+#right{
+			position:absolute;
+	right:5vw;
+	cursor:pointer;
+}
 
 
 /*フッター*/

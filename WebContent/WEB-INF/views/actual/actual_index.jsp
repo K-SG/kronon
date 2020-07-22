@@ -17,25 +17,36 @@
 	<%@ include file="/WEB-INF/views/layout/common/header.jsp"%>
 <article>
 	<div class="actual-search-area">
-			<div class="actual-search-date">
-				<div class="actual-input-font-lev1">日付</div>
-			</div>
-			<div class="actual-search-date-area"><input name="date" type="date" /></div>
-
-			<div class="actual-search-title">
-				<div class="actual-input-font-lev1">タイトル</div>
-			</div>
-			<div class="actual-search-title-area"><input name="title" type="text" maxlength="100" /></div>
-			<div class=search-button>検索<img alt="検索" src="../img/search_icon.png"></div>
+		<div class="actual-search-date">
+			<div class="actual-input-font-lev1">日付</div>
 		</div>
-<div class="title-content"><img src="../img/left_button.png" alt="left"  id="left" class="left triangle-button"></div>
-<div class="calendar-title">
+		<div class="actual-search-date-area">
+			<input name="date" type="date" />
+		</div>
+
+		<div class="actual-search-title">
+			<div class="actual-input-font-lev1">タイトル</div>
+		</div>
+		<div class="actual-search-title-area">
+			<input name="title" type="text" maxlength="100" />
+		</div>
+		<div class=search-button>
+			検索<img alt="検索" src="../img/search_icon.png">
+		</div>
+	</div>
+
+<div id = "actual-content">
 	<div class="title-content">
-    	<h2><c:out value="${year}年${month}月の実績"/></h2>
-    </div>
-</div>
-<div class="title-content"><img src="../img/right_button.png" alt="right" id="right" class="right triangle-button"></div>
-<div align="center">
+		<img src="../img/left_button.png" alt="left"  id="left" class="left triangle-button">
+	</div>
+	<div>
+		<div class="actual-content">
+    		<p id = "actual-title"><c:out value="${year}年${month}月の実績"/></p>
+    	</div>
+	</div>
+	<div class="title-content">
+		<img src="../img/right_button.png" alt="right" id="right" class="right triangle-button">
+	</div>
 	<table border="1" >
 		<thead>
 			<tr>
@@ -62,7 +73,7 @@
 		</tbody>
 
 			</table>
-		</div>
+</div>
 
 
 
