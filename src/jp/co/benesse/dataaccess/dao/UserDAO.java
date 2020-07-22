@@ -36,7 +36,10 @@ public class UserDAO {
 		int result = 0;
 		try {
 			// SQLの定義
-			String sql = "INSERT INTO 'user' (user_id,user_name,mail,password) values (nextval('SEQ'),?,?,?)";
+
+
+			String sql = "INSERT INTO public.user (user_id,user_name,mail,password) values (nextval('SEQ_USER'),?,?,?)";
+
 			// SQLの作成(準備)
 			preparedStatement = this.connection.prepareStatement(sql);
 			// SQLバインド変数への値設定
@@ -76,20 +79,22 @@ public class UserDAO {
 		PreparedStatement preparedStatement = null;
 		try {
 			// SQLの定義
-			String sql = "SELECT * FROM 'user' WHERE mail = ? and password = ?";
+			String sql = "SELECT * FROM public.user WHERE mail = ? and password = ?";
 			// SQLの作成(準備)
 			preparedStatement = this.connection.prepareStatement(sql);
 			// SQLバインド変数への値設定
 			preparedStatement.setString(1, mail);
 			preparedStatement.setString(2, password);
+
+
 			//SQLの実行
 			ResultSet resultSet = preparedStatement.executeQuery();
 			while(resultSet.next()) {
 			userBean = new UserBean();
 			//userIdの取得
-			int userId = resultSet.getInt("userId");
+			int userId = resultSet.getInt("user_Id");
 			//userNameの取得
-			String userName = resultSet.getString("userName");
+			String userName = resultSet.getString("user_Name");
 			userBean.setUserId(userId);
 			userBean.setUserName(userName);
 			}
@@ -120,7 +125,7 @@ public class UserDAO {
 	public Boolean  isBooking(String mail){
 		PreparedStatement preparedStatement = null;
 		try {
-			String sql = "SELECT COUNT(*) FROM 'user' WHERE mail = ?";
+			String sql = "SELECT COUNT(*) FROM public.user WHERE mail = ?";
 			preparedStatement = this.connection.prepareStatement(sql);
 			preparedStatement.setString(1, mail);
 			// SQLの実行
