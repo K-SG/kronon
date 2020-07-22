@@ -36,8 +36,8 @@ public class ActualSearchServlet extends HttpServlet {
 
 		String scheduleDateStr = request.getParameter("scheduleDate");
 		String title = request.getParameter("title");
-		System.out.println("検索日：" + scheduleDateStr);
-		System.out.println("タイトル：" + title);
+
+		String flag = "1";
 
 		List<ScheduleBean> scheduleBeanList = new ArrayList<>();
 
@@ -71,6 +71,7 @@ public class ActualSearchServlet extends HttpServlet {
 			}
 
 			// リクエストスコープにセット
+			request.setAttribute("flag", flag);
 			request.setAttribute("scheduleBeanList", scheduleBeanList);
 
 			RequestDispatcher dispatcher = request.getRequestDispatcher("../WEB-INF/views/actual/actual_index.jsp");

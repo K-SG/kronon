@@ -43,7 +43,7 @@ public class ActualIndexServlet extends HttpServlet {
 		List<ScheduleBean> scheduleBeanList = new ArrayList<>();
 
 		// 遷移元の判定フラグ
-		String flag = request.getParameter("flag");
+		String flag = "0";
 
 		ConnectionManager connectionManager = new ConnectionManager();
 		ScheduleDAO scheduleDAO;
@@ -74,6 +74,7 @@ public class ActualIndexServlet extends HttpServlet {
 			scheduleBeanList = scheduleDAO.getOneMonthSchedule(date, userId);
 
 			// リクエストスコープにセット
+			request.setAttribute("flag", flag);
 			request.setAttribute("date", date);
 			request.setAttribute("month", date.getMonthValue());
 			request.setAttribute("year", date.getYear());

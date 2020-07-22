@@ -42,7 +42,13 @@
 	</div>
 	<div>
 		<div class="actual-content">
-    		<p id = "actual-title"><c:out value="${year}年${month}月の実績"/></p>
+		<c:if test="${flag.equals('0')}">
+			<p id = "actual-title"><c:out value="${year}年${month}月の実績"/></p>
+		</c:if>
+		<c:if test="${flag.equals('1')}">
+			<p id = "actual-result"><c:out value="検索結果"/></p>
+		</c:if>
+
     	</div>
 	</div>
 	<div class="title-content">
@@ -74,6 +80,7 @@
 		</tbody>
 
 			</table>
+			<c:out value="${errorMsg}" />
 </div>
 
 
