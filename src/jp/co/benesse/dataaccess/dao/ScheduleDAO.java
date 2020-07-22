@@ -23,7 +23,6 @@ public class ScheduleDAO {
 
 	/**
 	 * コンストラクタ
-	 *
 	 * @param connection
 	 */
 	public ScheduleDAO(Connection connection) {
