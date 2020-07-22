@@ -46,7 +46,33 @@ public class Test {
 	}
 	@org.junit.Test
 	public void userCreateTest(){
-
+		ConnectionManager connectionManager = new ConnectionManager();
+		Connection connection = connectionManager.getConnection();
+		UserDAO userDAO = new UserDAO(connection);
+		int answer = 0;
+		answer = userDAO.createUser("くろのす", "kronon@gmail.com", "Kronon11");
+		assertThat(answer, is(1));
+		System.out.println(answer);
+	}
+	@org.junit.Test
+	public void getUserNameTest(){
+		ConnectionManager connectionManager = new ConnectionManager();
+		Connection connection = connectionManager.getConnection();
+		UserDAO userDAO = new UserDAO(connection);
+		String answerStr = null;
+		answerStr = userDAO.getUserName(2);
+		assertThat(answerStr, is("test"));
+		System.out.println(answerStr);
+	}
+	@org.junit.Test
+	public void isBookingTest(){
+		ConnectionManager connectionManager = new ConnectionManager();
+		Connection connection = connectionManager.getConnection();
+		UserDAO userDAO = new UserDAO(connection);
+		Boolean answerFlg;
+		answerFlg = userDAO.isBooking("test@email.com");
+		assertThat(answerFlg, is(true));
+		System.out.println(answerFlg);
 	}
 
 }
