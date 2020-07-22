@@ -40,7 +40,7 @@ public class Calc {
 
 			Duration duration = Duration.between(startLocal, endLocal);
 			int estimateMinutes = (int) duration.toMinutes();
-			String estimateTimeStr = estimateMinutes / 60 + "時間" + estimateMinutes + "分";
+			String estimateTimeStr = estimateMinutes / 60 + "時間" + estimateMinutes % 60 + "分";
 
 			return estimateTimeStr;
 		}catch(NullPointerException e){
