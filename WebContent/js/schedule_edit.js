@@ -13,7 +13,7 @@ $(function () {
     }
   }
 
-  /*ログインボタンを押下した際のエラーチェックとポップアップ表示*/
+  /*修正ボタンを押した際のエラーチェックとポップアップ表示*/
   $('.login-button').click(function () {
     let mail = document.getElementById('login_mail').value;
     let password = document.getElementById('login_pass').value;

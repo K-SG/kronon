@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
- <link rel="stylesheet" href="../../css/schedule_edit.css">
+ <link rel="stylesheet" href="./css/schedule_edit.css">
 <%@ include file="../layout/common/link.jsp" %>
 <title>予定修正</title>
 </head>
@@ -14,18 +14,19 @@
 <%@ include file="../layout/common/header.jsp" %>
 
 	<article>
+			<form action="user/scheduleupdate" method="post" class="schedule-edit-form">
 		<div class="schedule-regist-area">
 			<div class="schedule-regist-font-lev0">予定修正</div>
 			<div class="schedule-regist-border"></div>
 			<div class="schedule-regist-area-1">
 				<div class="schedule-regist-area-1-block">
 					<div class="schedule-regist-font-lev1">日付<span>*</span></div>
-					<div class="schedule-regist-date-area"><input name="date" type="date" value="${date}"/></div>
+					<div class="schedule-regist-date-area"><input name="date" id="edit_date" type="date" value="${date}" /></div>
 				</div>
 				<div class="schedule-regist-area-1-block">
 					<div class="schedule-regist-font-lev1">開始時刻<span>*</span></div>
 					<div class="schedule-regist-time">
-						<select name="start-hour">
+						<select name="start-hour" id="edit_start_hour">
 							<option value="8">8</option>
 							<option value="9">9</option>
 							<option value="10">10</option>
@@ -44,7 +45,7 @@
 
 					<div class="schedule-regist-time-text">時</div>
 					<div class="schedule-regist-time">
-						<select name="start-minutes">
+						<select name="start-minutes" id="edit_start_minutes">
 							<option value="00">00</option>
 							<option value="15">15</option>
 							<option value="30">30</option>
@@ -57,7 +58,7 @@
 				<div class="schedule-regist-area-1-block">
 					<div class="schedule-regist-font-lev1">終了時刻<span>*</span></div>
 					<div class="schedule-regist-time">
-						<select name="end-hour">
+						<select name="end-hour" id="edit_end_hour">
 							<option value="8">8</option>
 							<option value="9">9</option>
 							<option value="10">10</option>
@@ -76,7 +77,7 @@
 
 					<div class="schedule-regist-time-text">時</div>
 					<div class="schedule-regist-time">
-						<select name="end-minutes">
+						<select name="end-minutes" id="edit_end_minutes">
 							<option value="00">00</option>
 							<option value="15">15</option>
 							<option value="30">30</option>
@@ -91,10 +92,10 @@
 			<div class="schedule-regist-area-2">
 				<div class="schedule-regist-font-lev1">場所<span>*</span></div>
 				<div class="schedule-regist-place">
-						<select name="place">
-							<option value="オフィス">オフィス</option>
-							<option value="在宅">在宅</option>
-							<option value="外出">外出</option>
+						<select name="place" id="edit_place">
+							<option value="0">オフィス</option>
+							<option value="1">在宅</option>
+							<option value="2">外出</option>
 					</select>
 				</div>
 			</div>
@@ -115,10 +116,20 @@
 
 		<div class="kronon-banzai"><img alt="banzai" src="./img/kronon/kronon_banzai.png"></div>
 
+		<div class=schedule-regist-button>
+		<!--エラーまたは完了ポップアップ表示用ボタン---->
+			<div class=schedule-regist-button-left>
+				<div class="ok-button large-popup-button">修正</div>
+			</div>
 
+		<!--エラーまたは完了ポップアップ表示用ボタン----->
+			<div class=schedule-regist-button-right>
+				<div class="ok-button back-popup-button">キャンセル</div>
+			</div>
+		</div>
+	</form>
 
-
-		<!--本当に戻りますかポップアップ------------------------------------------------------------------->
+			<!--本当に戻りますかポップアップ------------------------------------------------------------------->
 		<div class="popup-wrapper back-popup">
 		  <div class="pop-container">
 			<div class="close-popup"> <i class="fa fa-2x fa-times"></i> </div>
@@ -143,7 +154,7 @@
 			<div class="close-popup"> <i class="fa fa-2x fa-times"></i> </div>
 			<div class="pop-container-inner">
 			  <div class="message-container-large">
-				<h2 class="message-title">この内容で登録するよ。</h2>
+				<h2 class="message-title">この内容で更新するよ。</h2>
 				<table class="popup-table">
 				  <tr>
 					<th class="th">名前：</th>
@@ -172,19 +183,7 @@
 		<!--内容確認ポップアップここまで----------------------------------------------------------------->
 
 
-		<div class=schedule-regist-button>
-		<!--エラーまたは完了ポップアップ表示用ボタン---->
-			<div class=schedule-regist-button-left>
-				<div class="ok-button large-popup-button">登録</div>
-			</div>
-
-		<!--エラーまたは完了ポップアップ表示用ボタン----->
-			<div class=schedule-regist-button-right>
-				<div class="ok-button back-popup-button">キャンセル</div>
-			</div>
-		</div>
-
-</article>
+	</article>
 <%@ include file="../layout/common/footer.jsp" %>
 <script src="js/common.js"></script>
 </body>
