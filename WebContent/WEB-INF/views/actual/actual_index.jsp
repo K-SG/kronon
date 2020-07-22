@@ -13,7 +13,7 @@
 
 	<%@ include file="/WEB-INF/views/layout/common/header.jsp"%>
 <article>
-<div>
+<div align="center">
 	<form>
 		日付<input type="date">
 		タイトル<input type="text" maxlength=100>
@@ -22,25 +22,27 @@
 </div>
 
 <div align="center">
-	<table border="1" class="mytable">
+	<table border="1" >
 		<thead>
 			<tr>
-				<th class="column1">日付</th>
-				<th class="column2">タイトル</th>
-				<th class="column3">内容</th>
-				<th class="column4">見積時間</th>
-				<th class="column5">実績時間</th>
+				<th>日付</th>
+				<th>タイトル</th>
+				<th>内容</th>
+				<th>見積時間</th>
+				<th>実績時間</th>
 			</tr>
 		</thead>
 		<tbody>
 		<c:forEach var="scheduleBeanList" items="${scheduleBeanList}">
-			<tr>
-				<td><c:out value="${scheduleBeanList.scheduleDate}" /></td>
-				<td><c:out value="${scheduleBeanList.title}" /></td>
-				<td><c:out value="${scheduleBeanList.content}" /></td>
-				<td><c:out value="${scheduleBeanList.estimateTime}" /></td>
-				<td><c:out value="${scheduleBeanList.actualTime}" /></td>
-			</tr>
+
+				<tr>
+					<td><c:out value="${scheduleBeanList.scheduleDate}" /></td>
+					<td><c:out value="${scheduleBeanList.title}" /></td>
+					<td><c:out value="${scheduleBeanList.content}" /></td>
+					<td><c:out value="${scheduleBeanList.estimateTime}" /></td>
+					<td><c:out value="${scheduleBeanList.actualTimeStr}" /></td>
+				</tr>
+
 				</c:forEach>
 		</tbody>
 
@@ -59,7 +61,13 @@
 				<div class="pop-container-inner">
 					<div class="message-container">
 						<!--  メッセージを分岐未入力、日付おかしい-->
-						<p>日付かタイトルを入力してね</p>
+						<c:if test="">
+							<p>日付かタイトルを入力してね</p>
+						</c:if>
+						<c:if test="">
+							<p>日付の入力がおかしいよ</p>
+						</c:if>
+
 					</div>
 					<div class="ok-button close-popup">OK</div>
 					<img src="img/kronon/kronon_question.png" class="pop-img">
