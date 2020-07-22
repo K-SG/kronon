@@ -53,37 +53,35 @@ $(function () {
     let firstDayOfMonth = new Date(year, month - 1, 1).getDate();
     let lastDayOfMonth = new Date(year, month, 0).getDate();
 
-    console.log("月初は" + firstDayOfMonth + "日");
-    console.log("月末は" + lastDayOfMonth + "日");
-
-
-    console.log(date,startHour,startMin,endHour,endMin,place,title,content);
+//    console.log(date,startHour,startMin,endHour,endMin,place,title,content);
 
     if(date==""||startHour=='' || startMin=='' || endHour=='' || endMin=='' || place=='' || title=='' || content==''){
     	popFlag='1';
-    	console.log(popFlag);
+
     }else if((startHour*60+startMin)-(endHour*60+endMin)>=0){
     	//終了時間よりも開始時間のほうが遅かったら
-    	console.log("開始時間のほうが遅い");
+//    	console.log("開始時間のほうが遅い");
     	popFlag='2';
     }else if(!(firstDayOfMonth <= day && day <= lastDayOfMonth)){
     	//存在しない日付を入力したら（2/31など）
-    	console.log("存在しない日付");
+//    	console.log("存在しない日付");
     	popFlag='2';
     }else if(year < releaseYear || (year == releaseYear && month < releaseMonth)){
     	//リリース前の日付を選択したら
-    	console.log("リリース前の日付");
+//    	console.log("リリース前の日付");
     	popFlag='2';
     }else if(year > releaseLastYear || (year == releaseLastYear && month > releaseLastMonth)){
     	//サービス終了後の日付を選択したら
-    	console.log("サービス終了後の日付");
+//    	console.log("サービス終了後の日付");
     	popFlag='2';
     }else{
     	popFlag='0';
     }
     if(popFlag==='0'){
-    	$('.schedule-new-form').submit();
-    	return;
+        $('#time-msg').html(year + '/' + month + '/' + day +'　'+ startHour +':'+ startMin +'～'+ endHour +':'+ endMin);
+    	$('.confirm-popup').fadeIn();
+        popFlag='0';
+        return;
     }
     else if(popFlag==='1'){
         $('.new_msg').html('入力されていない<br>項目があるよ');

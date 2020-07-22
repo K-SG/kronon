@@ -175,19 +175,19 @@
 				<table class="popup-table">
 				  <tr>
 					<th class="th">名前：</th>
-					<td>樋口</td>
+					<td><c:out value="${userName }" /></td>
 				  </tr>
 				  <tr>
 					<th>予定日時：</th>
-					<td>2020/7/11(月) 10:00-11:00</td>
+					<td id="time-msg">2020/7/11(月) 10:00-11:00</td>
 				  </tr>
 				  <tr>
 					<th>タイトル：</th>
-					<td>外部設計レビュー</td>
+					<td id="title-msg">外部設計レビュー</td>
 				  </tr>
 				  <tr>
 					<th class="last-table">内容：</th>
-					<td class="last-table">森岡さん作成外部設計書レビュー<br>
+					<td class="last-table" id="content-msg">森岡さん作成外部設計書レビュー<br>
 					  〆切7/13</td>
 				  </tr>
 				</table>
