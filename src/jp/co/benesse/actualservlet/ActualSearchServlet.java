@@ -1,26 +1,89 @@
 package jp.co.benesse.actualservlet;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import jp.co.benesse.dataaccess.cm.ConnectionManager;
+import jp.co.benesse.dataaccess.dao.ScheduleDAO;
+import jp.co.benesse.dataaccess.value.ScheduleBean;
 
 @WebServlet("/user/actualsearch")
 public class ActualSearchServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		doPost(request, response);
 	}
 
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		String userIdStr = (String) session.getAttribute("userId");
+		// int userId = Integer.parseInt(userIdStr);
+		int userId = 1;
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String scheduleDateStr = request.getParameter("scheduleDate");
+		String title = request.getParameter("title");
+		System.out.println("検索日：" + scheduleDateStr);
+		System.out.println("タイトル：" + title);
 
+		List<ScheduleBean> scheduleBeanList = new ArrayList<>();
+
+		ConnectionManager connectionManager = new ConnectionManager();
+		ScheduleDAO scheduleDAO;
+
+		String errorMsg = null;
+
+		try {
+			Connection connection = connectionManager.getConnection();
+			scheduleDAO = new ScheduleDAO(connection);
+
+			if (!scheduleDateStr.equals("") && !title.equals("")) {
+				System.out.println("AND検索");
+				Date scheduleDate = Date.valueOf(scheduleDateStr);
+				scheduleBeanList = scheduleDAO.selectSchedule(userId, scheduleDate, title);
+			} else if (!scheduleDateStr.equals("") && title.equals("")) {
+				System.out.println("日付検索");
+				Date scheduleDate = Date.valueOf(scheduleDateStr);
+				scheduleBeanList = scheduleDAO.selectSchedule(userId, scheduleDate);
+			} else if (scheduleDateStr.equals("") && !title.equals("")) {
+				System.out.println("タイトル検索");
+				scheduleBeanList = scheduleDAO.selectSchedule(userId, title);
+			}else{
+				throw new RuntimeException();
+			}
+
+			if(scheduleBeanList.size() == 0){
+				errorMsg = "検索結果は0件でした";
+				request.setAttribute("errorMsg", errorMsg);
+			}
+
+			// リクエストスコープにセット
+			request.setAttribute("scheduleBeanList", scheduleBeanList);
+
+			RequestDispatcher dispatcher = request.getRequestDispatcher("../WEB-INF/views/actual/actual_index.jsp");
+			dispatcher.forward(request, response);
+			return;
+		} catch (RuntimeException e) {
+			e.printStackTrace();
+			RequestDispatcher dispatcher = request.getRequestDispatcher("../WEB-INF/views/error/error.jsp");
+			dispatcher.forward(request, response);
+			return;
+		} finally {
+			connectionManager.closeConnection();
+		}
 	}
 
 }

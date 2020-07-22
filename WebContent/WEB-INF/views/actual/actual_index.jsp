@@ -21,14 +21,14 @@
 			<div class="actual-input-font-lev1">日付</div>
 		</div>
 		<div class="actual-search-date-area">
-			<input name="date" type="date" />
+			<input name="date" type="date" id = "input-date"/>
 		</div>
 
 		<div class="actual-search-title">
 			<div class="actual-input-font-lev1">タイトル</div>
 		</div>
 		<div class="actual-search-title-area">
-			<input name="title" type="text" maxlength="100" />
+			<input name="title" type="text" maxlength="100" id = "input-title"/>
 		</div>
 		<div class=search-button>
 			<div class = "word">検索</div>
