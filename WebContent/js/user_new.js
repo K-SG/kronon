@@ -1,16 +1,115 @@
 "use strict"
 
-$(function () {
+/*//$(function () {
 
-  /*リロード・戻るボタンが押されているか判定し、ポップアップ非表示にする*/
+  DBと照合した後のエラーポップアップ表示
+  $(document).ready(function () {
 
-      $(document).ready(function(){
-        let popFlag = document.getElementById('flag').value;
-        if(popFlag==1){
-          $('.error-popup').fadeIn();
-          return;
-        }
-  }
+	let popFlag = document.getElementById('flag').value;
+
+    if(popFlag == 1){
+    	$('.error-popup').fadeIn();
+    	return;
+    	}
+    });
+
+
+*/
+
+
+
+
+/*
+
+  $('.user-create-button').click(function () {
+	    let userName = document.getElementById('userName').value;
+	    let mail = document.getElementById('mail').value;
+	    let password1 = document.getElementById('password1').value;
+	    let password2 = document.getElementById('password2').value;
+	    let checkCnt=0;
+	console.log("sssssss");
+	    if (userName==""|| mail=="" || password1=="" || password2=="") {
+	      popFlag=2;
+	      chkCnt++;
+	    }else if(!mail.match(/^[A-Za-z0-9]+[\w-]+@[\w\.-]+\.\w{2,}$/)){
+	        popFlag=3;
+	        chkCnt++;
+	    }else if(password1.length < 8 || !password1.match(/([a-z].*[A-Z])|([A-Z].*[a-z])/) || !password1.match(/([a-zA-Z])/) && password1.match(/([0-9])/)){
+	        popFlag=4;
+	        chkCnt++;
+	    }else if(password1!==password2){
+	        popFlag=5;
+	        chkCnt++;
+	    }else if(chkCnt===4){
+	        popFlag=6;
+	    }
+	    else{
+	      popFlag=0;
+	    }
+
+	    if(popFlag==0){
+	      $('.input_error1_msg').html('登録が完了したよ');
+	      $('.error-popup').fadeIn();
+	      $('.user-create-button').submit();
+	    }
+
+	    if(popFlag==1){
+	       $('.error-popup').fadeIn();
+	      popFlag=0;
+	      return;
+	    }
+
+	    if(popFlag==2){
+	        $('.input_error1_msg').html('入力されていない<br>項目があるよ');
+	        $('.error-popup').fadeIn();
+	        popFlag=0;
+	        return;
+	      }
+
+	    if(popFlag==3){
+	        $('.input_error1_msg').html('メールアドレスが不正だよ！');
+	        $('.error-popup').fadeIn();
+	        popFlag=0;
+	        return;
+	      }
+	    if(popFlag==4){
+	        $('.input_error1_msg').html('パスワードの条件を満たしていないよ！');
+	        $('.error-popup').fadeIn();
+	        popFlag=0;
+	        return;
+	      }
+	    if(popFlag==5){
+	        $('.input_error1_msg').html('パスワードが一致していないよ！');
+	        $('.error-popup').fadeIn();
+	        popFlag=0;
+	        return;
+	      }
+	    if(chkCnt==4){
+	        $('.confirm-popup').fadeIn();
+	        //popFlag='0';
+	        $('.user-create-form').submit();
+	        return;
+	      }
+
+
+	  });
+
+	  ポップアップを閉じる際の動き
+	  $('.close-popup').click(function () {
+	    $('.confirm-popup').fadeOut();
+	    $('.error-popup').fadeOut();
+	    $('.back-popup').fadeOut();
+
+	  });*/
+
+
+//});
+
+
+
+
+
+
 
 /*
 
@@ -122,10 +221,9 @@ console.log("sssssss");
 
 
 
-
 	 //初期は非表示
 	document.getElementById("emp-error").style.display = "none";
-	const empError = document.getElementById("emp-error");
+	 const empError = document.getElementById("emp-error");
 	 document.getElementById("mail-error").style.display = "none";
 	 const mailError = document.getElementById("mail-error");
 	 document.getElementById("pass-check-error").style.display = "none";
@@ -219,7 +317,26 @@ console.log("sssssss");
     	 if(checkCnt===4){
     		 //window.confirm();
     		 //confirmPop.style.display = "block";
+
+
+    			target1 = document.getElementById("confirmUserName");
+    			target1.innerText = document.forms.user_create_form.userName.value;
+    			target2 = document.getElementById("confirmMail");
+    			target2.innerText = document.forms.user_create_form.mail.value;
+    			target3 = document.getElementById("confirmPassword");
+    			tmp = document.forms.user_create_form.password1.value.length;
+    			var str = '';
+    			for (var i = 0; i < tmp; i++) {
+    				str += '＊';
+    			}
+    			target3.innerText = str;
+
+
     		 $('.confirm-popup').fadeIn();
+
+
+
+
     		 return false;
     	 }
     	 if(popFlag==1){
@@ -258,4 +375,9 @@ console.log("sssssss");
     function clickEvent() {
         document.user_create_form.submit();
     }
+
+
+
+
+
 

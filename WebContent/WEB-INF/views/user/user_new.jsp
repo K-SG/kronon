@@ -18,17 +18,118 @@
 
 <script type="text/javascript">
 	function onButtonClick() {
-		target1 = document.getElementById("confirmUserName");
-		target1.innerText = document.forms.user_create_form.userName.value;
-		target2 = document.getElementById("confirmMail");
-		target2.innerText = document.forms.user_create_form.mail.value;
-		target3 = document.getElementById("confirmPassword");
-		tmp = document.forms.user_create_form.password1.value.length;
-		var str = '';
-		for (var i = 0; i < tmp; i++) {
-			str += '＊';
-		}
-		target3.innerText = str;
+
+
+		//let popFlag=0;//0confirm 1emp-error 2mail-error 3pass-checkerror 4pass-notsame-error
+    	let checkCnt=0;
+    	 let popFlag = document.getElementById("flag").value;
+    	//空欄かどうかのチェック--------------------------------------------------------
+    	const inputUserName = document.getElementById("userName");
+    	const UserName = inputUserName.value;
+    	const inputUserMail = document.getElementById("mail");
+    	const UserMail = inputUserMail.value;
+    	const inputUserPass1 = document.getElementById("password1");
+    	const UserPass1 = inputUserPass1.value;
+    	const inputUserPass2 = document.getElementById("password2");
+    	const UserPass2 = inputUserPass2.value;
+
+
+
+    	if(UserName=="" || UserMail=="" || UserPass1=="" || UserPass2==""){
+
+    	  popFlag=2;
+     	  // blockで表示
+    	  empError.style.display = "block";
+    	  return false;
+    	}else {
+    		checkCnt++;
+
+    	}
+    	//-------------------------------------------------------空欄かどうかのチェック↑--
+
+
+    	//----メールチェック↓---------------------------------------------------------------
+    	 if (!UserMail.match(/^[A-Za-z0-9]+[\w-]+@[\w\.-]+\.\w{2,}$/)){
+
+    		popFlag=3;
+	     	 // blockで表示
+	    	  mailError.style.display = "block";
+    		return false;
+    	}else {
+    		checkCnt++;
+
+    	}
+
+    	//--------------------------------------------------------メールチェック↑-----------
+
+    	//----パスワード条件チェック↓---------------------------------------------------------------
+    	//8字以上? // 英字の大文字と小文字含む？//英字と数字を含む？
+    	 if (UserPass1.length < 8 || !UserPass1.match(/([a-z].*[A-Z])|([A-Z].*[a-z])/) || !UserPass1.match(/([a-zA-Z])/) && UserPass1.match(/([0-9])/)){
+    		 popFlag=4;
+    		 passCheckError.style.display = "block";
+    		 return false;
+    	 }else {
+     		checkCnt++;
+     	}
+       //--------------------------------------------------------パスワード条件チェック↑-----------
+
+       //----パスワード一致チェック↓---------------------------------------------------------------
+    	 if (UserPass1!==UserPass2){
+     		popFlag=5;
+    		 passNotSameError.style.display = "block";
+      		return false;
+     	 }else {
+     		checkCnt++;
+     	}
+       //-------------------------------------------------------パスワード一致チェック↑------------
+
+
+
+
+
+    	 if(checkCnt===4){
+    		 //window.confirm();
+    		 //confirmPop.style.display = "block";
+console.log("OK");
+
+    		    target1 = document.getElementById("confirmUserName");
+    			target1.innerText = document.forms.user_create_form.userName.value;
+    			target2 = document.getElementById("confirmMail");
+    			target2.innerText = document.forms.user_create_form.mail.value;
+    			target3 = document.getElementById("confirmPassword");
+    			tmp = document.forms.user_create_form.password1.value.length;
+    			var str = '';
+    			for (var i = 0; i < tmp; i++) {
+    				str += '＊';
+    			}
+    			target3.innerText = str;
+
+
+    		 $('.confirm-popup').fadeIn();
+    		 return false;
+    	 }
+    	 if(popFlag==1){
+    		 $('.confirm-popup').fadeOut();
+       		 mailSameError.style.display = "block";
+         		return false;
+        	 }else {
+        		return true;
+    	 }
+    	 //popFlag=0;
+    	 if(popFlag==0){
+    	     // $('.input_error1_msg').html('登録が完了したよ');
+    	      inputCmp.style.display = "block";
+    	      $('.error-popup').fadeIn();
+    	      $('.user-create-button').submit();
+    	 }
+
+
+
+
+
+
+
+
 	}
 </script>
 
@@ -51,27 +152,9 @@
 			</div>
 
 
-			<form action="user/usercreate" method="post" id="user_create_form"
-				onsubmit="return checkUserCreate()" name="user_create_form">
-				<div class="user-create-input1">
-					<input type="text" id="userName" name="userName" maxlength="15" placeholder="表示名" value=${userName } >
-
-				</div>
-				<div class="user-create-input2">
-					<input type="text" id="mail" name="mail" size="100" maxlength="100"
-						placeholder="メールアドレス" value=${mail }>
-				</div>
-				<div class="user-create-input3">
-					<input type="password" id="password1" name=password maxlength="20"
-						placeholder="パスワード" value=${password } >
-				</div>
-				<div class="user-create-input4">
-					<input type="password" id="password2" maxlength="20"
-						placeholder="パスワード確認" value=${password } >
-				</div>
 
 
-				<input type="text" id="flag" value=${popFlag }>
+
 
 <!-- 新規登録ボタン 下に配置 -->
 
@@ -180,6 +263,29 @@
 				</div>
 				<!--登録完了チェックポップアップここまで-------------------------------------------------------------->
 
+<form action="user/usercreate" method="post" id="user_create_form" class="user_create_form">
+
+
+
+				<div class="user-create-input1">
+					<input type="text" id="userName" name="userName" maxlength="15" placeholder="表示名" value=${userName } >
+
+				</div>
+				<div class="user-create-input2">
+					<input type="text" id="mail" name="mail" size="100" maxlength="100"
+						placeholder="メールアドレス" value=${mail }>
+				</div>
+				<div class="user-create-input3">
+					<input type="password" id="password1" name=password maxlength="20"
+						placeholder="パスワード" value=${password } >
+				</div>
+				<div class="user-create-input4">
+					<input type="password" id="password2" maxlength="20"
+						placeholder="パスワード確認" value=${password } >
+				</div>
+
+				<input type="text" id="flag" value=${popFlag }>
+
 
 				<!--内容確認ポップアップ--------------------popFlag6--------------------------------------------->
 				<div id="confirm-pop" class="popup-wrapper confirm-popup">
@@ -212,8 +318,8 @@
     						<input type="hidden" name="mail" value=${mail }>
 							<input type="hidden" name="password" value=${password }> --%>
 
-							<input type="button" id="user-create-button2"
-							class="ok-button" value="OK" onclick="clickEvent()" />
+							<input type="submit" id="user-create-button2"
+							class="ok-button" value="OK"  />
 
 							<!-- <button name="btnClickEvent" onclick="clickEvent()">送信したい</button> -->
 							 <!-- <div class="ok-button">OK</div> -->
@@ -225,8 +331,14 @@
 						</div>
 					</div>
 				</div>
-
+ 		</form>
 				<!--内容確認ポップアップここまで----------------------------------------------------------------->
+
+<!-- 新規登録のボタン -->
+				<!-- <input type="button" value="新規登録" id="user-create-button"
+					class="ok-button" onclick="onButtonClick();" /> -->
+					<input type="button" value="新規登録" id="user-create-button"
+					class="ok-button" onclick="onButtonClick();" >
 
 
 
@@ -249,13 +361,7 @@
 				</div>
 				<!--本当に戻りますかポップアップここまで------------------------------------------------------------------->
 
-<!-- 新規登録のボタン -->
-				<!-- <input type="button" value="新規登録" id="user-create-button"
-					class="ok-button" onclick="onButtonClick();" /> -->
-					<input type="submit" value="新規登録" id="user-create-button"
-					class="ok-button" onclick="onButtonClick();" >
 
-	 		</form>
 
 
 
