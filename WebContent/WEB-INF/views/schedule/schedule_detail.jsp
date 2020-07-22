@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link href="css/common/app.css" rel="stylesheet" type="text/css">
-<link href="css/common/common.css" rel="stylesheet" type="text/css">
-<link href="css/blackboard.css" rel="stylesheet" type="text/css">
+<link href="/kronon/css/common/app.css" rel="stylesheet" type="text/css">
+<link href="/kronon/css/common/common.css" rel="stylesheet" type="text/css">
+<link href="/kronon/css/common/blackboard.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <title>予定詳細画面</title>
@@ -23,7 +23,7 @@
       <table class=schedule_detail>
 
         <tr>
-          <td>名前：〇〇〇〇〇〇〇〇〇</td>
+          <td><c:out value="${userName}" /></td>
           <td>実績：2時間30分</td>
         </tr>
 
