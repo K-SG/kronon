@@ -20,17 +20,21 @@ header{
 }
 
 ul.top-head {
-
 	width:100vw;
 	background-color:#DE9B50;
 	height: 9vh;
 	margin: 0;
 	padding:0;
+}
 
+
+li.top-head-img{
+
+	margin: 0;
+	padding:0;
 }
  ul.top-head li {
 	vertical-align:middle;
-
 	display: inline-block;
 	text-align: center;
 	font-size:3.5vh;
@@ -67,11 +71,11 @@ li.system-name{
 {
 	background-repeat : no-repeat;
 	width: 20%;
-	/* height: auto; */
-	padding-top:0;
-	margin-top:-2vh;
-
+	margin-top:-30%;
+	margin-bottom:-4%;
 }
+
+
 
 /*（株）くろ☆のす*/
 .company-name
@@ -159,7 +163,7 @@ ul.nav li:last-child {
 	float: right;
 }
 .nav .nav-right-img {
-	padding-top:0.6vh;
+	padding-top:0vh;
 
   }
 
@@ -190,6 +194,11 @@ ul.nav li:last-child {
 
 }
 
+
+img.logout-icon {
+	padding-top:1vh;
+	width: 100%;
+}
 
 
 
