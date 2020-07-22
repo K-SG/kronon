@@ -51,6 +51,7 @@ public class ScheduleDetailServlet extends HttpServlet {
 			String scheduleDate = sdf.format(scheduleBean.getScheduleDate());
 
 			HttpSession session = request.getSession(true);
+			session.setAttribute("owner", scheduleBean.getUserName());
 			session.setAttribute("actualTime", actualTime);
 			session.setAttribute("schduleDate", scheduleDate);
 			session.setAttribute("startTime", scheduleBean.getStartTime());
