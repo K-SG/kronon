@@ -6,24 +6,32 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <%@ include file="/WEB-INF/views/layout/common/link.jsp"%>
-<!-- <link rel="stylesheet" href="../css/calendar.css"> -->
+<link rel="stylesheet" href="../css/actual_index.css">
+<link rel="stylesheet" href="../css/actual_new.css">
 <title>実績一覧</title>
 </head>
 <body>
-
+<input type = "hidden" id = "date_servlet" value = "${date}">
+<input type = "hidden" id = "year" value = "${year}">
+<input type = "hidden" id = "month" value = "${month}">
 	<%@ include file="/WEB-INF/views/layout/common/header.jsp"%>
 <article>
-<div align="center">
-	<form action = "actualsearch" method = "post">
-		日付<input type="date" name = "date">
-		タイトル<input type="text" name = "title" maxlength=100>
-		<input type="submit" value="検索">
-	</form>
-</div>
+	<div class="actual-search-area">
+			<div class="actual-search-date">
+				<div class="actual-input-font-lev1">日付</div>
+			</div>
+			<div class="actual-search-date-area"><input name="date" type="date" /></div>
+
+			<div class="actual-search-title">
+				<div class="actual-input-font-lev1">タイトル</div>
+			</div>
+			<div class="actual-search-title-area"><input name="title" type="text" maxlength="100" /></div>
+			<div class=search-button>検索<img alt="検索" src="../img/search_icon.png"></div>
+		</div>
 <div class="title-content"><img src="../img/left_button.png" alt="left"  id="left" class="left triangle-button"></div>
 <div class="calendar-title">
 	<div class="title-content">
-    	<h2 id="month"><c:out value="${year}年${month}月の実績"/></h2>
+    	<h2><c:out value="${year}年${month}月の実績"/></h2>
     </div>
 </div>
 <div class="title-content"><img src="../img/right_button.png" alt="right" id="right" class="right triangle-button"></div>
@@ -77,7 +85,7 @@
 
 					</div>
 					<div class="ok-button close-popup">OK</div>
-					<img src="img/kronon/kronon_question.png" class="pop-img">
+					<img src="../img/kronon/kronon_question.png" class="pop-img">
 				</div>
 			</div>
 		</div>

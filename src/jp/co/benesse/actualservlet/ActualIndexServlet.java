@@ -37,7 +37,6 @@ public class ActualIndexServlet extends HttpServlet {
 		int userId = 1;
 //		String userName = (String) session.getAttribute("userId");
 		String dateStr = request.getParameter("date");
-		String errorMsg = null;
 
 		LocalDate date;
 		List<ScheduleBean> scheduleBeanList = new ArrayList<>();
@@ -54,10 +53,13 @@ public class ActualIndexServlet extends HttpServlet {
 			date = LocalDate.parse(dateStr, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 			LocalDate firstDayOfMonth = date.with(TemporalAdjusters.firstDayOfMonth()); // 初日
 			date = firstDayOfMonth.minusDays(1);// 先月の末日
+
+		    System.out.println("先月末"+date);
 		} else if (flag.equals("1")) {// 翌月
 			date = LocalDate.parse(dateStr, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 			LocalDate lastDayOfMonth = date.with(TemporalAdjusters.lastDayOfMonth()); // 末日
 			date = lastDayOfMonth.plusDays(1);// 次月の初日
+			 System.out.println("来月初"+date);
 		} else {// 実績確認画面以外から
 			date = LocalDate.now();
 		}
@@ -67,12 +69,8 @@ public class ActualIndexServlet extends HttpServlet {
 			scheduleDAO = new ScheduleDAO(connection);
 			scheduleBeanList = scheduleDAO.getOneMonthSchedule(date, userId);
 
-			if(scheduleBeanList.size() == 0){
-				errorMsg = "検索結果は0件でした";
-				request.setAttribute("errorMsg", errorMsg);
-			}
 			// リクエストスコープにセット
-//			request.setAttribute("date", date);
+			request.setAttribute("date", date);
 			request.setAttribute("month", date.getMonthValue());
 			request.setAttribute("year", date.getYear());
 			request.setAttribute("scheduleBeanList", scheduleBeanList);
