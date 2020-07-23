@@ -34,15 +34,10 @@ public class UserCreateServlet extends HttpServlet {
 		String userName = request.getParameter("userName");
 		String mail = request.getParameter("mail");
 		String password = request.getParameter("password");
-		System.out.println(userName);
-		System.out.println(mail);
-		System.out.println(password);
 
-
-
-		request.setAttribute("userName", userName);//追加
-		request.setAttribute("mail", mail);//追加
-		request.setAttribute("password", password);//追加
+		request.setAttribute("userName", userName);
+		request.setAttribute("mail", mail);
+		request.setAttribute("password", password);
 
 		ConnectionManager connectionManager = new ConnectionManager();
 
@@ -52,16 +47,13 @@ public class UserCreateServlet extends HttpServlet {
 			// UserDAOの作成
 			userDAO = new UserDAO(connection);
 
-
-
-
 			//メールアドレスかぶりの確認
 			if(userDAO.isBooking(mail)){
 				//かぶっていたらメールアドレス重複のポップアップが出るようにフラグ立て。
 				request.setAttribute("popFlag",1);
 
 				//アカウント新規登録画面へ戻る。
-				RequestDispatcher dispatcher = request.getRequestDispatcher("../WEB-INF/views/user/user_new.jsp");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/user/user_new.jsp");
 				dispatcher.forward(request, response);
 				return;
 			}
@@ -69,8 +61,7 @@ public class UserCreateServlet extends HttpServlet {
 			//新規登録をするために
 			int result = userDAO.createUser(userName,mail,password);
 			if(result!=1){
-
-				RequestDispatcher dispatcher = request.getRequestDispatcher("../WEB-INF/views/error/error.jsp");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/error/error.jsp");
 				dispatcher.forward(request, response);
 				return;
 			}
@@ -78,30 +69,27 @@ public class UserCreateServlet extends HttpServlet {
 
 			UserBean userBean = new UserBean();
 
-			userBean = userDAO.findUser(mail,password);//500エラー
-			System.out.println("find通過");
+			userBean = userDAO.findUser(mail,password);
 			HttpSession session = request.getSession();
 			session.setAttribute("userName",userBean.getUserName());
 			session.setAttribute("userId",userBean.getUserId());
 
 			//新規登録完了ポップアップを出すためのフラグを立てる。
 			request.setAttribute("popFlag",0);
+
 			//user_new.jsp(アカウント新規作成画面)にforwardする。
-			RequestDispatcher dispatcher = request.getRequestDispatcher("../WEB-INF/views/user/user_new.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/user/user_new.jsp");
 			dispatcher.forward(request, response);
 			return;
 		}
 		catch(RuntimeException e){
-			System.out.println("通過");
-			RequestDispatcher dispatcher = request.getRequestDispatcher("../WEB-INF/views/error/error.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/error/error.jsp");
 			dispatcher.forward(request, response);
 			return;
 		}
 		finally{
 			connectionManager.closeConnection();
 		}
-
-
 
 	}
 

@@ -1,383 +1,95 @@
 "use strict"
 
-/*//$(function () {
+$(function () {
 
-  DBと照合した後のエラーポップアップ表示
-  $(document).ready(function () {
+	/*DBと照合した後のエラーポップアップ表示*/
+	$(document).ready(function () {
+		let popFlag = document.getElementById('flag').value;
 
-	let popFlag = document.getElementById('flag').value;
+		/*登録が完了した場合*/
+		  if(popFlag == 0){
+		  	$('.create-msg').html('登録が完了したよ！');
+		  	$('.complete-popup').fadeIn();
+		  	return;
+		  }
+		/*メールアドレスがすでに登録されていた場合*/
+		  if(popFlag == 1){
+		  	$('.create-popup').fadeIn();
+		  	return;
+		  }
+	});
 
-    if(popFlag == 1){
-    	$('.error-popup').fadeIn();
-    	return;
-    	}
-    });
+	/*新規登録ボタンを押下した際のエラーチェックとポップアップ表示*/
+	  $('.user-create-button').click(function () {
+		let popFlag = document.getElementById('flag').value;
+		let userName = document.getElementById('create_name').value;
+	    let mail = document.getElementById('create_mail').value;
+	    let password1 = document.getElementById('create_password1').value;
+	    let password2 = document.getElementById('create_password2').value;
 
-
-*/
-
-
-
-
-/*
-
-  $('.user-create-button').click(function () {
-	    let userName = document.getElementById('userName').value;
-	    let mail = document.getElementById('mail').value;
-	    let password1 = document.getElementById('password1').value;
-	    let password2 = document.getElementById('password2').value;
-	    let checkCnt=0;
-	console.log("sssssss");
-	    if (userName==""|| mail=="" || password1=="" || password2=="") {
-	      popFlag=2;
-	      chkCnt++;
-	    }else if(!mail.match(/^[A-Za-z0-9]+[\w-]+@[\w\.-]+\.\w{2,}$/)){
-	        popFlag=3;
-	        chkCnt++;
-	    }else if(password1.length < 8 || !password1.match(/([a-z].*[A-Z])|([A-Z].*[a-z])/) || !password1.match(/([a-zA-Z])/) && password1.match(/([0-9])/)){
+	    if(userName==''|| mail=='' || password1=='' || password2==''){
+	    	popFlag=2;
+	    }else if(!mail.match(/^[A-Za-z0-9]+[\w_]+@[\w\._]+\.\w{2,}$/)){
+	    	popFlag=3;
+        }else if(password1.length < 8 || !password1.match(/([a-z].*[A-Z])|([A-Z].*[a-z])/) || !password1.match(/([a-zA-Z])/) && password1.match(/([0-9])/)){
 	        popFlag=4;
-	        chkCnt++;
 	    }else if(password1!==password2){
 	        popFlag=5;
-	        chkCnt++;
-	    }else if(chkCnt===4){
-	        popFlag=6;
-	    }
-	    else{
-	      popFlag=0;
+	    }else{
+	      popFlag = 0;
 	    }
 
-	    if(popFlag==0){
-	      $('.input_error1_msg').html('登録が完了したよ');
-	      $('.error-popup').fadeIn();
-	      $('.user-create-button').submit();
-	    }
+	    if(popFlag == 0){
+	        /*表示名の値をセット*/
+	        let nameText = document.getElementById("confirmUserName");
+			nameText.innerText = document.forms.id_create_form.create_name.value;
+			/*メールの値をセット*/
+			let mailText = document.getElementById("confirmMail");
+			mailText.innerText = document.forms.id_create_form.create_mail.value;
+			/*パスワードの値をセット*/
+			let passwordText = document.getElementById("confirmPassword");
+			/*パスワードの字数を取得*/
+			let tmp = document.forms.id_create_form.create_password1.value.length;
+			var str = '';
+			for (var i = 0; i < tmp; i++) {
+				str += '＊';
+			}
+			passwordText.innerText = str;
 
-	    if(popFlag==1){
-	       $('.error-popup').fadeIn();
-	      popFlag=0;
-	      return;
-	    }
-
-	    if(popFlag==2){
-	        $('.input_error1_msg').html('入力されていない<br>項目があるよ');
-	        $('.error-popup').fadeIn();
-	        popFlag=0;
+	        $('.confirm-popup').fadeIn();
+	        $('user-create-form').submit();
 	        return;
 	      }
-
+	    if(popFlag==2){
+	        $('.create-msg').html('入力されていない<br>項目があるよ');
+	        $('.create-popup').fadeIn();
+	        return;
+	      }
 	    if(popFlag==3){
-	        $('.input_error1_msg').html('メールアドレスが不正だよ！');
-	        $('.error-popup').fadeIn();
-	        popFlag=0;
+	        $('.create-msg').html('メールアドレスが<br>不正だよ！');
+	        $('.create-popup').fadeIn();
 	        return;
 	      }
 	    if(popFlag==4){
-	        $('.input_error1_msg').html('パスワードの条件を満たしていないよ！');
-	        $('.error-popup').fadeIn();
-	        popFlag=0;
+	        $('.create-msg').html('パスワードの条件を<br>満たしていないよ！');
+	        $('.create-popup').fadeIn();
 	        return;
 	      }
 	    if(popFlag==5){
-	        $('.input_error1_msg').html('パスワードが一致していないよ！');
-	        $('.error-popup').fadeIn();
-	        popFlag=0;
+	        $('.create-msg').html('パスワードが<br>一致していないよ！');
+	        $('.create-popup').fadeIn();
 	        return;
 	      }
-	    if(chkCnt==4){
-	        $('.confirm-popup').fadeIn();
-	        //popFlag='0';
-	        $('.user-create-form').submit();
-	        return;
-	      }
-
-
 	  });
-
-	  ポップアップを閉じる際の動き
+	  /*ポップアップを閉じる*/
 	  $('.close-popup').click(function () {
-	    $('.confirm-popup').fadeOut();
-	    $('.error-popup').fadeOut();
-	    $('.back-popup').fadeOut();
-
-	  });*/
-
-
-//});
-
-
-
-
-
-
-
-/*
-
-$(function () {
-
-  リロード・戻るボタンが押されているか判定し、ポップアップ非表示にする
-  if(window.performance){
-    if(performance.navigation.type===0){
-      $(document).ready(function(){
-        let popFlag = document.getElementById('flag').value;
-        if(popFlag==1){
-          $('.error-popup').fadeIn();
-          return;
-        }
+        $('.confirm-popup').fadeOut();
+        $('.error-popup').fadeOut();
+        $('.back-popup').fadeOut();
+        $('.create-popup').fadeOut();
       });
-    }
-  }
-
-  ログインボタンを押下した際のエラーチェックとポップアップ表示
-  $('.user-create-button').click(function () {
-    let userName = document.getElementById('userName').value;
-    let mail = document.getElementById('mail').value;
-    let password1 = document.getElementById('password1').value;
-    let password2 = document.getElementById('password2').value;
-    let checkCnt=0;
-console.log("sssssss");
-    if (userName==""|| mail=="" || password1=="" || password2=="") {
-      popFlag='2';
-      chkCnt++;
-    }else if(!mail.match(/^[A-Za-z0-9]+[\w-]+@[\w\.-]+\.\w{2,}$/)){
-        popFlag='3';
-        chkCnt++;
-    }else if(password1.length < 8 || !password1.match(/([a-z].*[A-Z])|([A-Z].*[a-z])/) || !password1.match(/([a-zA-Z])/) && password1.match(/([0-9])/)){
-        popFlag='4';
-        chkCnt++;
-    }else if(password1!==password2){
-        popFlag='5';
-        chkCnt++;
-    }else if(chkCnt===4){
-        popFlag='6';
-    }
-    else{
-      popFlag='0';
-    }
-
-    if(popFlag=='0'){
-      $('.input_error1_msg').html('登録が完了したよ');
-      $('.error-popup').fadeIn();
-      $('.user-create-button').submit();
-    }
-
-    if(popFlag=='1'){
-       $('.error-popup').fadeIn();
-      popFlag='0';
-      return;
-    }
-
-    if(popFlag=='2'){
-        $('.input_error1_msg').html('入力されていない<br>項目があるよ');
-        $('.error-popup').fadeIn();
-        popFlag='0';
-        return;
-      }
-
-    if(popFlag=='3'){
-        $('.input_error1_msg').html('メールアドレスが不正だよ！');
-        $('.error-popup').fadeIn();
-        popFlag='0';
-        return;
-      }
-    if(popFlag=='4'){
-        $('.input_error1_msg').html('パスワードの条件を満たしていないよ！');
-        $('.error-popup').fadeIn();
-        popFlag='0';
-        return;
-      }
-    if(popFlag=='5'){
-        $('.input_error1_msg').html('パスワードが一致していないよ！');
-        $('.error-popup').fadeIn();
-        popFlag='0';
-        return;
-      }
-    if(chkCnt==4){
-        $('.confirm-popup').fadeIn();
-        popFlag='0';
-        return;
-      }
-
-
-  });
-
-  ポップアップを閉じる際の動き
-  $('.close-popup').click(function () {
-    $('.confirm-popup').fadeOut();
-    $('.error-popup').fadeOut();
-    $('.back-popup').fadeOut();
-    let password = document.getElementById('login_pass');
-    password.value='';
-  });
-
+	  /*登録完了ポップアップのOKボタン押下時の遷移先*/
+      $('.next-popup').click(function () {
+        location.href= "kronon/user/calendar";
+      });
 });
-
-
-*/
-
-
-
-
-
-
-
-	 //初期は非表示
-	document.getElementById("emp-error").style.display = "none";
-	 const empError = document.getElementById("emp-error");
-	 document.getElementById("mail-error").style.display = "none";
-	 const mailError = document.getElementById("mail-error");
-	 document.getElementById("pass-check-error").style.display = "none";
-	 const passCheckError = document.getElementById("pass-check-error");
-	 document.getElementById("pass-notsame-error").style.display = "none";
-	 const passNotSameError = document.getElementById("pass-notsame-error");
-
-	 document.getElementById("mail-same-error").style.display = "none";
-	 const mailSameError = document.getElementById("mail-same-error");
-
-	 document.getElementById("input-cmp").style.display = "none";
-	 const inputCmp = document.getElementById("input-cmp");
-
-
-	  //初期は非表示
-	  document.getElementById("confirm-pop").style.display = "none";
-	  const confirmPop = document.getElementById("comfirm-pop");
-
-
-
-
-
-    function checkUserCreate() {
-    	//let popFlag=0;//0confirm 1emp-error 2mail-error 3pass-checkerror 4pass-notsame-error
-    	let checkCnt=0;
-    	 let popFlag = document.getElementById("flag").value;
-    	//空欄かどうかのチェック--------------------------------------------------------
-    	const inputUserName = document.getElementById("userName");
-    	const UserName = inputUserName.value;
-    	const inputUserMail = document.getElementById("mail");
-    	const UserMail = inputUserMail.value;
-    	const inputUserPass1 = document.getElementById("password1");
-    	const UserPass1 = inputUserPass1.value;
-    	const inputUserPass2 = document.getElementById("password2");
-    	const UserPass2 = inputUserPass2.value;
-
-
-
-    	if(UserName=="" || UserMail=="" || UserPass1=="" || UserPass2==""){
-
-    	  popFlag=2;
-     	  // blockで表示
-    	  empError.style.display = "block";
-    	  return false;
-    	}else {
-    		checkCnt++;
-
-    	}
-    	//-------------------------------------------------------空欄かどうかのチェック↑--
-
-
-    	//----メールチェック↓---------------------------------------------------------------
-    	 if (!UserMail.match(/^[A-Za-z0-9]+[\w-]+@[\w\.-]+\.\w{2,}$/)){
-
-    		popFlag=3;
-	     	 // blockで表示
-	    	  mailError.style.display = "block";
-    		return false;
-    	}else {
-    		checkCnt++;
-
-    	}
-
-    	//--------------------------------------------------------メールチェック↑-----------
-
-    	//----パスワード条件チェック↓---------------------------------------------------------------
-    	//8字以上? // 英字の大文字と小文字含む？//英字と数字を含む？
-    	 if (UserPass1.length < 8 || !UserPass1.match(/([a-z].*[A-Z])|([A-Z].*[a-z])/) || !UserPass1.match(/([a-zA-Z])/) && UserPass1.match(/([0-9])/)){
-    		 popFlag=4;
-    		 passCheckError.style.display = "block";
-    		 return false;
-    	 }else {
-     		checkCnt++;
-     	}
-       //--------------------------------------------------------パスワード条件チェック↑-----------
-
-       //----パスワード一致チェック↓---------------------------------------------------------------
-    	 if (UserPass1!==UserPass2){
-     		popFlag=5;
-    		 passNotSameError.style.display = "block";
-      		return false;
-     	 }else {
-     		checkCnt++;
-     	}
-       //-------------------------------------------------------パスワード一致チェック↑------------
-
-
-
-
-
-    	 if(checkCnt===4){
-    		 //window.confirm();
-    		 //confirmPop.style.display = "block";
-
-
-    			target1 = document.getElementById("confirmUserName");
-    			target1.innerText = document.forms.user_create_form.userName.value;
-    			target2 = document.getElementById("confirmMail");
-    			target2.innerText = document.forms.user_create_form.mail.value;
-    			target3 = document.getElementById("confirmPassword");
-    			tmp = document.forms.user_create_form.password1.value.length;
-    			var str = '';
-    			for (var i = 0; i < tmp; i++) {
-    				str += '＊';
-    			}
-    			target3.innerText = str;
-
-
-    		 $('.confirm-popup').fadeIn();
-
-
-
-
-    		 return false;
-    	 }
-    	 if(popFlag==1){
-    		 $('.confirm-popup').fadeOut();
-       		 mailSameError.style.display = "block";
-         		return false;
-        	 }else {
-        		return true;
-    	 }
-    	 //popFlag=0;
-    	 if(popFlag==0){
-    	     // $('.input_error1_msg').html('登録が完了したよ');
-    	      inputCmp.style.display = "block";
-    	      $('.error-popup').fadeIn();
-    	      $('.user-create-button').submit();
-    	 }
-
-    }
-
-
-    function checkUserCreateConfirm() {
-    	let popFlag = document.getElementById("flag").value;
-    	//popFlag= 1;
-        //----メールアドレス重複チェック↓---------------------------------------------------------------
-   	 if (popFlag==1){
-   		 $('.confirm-popup').fadeOut();
-   		 mailSameError.style.display = "block";
-     		return false;
-    	 }else {
-    		return true;
-    	}
-      //-------------------------------------------------------メールアドレス重複チェック↑------------
-
-    }
-//confirmのok押したときのボタン
-    function clickEvent() {
-        document.user_create_form.submit();
-    }
-
-
-
-
-
-
