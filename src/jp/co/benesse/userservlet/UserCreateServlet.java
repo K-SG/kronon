@@ -77,12 +77,17 @@ public class UserCreateServlet extends HttpServlet {
 			//新規登録完了ポップアップを出すためのフラグを立てる。
 			request.setAttribute("popFlag",0);
 
+			connectionManager.commit();
+
 			//user_new.jsp(アカウント新規作成画面)にforwardする。
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/user/user_new.jsp");
 			dispatcher.forward(request, response);
 			return;
 		}
 		catch(RuntimeException e){
+
+			connectionManager.rollback();
+
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/error/error.jsp");
 			dispatcher.forward(request, response);
 			return;
