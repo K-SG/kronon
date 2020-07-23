@@ -31,7 +31,7 @@
 		<div class="actual-search-title-area">
 			<input name="title" type="text" maxlength="100" id = "input-title"/>
 		</div>
-		<div class=search-button>
+		<div class="search-button">
 			<div class = "word">検索</div>
 			<div><img id = "search-img" alt="検索" src="../img/search_icon.png"></div>
 		</div>
@@ -70,7 +70,7 @@
 		<c:forEach var="scheduleBeanList" items="${scheduleBeanList}">
 		<c:out value="${errorMsg}" />
 				<tr>
-					<td><c:out value="${scheduleBeanList.scheduleDate}" /></td>
+					<td id = "date-in-table"><c:out value="${scheduleBeanList.scheduleDate}" /></td>
 					<td><c:out value="${scheduleBeanList.title}" /></td>
 					<td><c:out value="${scheduleBeanList.content}" /></td>
 					<td><c:out value="${scheduleBeanList.estimateTime}" /></td>
@@ -81,35 +81,52 @@
 		</tbody>
 
 			</table>
-			<c:out value="${errorMsg}" />
+</div>
+<div id = "error-message">
+	<c:out value="${errorMsg}" />
 </div>
 
+<div id="actual-button" align = center>
+	実績確認へ
+</div>
+
+<p id="scrollTop">
+	<a href="#"><img src="../img/up_bottom.png" alt = "トップへ" class="pop-img"></a>
+</p>
 
 
-
-		<!--エラーまたは完了ポップアップ------------------------------------------------------------------->
-		<div class="popup-wrapper error-popup">
-			<div class="pop-container">
-				<div class="close-popup">
-					<i class="fa fa-2x fa-times"></i>
-				</div>
-				<div class="pop-container-inner">
-					<div class="message-container">
-						<!--  メッセージを分岐未入力、日付おかしい-->
-						<c:if test="">
-							<p>日付かタイトルを入力してね</p>
-						</c:if>
-						<c:if test="">
-							<p>日付の入力がおかしいよ</p>
-						</c:if>
-
-					</div>
-					<div class="ok-button close-popup">OK</div>
-					<img src="../img/kronon/kronon_question.png" class="pop-img">
-				</div>
-			</div>
+<!--エラーまたは完了ポップアップ------------------------------------------------------------------->
+<div id = "error1" class="popup-wrapper error-popup">
+	<div class="pop-container">
+		<div class="close-popup">
+			<i class="fa fa-2x fa-times"></i>
 		</div>
-		<!--エラーまたは完了ポップアップここまで-------------------------------------------------------------->
+		<div class="pop-container-inner">
+			<div class="message-container">
+					<p>日付の入力がおかしいよ</p>
+			</div>
+			<div class="ok-button close-popup">OK</div>
+			<img src="../img/kronon/kronon_question.png" class="pop-img">
+		</div>
+	</div>
+</div>
+<!--エラーまたは完了ポップアップここまで-------------------------------------------------------------->
+<!--エラーまたは完了ポップアップ------------------------------------------------------------------->
+<div id = "error2"  class="popup-wrapper error-popup">
+	<div class="pop-container">
+		<div class="close-popup">
+			<i class="fa fa-2x fa-times"></i>
+		</div>
+		<div class="pop-container-inner">
+			<div class="message-container">
+					<p>日付かタイトルを入力してね</p>
+			</div>
+			<div class="ok-button close-popup">OK</div>
+			<img src="../img/kronon/kronon_question.png" class="pop-img">
+		</div>
+	</div>
+</div>
+<!--エラーまたは完了ポップアップここまで-------------------------------------------------------------->
 	</article>
 	<%@ include file="/WEB-INF/views/layout/common/footer.jsp"%>
 	<script src="../js/common/common.js"></script>

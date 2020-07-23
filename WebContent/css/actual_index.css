@@ -478,6 +478,12 @@ article {
 	cursor:pointer;
 }
 
+/*エラーメッセージ*/
+#error-message{
+	margin-left:25vw;
+	margin-top: 5vw;
+	color:#454545;
+}
 
 /*フッター*/
 footer{
