@@ -29,14 +29,17 @@ public class ActualSearchServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		//セッションスコープからデータ取得
 		HttpSession session = request.getSession();
 		String userIdStr = (String) session.getAttribute("userId");
 		// int userId = Integer.parseInt(userIdStr);
 		int userId = 1;
 
+		//リクエストパラメータを取得
 		String scheduleDateStr = request.getParameter("scheduleDate");
 		String title = request.getParameter("title");
 
+		// 遷移元の判定フラグ
 		String flag = "1";
 
 		List<ScheduleBean> scheduleBeanList = new ArrayList<>();
@@ -44,12 +47,14 @@ public class ActualSearchServlet extends HttpServlet {
 		ConnectionManager connectionManager = new ConnectionManager();
 		ScheduleDAO scheduleDAO;
 
+		//検索結果0件の場合のエラーメッセージ
 		String errorMsg = null;
 
 		try {
 			Connection connection = connectionManager.getConnection();
 			scheduleDAO = new ScheduleDAO(connection);
 
+			//AND検索、日付検索、タイトル検索の判定
 			if (!scheduleDateStr.equals("") && !title.equals("")) {
 				System.out.println("AND検索");
 				Date scheduleDate = Date.valueOf(scheduleDateStr);

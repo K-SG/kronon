@@ -7,14 +7,14 @@ $(function() {
 	$('#left').click(function() {
 //		alert("先月へ");
 //		window.location.href = `../user/actualindex?flag=0&date=${date_servlet}`;
-		window.location.href = `../user/actualindex?flag=0&date=${date_servlet}`;
+		window.location.href = `../user/actualindex?monthFlag=0&date=${date_servlet}`;
 	})
 
 	//次月の実績一覧へ
 	$('#right').click(function() {
 //		alert("次月へ");
 //		window.location.href = `../user/actualindex?flag=1&date=${date_servlet}`;
-		window.location.href = `../user/actualindex?flag=1&date=${date_servlet}`;
+		window.location.href = `../user/actualindex?monthFlag=1&date=${date_servlet}`;
 	})
 
 	//キーワード検索

@@ -38,9 +38,12 @@ public class ActualIndexServlet extends HttpServlet {
 		int userId = 1;
 		// String userName = (String) session.getAttribute("userId");
 		String dateStr = request.getParameter("date");
+		//月送りの判定フラグ
+		String monthFlag = request.getParameter("monthFlag");
 
 		LocalDate date;
 		List<ScheduleBean> scheduleBeanList = new ArrayList<>();
+
 
 		// 遷移元の判定フラグ
 		String flag = "0";
@@ -49,13 +52,13 @@ public class ActualIndexServlet extends HttpServlet {
 		ScheduleDAO scheduleDAO;
 
 		try {
-			if (flag == null || dateStr == null) {// 実績確認画面以外から
+			if (monthFlag == null || dateStr == null) {// 実績確認画面以外から
 				date = LocalDate.now();
-			} else if (flag.equals("0")) {// 前月
+			} else if (monthFlag.equals("0")) {// 前月
 				date = LocalDate.parse(dateStr, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 				LocalDate firstDayOfMonth = date.with(TemporalAdjusters.firstDayOfMonth()); // 初日
 				date = firstDayOfMonth.minusDays(1);// 先月の末日
-			} else if (flag.equals("1")) {// 翌月
+			} else if (monthFlag.equals("1")) {// 翌月
 				date = LocalDate.parse(dateStr, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 				LocalDate lastDayOfMonth = date.with(TemporalAdjusters.lastDayOfMonth()); // 末日
 				date = lastDayOfMonth.plusDays(1);// 次月の初日

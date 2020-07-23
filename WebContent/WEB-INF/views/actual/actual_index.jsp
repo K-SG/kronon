@@ -11,6 +11,7 @@
 <title>実績一覧</title>
 </head>
 <body>
+<input type = "hidden" id = "flag" value = "${flag}">
 <input type = "hidden" id = "date_servlet" value = "${date}">
 <input type = "hidden" id = "year" value = "${year}">
 <input type = "hidden" id = "month" value = "${month}">
