@@ -238,6 +238,7 @@ public class ScheduleDAO {
 				scheduleBean.setComment(resultSet.getString("COMMENT"));
 				scheduleBean.setEstimateTime(Calc.calcEstimateTime(scheduleBean));
 				scheduleBean.setActualTimeStr(Calc.calcActualTime(scheduleBean));
+				scheduleBean.setScheduleDateActual(Calc.convertActualDate(scheduleBean.getScheduleDate().toLocalDate()));
 				scheduleBeanList.add(scheduleBean);
 			}
 
@@ -297,6 +298,7 @@ public class ScheduleDAO {
 				scheduleBean.setComment(resultSet.getString("COMMENT"));
 				scheduleBean.setEstimateTime(Calc.calcEstimateTime(scheduleBean));
 				scheduleBean.setActualTimeStr(Calc.calcActualTime(scheduleBean));
+				scheduleBean.setScheduleDateActual(Calc.convertActualDate(scheduleBean.getScheduleDate().toLocalDate()));
 				scheduleBeanList.add(scheduleBean);
 			}
 
@@ -360,6 +362,7 @@ public class ScheduleDAO {
 				scheduleBean.setComment(resultSet.getString("COMMENT"));
 				scheduleBean.setEstimateTime(Calc.calcEstimateTime(scheduleBean));
 				scheduleBean.setActualTimeStr(Calc.calcActualTime(scheduleBean));
+				scheduleBean.setScheduleDateActual(Calc.convertActualDate(scheduleBean.getScheduleDate().toLocalDate()));
 				scheduleBeanList.add(scheduleBean);
 
 			}
@@ -426,6 +429,7 @@ public class ScheduleDAO {
 				scheduleBean.setComment(resultSet.getString("COMMENT"));
 				scheduleBean.setEstimateTime(Calc.calcEstimateTime(scheduleBean));
 				scheduleBean.setActualTimeStr(Calc.calcActualTime(scheduleBean));
+				scheduleBean.setScheduleDateActual(Calc.convertActualDate(scheduleBean.getScheduleDate().toLocalDate()));
 				scheduleBeanList.add(scheduleBean);
 			}
 
@@ -483,6 +487,7 @@ public class ScheduleDAO {
 				scheduleBean.setActualTime(resultSet.getInt("ACTUAL_TIME"));
 				scheduleBean.setComment(resultSet.getString("COMMENT"));
 				scheduleBean.setActualTimeStr(Calc.calcActualTime(scheduleBean));
+				scheduleBean.setScheduleDateActual(Calc.convertActualDate(scheduleBean.getScheduleDate().toLocalDate()));
 			}
 
 			return scheduleBean;
