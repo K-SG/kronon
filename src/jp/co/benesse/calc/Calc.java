@@ -63,13 +63,13 @@ public class Calc {
 	 */
 	public static String convertActualDate(LocalDate scheduleDate){
 		Map<Integer,String> dayOfWeek = new HashMap<>();
-		dayOfWeek.put(0, "日");
 		dayOfWeek.put(1, "月");
 		dayOfWeek.put(2, "火");
 		dayOfWeek.put(3, "水");
 		dayOfWeek.put(4, "木");
 		dayOfWeek.put(5, "金");
 		dayOfWeek.put(6, "土");
+		dayOfWeek.put(7, "日");
 		scheduleDate.getMonthValue();
 		scheduleDate.getDayOfMonth();
 		return scheduleDate.getMonthValue() + "/" + scheduleDate.getDayOfMonth()
