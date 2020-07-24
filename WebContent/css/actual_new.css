@@ -328,6 +328,9 @@ table{
 }
 
 #title{
+	max-width: 10vw;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   	overflow: hidden;/*はみ出た文字を隠す*/
   	width:12vw;
 }
@@ -335,7 +338,7 @@ table{
 #content{
 	width:16vw;
 	display: -webkit-box;/*...表示*/
-	-webkit-box-orient: horizontal;/*...表示*/
+	-webkit-box-orient: vertical;/*...表示*/
 	-webkit-line-clamp: 2;/*...表示*/
 	overflow: hidden;/*はみ出た文字を隠す*/
 }
@@ -344,11 +347,13 @@ table{
 	display:none;
 }
 
-
-
+.cell-active{
+	background : #FFEEDB;
+  	background : rgba(255, 238, 219, 1);
+}
 
 .time{
-	width:8vw;
+	width:9vw;
 }
 
 /*実績確認ルーズリーフ全体の枠*/

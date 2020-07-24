@@ -72,12 +72,12 @@
 		<c:out value="${errorMsg}" />
 				<tr class = "schedule-actual">
 					<td id = "date-in-table"><c:out value="${scheduleBeanList.scheduleDateActual}" /></td>
+					<td class = "schedule-id" style = "display:none;"><c:out value="${scheduleBeanList.scheduleId}" /></td>
 					<td id = "title" class = "title-and-content"><c:out value="${scheduleBeanList.title}" /></td>
 					<td id = "content" class = "title-and-content"><c:out value="${scheduleBeanList.content}" /></td>
-					<td class = "time"><c:out value="${scheduleBeanList.estimateTime}" /></td>
-					<td class = "time"><c:out value="${scheduleBeanList.actualTimeStr}" /></td>
+					<td class = "estimate-time time"><c:out value="${scheduleBeanList.estimateTime}" /></td>
+					<td class = "actual-time time"><c:out value="${scheduleBeanList.actualTimeStr}" /></td>
 				</tr>
-		<input type = "hidden" id = "schedule-date" value = "${scheduleBeanList.scheduleDate}">
 		</c:forEach>
 		</tbody>
 

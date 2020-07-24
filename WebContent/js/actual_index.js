@@ -1,9 +1,5 @@
 $(function() {
 
-	//テーブルの曜日整形用
-	const dayOfWeek = [ "日", "月", "火", "水", "木", "金", "土" ] ;
-  	//console.log(dayOfWeek[date.getDay()] + '曜日');
-
 	//サーブレットから送られてきた日付を取得
 	const dateServlet = document.getElementById("date_servlet").value;
 
@@ -13,10 +9,39 @@ $(function() {
 	//エラーメッセージを取得
 	const errorMsg = document.getElementById("error-message").textContent;
 
-//	//テーブルに記載されている日付を取得して整形
-//	const dateInTable = document.getElementsByClassName("date-in-table")[0].value;
-//	console.log(dateInTable);
+	//一覧から見積時間と実績時間を取得
+	const estimateTimes = Array.from(document.getElementsByClassName("estimate-time"));
+	const actualTimes = Array.from(document.getElementsByClassName("actual-time"));
 
+	for(let i = 0; i < estimateTimes.length; i++){
+		//見積時間を分換算
+		let estimateTimeArray = estimateTimes[i].textContent.split(/\D/g);
+		let estimateHour = Number(estimateTimeArray[0]);
+		let estimateMinute = Number(estimateTimeArray[2]);
+		let estimateTimeMinute = 60*estimateHour + estimateMinute;
+
+		//実績時間を分換算
+		let actualTimeArray = actualTimes[i].textContent.split(/\D/g);
+		let actualHour = Number(actualTimeArray[0]);
+		let actualMinute = Number(actualTimeArray[2]);
+		let actualTimeMinute = 60*actualHour + actualMinute;
+
+		//実績時間が見積時間の80%を下回った場合は青表記
+		if(actualTimeMinute < estimateTimeMinute*0.8){
+			document.getElementsByClassName("actual-time")[i].style.color = "blue";
+		}
+
+		//実績時間が見積時間の120%を上回った場合は青表記
+		if(actualTimeMinute > estimateTimeMinute*1.2){
+			document.getElementsByClassName("actual-time")[i].style.color = "red";
+		}
+
+		//実績時間が0時間0分の場合は緑表記
+		if(actualTimeMinute == 0){
+			document.getElementsByClassName("actual-time")[i].style.color = "green";
+		}
+
+	}
 
 	//検索結果が0件の場合はテーブルを非表示
 	if(errorMsg.trim() == "検索結果は0件でした"){
@@ -49,11 +74,20 @@ $(function() {
 		window.location.href = `../user/actualindex?monthFlag=1&date=${dateServlet}`;
 	})
 
+	//マウスオーバー中の予定に色付け
+	$('.schedule-actual').hover(
+		function(){
+			$(this).addClass('cell-active');
+		},
+		function(){
+			$(this).removeClass('cell-active');
+		}
+	)
+
 	//実績の詳細へ
-	$('.schedule-actual').click(function() {
-		const scheduleDate = document.getElementById("schedule-date").value;
-		alert(scheduleDate);
-		window.location.href = `../user/actualdetail?scheduleDate=${scheduleDate}`;
+	$('tr').click(function(){
+		const scheduleId = $(this).children('.schedule-id').text();
+		window.location.href = `../user/actualdetail?scheduleId=${scheduleId}`;
 	})
 
 	//キーワード検索
@@ -61,10 +95,15 @@ $(function() {
 		//フォームに入力された日付とタイトルを取得
 		const inputDate = document.getElementById("input-date").value;
 		const inputTitle = document.getElementById("input-title").value;
-		console.log(inputDate);
-		console.log(inputTitle);
+
 		//「-」で文字列を三つに分割し年、月、日を取得
-		//年が9999年以上なら多分サーブレット側でエラーが起こる（localDate）
+		const year = inputDate.split('-')[0];
+
+		//年が9999年以上ならサーブレット側でエラーが起こる（localDate）
+		if(year.toString().trim().length >= 5){
+			$('#error1').css('display','block');
+			return;
+		}
 
 		//日付、タイトルともに未入力
 		if(inputDate.trim() == "" && inputTitle.trim() == ""){
