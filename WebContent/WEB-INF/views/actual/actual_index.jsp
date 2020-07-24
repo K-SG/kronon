@@ -38,10 +38,13 @@
 	</div>
 
 <div id = "actual-content" align=center>
+	<div>
 	<div class="title-content">
 		<img src="../img/left_button.png" alt="left"  id="left" >
 	</div>
-	<div>
+	<div class="title-content">
+		<img src="../img/right_button.png" alt="right" id="right" >
+	</div>
 		<div class="actual-content">
 		<c:if test="${flag.equals('0')}">
 			<p id = "actual-title"><c:out value="${year}年${month}月の実績"/></p>
@@ -49,12 +52,10 @@
 		<c:if test="${flag.equals('1')}">
 			<p id = "actual-result"><c:out value="検索結果"/></p>
 		</c:if>
-
     	</div>
+
 	</div>
-	<div class="title-content">
-		<img src="../img/right_button.png" alt="right" id="right" >
-	</div>
+
 	<table border="1" >
 		<thead>
 			<tr>
@@ -69,15 +70,15 @@
 
 		<c:forEach var="scheduleBeanList" items="${scheduleBeanList}">
 		<c:out value="${errorMsg}" />
-				<tr>
-					<td id = "date-in-table"><c:out value="${scheduleBeanList.scheduleDate}" /></td>
-					<td><c:out value="${scheduleBeanList.title}" /></td>
-					<td><c:out value="${scheduleBeanList.content}" /></td>
-					<td><c:out value="${scheduleBeanList.estimateTime}" /></td>
-					<td><c:out value="${scheduleBeanList.actualTimeStr}" /></td>
+				<tr class = "schedule-actual">
+					<td id = "date-in-table"><c:out value="${scheduleBeanList.scheduleDateActual}" /></td>
+					<td id = "title" class = "title-and-content"><c:out value="${scheduleBeanList.title}" /></td>
+					<td id = "content" class = "title-and-content"><c:out value="${scheduleBeanList.content}" /></td>
+					<td class = "time"><c:out value="${scheduleBeanList.estimateTime}" /></td>
+					<td class = "time"><c:out value="${scheduleBeanList.actualTimeStr}" /></td>
 				</tr>
-
-				</c:forEach>
+		<input type = "hidden" id = "schedule-date" value = "${scheduleBeanList.scheduleDate}">
+		</c:forEach>
 		</tbody>
 
 			</table>

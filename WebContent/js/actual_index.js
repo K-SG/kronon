@@ -13,9 +13,9 @@ $(function() {
 	//エラーメッセージを取得
 	const errorMsg = document.getElementById("error-message").textContent;
 
-	//テーブルに記載されている日付を取得して整形
-	/*const dateInTable = document.getElementById("date-in-table").textContent;
-	console.log(dateInTable);*/
+//	//テーブルに記載されている日付を取得して整形
+//	const dateInTable = document.getElementsByClassName("date-in-table")[0].value;
+//	console.log(dateInTable);
 
 
 	//検索結果が0件の場合はテーブルを非表示
@@ -47,6 +47,13 @@ $(function() {
 	//次月の実績一覧へ
 	$('#right').click(function() {
 		window.location.href = `../user/actualindex?monthFlag=1&date=${dateServlet}`;
+	})
+
+	//実績の詳細へ
+	$('.schedule-actual').click(function() {
+		const scheduleDate = document.getElementById("schedule-date").value;
+		alert(scheduleDate);
+		window.location.href = `../user/actualdetail?scheduleDate=${scheduleDate}`;
 	})
 
 	//キーワード検索

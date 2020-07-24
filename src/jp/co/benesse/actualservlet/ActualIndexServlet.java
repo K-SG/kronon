@@ -66,6 +66,7 @@ public class ActualIndexServlet extends HttpServlet {
 				date = LocalDate.now();
 			}
 		} catch (DateTimeParseException e) {
+			//日付の不正入力のうち、フロントではじけなかった場合はエラー画面へ
 			RequestDispatcher dispatcher = request.getRequestDispatcher("../WEB-INF/views/error/error.jsp");
 			dispatcher.forward(request, response);
 			return;

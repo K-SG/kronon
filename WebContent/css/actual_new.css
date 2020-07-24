@@ -285,10 +285,16 @@ article {
   border-radius: 0.3vw;
   color: white;
   cursor: pointer;
-  margin-left:45vw;
-  margin-top:30vh;
+  margin-left:47vw;
+  margin-top:10vh;
+  margin-bottom:3vh;
   font-size: 1.5vw;
   font-size:2.5vh;
+}
+
+/*実績詳細へ*/
+.schedule-actual{
+	 cursor: pointer;
 }
 
 #actual-title{
@@ -297,9 +303,8 @@ article {
 }
 
 #actual-result{
-	margin-top:10vh;
-	margin-bottom:1.5vh;
-	padding-top:2vh;
+	margin-top:3vh;
+	margin-bottom:3vh;
 }
 
 /*見出しと一覧*/
@@ -315,6 +320,35 @@ article {
 
 table{
 	width:50vw;
+	font-size:70%;
+}
+
+#date-in-table{
+	width:6vw;
+}
+
+#title{
+  	overflow: hidden;/*はみ出た文字を隠す*/
+  	width:12vw;
+}
+
+#content{
+	width:16vw;
+	display: -webkit-box;/*...表示*/
+	-webkit-box-orient: horizontal;/*...表示*/
+	-webkit-line-clamp: 2;/*...表示*/
+	overflow: hidden;/*はみ出た文字を隠す*/
+}
+
+#schedule-date-hidden{
+	display:none;
+}
+
+
+
+
+.time{
+	width:8vw;
 }
 
 /*実績確認ルーズリーフ全体の枠*/

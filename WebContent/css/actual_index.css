@@ -468,13 +468,13 @@ article {
 /*月送りボタン*/
 #left{
 			position:absolute;
-	left:5vw;
+	left:13vw;
 	cursor:pointer;
 }
 
 #right{
 			position:absolute;
-	right:5vw;
+	right:8vw;
 	cursor:pointer;
 }
 
