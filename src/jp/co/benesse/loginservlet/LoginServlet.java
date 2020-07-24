@@ -58,7 +58,9 @@ public class LoginServlet extends HttpServlet {
 			session.setAttribute("userId", userBean.getUserId());
 			session.setAttribute("userName", userBean.getUserName());
 
-			response.sendRedirect("/user/calendar");
+//			response.sendRedirect("/user/calendar");
+			response.sendRedirect("user/template");
+//			response.sendRedirect("Template");
 			return;
 
 		}catch(RuntimeException e){
