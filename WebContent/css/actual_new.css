@@ -324,23 +324,34 @@ table{
 }
 
 #date-in-table{
-	width:6vw;
+	width:7vw;
+}
+
+#date-in-thead{
+	width:7vw;
 }
 
 #title{
-	max-width: 10vw;
+	max-width: 12vw;
     text-overflow: ellipsis;
     white-space: nowrap;
   	overflow: hidden;/*はみ出た文字を隠す*/
   	width:12vw;
 }
+#title-in-thead{
+
+	width:12vw;
+}
 
 #content{
-	width:16vw;
+	width:15vw;
 	display: -webkit-box;/*...表示*/
 	-webkit-box-orient: vertical;/*...表示*/
 	-webkit-line-clamp: 2;/*...表示*/
 	overflow: hidden;/*はみ出た文字を隠す*/
+}
+#content-in-thead{
+	width:15vw;
 }
 
 #schedule-date-hidden{
@@ -355,6 +366,15 @@ table{
 .time{
 	width:9vw;
 }
+
+#estimate-in-thead{
+	width:9vw;
+}
+
+#actual-in-thead{
+	width:9vw;
+}
+
 
 /*実績確認ルーズリーフ全体の枠*/
 .actual-input-area

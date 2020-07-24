@@ -485,6 +485,13 @@ article {
 	color:#454545;
 }
 
+/*トップに戻るボタン*/
+#to-top-button{
+	 transform: scale(0.7);
+	 margin-right:12vw;
+	 opacity: 0.8;
+}
+
 /*フッター*/
 footer{
 	width:100vw;

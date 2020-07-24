@@ -59,11 +59,11 @@
 	<table border="1" >
 		<thead>
 			<tr>
-				<th>日付</th>
-				<th>タイトル</th>
-				<th>内容</th>
-				<th>見積時間</th>
-				<th>実績時間</th>
+				<th id = "date-in-thead">日付</th>
+				<th id = "title-in-thead">タイトル</th>
+				<th id = "content-in-thead">内容</th>
+				<th id = "estimate-in-thead">見積時間</th>
+				<th id = "actual-in-thead">実績時間</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -92,7 +92,7 @@
 </div>
 
 <p id="scrollTop">
-	<a href="#"><img src="../img/up_bottom.png" alt = "トップへ" class="pop-img"></a>
+	<a href="#"><img id = "to-top-button" src="../img/up_bottom.png" alt = "トップへ" class="pop-img"></a>
 </p>
 
 
