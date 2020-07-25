@@ -489,7 +489,9 @@ article {
 #to-top-button{
 	 transform: scale(0.7);
 	 margin-right:12vw;
+	  margin-bottom:12vw;
 	 opacity: 0.8;
+	 position: fixed;
 }
 
 /*フッター*/

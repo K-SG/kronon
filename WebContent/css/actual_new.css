@@ -252,8 +252,8 @@ article {
 .search-button {
   display: inline-block;
   width: 7vw;
-  height:4vh;
-  padding: 0.5vw;
+  height:3vh;
+
   background-color: #DE9B50;
   border: none;
   border-radius: 0.3vw;
@@ -263,16 +263,19 @@ article {
   text-align: center;
   font-size: 1.5vw;
   float:left;
-  margin-top:0.4vh;
-  padding-top:0.3vh;
-  padding-left:2vh;
+  margin-top:1vh;
+  padding-top:0.8vh;
+  padding-left:2.5vh;
   font-size:2.5vh;
+  padding-bottom:0.5vh;
+
 }
 .search-button img {
 	width:3vh;
-	margin-left:0.5vw;
+}
 
-
+.word{
+	float:left;
 }
 
 /*「実績確認へ」ボタン*/
@@ -321,6 +324,7 @@ article {
 table{
 	width:50vw;
 	font-size:70%;
+	border-collapse:collapse;
 }
 
 #date-in-table{
@@ -349,6 +353,7 @@ table{
 	-webkit-box-orient: vertical;/*...表示*/
 	-webkit-line-clamp: 2;/*...表示*/
 	overflow: hidden;/*はみ出た文字を隠す*/
+
 }
 #content-in-thead{
 	width:15vw;
