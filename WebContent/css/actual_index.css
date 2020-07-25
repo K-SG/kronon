@@ -468,7 +468,7 @@ article {
 /*月送りボタン*/
 #left{
 			position:absolute;
-	left:13vw;
+	left:8vw;
 	cursor:pointer;
 }
 
@@ -488,8 +488,8 @@ article {
 /*トップに戻るボタン*/
 #to-top-button{
 	 transform: scale(0.7);
-	 margin-right:12vw;
-	  margin-bottom:12vw;
+	 margin-right:7.5vw;
+	 margin-bottom:12vw;
 	 opacity: 0.8;
 	 position: fixed;
 }

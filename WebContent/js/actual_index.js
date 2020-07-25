@@ -3,17 +3,24 @@ $(function() {
 	//サーブレットから送られてきた日付を取得
 	const dateServlet = document.getElementById("date_servlet").value;
 
+
 	//サーブレットから送られてきた遷移元判定フラグを取得
 	const flag = document.getElementById("flag").value;
 
 	//エラーメッセージを取得
 	const errorMsg = document.getElementById("error-message").textContent;
 
-	//一覧から見積時間と実績時間を取得
+	//一覧から内容と見積時間と実績時間を取得
 	const estimateTimes = Array.from(document.getElementsByClassName("estimate-time"));
 	const actualTimes = Array.from(document.getElementsByClassName("actual-time"));
+	const contents = Array.from(document.getElementsByClassName("contents"));
+
 
 	for(let i = 0; i < estimateTimes.length; i++){
+		if(contents[i].textContent.length >= 24){
+			contents[i].textContent = contents[i].textContent.substring(0,22) + "...";
+		}
+
 		//見積時間を分換算
 		let estimateTimeArray = estimateTimes[i].textContent.split(/\D/g);
 		let estimateHour = Number(estimateTimeArray[0]);
@@ -73,6 +80,16 @@ $(function() {
 		$('#actual-button').css('display','block');
 	}
 
+	//リリース月より遡れなくする
+	if(dateServlet.substring(0,7) == "2020-07"){
+		$('#left').css('display','none');
+	}
+
+	//サービス終了月より先を見れなくする
+	if(dateServlet.substring(0,7) == "2020-09"){
+		$('#right').css('display','none');
+	}
+
 	// 先月の実績一覧へ
 	$('#left').click(function() {
 		window.location.href = `../user/actualindex?monthFlag=0&date=${dateServlet}`;
@@ -94,7 +111,7 @@ $(function() {
 	)
 
 	//実績の詳細へ
-	$('tr').click(function(){
+	$('.schedule-actual').click(function(){
 		const scheduleId = $(this).children('.schedule-id').text();
 		window.location.href = `../user/actualdetail?scheduleId=${scheduleId}`;
 	})

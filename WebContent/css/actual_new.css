@@ -186,11 +186,11 @@ article {
   border-radius : 10px;
   -moz-border-radius : 10px;
   -webkit-border-radius : 10px;
-
-	margin-left:25vw;
-	width: 53vw;
-	height: 6vh;
+	margin-left:14vw;
+	width: 69vw;
+	height: 8vh;
 	float:left;
+	padding-left:2vw;
 }
 
 
@@ -199,7 +199,7 @@ article {
 	float:left;
 	width: 3vw;
 	margin-left: 4vw;
-	margin-top:1.5vh;
+	margin-top:2vh;
 }
 /*日付検索入力枠*/
 .actual-search-date-area input
@@ -214,10 +214,10 @@ article {
 	font-family : 小塚ゴシック Pr6N;
 	font-size : 2vh;
 	color :  #888888;
-	width: 9vw;
+	width: 10vw;
 	height: 4vh;
 	float: left;
-	margin-top:1vh;
+	margin-top:2vh;
 	margin-left:1vh;
 
 }
@@ -226,7 +226,7 @@ article {
 	float:left;
 	width: 4vw;
 	margin-left: 2vw;
-	margin-top:1.5vh;
+	margin-top:2vh;
 }
 .actual-search-title-area input {
 	border-style : Solid;
@@ -239,10 +239,10 @@ article {
 	font-family : 小塚ゴシック Pr6N;
 	font-size : 2vh;
 	color :  #888888;
-	width: 15vw;
+	width: 25vw;
 	height: 4vh;
 	float: left;
-	margin-top:1vh;
+	margin-top:2vh;
 	margin-left:3vh;
 
 }
@@ -258,24 +258,26 @@ article {
   border: none;
   border-radius: 0.3vw;
   color: white;
-  margin-left: 3vh;
+  margin-left: 6vh;
   cursor: pointer;
   text-align: center;
   font-size: 1.5vw;
   float:left;
-  margin-top:1vh;
   padding-top:0.8vh;
   padding-left:2.5vh;
   font-size:2.5vh;
   padding-bottom:0.5vh;
+  margin-top:2vh;
 
 }
 .search-button img {
 	width:3vh;
+
 }
 
 .word{
 	float:left;
+	margin-left:0.9vw;
 }
 
 /*「実績確認へ」ボタン*/
@@ -288,10 +290,9 @@ article {
   border-radius: 0.3vw;
   color: white;
   cursor: pointer;
-  margin-left:47vw;
-  margin-top:10vh;
-  margin-bottom:3vh;
-  font-size: 1.5vw;
+  margin-left:45vw;
+  margin-bottom:15vh;
+  font-size: 2.0vw;
   font-size:2.5vh;
 }
 
@@ -314,25 +315,39 @@ article {
 #actual-content{
 	color:#454545;
 	background-color:white;
-	width: 53vw;
+	width: 70vw;
 	margin-top: 5vw;
 	margin-left: 25vw;
 	border-radius: 10px;
-	padding:0.5vw;
+	padding-top:3vh;
+	padding-bottom:10vh;
+	margin:auto;
+	margin-top:10vh;
 }
 
 table{
-	width:50vw;
+	width:60vw;
+	max-width:60vw;
 	font-size:70%;
 	border-collapse:collapse;
 }
 
+table td{
+	height:10vh;
+	padding:0.5vw;
+	max-width:16vw;
+	word-wrap: break-word;
+}
+
 #date-in-table{
 	width:7vw;
+	max-width:7vw;
+	text-align:center;
 }
 
 #date-in-thead{
 	width:7vw;
+	max-width:7vw;
 }
 
 #title{
@@ -343,20 +358,34 @@ table{
   	width:12vw;
 }
 #title-in-thead{
-
 	width:11vw;
+	max-width:11vw;
+	border:none;
 }
 
-#content{
-	width:14vw;
-	display: -webkit-box;/*...表示*/
-	-webkit-box-orient: vertical;/*...表示*/
-	-webkit-line-clamp: 2;/*...表示*/
-	overflow: hidden;/*はみ出た文字を隠す*/
+/* .title-and-content.contents{
+	border:none;
+} */
+.item{
+	border:none;
+}
+
+.contents{
+	width:16vw;
+	max-width:16vw;
+	/* display: -webkit-box;...表示
+	-webkit-box-orient: vertical;...表示
+	-webkit-line-clamp: 2;...表示
+	-webkit-border-before:unset;
+	overflow: hidden;はみ出た文字を隠す
+	border-left-width:0;
+	border-right-width:0; */
+
 
 }
 #content-in-thead{
-	width:14vw;
+	width:16vw;
+	max-width:16vw;
 }
 
 #schedule-date-hidden{
@@ -369,16 +398,19 @@ table{
 }
 
 .time{
-	width:10vw;
+	width:9vw;
+	max-width:9vw;
 	text-align:center;
 }
 
 #estimate-in-thead{
-	width:10vw;
+	width:9vw;
+	max-width:9vw;
 }
 
 #actual-in-thead{
-	width:10vw;
+	width:9vw;
+	max-width:9vw;
 }
 
 .hyphen{
@@ -402,8 +434,6 @@ table{
 	float:left;
 
 }
-
-
 
 /*[〇年〇月の実績]の文字*/
 .actual-input-font-lev0
