@@ -41,6 +41,15 @@ $(function() {
 			document.getElementsByClassName("actual-time")[i].style.color = "green";
 		}
 
+		//実績時間未入力（今回はdefaultで1000を格納）の場合は「-」に書き換え
+		if(actualTimeMinute > 720){
+			document.getElementsByClassName("actual-time")[i].textContent = "-";
+			document.getElementsByClassName("actual-time")[i].classList.add('hyphen');
+
+		}
+
+
+
 	}
 
 	//検索結果が0件の場合はテーブルを非表示

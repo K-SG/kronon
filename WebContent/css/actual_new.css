@@ -336,7 +336,7 @@ table{
 }
 
 #title{
-	max-width: 12vw;
+	max-width: 11vw;
     text-overflow: ellipsis;
     white-space: nowrap;
   	overflow: hidden;/*はみ出た文字を隠す*/
@@ -344,11 +344,11 @@ table{
 }
 #title-in-thead{
 
-	width:12vw;
+	width:11vw;
 }
 
 #content{
-	width:15vw;
+	width:14vw;
 	display: -webkit-box;/*...表示*/
 	-webkit-box-orient: vertical;/*...表示*/
 	-webkit-line-clamp: 2;/*...表示*/
@@ -356,7 +356,7 @@ table{
 
 }
 #content-in-thead{
-	width:15vw;
+	width:14vw;
 }
 
 #schedule-date-hidden{
@@ -369,15 +369,20 @@ table{
 }
 
 .time{
-	width:9vw;
+	width:10vw;
+	text-align:center;
 }
 
 #estimate-in-thead{
-	width:9vw;
+	width:10vw;
 }
 
 #actual-in-thead{
-	width:9vw;
+	width:10vw;
+}
+
+.hyphen{
+	color:#454545!important;
 }
 
 
