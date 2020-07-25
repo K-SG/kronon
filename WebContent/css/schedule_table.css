@@ -131,13 +131,14 @@
 	font-size:1vw;
 }
 
-.name-list{
+
+
+#name-container{
 	font-size:1.4vw;
 }
-.name1{
+.username{
 	position:absolute;
-	top:-3vw;
-	left:5%;
+	top:-2vw;
 	width:14%;
 	text-align:center;
 	padding:0;

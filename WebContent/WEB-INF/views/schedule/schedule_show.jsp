@@ -24,12 +24,12 @@
 				<div class="hanrei-item hanrei-item3"></div> : 外出
 			</div>
         </div>
-        <div id="blackboard-table"> <div class="name-list"><div class="name1">樋口</div></div></div>
+        <div id="blackboard-table"> <div id="name-container"></div></div>
       </div>
     </div>
 
-<input type="hidden" id="date_servlet"  value='${json}' style="display:none">
-
+<input type="hidden" id="list" value='${json}' style="display:none">
+<input type="hidden" id="name-list" value='${json_name}' style="display:none">
 
 </article>
 <%@ include file="/WEB-INF/views/layout/common/footer.jsp" %>

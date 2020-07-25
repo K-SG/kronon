@@ -20,6 +20,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import jp.co.benesse.dataaccess.cm.ConnectionManager;
 import jp.co.benesse.dataaccess.dao.ScheduleDAO;
+import jp.co.benesse.dataaccess.dao.UserDAO;
 import jp.co.benesse.dataaccess.value.ScheduleBean;
 
 @WebServlet("/user/scheduleshowallchallenge")
@@ -40,6 +41,7 @@ public class ScheduleShowAllChallenge extends HttpServlet {
 		String flag = (String) request.getAttribute("flag");
 		List<ArrayList<ScheduleBean>> getOneDayScheduleLists = new ArrayList<>();
 		List<ScheduleBean> getOneDayScheduleList = new ArrayList<>();
+		List<String>nameList = new ArrayList<>();
 		LocalDate scheduleDate;
 
 		if(flag==null){
@@ -63,30 +65,41 @@ public class ScheduleShowAllChallenge extends HttpServlet {
 
 		ConnectionManager connectionManager = new ConnectionManager();
 		ScheduleDAO scheduleDAO = null;
+		UserDAO userDAO = null;
 		try{
 			Connection connection = connectionManager.getConnection();
 			scheduleDAO = new ScheduleDAO(connection);
+			userDAO = new UserDAO(connection);
 			if(userId<=5){
 				//まずはログインユーザーの予定を取得する
 				System.out.println("scheduleDate : "+scheduleDate);
 				System.out.println(userId);
 				getOneDayScheduleList = scheduleDAO.getOneDaySchedule(scheduleDate,userId);
 				getOneDayScheduleLists.add((ArrayList<ScheduleBean>)getOneDayScheduleList);
+				String name = userDAO.getUserName(userId);
+				nameList.add(name);
 				System.out.println("ここだよ"+ getOneDayScheduleList);
 			}
-			for(int i=0;i<5;i++){
+			for(int i=1;i<=5;i++){
 				if(i!=userId){
 					//まずはログインユーザー以外の予定を取得する
 					getOneDayScheduleList = scheduleDAO.getOneDaySchedule(scheduleDate,i);
 					getOneDayScheduleLists.add((ArrayList<ScheduleBean>)getOneDayScheduleList);
+					String name = userDAO.getUserName(i);
+					nameList.add(name);
 				}
 			}
 
 			ObjectMapper mapper = new ObjectMapper();
 			String json = mapper.writeValueAsString(getOneDayScheduleLists);
-			String json_replace = json.replaceAll("\"","krnooon");
-			request.setAttribute("json", json_replace);
+			String jsonReplace = json.replaceAll("\"","krnooon");
+			request.setAttribute("json", jsonReplace);
 			System.out.println(json);
+
+			String jsonName = mapper.writeValueAsString(nameList);
+			String jsonNameReplace = jsonName.replaceAll("\"","krnooon");
+			request.setAttribute("json_name", jsonNameReplace);
+			System.out.println(jsonName);
 
 			RequestDispatcher dispatcher = request.getRequestDispatcher("../WEB-INF/views/schedule/schedule_show.jsp");
 			dispatcher.forward(request, response);
