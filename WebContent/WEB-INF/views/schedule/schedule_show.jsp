@@ -11,11 +11,11 @@
 <body>
 
 <%@ include file="/WEB-INF/views/layout/common/header.jsp" %>
-<article>
+<article class="article">
 
 
  <div class="blackboard-container">
-      <div class="blackboard">
+      <div class="blackboard-inner">
         <div class="blackboard-head">
           <div class="today-list">2020/7/26(日)の予定</div>
 			<div class="hanrei">
@@ -33,6 +33,8 @@
 
 </article>
 <%@ include file="/WEB-INF/views/layout/common/footer.jsp" %>
-<script src="js/common/common.js"></script>
+<script src="/kronon/js/common/common.js"></script>
+<script src="/kronon/js/schedule_show.js"></script>
+<script src="/kronon/js/schedule_show_event.js"></script>
 </body>
 </html>

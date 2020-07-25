@@ -121,7 +121,8 @@ public class UserDAO {
 	 * @param メールアドレス
 	 * @return メアド重複判定フラグ（重複があればtrueを返す）
 	 */
-	public String getUserName(int userId){
+	//200726コメントアウトしましたby中根
+/*	public String getUserName(int userId){
 		PreparedStatement preparedStatement = null;
 		String userName = null;
 		try {
@@ -147,7 +148,7 @@ public class UserDAO {
 				throw new RuntimeException("ステートメントの解放に失敗しました", e);
 			}
 		}
-	}
+	}*/
 
 	/**
 	 * [機 能] ユーザー名取得メソッド<br>

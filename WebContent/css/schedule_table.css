@@ -1,4 +1,14 @@
+.article{
+	width:auto;
+	margin:0;
+	padding:0;
+	padding-top:20vh;
+	background-color: #FFD5A8;
+	font-size: 4vh;
+	height: auto;
+	color:#FFFFFF;
 
+}
 
 .blackboard-container{
 	position:absolute;
@@ -7,7 +17,7 @@
 	margin-bottom: 5vw;
 }
 
-.blackboard{
+.blackboard-inner{
 
   width: 60vw; /*widthの指定は必須*/
   height:124vw; /*heightの指定は必須*/
@@ -55,7 +65,7 @@
 
 #blackboard-table{
 	margin-left:3vw;
-	width:48vw;
+	width:55vw;
 	height:110vw;
 	border:0.1vw solid white;
 	margin-top:4vw;
@@ -68,7 +78,7 @@
 	background-color:beige;
 /*	border:white solid 0.1vw;*/
 	height:1vw;
-	padding:0vw 1vw;
+	padding:0vw 0;
 	margin:0vw;
 	cursor: pointer;
 }
@@ -76,7 +86,8 @@
 .schedule-item .title{
 	font-size:1.2vw;
 	color:#666;
-	margin-top:0vw;
+	margin-top:0.2vw;
+	padding:0 1vw;
 }
 
 .schedule-item .schedule_id{
