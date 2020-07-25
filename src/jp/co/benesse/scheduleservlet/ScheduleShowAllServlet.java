@@ -17,6 +17,7 @@ import javax.servlet.http.HttpSession;
 
 import jp.co.benesse.dataaccess.cm.ConnectionManager;
 import jp.co.benesse.dataaccess.dao.ScheduleDAO;
+import jp.co.benesse.dataaccess.dao.UserDAO;
 import jp.co.benesse.dataaccess.value.ScheduleBean;
 
 @WebServlet("/user/scheduleshowall")
@@ -35,6 +36,7 @@ public class ScheduleShowAllServlet extends HttpServlet {
 		int userId= (int) session.getAttribute("userId");
 		//どこからこのサーブレットに来たか判断するためのフラグを取ってくる
 		String flag = (String) request.getAttribute("flag");
+
 		List<ArrayList<ScheduleBean>> getOneDayScheduleLists = new ArrayList<>();
 		List<ScheduleBean> getOneDayScheduleList = new ArrayList<>();
 		LocalDate scheduleDate;
@@ -54,22 +56,32 @@ public class ScheduleShowAllServlet extends HttpServlet {
 
 		ConnectionManager connectionManager = new ConnectionManager();
 		ScheduleDAO scheduleDAO = null;
+		UserDAO userDAO = null;
+
 		try{
 			Connection connection = connectionManager.getConnection();
 			scheduleDAO = new ScheduleDAO(connection);
+			userDAO = new UserDAO(connection);
+			List<String> userNameList = new ArrayList<String>();
+			String userName;
 			if(userId<=5){
 				//まずはログインユーザーの予定を取得する
 				getOneDayScheduleList = scheduleDAO.getOneDaySchedule(scheduleDate,userId);
 				getOneDayScheduleLists.add((ArrayList<ScheduleBean>)getOneDayScheduleList);
-
+				userName = userDAO.getUserName(userId);
+				userNameList.add(userName);
 			}
-			for(int i=0;i<5;i++){
+			for(int i=1;i<=5;i++){
 				if(i!=userId){
 					//まずはログインユーザー以外の予定を取得する
 					getOneDayScheduleList = scheduleDAO.getOneDaySchedule(scheduleDate,i);
 					getOneDayScheduleLists.add((ArrayList<ScheduleBean>)getOneDayScheduleList);
+					userName = userDAO.getUserName(userId);
+					userNameList.add(userName);
 				}
 			}
+			request.setAttribute("userNameList",userNameList);
+			request.setAttribute("getOneDayScheduleList",getOneDayScheduleList);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("../WEB-INF/view/error/schedule_show.jsp");
 			dispatcher.forward(request, response);
 	}catch(RuntimeException e){
