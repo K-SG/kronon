@@ -28,7 +28,7 @@
       </div>
     </div>
 
-
+<input type="hidden" id="date_servlet"  value='${json}' style="display:none">
 
 
 </article>
