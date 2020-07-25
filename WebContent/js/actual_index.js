@@ -3,7 +3,6 @@ $(function() {
 	//サーブレットから送られてきた日付を取得
 	const dateServlet = document.getElementById("date_servlet").value;
 
-
 	//サーブレットから送られてきた遷移元判定フラグを取得
 	const flag = document.getElementById("flag").value;
 
@@ -14,7 +13,6 @@ $(function() {
 	const estimateTimes = Array.from(document.getElementsByClassName("estimate-time"));
 	const actualTimes = Array.from(document.getElementsByClassName("actual-time"));
 	const contents = Array.from(document.getElementsByClassName("contents"));
-
 
 	for(let i = 0; i < estimateTimes.length; i++){
 		if(contents[i].textContent.length >= 24){
@@ -52,11 +50,7 @@ $(function() {
 		if(actualTimeMinute > 720){
 			document.getElementsByClassName("actual-time")[i].textContent = "-";
 			document.getElementsByClassName("actual-time")[i].classList.add('hyphen');
-
 		}
-
-
-
 	}
 
 	//検索結果が0件の場合はテーブルを非表示
@@ -92,12 +86,12 @@ $(function() {
 
 	// 先月の実績一覧へ
 	$('#left').click(function() {
-		window.location.href = `../user/actualindex?monthFlag=0&date=${dateServlet}`;
+		$('#left-form').submit();
 	})
 
 	//次月の実績一覧へ
 	$('#right').click(function() {
-		window.location.href = `../user/actualindex?monthFlag=1&date=${dateServlet}`;
+		$('#right-form').submit();
 	})
 
 	//マウスオーバー中の予定に色付け

@@ -12,7 +12,6 @@
 </head>
 <body>
 <input type = "hidden" id = "flag" value = "${flag}">
-<input type = "hidden" id = "date_servlet" value = "${date}">
 <input type = "hidden" id = "year" value = "${year}">
 <input type = "hidden" id = "month" value = "${month}">
 	<%@ include file="/WEB-INF/views/layout/common/header.jsp"%>
@@ -40,10 +39,18 @@
 <div id = "actual-content" align=center>
 	<div>
 	<div class="title-content">
+	<form action = "../user/actualindex" method = "post" id = "left-form">
 		<img src="../img/left_button.png" alt="left"  id="left" >
+		<input type = "hidden" name = "date" value = "${date}">
+		<input type = "hidden" name = "monthFlag" value = "0">
+	</form>
 	</div>
 	<div class="title-content">
+	<form action = "../user/actualindex" method = "post" id = "right-form">
 		<img src="../img/right_button.png" alt="right" id="right" >
+		<input type = "hidden" name = "date" id = "date_servlet" value = "${date}">
+		<input type = "hidden" name = "monthFlag" value = "1">
+	</form>
 	</div>
 		<div class="actual-content">
 		<c:if test="${flag.equals('0')}">
