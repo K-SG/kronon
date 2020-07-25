@@ -20,14 +20,23 @@
  <div class="calendar-container">
       <div class="calendar-container-inner">
         <div class="calendar-title">
+        <form action="../user/calendar" method="post" id="left-form">
+          <input type="hidden" name="flag" value="0">
+          <input type="hidden" name="date" value="${date}">
           <div class="title-content"><img src="../img/left_button.png" alt="left"  id="left" class="left triangle-button"></div>
-          <div class="title-content">
+
+        </form>
+        <div class="title-content">
             <h2 id="month"><c:out value="${month}"/></h2>
-          </div>
+        </div>
           <div class="title-content">
             <h3 id="year"><c:out value="${year}"/></h3>
           </div>
-          <div class="title-content"><img src="../img/right_button.png" alt="right" id="right" class="right triangle-button"></div>
+          <form action="../user/calendar" method="post" id="right-form">
+            <input type="hidden" name="flag" value="1">
+            <input type="hidden" name="date" value="${date}">
+            <div class="title-content"><img src="../img/right_button.png" alt="right" id="right" class="right triangle-button"></div>
+          </form>
           <div class="clear"></div>
         </div>
         <table class="calendar">

@@ -47,12 +47,15 @@ $(function () {
 
 	$('.left').click(function(){
 		/*alert(date_servlet);*/
-		window.location.href=`../user/calendar?flag=0&date=${date_servlet}`;
+		//window.location.href=`../user/calendar?flag=0&date=${date_servlet}`;
+		$('#left-form').submit();
+
 	})
 
 		$('.right').click(function(){
 			/*alert(date_servlet);*/
-		window.location.href=`../user/calendar?flag=1&date=${date_servlet}`;
+		//window.location.href=`../user/calendar?flag=1&date=${date_servlet}`;
+		$('#right-form').submit();
 	})
 
 });
