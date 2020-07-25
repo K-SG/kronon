@@ -49,13 +49,16 @@ public class AcutualUpdateServlet extends HttpServlet {
 				return;
 			}
 
-			// 実績、振り返りコメントを更新。更新件数0件の場合はエラー画面へフォワード
-			if(scheduleDAO.updateSchedule(scheduleId, actualTime, comment) != 1){
+			// 実績、振り返りコメントを更新
+			int result = scheduleDAO.updateSchedule(scheduleId, actualTime, comment);
+			connectionManager.commit();
+
+			//更新件数0件の場合はエラー画面へフォワード
+			if(result != 1){
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/error/error.jsp");
 				dispatcher.forward(request, response);
 				return;
 			}
-			connectionManager.commit();
 
 			// 更新しましたポップアップのフラグをセット
 			request.setAttribute("popFlag", popFlag);
@@ -66,7 +69,9 @@ public class AcutualUpdateServlet extends HttpServlet {
 
 		} catch (RuntimeException e) {
 			connectionManager.rollback();
-			throw e;
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/error/error.jsp");
+			dispatcher.forward(request, response);
+			return;
 		} finally {
 			connectionManager.closeConnection();
 		}
