@@ -47,19 +47,19 @@ public class UserCreateServlet extends HttpServlet {
 				//かぶっていたらメールアドレス重複のポップアップが出るようにフラグ立て。
 				request.setAttribute("popFlag",1);
 				//アカウント新規登録画面へ戻る。
-				RequestDispatcher dispatcher = request.getRequestDispatcher("../WEB-INF/view/user/user_new.jsp");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/view/user/user_new.jsp");
 				dispatcher.forward(request, response);
 			}
 
 			//新規登録をするために
 			int result = userDAO.createUser(userName,mail,password);
 			if(result!=1){
-				RequestDispatcher dispatcher = request.getRequestDispatcher("../WEB-INF/view/error/error.jsp");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/view/error/error.jsp");
 				dispatcher.forward(request, response);
 			}
 		}
 		catch(RuntimeException e){
-			RequestDispatcher dispatcher = request.getRequestDispatcher("../WEB-INF/view/error/error.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/view/error/error.jsp");
 			dispatcher.forward(request, response);
 			return;
 		}
@@ -74,7 +74,7 @@ public class UserCreateServlet extends HttpServlet {
 		//新規登録完了ポップアップを出すためのフラグを立てる。
 		request.setAttribute("popFlag",0);
 		//user_new.jsp(アカウント新規作成画面)にforwardする。
-		RequestDispatcher dispatcher = request.getRequestDispatcher("../WEB-INF/view/user/user_new.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/view/user/user_new.jsp");
 		dispatcher.forward(request, response);
 		return;
 	}
