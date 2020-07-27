@@ -14,7 +14,7 @@
 <%@ include file="../layout/common/header.jsp" %>
 
 	<article>
-		<form action="user/schedulecreate" method="get" class="schedule-new-form">
+		<form action="schedulecreate" method="get" class="schedule-new-form">
 		<input type="hidden" value="${popFlag}" id="flag">
 		<div class="schedule-regist-area">
 		<div class="loose-leaf"><img src="../img/loose_leaf.svg" alt="loose-leaf" id="loose-leaf"></div>
@@ -24,7 +24,7 @@
 			<div class="schedule-regist-area-1">
 				<div class="schedule-regist-area-1-block">
 					<div class="schedule-regist-font-lev1">日付<span>*</span></div>
-					<div class="schedule-regist-date-area"><input name="scheduleDate" id="date" type="date"/></div>
+					<div class="schedule-regist-date-area"><input name="scheduleDate" id="date" value="${scheduleBean.scheduleDate}" type="date"/></div>
 				</div>
 				<div class="schedule-regist-area-1-block">
 					<div class="schedule-regist-font-lev1">開始時刻<span>*</span></div>
@@ -105,14 +105,14 @@
 			<div class="schedule-regist-area-3">
 				<div class="schedule-regist-font-lev1">タイトル<span>*</span></div>
 				<div class="schedule-regist-title">
-					<textarea name="title" id="title" rows="1" cols="40" maxlength="100" placeholder="予定のタイトルを100字以内で入力してください"></textarea>
+					<textarea name="title" id="title" rows="1" cols="40" maxlength="100" placeholder="予定のタイトルを100字以内で入力してください" ><c:out value="${scheduleBean.title}" /></textarea>
 				</div>
 			</div>
 
 			<div class="schedule-regist-area-4">
 				<div class="schedule-regist-font-lev1">内容</div>
 				<div class="schedule-regist-content">
-					<textarea name="content" id="content" rows="13" cols="40" maxlength="1440" placeholder="予定の内容を1440字以内で入力してください"></textarea>
+					<textarea name="content" id="content" rows="13" cols="40" maxlength="1440" placeholder="予定の内容を1440字以内で入力してください"><c:out value="${scheduleBean.content}" /></textarea>
 				</div>
 			</div>
 		  </div>
@@ -158,7 +158,7 @@
 				<p>内容は保存されないよ。</p>
 				<h2 class="message-title">本当に戻る？</h2>
 			  </div>
-			  <a href="user/scheduledetail?id=${userId}"><div class="ok-button">OK</div></a>
+			  <a href="scheduledetail?scheduleId=${scheduleBean.scheduleId}"><div class="ok-button">OK</div></a>
 			  <div class="ng-button close-popup">キャンセル</div>
 			  <img src="/kronon/img/star_angry.png" class="pop-img-top"> </div>
 		  </div>

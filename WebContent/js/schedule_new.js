@@ -2,15 +2,48 @@ $(function () {
 
 /*日付に今日の日付が挿入されるようにする*/
   window.onload = function () {
+	  if(document.getElementById("date").value != null){
 	    var date = new Date();
 	    date.setDate(date.getDate());
 	    var yyyy = date.getFullYear();
 	    var mm = ("0"+(date.getMonth()+1)).slice(-2);
 	    var dd = ("0"+date.getDate()).slice(-2);
 	    document.getElementById("date").value=yyyy+'-'+mm+'-'+dd;
+	  }
 
 		/*DBと照合した後のポップアップフラグ*/
 		var popFlag = document.getElementById('flag').value;
+
+		/*ScheduleCreateServlet返ってきたとき、値の保存をする*/
+		if(popFlag==='0'||popFlag==='1'){
+			let date = document.getElementById('set-date').value;
+			let startTime = document.getElementById('set-start-time').value;
+			let endTime = document.getElementById('set-end-time').value;
+			let startHour = startTime.substring(0, 2);
+			let startMin = startTime.substring(3,5);
+			let endHour = endTime.substring(0, 2);
+			let endMin = endTime.substring(3,5);
+			let place = document.getElementById('set-place').value;
+
+			console.log(startHour,startMin,endMin);
+
+			/*すべての初期選択を外す*/
+			$('select option').attr('selected', false);
+			/*開始時間と終了時間を09→9に変換*/
+			if (startHour.slice(0, 1) == 0) {
+				startHour = startHour.substring(1, 2);
+			}
+			if (endHour.slice(0, 1) == 0) {
+				endHour = endHour.substring(1, 2);
+			}
+			/*初期選択がされるようにselectedをつける*/
+				$('#new-start-hour').val(startHour);
+				$('#new-start-minutes').val(startMin);
+				$('#new-end-hour').val(endHour);
+				$('#new-end-minutes').val(endMin);
+				$('#new-place').val(place);
+		}
+
 
 		/*登録が完了した場合*/
 		  if(popFlag === '0'){
@@ -42,7 +75,7 @@ $(function () {
     let weekday = '日月火水木金土'[d.getDay()];
     //リリース年と月の取得
     let releaseYear = 2020;
-    let releaseMonth = 8;
+    let releaseMonth = 7;
     //サービス終了年と月の取得
     let releaseLastYear = 2023;
     let releaseLastMonth = 8;
@@ -118,7 +151,7 @@ $(function () {
   /*登録完了ポップアップのOKボタン押下時の遷移先*/
   $('.next-popup').click(function () {
   var date = document.getElementById('date').value;
-    location.href= "user/calendar?date=" + date;
+    location.href= "calendar?date=" + date;
   });
 
     /*キャンセルボタンを押した際のポップアップ表示*/

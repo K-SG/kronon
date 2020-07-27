@@ -11,7 +11,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import jp.co.benesse.dataaccess.cm.ConnectionManager;
 import jp.co.benesse.dataaccess.dao.ScheduleDAO;
@@ -38,8 +37,9 @@ public class ScheduleCreateServlet extends HttpServlet {
 		String title = request.getParameter("title");
 		String content = request.getParameter("content");
 
-		HttpSession session = request.getSession(true);
-		int userId = (int) session.getAttribute("userId");
+//		HttpSession session = request.getSession(true);
+		int userId = 1;
+//		int userId = (int) session.getAttribute("userId");
 
 		ConnectionManager connectionManager = new ConnectionManager();
 		try {
@@ -48,8 +48,8 @@ public class ScheduleCreateServlet extends HttpServlet {
 			ScheduleBean scheduleBean = new ScheduleBean();
 			scheduleBean.setUserId(userId);
 			scheduleBean.setScheduleDate(Date.valueOf(scheduleDate));
-			scheduleBean.setStartTime(Time.valueOf(startTimeHour +":"+ startTimeMin));
-			scheduleBean.setEndTime(Time.valueOf(endTimeHour +":"+ endTimeMin));
+			scheduleBean.setStartTime(Time.valueOf(startTimeHour +":"+ startTimeMin+":00"));
+			scheduleBean.setEndTime(Time.valueOf(endTimeHour +":"+ endTimeMin+":00"));
 			scheduleBean.setPlace(place);
 			scheduleBean.setTitle(title);
 			scheduleBean.setContent(content);
@@ -84,6 +84,7 @@ public class ScheduleCreateServlet extends HttpServlet {
 			request.setAttribute("scheduleBean", scheduleBean);
 
 		} catch(RuntimeException e){
+			e.printStackTrace();
 			connectionManager.rollback();
 			//error.jsp（エラー画面）にforwardする
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/error/error.jsp");

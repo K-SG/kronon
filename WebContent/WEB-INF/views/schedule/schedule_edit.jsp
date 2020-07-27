@@ -5,33 +5,31 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
- <link rel="stylesheet" href="./css/schedule_edit.css">
+ <link rel="stylesheet" href="/kronon/css/schedule_edit.css">
 <%@ include file="../layout/common/link.jsp" %>
 <title>予定修正</title>
 </head>
 <body>
 
 <%@ include file="../layout/common/header.jsp" %>
-
+a
 	<article>
-			<form action="user/scheduleupdete" method="post" class="schedule-edit-form">
+			<form action="scheduleupdate" method="post" class="schedule-edit-form">
 		<input type="hidden" id="flag" value="${popFlag}">
 		<div class="schedule-regist-area">
 			<div class="schedule-regist-font-lev0">予定修正</div>
-			<input type="hidden" value="${scheduleBean.scheduleId}" id="set-schedule-id">
+			<input type="hidden" name="scheduleId" value="${scheduleBean.scheduleId}" id="set-schedule-id">
 			<div class="schedule-regist-border"></div>
 			<div class="schedule-regist-area-1">
 				<div class="schedule-regist-area-1-block">
 					<div class="schedule-regist-font-lev1">日付<span>*</span></div>
-					<!-- 本来はscheduleBean.date -->
-					<input type="hidden" value="${date}" id="set-date">
-					<div class="schedule-regist-date-area"><input name="scheduleDate" id="date" type="date" value="${date}" /></div>
+					<input type="hidden" value="${scheduleBean.scheduleDate}" id="set-date">
+					<div class="schedule-regist-date-area"><input name="scheduleDate" id="date" type="date" value="${scheduleBean.scheduleDate}" /></div>
 				</div>
 				<div class="schedule-regist-area-1-block">
 					<div class="schedule-regist-font-lev1">開始時刻<span>*</span></div>
 					<div class="schedule-regist-time">
-					<!-- 本来はscheduleBean.startTime -->
-						<input type="hidden" value="${startTime}" id="set-start-time">
+						<input type="hidden" value="${scheduleBean.startTime}" id="set-start-time">
 						<select name="startTimeHour" id="edit-start-hour">
 							<option value="8">8</option>
 							<option value="9">9</option>
@@ -64,8 +62,7 @@
 				<div class="schedule-regist-area-1-block">
 					<div class="schedule-regist-font-lev1">終了時刻<span>*</span></div>
 					<div class="schedule-regist-time">
-					<!-- 本来はscheduleBean.endTime -->
-					<input type="hidden" value="${endTime}" id="set-end-time">
+					<input type="hidden" value="${scheduleBean.endTime}" id="set-end-time">
 						<select name="endTimeHour" id="edit-end-hour">
 							<option value="8">8</option>
 							<option value="9">9</option>
@@ -101,8 +98,7 @@
 				<div class="schedule-regist-font-lev1">場所<span>*</span></div>
 				<div class="schedule-regist-place">
 
-				<!-- 本来はscheduleBean.place -->
-					<input type="hidden" value="${place}" id="set-place">
+					<input type="hidden" value="${scheduleBean.place}" id="set-place">
 						<select name="place" id="edit-place">
 							<option value="0">オフィス</option>
 							<option value="1">在宅</option>
@@ -113,21 +109,19 @@
 			<div class="schedule-regist-area-3">
 				<div class="schedule-regist-font-lev1">タイトル<span>*</span></div>
 				<div class="schedule-regist-title">
-				<!-- 本来はscheduleBean.title -->
-					<textarea name="title" id="title" rows="1" cols="40" maxlength="100" placeholder="予定のタイトルを100字以内で入力してください"><c:out value="${title}" /></textarea>
+					<textarea name="title" id="title" rows="1" cols="40" maxlength="100" placeholder="予定のタイトルを100字以内で入力してください"><c:out value="${scheduleBean.title}" /></textarea>
 				</div>
 			</div>
 
 			<div class="schedule-regist-area-4">
 				<div class="schedule-regist-font-lev1">内容</div>
 				<div class="schedule-regist-content">
-				<!-- 本来はscheduleBean.content -->
-					<textarea name="content" id="content" rows="13" cols="40" maxlength="1440" placeholder="予定の内容を1440字以内で入力してください"><c:out value="${content}" /></textarea>
+					<textarea name="content" id="content" rows="13" cols="40" maxlength="1440" placeholder="予定の内容を1440字以内で入力してください"><c:out value="${scheduleBean.content}" /></textarea>
 				</div>
 			</div>
 		</div>
 
-		<div class="kronon-banzai"><img alt="banzai" src="./img/kronon/kronon_banzai.png"></div>
+		<div class="kronon-banzai"><img alt="banzai" src="/kronon/img/kronon/kronon_banzai.png"></div>
 
 		<div class=schedule-regist-button>
 
@@ -153,7 +147,7 @@
           <p class=edit-msg></p>
         </div>
         <div class="ok-button close-popup">OK</div>
-        <img src="img/kronon/kronon_question.png" class="pop-img"> </div>
+        <img src="/kronon/img/kronon/kronon_question.png" class="pop-img"> </div>
       </div>
     </div>
    <!--エラーまたは完了ポップアップここまで-------------------------------------------------------------->
@@ -171,7 +165,7 @@
 			  </div>
 			  <a href="user/scheduledetail?id=${userId}"><div class="ok-button">OK</div></a>
 			  <div class="ng-button close-popup">キャンセル</div>
-			  <img src="../img/star_angry.png" class="pop-img-top"> </div>
+			  <img src="/kronon/img/star_angry.png" class="pop-img-top"> </div>
 		  </div>
 		</div>
 		<!--本当に戻りますかポップアップここまで------------------------------------------------------------------->
@@ -206,7 +200,7 @@
 			  </div>
 			  <input type="button" class="ok-button"  id="confirm-ok" value="OK">
 			  <div class="ng-button close-popup">キャンセル</div>
-			  <img src="../img/kronon_question.png" class="pop-img"> </div>
+			  <img src="/kronon/img/kronon_question.png" class="pop-img"> </div>
 		  </div>
 		</div>
 		<!--内容確認ポップアップここまで----------------------------------------------------------------->
@@ -218,7 +212,7 @@
 				<div class="pop-container-inner">
 					<div class="message-container"><p class=create-msg></p></div>
 					<div class="ok-button next-popup">OK</div>
-					<img src="../img/kronon/kronon_question.png" class="pop-img">
+					<img src="/kronon/img/kronon/kronon_question.png" class="pop-img">
 				</div>
 			</div>
 		</div>
@@ -226,7 +220,7 @@
 
 	</article>
 <%@ include file="../layout/common/footer.jsp" %>
-<script src="js/schedule_edit.js"></script>
+<script src="/kronon/js/schedule_edit.js"></script>
 <!-- <script src="js/common.js"></script> -->
 </body>
 </html>
