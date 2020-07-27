@@ -45,6 +45,7 @@ public class ScheduleDeleteServlet extends HttpServlet {
 			connectionManager.commit();
 
 			request.setAttribute("popFlag",1);
+			request.setAttribute("schedulaBean",scheBean);
 
 			RequestDispatcher dispatcher = request.getRequestDispatcher("../WEB-INF/views/schedule/schedule_detail.jsp");
 			dispatcher.forward(request, response);
