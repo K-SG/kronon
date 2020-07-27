@@ -31,11 +31,11 @@ public class UserCreateServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String userName = request.getParameter("userName");
+		String username = request.getParameter("username");
 		String mail = request.getParameter("mail");
 		String password = request.getParameter("password");
 
-		request.setAttribute("userName", userName);
+		request.setAttribute("username", username);
 		request.setAttribute("mail", mail);
 		request.setAttribute("password", password);
 
@@ -59,7 +59,7 @@ public class UserCreateServlet extends HttpServlet {
 			}
 
 			//新規登録をするために
-			int result = userDAO.createUser(userName,mail,password);
+			int result = userDAO.createUser(username,mail,password);
 			if(result!=1){
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/error/error.jsp");
 				dispatcher.forward(request, response);
