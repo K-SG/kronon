@@ -63,6 +63,79 @@
 	margin-top:2vh;
 	padding-left:1vh;
 	border:none;
+@CHARSET "UTF-8";
+
+.create-user-content {
+	text-align: center;
+	font-size: 1.4vw;
+}
+
+.create-user-system-name {
+	margin-bottom: 1.4vh;
+	margin-top: 0;
+	font-size: 2.5vw;
+	color: white;
+}
+
+.create-user-title {
+	font-size: 2vw;
+	color: white;
+}
+
+.create-user-note {
+  	margin-bottom: 2vh;
+  	margin-top: 2vh;
+  	font-size: 1vw;
+  	color: white;
+}
+
+.create_textbox {
+	border-radius: 0.8vw;
+	border: none;
+	height: 6vh;
+	width: 30vw;
+	padding-left: 0.6vw;
+	margin-bottom: 2vh;
+	font-size: 1.4vw;
+}
+
+input::-webkit-input-placeholder {
+    color: #999999;
+    padding-left: 0vw;
+    font-size: 1vw;
+}
+
+input[type="text"]:focus {
+  outline: 0;
+}
+
+.user-create-button {
+	border-style:none;
+    display: inline-block;
+	width: 30vw;
+	height: 7vh;
+	background-color: #DE9B50;
+	opacity:0.5;
+	border-radius: 0.8vw;
+	color: white;
+	margin-top: 0.7vh;
+	margin-bottom: 8vh;
+	cursor: pointer;
+    padding-top: 0.5vh;
+    border: solid white;
+    font-size: 1.5vw;
+}
+
+.user-create-button-return {
+	float:left;
+	margin-left: 10vh;
+	margin-top: -3vh;
+}
+.user-create-button-return img {
+	width: min(100vh,5vw);
+	height: auto;
+}
+
 
 }
 
