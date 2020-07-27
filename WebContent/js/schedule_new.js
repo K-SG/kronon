@@ -29,14 +29,14 @@ $(function () {
 
   /*登録ボタンを押した際のエラーチェックとポップアップ表示*/
   $('#ok-button').click(function () {
-    let date = document.getElementById('new-date').value;
-    let startHour = document.getElementById('new_start_hour').value;
-    let startMin = document.getElementById('new_start_minutes').value;
-    let endHour = document.getElementById('new_end_hour').value;
-    let endMin = document.getElementById('new_end_minutes').value;
-    let place = document.getElementById('new_place').value;
-    let title=document.getElementById('title').value;
-    let content=document.getElementById('content').value;
+	    let date = document.getElementById('date').value;
+	    let startHour = document.getElementById('new-start-hour').value;
+	    let startMin = document.getElementById('new-start-minutes').value;
+	    let endHour = document.getElementById('new-end-hour').value;
+	    let endMin = document.getElementById('new-end-minutes').value;
+	    let place = document.getElementById('new-place').value;
+	    let title=document.getElementById('title').value;
+	    let content=document.getElementById('content').value;
 
     let d = new Date(date);
     let weekday = '日月火水木金土'[d.getDay()];
@@ -62,7 +62,7 @@ $(function () {
     let lastDayOfMonth = new Date(year, month, 0).getDate();
 
     //ポッププラグ変数作成
-    let popFlag;
+    var popFlag;
 
 //    console.log(date,startHour,startMin,endHour,endMin,place,title,content);
 

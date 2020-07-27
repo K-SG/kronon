@@ -48,7 +48,7 @@ if (endHour.slice(0, 1) == 0) {
 
   /*修正ボタンを押した際のエラーチェックとポップアップ表示*/
   $('#ok-button').click(function () {
-    let date = document.getElementById('edit-date').value;
+    let date = document.getElementById('date').value;
     let startHour = document.getElementById('edit-start-hour').value;
     let startMin = document.getElementById('edit-start-minutes').value;
     let endHour = document.getElementById('edit-end-hour').value;

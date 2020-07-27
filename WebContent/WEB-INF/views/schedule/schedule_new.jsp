@@ -27,7 +27,7 @@
 				<div class="schedule-regist-area-1-block">
 					<div class="schedule-regist-font-lev1">開始時刻<span>*</span></div>
 					<div class="schedule-regist-time">
-						<select name="startTimeHour" id="new_start_hour">
+						<select name="startTimeHour" id="new-start-hour">
 							<option value="8">8</option>
 							<option value="9">9</option>
 							<option value="10">10</option>
@@ -46,7 +46,7 @@
 
 					<div class="schedule-regist-time-text">時</div>
 					<div class="schedule-regist-time">
-						<select name="startTimeMin" id="new_start_minutes">
+						<select name="startTimeMin" id="new-start-minutes">
 							<option value="00">00</option>
 							<option value="15">15</option>
 							<option value="30">30</option>
@@ -59,7 +59,7 @@
 				<div class="schedule-regist-area-1-block">
 					<div class="schedule-regist-font-lev1">終了時刻<span>*</span></div>
 					<div class="schedule-regist-time">
-						<select name="endTimeHour" id="new_end_hour">
+						<select name="endTimeHour" id="new-end-hour">
 							<option value="8">8</option>
 							<option value="9">9</option>
 							<option value="10">10</option>
@@ -78,7 +78,7 @@
 
 					<div class="schedule-regist-time-text">時</div>
 					<div class="schedule-regist-time">
-						<select name="endTimeMin" id="new_end_minutes">
+						<select name="endTimeMin" id="new-end-minutes">
 							<option value="00">00</option>
 							<option value="15">15</option>
 							<option value="30">30</option>
@@ -93,7 +93,7 @@
 			<div class="schedule-regist-area-2">
 				<div class="schedule-regist-font-lev1">場所<span>*</span></div>
 				<div class="schedule-regist-place">
-						<select name="place" id="new_place">
+						<select name="place" id="new-place">
 							<option value="0">オフィス</option>
 							<option value="1">在宅</option>
 							<option value="2">外出</option>
@@ -136,7 +136,7 @@
       <div class="close-popup"> <i class="fa fa-2x fa-times"></i> </div>
       <div class="pop-container-inner">
         <div class="message-container">
-          <p class=new_msg></p>
+          <p class=new-msg></p>
         </div>
         <div class="ok-button close-popup">OK</div>
         <img src="img/kronon/kronon_question.png" class="pop-img"> </div>

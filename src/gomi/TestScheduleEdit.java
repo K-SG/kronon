@@ -25,7 +25,7 @@ public class TestScheduleEdit extends HttpServlet {
 		request.setAttribute("place", "2");
 		request.setAttribute("title", "予定が入るよ");
 		request.setAttribute("content", "内容が入るよ");
-		request.setAttribute("popFlag", "0");
+		request.setAttribute("popFlag", "1");
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/views/schedule/schedule_new.jsp");
 		dispatcher.forward(request, response);

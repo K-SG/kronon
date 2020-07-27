@@ -25,7 +25,7 @@
 					<div class="schedule-regist-font-lev1">日付<span>*</span></div>
 					<!-- 本来はscheduleBean.date -->
 					<input type="hidden" value="${date}" id="set-date">
-					<div class="schedule-regist-date-area"><input name="scheduleDate" id="edit-date" type="date" value="${date}" /></div>
+					<div class="schedule-regist-date-area"><input name="scheduleDate" id="date" type="date" value="${date}" /></div>
 				</div>
 				<div class="schedule-regist-area-1-block">
 					<div class="schedule-regist-font-lev1">開始時刻<span>*</span></div>
