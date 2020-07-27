@@ -1,5 +1,13 @@
 $(function () {
 
+	let startTime = document.getElementById("startTime").textContent;
+	let endTime = document.getElementById("endTime").textContent;
+
+	const stTime = startTime.substring(0,5);
+	const edTime = endTime.substring(0,5);
+	$('#startTime').text(stTime) ;
+	$('#endTime').text(edTime) ;
+
 	/*DBと照合した後のエラーポップアップ表示*/
 	$(document).ready(function () {
 		let popFlag = document.getElementById('flag').value;

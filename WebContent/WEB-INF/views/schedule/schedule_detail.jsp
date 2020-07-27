@@ -26,8 +26,8 @@
         </tr>
 
         <tr>
-          <td><c:out value="${scheduleBean.scheduleDateActual}" /> <c:out value="${scheduleBean.startTime}" />～
-          <c:out value="${scheduleBean.endTime}" /></td>
+          <td><c:out value="${scheduleBean.scheduleDateActual}" /> <span id="startTime"><c:out value="${scheduleBean.startTime}" /></span>～
+          <span id="endTime"><c:out value="${scheduleBean.endTime}" /></span></td>
 
 
           	<c:if test="${scheduleBean.place=='0'}" >
