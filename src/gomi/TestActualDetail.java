@@ -28,6 +28,7 @@ public class TestActualDetail extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setAttribute("id", 1);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/views/actual/actual_detail.jsp");
 		dispatcher.forward(request, response);
 	}

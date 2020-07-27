@@ -21,38 +21,38 @@
       <table class=schedule_detail>
 
         <tr>
-          <td><c:out value="${owner}" /></td>
-          <td><c:out value="${actualTime}" /></td>
+          <td>名前 : <c:out value="${scheduleBean.userName}" /></td>
+          <td>実績時間:<c:out value="${scheduleBean.actualTimeStr}" /></td>
         </tr>
 
         <tr>
-          <td><c:out value="${scheduleDate}" /> <c:out value="${startTime}" />～
-          <c:out value="${endTime}" /></td>
+          <td><c:out value="${scheduleBean.scheduleDateActual}" /> <c:out value="${scheduleBean.startTime}" />～
+          <c:out value="${scheduleBean.endTime}" /></td>
 
 
-          	<c:if test="${place=='オフィス'}" >
-			<td class=show-place1><c:out value="${place}" /></td>
+          	<c:if test="${place=='0'}" >
+			<td class=show-place1>オフィス</td>
 			</c:if>
 
-			<c:if test="${place=='在宅'}" >
-			<td class=show-place2><c:out value="${place}" /></td>
+			<c:if test="${place=='1'}" >
+			<td class=show-place2>在宅</td>
 			</c:if>
 
-			<c:if test="${place=='外出'}" >
-			<td class=show-place3><c:out value="${place}" /></td>
+			<c:if test="${place=='2'}" >
+			<td class=show-place3>外出</td>
 			</c:if>
 
         </tr>
 
         <tr>
           <td colspan="2">
-            <c:out value="${title}" />
+            <c:out value="${scheduleBean.title}" />
           </td>
         </tr>
 
         <tr>
           <td colspan="2">
-            <c:out value="${content}" />
+            <c:out value="${scheduleBean.content}" />
           </td>
         </tr>
 
@@ -67,9 +67,10 @@
 
 <div class="flex_test-box">
     <div class="flex_test-item">
-        <div class="ok-button">修正</div>
+    <a href="/user/scheduleedit?scheduleId=${scheduleBean.scheduleId}"><div class="ok-button">修正</div></a>
+<!--         <div class="ok-button">修正</div>
         <input type="submit" class="ok-button" value="修正">
-        <a href="kronon/user/"><div class="modify-button">修正</div></a>
+        <a href="kronon/user/"><div class="modify-button">修正</div></a> -->
     </div>
 
     <div class="flex_test-item">
@@ -90,29 +91,42 @@
         <table class="popup-table">
           <tr>
             <th class="th">名前：</th>
-            <td><c:out value="${owner}" /></td>
+            <td><c:out value="${scheduleBean.userName}" /></td>
           </tr>
           <tr>
             <th>予定日時：</th>
-            <td><c:out value="${scheduleDate}" />
-          <c:out value="${startTime}" />～
-          <c:out value="${endTime}" /></td>
+            <td><c:out value="${scheduleBean.scheduleDateActual}" />
+          <c:out value="${scheduleBean.startTime}" />～
+          <c:out value="${scheduleBean.endTime}" /></td>
           </tr>
           <tr>
             <th>タイトル：</th>
-            <td><c:out value="${title}" /></td>
+            <td><c:out value="${scheduleBean.title}" /></td>
           </tr>
           <tr>
             <th>内容：</th>
-            <td><c:out value="${content}" /></td>
+            <td><c:out value="${scheduleBean.content}" /></td>
           </tr>
 
           <tr>
             <th class="last-table">コメント：</th>
-            <td class="last-table"><c:out value="${comment}" /></td>
+            <td class="last-table"><c:out value="${scheduleBean.comment}" /></td>
           </tr>
         </table>
       </div>
+      <form action="http://localhost:8080/kronon/user/scheduledelete" method="post" >
+		<input type="hidden" id="flag" value="${popFlag}">
+		<input type="hidden" name = "scheduleId" value="${scheduleBean.scheduleId}">
+		<input type="hidden" name = "userName" value="${scheduleBean.userName}">
+		<input type="hidden" name = "actualTimeStr" value="${scheduleBean.actualTimeStr}">
+		<input type="hidden" name = "scheduleDateActual" value="${scheduleBean.scheduleDateActual}">
+		<input type="hidden" name = "startTime" value="${scheduleBean.startTime}">
+		<input type="hidden" name = "endTime" value="${scheduleBean.endTime}">
+		<input type="hidden" name = "place" value="${scheduleBean.place}">
+		<input type="hidden" name = "title" value="${scheduleBean.title}">
+		<input type="hidden" name = "content" value="${scheduleBean.content}">
+		<input type="submit" class="ok-button" value="OK">
+      </form>
 
       <input type="submit" id="user-create-button2" class="ok-button next-button" value="OK"/>
       <div class="ng-button close-popup">キャンセル</div>
