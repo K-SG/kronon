@@ -28,7 +28,7 @@ public class ScheduleDeleteServlet extends HttpServlet {
 //		HttpSession session = request.getSession(true);
 //		int id = Integer.parseInt(request.getParameter("scheduleId"));
 
-<<<<<<< HEAD
+
 		int scheduleId = Integer.parseInt(request.getParameter("scheduleId"));
 		int userId = Integer.parseInt(request.getParameter("userId"));
 		String userName = request.getParameter("userName");
