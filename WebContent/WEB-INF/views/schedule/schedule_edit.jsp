@@ -14,7 +14,7 @@
 <%@ include file="../layout/common/header.jsp" %>
 
 	<article>
-			<form action="user/scheduleupdate" method="post" class="schedule-edit-form">
+			<form action="user/schedulecreate" method="post" class="schedule-edit-form">
 		<div class="schedule-regist-area">
 			<div class="schedule-regist-font-lev0">予定修正</div>
 			<div class="schedule-regist-border"></div>
