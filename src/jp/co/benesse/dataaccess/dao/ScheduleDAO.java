@@ -564,7 +564,7 @@ if (title.contains("%")) {
 				scheduleBean.setActualTime(resultSet.getInt("ACTUAL_TIME"));
 				scheduleBean.setComment(resultSet.getString("COMMENT"));
 				scheduleBean.setActualTimeStr(Calc.calcActualTime(scheduleBean));
-				scheduleBean.setScheduleDateActual(Calc.convertActualDate(scheduleBean.getScheduleDate().toLocalDate()));
+				scheduleBean.setScheduleDateActual(Calc.convertActualDate(scheduleBean.getScheduleDate()));
 			}
 
 			return scheduleBean;
