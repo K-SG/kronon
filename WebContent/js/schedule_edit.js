@@ -14,12 +14,13 @@ $(function () {
 
 	  /*登録完了ポップアップのOKボタン押下時の遷移先*/
     $('.next-popup').click(function () {
-      location.href= "scheduledetailservlet";
+    	let scheduleId = document.getElementById('set-schedule-id').value;
+      location.href= "scheduledetailservlet?id="+ scheduleId ;
     });
 
 /*変更前の情報を事前に入力された状態にしておくために必要な変数*/
   window.onload = function () {
-var date = document.getElementById('set-date').value;
+let date = document.getElementById('set-date').value;
 let startTime = document.getElementById('set-start-time').value;
 let endTime = document.getElementById('set-end-time').value;
 let startHour = startTime.substring(0, 2);

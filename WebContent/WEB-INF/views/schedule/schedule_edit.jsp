@@ -17,6 +17,7 @@
 			<form action="user/schedulecreate" method="post" class="schedule-edit-form">
 		<div class="schedule-regist-area">
 			<div class="schedule-regist-font-lev0">予定修正</div>
+			<input type="hidden" value="${scheduleBean.scheduleId}" id="set-schedule-id">
 			<div class="schedule-regist-border"></div>
 			<div class="schedule-regist-area-1">
 				<div class="schedule-regist-area-1-block">
