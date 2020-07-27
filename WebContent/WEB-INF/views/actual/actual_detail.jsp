@@ -142,7 +142,7 @@
         <p>削除が完了したよ！</p>
       </div>
     <div class="ok-button next-popup">OK</div>
-       <img src="img/kronon/kronon_question.png" class="pop-img">
+       <img src="/kronon/img/kronon/kronon_question.png" class="pop-img">
     </div>
   </div>
 </div>

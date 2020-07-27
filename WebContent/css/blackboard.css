@@ -24,9 +24,10 @@
   -moz-border-radius : 10px;
   -webkit-border-radius : 10px;
   position : relative ;
-  top : 2vw;
+  top : 200vw;
   left : 23vw;
-  margin-bottom: 10vw;
+  margin-bottom: 0vw;
+  margin-top: -20vh;
 }
 
 .schedule_detail{
