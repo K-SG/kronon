@@ -8,11 +8,6 @@
 	margin-left:3vw;
 }
 
-.button-return {
-	float:left;
-	margin-left: 10vh;
-	margin-top: -3vh;
-}
 
 .flex_test-box {
 	margin-left: 24vw;
@@ -24,8 +19,6 @@
 .flex_test-item {
     padding: 1vw;
     margin:  1vw;              /* 外側の余白 */
-
-
 }
 
 .user-create-button-return {
@@ -38,21 +31,6 @@
 	height: auto;
 }
 
-.modify-button{
-	border-style:none;
-    display: inline-block;
-	width: 30vw;
-	height: 7vh;
-	background-color: #DE9B50;
-	opacity:0.5;
-	border-radius: 0.8vw;
-	color: white;
-	margin-top: 0.7vh;
-	margin-bottom: 8vh;
-	cursor: pointer;
-    padding-top: 0.5vh;
-    border: solid white;
-    font-size: 1.5vw;
-}
+
 
 
