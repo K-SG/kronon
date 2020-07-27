@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.websocket.Session;
 
 import jp.co.benesse.dataaccess.cm.ConnectionManager;
 import jp.co.benesse.dataaccess.dao.ScheduleDAO;
@@ -26,6 +27,12 @@ public class ActualDeleteServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+
+		String loginUser = Session.getAttribute("userName");
+		String userName = request.getParameter("userName");
+
+
 		int scheduleId = Integer.parseInt(request.getParameter("scheduleId"));
 		String userName = request.getParameter("userName");
 		String actualTimeStr = request.getParameter("actualTimeStr");
