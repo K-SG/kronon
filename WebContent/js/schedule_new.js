@@ -1,6 +1,6 @@
 $(function () {
 
-	/*DBと照合した後のエラーポップアップ表示*/
+	/*DBと照合した後のポップアップ表示*/
 	$(document).ready(function () {
 		let popFlag = document.getElementById('flag').value;
 

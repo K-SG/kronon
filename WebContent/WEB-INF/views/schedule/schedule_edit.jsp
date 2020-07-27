@@ -128,7 +128,9 @@
 		<div class="kronon-banzai"><img alt="banzai" src="./img/kronon/kronon_banzai.png"></div>
 
 		<div class=schedule-regist-button>
+		<input type="hidden" id="flag" value="${popFlag}">
 		<!--修正ボタン---->
+
 			<div class=schedule-regist-button-left>
 			<input type="button" class="ok-button large-popup-button" id="ok-button" value="修正" >
 			</div>
@@ -206,6 +208,19 @@
 		  </div>
 		</div>
 		<!--内容確認ポップアップここまで----------------------------------------------------------------->
+
+		<!--登録完了ポップアップ------------------------------------------------------------------->
+		<div class="popup-wrapper error-popup complete-popup">
+			<div class="pop-container">
+				<div class="close-popup"><i class="fa fa-2x fa-times"></i></div>
+				<div class="pop-container-inner">
+					<div class="message-container"><p class=create-msg></p></div>
+					<div class="ok-button next-popup">OK</div>
+					<img src="/kronon/img/kronon/kronon_question.png" class="pop-img">
+				</div>
+			</div>
+		</div>
+<!--登録完了ポップアップここまで-------------------------------------------------------------->
 
 
 	</article>

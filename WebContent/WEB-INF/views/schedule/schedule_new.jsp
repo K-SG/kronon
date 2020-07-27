@@ -117,6 +117,7 @@
 		<div class="kronon-banzai"><img alt="banzai" src="./img/kronon/kronon_banzai.png"></div>
 
 		<div class=schedule-regist-button>
+		<input type="hidden" id="flag" value="${popFlag}">
 		<!--登録ボタン---->
 			<div class=schedule-regist-button-left>
 			<input type="button" class="ok-button large-popup-button" id="ok-button" value="登録" >

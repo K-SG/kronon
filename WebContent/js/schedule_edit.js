@@ -1,5 +1,22 @@
 $(function () {
 
+	/*DBと照合した後のポップアップ表示*/
+	$(document).ready(function () {
+		let popFlag = document.getElementById('flag').value;
+
+		/*登録が完了した場合*/
+		  if(popFlag == 0){
+		  	$('.create-msg').html('登録が完了したよ！');
+		  	$('.complete-popup').fadeIn();
+		  	return;
+		  }
+	});
+
+	  /*登録完了ポップアップのOKボタン押下時の遷移先*/
+    $('.next-popup').click(function () {
+      location.href= "scheduledetailservlet";
+    });
+
 /*変更前の情報を事前に入力された状態にしておくために必要な変数*/
   window.onload = function () {
 var date = document.getElementById('set-date').value;
