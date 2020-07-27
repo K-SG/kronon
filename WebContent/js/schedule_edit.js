@@ -15,7 +15,7 @@ $(function () {
 	  /*登録完了ポップアップのOKボタン押下時の遷移先*/
     $('.next-popup').click(function () {
     	let scheduleId = document.getElementById('set-schedule-id').value;
-      location.href= "scheduledetailservlet?id="+ scheduleId ;
+      location.href= "user/scheduledetail?id="+ scheduleId ;
     });
 
 /*変更前の情報を事前に入力された状態にしておくために必要な変数*/

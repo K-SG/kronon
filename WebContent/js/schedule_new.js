@@ -14,7 +14,8 @@ $(function () {
 
 	  /*登録完了ポップアップのOKボタン押下時の遷移先*/
     $('.next-popup').click(function () {
-      location.href= "calendar";
+    let date = document.getElementById('date').value;
+      location.href= "user/calendar?date=" + date;
     });
 
 
