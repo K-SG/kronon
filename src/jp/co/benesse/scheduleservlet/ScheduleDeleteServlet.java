@@ -41,6 +41,7 @@ public class ScheduleDeleteServlet extends HttpServlet {
 			}
 
 			scheduleDAO.deleteSchedule(id);
+			connectionManager.commit();
 
 			request.setAttribute("popFlag",1);
 
@@ -49,7 +50,9 @@ public class ScheduleDeleteServlet extends HttpServlet {
 			return;
 
 		} catch (RuntimeException e) {
+			connectionManager.rollback();
 			throw e;
+
 		} finally {
 			connectionManager.closeConnection();
 		}

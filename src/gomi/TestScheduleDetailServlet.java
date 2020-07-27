@@ -1,3 +1,4 @@
+
 package gomi;
 
 import java.io.IOException;
