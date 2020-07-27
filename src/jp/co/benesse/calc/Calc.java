@@ -83,7 +83,7 @@ public class Calc {
 	 * [説 明] 予定日を「yyyy/MM/dd(曜日)」という書式で返す<br>
 	 * [備 考] なし
 	 *
-	 * @param 予定日
+	 * @param 予定日（sql.Date）
 	 * @return 整形された日付の文字列
 	 */
 	public static String convertActualDate(Date sqlScheduleDate){
