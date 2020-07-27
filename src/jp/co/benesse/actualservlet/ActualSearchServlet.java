@@ -3,6 +3,8 @@ package jp.co.benesse.actualservlet;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.Date;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,7 +40,10 @@ public class ActualSearchServlet extends HttpServlet {
 		//リクエストパラメータを取得
 		String scheduleDateStr = request.getParameter("scheduleDate");
 		String title = request.getParameter("title");
+		String year = request.getParameter("year");
+		String month = request.getParameter("month");
 
+		String dateStr = year + "-" + month + "-" + "15";
 		// 遷移元の判定フラグ
 		String flag = "1";
 
@@ -56,16 +61,14 @@ public class ActualSearchServlet extends HttpServlet {
 
 			//AND検索、日付検索、タイトル検索の判定
 			if (!scheduleDateStr.equals("") && !title.equals("")) {
-				System.out.println("AND検索");
 				Date scheduleDate = Date.valueOf(scheduleDateStr);
 				scheduleBeanList = scheduleDAO.selectSchedule(userId, scheduleDate, title);
 			} else if (!scheduleDateStr.equals("") && title.equals("")) {
-				System.out.println("日付検索");
 				Date scheduleDate = Date.valueOf(scheduleDateStr);
 				scheduleBeanList = scheduleDAO.selectSchedule(userId, scheduleDate);
 			} else if (scheduleDateStr.equals("") && !title.equals("")) {
-				System.out.println("タイトル検索");
-				scheduleBeanList = scheduleDAO.selectSchedule(userId, title);
+				LocalDate scheduleDate = LocalDate.parse(dateStr, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+				scheduleBeanList = scheduleDAO.getOneMonthScheduleByTitle(userId,scheduleDate,title);
 			}else{
 				throw new RuntimeException();
 			}
@@ -78,6 +81,8 @@ public class ActualSearchServlet extends HttpServlet {
 			// リクエストスコープにセット
 			request.setAttribute("flag", flag);
 			request.setAttribute("scheduleBeanList", scheduleBeanList);
+			request.setAttribute("month", month);
+			request.setAttribute("year", year);
 
 			RequestDispatcher dispatcher = request.getRequestDispatcher("../WEB-INF/views/actual/actual_index.jsp");
 			dispatcher.forward(request, response);

@@ -57,7 +57,7 @@
 			<p id = "actual-title"><c:out value="${year}年${month}月の実績"/></p>
 		</c:if>
 		<c:if test="${flag.equals('1')}">
-			<p id = "actual-result"><c:out value="検索結果"/></p>
+			<p id = "actual-result"><c:out value="${year}年${month}月の検索結果"/></p>
 		</c:if>
     	</div>
 
