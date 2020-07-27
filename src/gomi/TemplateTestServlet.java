@@ -21,7 +21,7 @@ public class TemplateTestServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/views/layout/template.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/layout/template.jsp");
 		dispatcher.forward(request, response);
 		return;
 	}
