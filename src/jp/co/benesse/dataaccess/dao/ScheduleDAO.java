@@ -333,8 +333,8 @@ if (title.contains("%")) {
 		if (title.contains("%")) {
 			title = title.replace("%", "\\%");
 		}
-
 		title = "%" + title + "%";
+
 		PreparedStatement preparedStatement = null;
 		try {
 
