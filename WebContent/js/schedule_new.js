@@ -1,5 +1,24 @@
 $(function () {
 
+	/*DBと照合した後のエラーポップアップ表示*/
+	$(document).ready(function () {
+		let popFlag = document.getElementById('flag').value;
+
+		/*登録が完了した場合*/
+		  if(popFlag == 0){
+		  	$('.create-msg').html('登録が完了したよ！');
+		  	$('.complete-popup').fadeIn();
+		  	return;
+		  }
+	});
+
+	  /*登録完了ポップアップのOKボタン押下時の遷移先*/
+    $('.next-popup').click(function () {
+      location.href= "calendar";
+    });
+
+
+
   /*リロード・戻るボタンが押されているか判定し、ポップアップ非表示にする*/
   if(window.performance){
     if(performance.navigation.type===0){

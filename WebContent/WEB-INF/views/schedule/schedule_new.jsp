@@ -197,6 +197,18 @@
 		</div>
 		<!--内容確認ポップアップここまで----------------------------------------------------------------->
 
+<!--登録完了ポップアップ------------------------------------------------------------------->
+		<div class="popup-wrapper error-popup complete-popup">
+			<div class="pop-container">
+				<div class="close-popup"><i class="fa fa-2x fa-times"></i></div>
+				<div class="pop-container-inner">
+					<div class="message-container"><p class=create-msg></p></div>
+					<div class="ok-button next-popup">OK</div>
+					<img src="/kronon/img/kronon/kronon_question.png" class="pop-img">
+				</div>
+			</div>
+		</div>
+<!--登録完了ポップアップここまで-------------------------------------------------------------->
 
 	</article>
 <%@ include file="../layout/common/footer.jsp" %>
