@@ -114,7 +114,7 @@
           </tr>
         </table>
       </div>
-      <form action="http://localhost:8080/kronon/user/scheduledelete" method="post" >
+      <form action="http://localhost:8080/kronon/user/actualDelete" method="post" >
 		<input type="hidden" id="flag" value="${popFlag}">
 		<input type="hidden" name = "scheduleId" value="${scheduleBean.scheduleId}">
 		<input type="hidden" name = "userName" value="${scheduleBean.userName}">
@@ -128,7 +128,6 @@
 		<input type="submit" class="ok-button" value="OK">
       </form>
 
-      <input type="submit" id="user-create-button2" class="ok-button next-button" value="OK"/>
       <div class="ng-button close-popup">キャンセル</div>
       <img src="img/kronon/kronon_question.png" class="pop-img"> </div>
   </div>
