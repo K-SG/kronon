@@ -30,7 +30,6 @@ public class ScheduleDeleteServlet extends HttpServlet {
 
 
 		int scheduleId = Integer.parseInt(request.getParameter("scheduleId"));
-//		int userId = Integer.parseInt(request.getParameter("userId"));
 		String userName = request.getParameter("userName");
 		String actualTimeStr = request.getParameter("actualTimeStr");
 		String schduleDateActual = request.getParameter("scheduleDateActual");
@@ -41,7 +40,6 @@ public class ScheduleDeleteServlet extends HttpServlet {
 		String content = request.getParameter("content");
 
 		ScheduleBean scheduleBean = new ScheduleBean();
-//		scheduleBean.setUserId(userId);
 		scheduleBean.setUserName(userName);
 		scheduleBean.setActualTimeStr(actualTimeStr);
 		scheduleBean.setScheduleDateActual(schduleDateActual);
