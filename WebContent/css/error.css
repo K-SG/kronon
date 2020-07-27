@@ -1,0 +1,32 @@
+/* CSS Document */
+@import url(sanitize.css);
+
+
+
+
+/*本文*/
+article {
+	width:auto;
+	margin:0;
+	padding:0;
+	padding-top:20vh;
+	background-color: #FFD5A8;
+	font-size: 4vh;
+	height: auto;
+	color:#FFFFFF;
+}
+
+.error-msg{
+	margin-left:10vh;
+}
+.error-msg p{
+	font-size: 5vh;
+}
+
+.kronon-komatta img{
+	float:right;
+	width: 17vw;
+	height:auto;
+	margin-top: 20vh;
+}
+
