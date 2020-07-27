@@ -81,8 +81,12 @@ $(function () {
     }else{
     	popFlag='0';
     }
+
+
     if(popFlag==='0'){
         $('#time-msg').html(year + '/' + month + '/' + day +'(' + weekday + ')' + startHour +':'+ startMin +'～'+ endHour +':'+ endMin);
+        $('#title-msg').html(title);
+        $('#content-msg').html(content);
     	$('.confirm-popup').fadeIn();
         popFlag='0';
         return;

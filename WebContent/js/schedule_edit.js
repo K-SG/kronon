@@ -13,6 +13,8 @@ $(function () {
     }
   }
 
+
+
   /*修正ボタンを押した際のエラーチェックとポップアップ表示*/
   $('.login-button').click(function () {
     let mail = document.getElementById('login_mail').value;
