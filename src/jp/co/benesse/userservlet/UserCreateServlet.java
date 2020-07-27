@@ -89,7 +89,7 @@ public class UserCreateServlet extends HttpServlet {
 		catch(RuntimeException e){
 
 			connectionManager.rollback();
-
+			e.printStackTrace();
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/error/error.jsp");
 			dispatcher.forward(request, response);
 			return;
