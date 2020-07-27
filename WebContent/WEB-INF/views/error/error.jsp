@@ -6,7 +6,7 @@
  <link rel="stylesheet" href="css/error.css">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <%@ include file="../layout/common/link.jsp" %>
-<title>Insert title here</title>
+<title>エラー画面</title>
 </head>
 <body>
 
