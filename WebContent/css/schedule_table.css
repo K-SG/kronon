@@ -12,15 +12,15 @@
 
 .blackboard-container{
 	position:absolute;
-	top:12vw;
-	left:19vw;
+	top:10vw;
+	left:15.5vw;
 	margin-bottom: 5vw;
 }
 
 .blackboard-inner{
 
   width: 60vw; /*widthの指定は必須*/
-  height:124vw; /*heightの指定は必須*/
+  height:120vw; /*heightの指定は必須*/
 	border-radius: 1vw;
 /*	border:solid #999 1vw;
 	background-color: white;*/
@@ -29,6 +29,25 @@
 	border:solid #5E4222 1vw;
 	padding:1vw 3vw;
 
+}
+
+#left{
+	position:absolute;
+	top:12vw;
+	left:11vw;
+	cursor:pointer;
+}
+
+#right{
+	position:absolute;
+	top:12vw;
+	right:11vw;
+	cursor:pointer;
+}
+
+/* 先月翌月ボタン */
+.triangle-button{
+	width:3vw;
 }
 
 .today-list{
@@ -68,9 +87,28 @@
 	width:55vw;
 	height:110vw;
 	border:0.1vw solid white;
-	margin-top:4vw;
+	margin-top:4.5vw;
 	position: relative;
 }
+
+
+#name-container{
+	font-size:1.4vw;
+	line-height:1.6vw;
+
+}
+.username{
+	position:absolute;
+	top:-2vw;
+	width:14%;
+	text-align:center;
+	padding:0;
+	margin:0;
+	height:1.6vw;
+	overflow:hidden;
+
+}
+
 
 .schedule-item{
 	position:absolute;
@@ -84,17 +122,26 @@
 }
 
 .schedule-item .title{
-	font-size:1.2vw;
+	text-align:center;
+	font-size:1vw;
+	line-height:1.2vw;
 	color:#666;
 	margin-top:0.2vw;
 	padding:0 1vw;
+	padding-top:0.2vw;
+/* 	height:2.4vw; */
+	/* word-break: keep-all; */
+	overflow:hidden;
+/* 		white-space: nowrap;
+ 	overflow: hidden;
+	text-overflow: ellipsis; */
 }
 
 .schedule-item .schedule_id{
 	display:none;
 }
 .cell-active{
-	background-color:antiquewhite !important;
+	background-color:#FFD5A8 !important;
 }
 
 
@@ -131,17 +178,3 @@
 	font-size:1vw;
 }
 
-
-
-#name-container{
-	font-size:1.4vw;
-}
-.username{
-	position:absolute;
-	top:-2vw;
-	width:14%;
-	text-align:center;
-	padding:0;
-	margin:0;
-
-}

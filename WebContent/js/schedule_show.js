@@ -28,7 +28,6 @@ $(function () {
   for (let i = 0; i < 12; i++) {
     const div = document.createElement("div");
     div.setAttribute("class", "schedule-line-solid");
-    //div要素をtableの
     table.appendChild(div);
     const line_name = "schedule-line-solid" + counter;
     $(div).addClass(line_name);
@@ -42,7 +41,6 @@ $(function () {
   for (let i = 0; i < 12; i++) {
     const div = document.createElement("div");
     div.setAttribute("class", "schedule-line-dashed");
-    //div要素をtableの
     table.appendChild(div);
     const line_name = "schedule-line-dashed1-" + counter;
     $(div).addClass(line_name);
@@ -67,7 +65,6 @@ $(function () {
   for (let i = 0; i < 12; i++) {
     const div = document.createElement("div");
     div.setAttribute("class", "schedule-line-dotted");
-    //div要素をtableの
     table.appendChild(div);
     const line_name = "schedule-line-dotted" + counter;
     $(div).addClass(line_name);
@@ -122,7 +119,7 @@ $(function () {
 
       //div要素の追加
       const div = document.createElement("div");
-      div.setAttribute("class", "schedule-item");
+      $(div).addClass("schedule-item");
       //div要素をtableの
       table.appendChild(div);
       //それぞれの要素に固有のclass名をつける
@@ -131,7 +128,7 @@ $(function () {
       //タイトル追加
       const title = document.createElement("p");
       $(title).text(array_json[i][j].title);
-      title.setAttribute("class", "title");
+      $(title).addClass("title");
       div.appendChild(title);
       //スケジュールID追加（表示はしない）
       const schedule_id = document.createElement("p");
@@ -164,6 +161,8 @@ $(function () {
       //開始時間と終了時間の差分から高さを決定
       const height = dt / 720 * 100;
       $("." + class_name).css("height", height + "%");
+      //タイトルが切れないようにタイトルの高さを設定//110vwが100%に対応//行間1.2vw
+      $(title).css("height",Math.floor(height*1.1/1.2-0.5)*1.2+ "vw");
       //開始時間からy座標を決定
       const start_point = (startTimeMinute - 480) / 720 * 100;
       $("." + class_name).css("top", start_point + "%");

@@ -2,6 +2,7 @@ package jp.co.benesse.scheduleservlet;
 
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.Date;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.ArrayList;
@@ -14,6 +15,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import jp.co.benesse.dataaccess.cm.ConnectionManager;
 import jp.co.benesse.dataaccess.dao.ScheduleDAO;
@@ -33,14 +36,18 @@ public class ScheduleShowAllServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 
 		//SessionからユーザーIDを取ってくる
-		int userId= (int) session.getAttribute("userId");
+		int userId= 1;//(int) session.getAttribute("userId");
 		//どこからこのサーブレットに来たか判断するためのフラグを取ってくる
 		String flag = (String) request.getAttribute("flag");
 
 		List<ArrayList<ScheduleBean>> getOneDayScheduleLists = new ArrayList<>();
 		List<ScheduleBean> getOneDayScheduleList = new ArrayList<>();
 		LocalDate scheduleDate;
-		if(flag.equals('0')){	//先日ボタンが押されたとき
+		if(flag==null){
+			Date date = Date.valueOf("2020-07-10");
+			scheduleDate=date.toLocalDate();//LocalDate.now();//今日の日付取得
+		}
+		else if(flag.equals('0')){	//先日ボタンが押されたとき
 			scheduleDate = (LocalDate)request.getAttribute("scheduleDate");	//日付取得
 			scheduleDate = scheduleDate.minus(Period.ofDays(1));//日付を-1する
 		}
@@ -53,6 +60,7 @@ public class ScheduleShowAllServlet extends HttpServlet {
 		}
 		//日付をリクエスト領域にセットする
 		request.setAttribute("scheduleDate",scheduleDate);
+		System.out.println(scheduleDate);
 
 		ConnectionManager connectionManager = new ConnectionManager();
 		ScheduleDAO scheduleDAO = null;
@@ -76,16 +84,29 @@ public class ScheduleShowAllServlet extends HttpServlet {
 					//まずはログインユーザー以外の予定を取得する
 					getOneDayScheduleList = scheduleDAO.getOneDaySchedule(scheduleDate,i);
 					getOneDayScheduleLists.add((ArrayList<ScheduleBean>)getOneDayScheduleList);
-					userName = userDAO.getUserName(userId);
+					userName = userDAO.getUserName(i);
 					userNameList.add(userName);
 				}
 			}
+
+			//json形式に変換し、リクエスト領域にset
+			ObjectMapper mapper = new ObjectMapper();
+			String json = mapper.writeValueAsString(getOneDayScheduleLists);
+			String jsonReplace = json.replaceAll("\"","krnooon");
+			request.setAttribute("json", jsonReplace);
+			System.out.println(json);
+
+			String jsonName = mapper.writeValueAsString(userNameList);
+			String jsonNameReplace = jsonName.replaceAll("\"","krnooon");
+			request.setAttribute("json_name", jsonNameReplace);
+			System.out.println(jsonName);
+
 			request.setAttribute("userNameList",userNameList);
 			request.setAttribute("getOneDayScheduleList",getOneDayScheduleList);
-			RequestDispatcher dispatcher = request.getRequestDispatcher("../WEB-INF/view/error/schedule_show.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("../WEB-INF/views/schedule/schedule_show.jsp");
 			dispatcher.forward(request, response);
 	}catch(RuntimeException e){
-		RequestDispatcher dispatcher = request.getRequestDispatcher("../WEB-INF/view/error/error.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("../WEB-INF/views/error/error.jsp");
 		dispatcher.forward(request, response);
 	}
 		finally{
