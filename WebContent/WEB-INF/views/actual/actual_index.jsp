@@ -103,6 +103,7 @@
 <p id="scrollTop">
 	<a href="#"><img id = "to-top-button" src="../img/up_bottom.png" alt = "トップへ" class="pop-img"></a>
 </p>
+<img alt="くろのん" id = "kronon-prin-img" src="../img/kronon/kronon_prin.png">
 
 
 <!--エラーまたは完了ポップアップ------------------------------------------------------------------->

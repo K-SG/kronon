@@ -494,6 +494,12 @@ article {
 	 position: fixed;
 }
 
+#kronon-prin-img{
+	float:right;
+	transform:scale(0.8);
+
+}
+
 /*フッター*/
 footer{
 	width:100vw;
