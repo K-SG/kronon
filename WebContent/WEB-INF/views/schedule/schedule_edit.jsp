@@ -26,6 +26,7 @@
 				<div class="schedule-regist-area-1-block">
 					<div class="schedule-regist-font-lev1">開始時刻<span>*</span></div>
 					<div class="schedule-regist-time">
+						<input type="hidden" value="${start-hour}" id="set_start_hour">
 						<select name="start-hour" id="edit_start_hour">
 							<option value="8">8</option>
 							<option value="9">9</option>
