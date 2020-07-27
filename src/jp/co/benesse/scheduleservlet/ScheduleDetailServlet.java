@@ -63,8 +63,6 @@ public class ScheduleDetailServlet extends HttpServlet {
 //			System.out.println(scheduleBean.getTitle());
 //			System.out.println(scheduleBean.getContent());
 
-
-
 //			HttpSession session = request.getSession(true);
 //			session.setAttribute("owner", scheduleBean.getUserName());
 //			session.setAttribute("actualTime", actualTime);
