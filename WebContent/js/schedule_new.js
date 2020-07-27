@@ -98,12 +98,12 @@ $(function () {
         return;
     }
     else if(popFlag==='3'){
-        $('.new_msg').html('入力されていない<br>項目があるよ');
+        $('.new-msg').html('入力されていない<br>項目があるよ');
         $('.error-popup').fadeIn();
         return;
     }
     else if(popFlag==='4'){
-        $('.new_msg').html('日付や時間の入力が<br>おかしいよ');
+        $('.new-msg').html('日付や時間の入力が<br>おかしいよ');
         $('.error-popup').fadeIn();
         return;
     }

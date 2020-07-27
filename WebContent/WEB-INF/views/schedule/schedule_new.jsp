@@ -14,7 +14,7 @@
 <%@ include file="../layout/common/header.jsp" %>
 
 	<article>
-		<form action="/user/schedulecreate" method="get" class="schedule-new-form">
+		<form action="user/schedulecreate" method="get" class="schedule-new-form">
 		<input type="hidden" value="${popFlag}" id="flag">
 		<div class="schedule-regist-area">
 			<div class="schedule-regist-font-lev0">予定登録</div>
@@ -170,7 +170,7 @@
 			<div class="close-popup"> <i class="fa fa-2x fa-times"></i> </div>
 			<div class="pop-container-inner">
 			  <div class="message-container-large">
-				<h2 class="message-title">この内容で更新するよ。</h2>
+				<h2 class="message-title">この内容で登録するよ。</h2>
 				<table class="popup-table">
 				  <tr>
 					<th class="th">名前：</th>
