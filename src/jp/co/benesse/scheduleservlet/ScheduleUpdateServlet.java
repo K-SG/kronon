@@ -77,7 +77,7 @@ public class ScheduleUpdateServlet extends HttpServlet {
 				request.setAttribute("endTimeHour", endTimeHour);//終了時間
 				request.setAttribute("endTimeMin", endTimeMin);//終了分
 				//schedule_edit.jsp（予定修正画面）にforwardする
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/viws/schedule/schedule_edit.jsp");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/schedule/schedule_edit.jsp");
 				dispatcher.forward(request, response);
 				return;
 			}
@@ -86,7 +86,7 @@ public class ScheduleUpdateServlet extends HttpServlet {
 			int result = scheduleDAO.registerSchedule(scheduleBean);
 			if(result != 1){
 				//error.jsp（エラー画面）にforwardする
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/viws/error/error.jsp");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/error/error.jsp");
 				dispatcher.forward(request, response);
 				return;
 			}
@@ -106,7 +106,7 @@ public class ScheduleUpdateServlet extends HttpServlet {
 		}
 
 		//schedule_edit.jsp（予定修正画面）にforwardする
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/viws/schedule/schedule_edit.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/schedule/schedule_edit.jsp");
 		dispatcher.forward(request, response);
 		return;
 

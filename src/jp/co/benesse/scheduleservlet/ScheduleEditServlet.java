@@ -26,7 +26,7 @@ public class ScheduleEditServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String scheduleIdStr = request.getParameter("scheduleId");
 		int scheduleId = Integer.parseInt(scheduleIdStr);
-
+		
 		ConnectionManager connectionManager = new ConnectionManager();
 		try {
 			Connection connection = connectionManager.getConnection();
@@ -45,7 +45,7 @@ public class ScheduleEditServlet extends HttpServlet {
 		}
 
 		//schedule_edit.jsp（予定修正画面）にforwardする
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/viws/schedule/schedule_edit.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/schedule/schedule_edit.jsp");
 		dispatcher.forward(request, response);
 		return;
 	}
