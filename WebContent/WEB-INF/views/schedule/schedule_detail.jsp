@@ -62,7 +62,7 @@
   </div>
 <div class="kronon-banzai"><img alt="banzai" src="./img/kronon/kronon_banzai.png"></div>
 <a href="/kronon/login"><div class="user-create-button-return"><img alt="戻る" src="/kronon/img/back_buttom.png" ></div></a>
-<
+
 
 <!-- sesseionスコープのuserIDとスケジュールのIDを比較 -->
 <c:set var="loginUserId" value="${sessionScope.userId}" />
@@ -85,7 +85,7 @@
     </div>
 </div>
 </c:if>
-
+  <c:set var="schBean" value="${scheduleBean}" scope="request"/>
 
 <!--内容確認ポップアップ----------------------------------------------------------------->
 <div class="popup-wrapper confirm-popup">
@@ -117,6 +117,7 @@
       </div>
       <form action="http://localhost:8080/kronon/user/scheduledelete" method="post" >
 				<input type="hidden" id="flag" value="${popFlag}">
+				<input type="hidden" name = "scheduleId" value="${scheduleBean.scheduleId}">
 				<input type="submit" class="ok-button" value="OK">
       </form>
       <div class="ng-button close-popup">キャンセル</div>
@@ -131,7 +132,7 @@
 					<div class="pop-container">
 						<div class="close-popup"><i class="fa fa-2x fa-times"></i></div>
 						<div class="pop-container-inner">
-							<div class="message-container"><p class=create-msg></p></div>
+							<div class="message-container"><p class=create-msg>削除が完了したよ</p></div>
 							<div class="ok-button next-popup">OK</div>
 							<img src="/kronon/img/kronon/kronon_question.png" class="pop-img">
 						</div>
@@ -145,5 +146,6 @@
 <%@ include file="/WEB-INF/views/layout/common/footer.jsp" %>
 <script src="js/common/common.js"></script>
 <script src="js/scheduledetail.js"></script>
+<script src="../js/scheduledetail.js"></script>
 </body>
 </html>
