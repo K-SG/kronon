@@ -26,6 +26,7 @@ public class UserNewServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//user_new.jsp(アカウント新規作成画面)にforwardする。
+		request.setAttribute("popFlag",7);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/user/user_new.jsp");
 		dispatcher.forward(request, response);
 		return;

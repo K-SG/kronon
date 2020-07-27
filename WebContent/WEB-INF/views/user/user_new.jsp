@@ -1,227 +1,115 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
-<head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link href="css/app.css" rel="stylesheet" type="text/css">
-<link href="css/common.css" rel="stylesheet" type="text/css">
-<link href="css/usernew_popup.css" rel="stylesheet" type="text/css">
-<link href="css/jquery.confirm.css" rel="stylesheet">
-<link href="css/user_new.css" rel="stylesheet" type="text/css">
+<link href="/kronon/css/app.css" rel="stylesheet" type="text/css">
+<link href="/kronon/css/common.css" rel="stylesheet" type="text/css">
+<link href="../css/common.css" rel="stylesheet" type="text/css">
+<link href="/kronon/css/user_new.css" rel="stylesheet" type="text/css">
+<link href="../css/user_new.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-<script src="./jquery.confirm/jquery.confirm/jquery.confirm.js"></script>
-
+<head>
 <title>アカウント作成</title>
-
 </head>
 <body>
-<%--
-<%@ include file="../layout/common/header.jsp" %> --%>
-<article>
+	<article>
+		<div class="create-user-content">
+			<div class="create-user-system-name">予定管理システム～くろのん～</div>
+			<div class="create-user-title">アカウント作成</div>
+			<div class="create-user-note">表示名は日本語で15文字以内、パスワードは半角英数字で8～20文字、<br>大文字・小文字・数字を必ず使用して設定してください。</div>
 
+			<!-- <form action="/WEB-INF/views/user/usercreate" method="post" id="user_create_form" class="user_create_form"> -->
+			<form action="http://localhost:8080/kronon/user/usercreate" method="post" class="user_create_form" id="id_create_form">
+				<input type="text" name="userName" id="create_name" class="create_textbox" placeholder="表示名" maxlength="15" value=${userName }><br>
+				<input type="text" name="mail" id="create_mail" class="create_textbox" placeholder="メールアドレス" maxlength="100" value="${mail}"><br>
+				<input type="password" name="password" id="create_password1" class="create_textbox" placeholder="パスワード" maxlength="20" value=${password }><br>
+				<input type="password" name="password" id="create_password2" class="create_textbox" placeholder="パスワード確認" maxlength="20" value=${password }><br>
+				<input type="hidden" id="flag" value="${popFlag}"> <input type="button" class="user-create-button" value="新規登録">
 
+				<!--エラーポップアップ------------------------------------------------------------------->
+				<div class="popup-wrapper error-popup create-popup">
+					<div class="pop-container">
+						<div class="close-popup"><i class="fa fa-2x fa-times"></i></div>
+						<div class="pop-container-inner">
+							<div class="message-container"><p class=create-msg>メールアドレスが<br>既に登録されているよ！</p></div>
+							<div class="ok-button close-popup">OK</div>
+							<img src="/kronon/img/kronon/kronon_question.png" class="pop-img">
+						</div>
+					</div>
+				</div>
+				<!--エラーポップアップここまで-------------------------------------------------------------->
 
-<div class="user-create-content">
+				<!--登録完了ポップアップ------------------------------------------------------------------->
+				<div class="popup-wrapper error-popup complete-popup">
+					<div class="pop-container">
+						<div class="close-popup"><i class="fa fa-2x fa-times"></i></div>
+						<div class="pop-container-inner">
+							<div class="message-container"><p class=create-msg></p></div>
+							<div class="ok-button next-popup">OK</div>
+							<img src="/kronon/img/kronon/kronon_question.png" class="pop-img">
+						</div>
+					</div>
+				</div>
+				<!--登録完了ポップアップここまで-------------------------------------------------------------->
 
-<div class="user-create-area1">予定管理システム～くろのん～</div>
-<div class="user-create-area2">アカウント作成</div>
-<div class="user-create-area3">表示名は日本語で15文字以内、パスワードは半角英数字で8～20文字、<br>
-	大文字・小文字・数字を必ず使用して設定してください。</div>
+				<!--内容確認ポップアップ---------------------------------------------------------------->
+				<div class="popup-wrapper confirm-popup">
+					<div class="pop-container pop-container-large">
+						<div class="close-popup"><i class="fa fa-2x fa-times"></i></div>
+						<div class="pop-container-inner">
+							<div class="message-container-large">
+								<h2 class="message-title">この内容で登録するよ。</h2>
+								<table class="popup-table">
+									<tr>
+										<th class="th">表示名：</th>
+										<td><div id="confirmUserName"></div></td>
+									</tr>
+									<tr>
+										<th>メールアドレス</th>
+										<td><div id="confirmMail"></div></td>
+									</tr>
+									<tr>
+										<th>パスワード</th>
+										<td><div id="confirmPassword"></div></td>
+									</tr>
+								</table>
+							</div>
+							<input type="submit" class="ok-button" value="OK" />
+							<div class="ng-button close-popup">キャンセル</div>
+							<img src="/kronon/img/kronon/kronon_question.png" class="pop-img">
+						</div>
+					</div>
+				</div>
+			</form>
+			<!--内容確認ポップアップここまで----------------------------------------------------------------->
 
-
-
-
-
-	<form action="/user/usercreate" method="post" id="user_create_form" onsubmit="return checkUserCreate()">
-		<div class="user-create-input1">
-			<input type="text" id="userName" maxlength="15" placeholder="表示名" />
+			<!--本当に戻りますかポップアップ------------------------------------------------------------------->
+			<div class="popup-wrapper back-popup">
+				<div class="pop-container">
+					<div class="close-popup">
+						<i class="fa fa-2x fa-times"></i>
+					</div>
+					<div class="pop-container-inner">
+						<div class="message-container">
+							<p>内容は保存されないよ。</p>
+							<h2 class="message-title">本当に戻る？</h2>
+						</div>
+						<a href="/kronon/login"><div class="ok-button">OK</div></a>
+						<div class="ng-button close-popup">キャンセル</div>
+						<img src="/kronon/img/star/star_angry.png" class="pop-img-top">
+					</div>
+				</div>
+			</div>
+			<!--本当に戻りますかポップアップここまで------------------------------------------------------------------->
 		</div>
-		<div class="user-create-input2">
-
-    	<input type="text" id="mail" size="100" maxlength="100"   placeholder="メールアドレス" />
-		</div>
-
-
-		<div class="user-create-input3">
-			<input type="text" id="password1" maxlength="20" placeholder="パスワード" />
-		</div>
-		<div class="user-create-input4">
-			<input type="text" id="password2" maxlength="20" placeholder="パスワード確認" />
-		</div>
-		<div class="user-create-button"></div>
-
-
-		 <!--エラーまたは完了ポップアップ表示用ボタン----><!--
-  			<div class="ok-button large-popup-button">新規登録</div> -->
-  			<!--
-  			<input class="ok-button large-popup-button" type="submit" value="新規登録"/> -->
-
-  			<input type="submit" value="新規登録" id="user-create-button"  class="ok-button large-popup-button"/>
-  			<!-- <button id="user-create-button" value="新規登録"></button> -->
-
-	</form>
-
-
-
-
-
-
-<!--空欄チェックポップアップ--popFlag1----------------------------------------------------------------->
-<div id="emp-error" class="popup-wrapper error-popup">
-	<div class="pop-container">
-	  <div class="close-popup"> <i class="fa fa-2x fa-times"></i> </div>
-	  <div class="pop-container-inner">
-		<div class="message-container">
-		  <p>入力されていない項目があるよ！</p>
-		</div>
-		<div class="ok-button close-popup">OK</div>
-		<img src="../img/kronon_question.png" class="pop-img"> </div>
-	</div>
-  </div>
-  <!--空欄チェックポップアップここまで-------------------------------------------------------------->
-
-
-
-
-<!--メール入力条件チェックポップアップ-------popFlag2------------------------------------------------------------>
-<div id="mail-error" class="popup-wrapper error-popup">
-	<div class="pop-container">
-	  <div class="close-popup"> <i class="fa fa-2x fa-times"></i> </div>
-	  <div class="pop-container-inner">
-		<div class="message-container">
-		  <p>メールアドレスが不正だよ！</p>
-		</div>
-		<div class="ok-button close-popup">OK</div>
-		<img src="../img/kronon_question.png" class="pop-img"> </div>
-	</div>
-  </div>
-  <!--メール入力条件チェックポップアップここまで-------------------------------------------------------------->
-
-
-
-
-<!--パスワード入力条件チェックポップアップ-------popFlag3------------------------------------------------------------>
-<div id="pass-check-error" class="popup-wrapper error-popup">
-	<div class="pop-container">
-	  <div class="close-popup"> <i class="fa fa-2x fa-times"></i> </div>
-	  <div class="pop-container-inner">
-		<div class="message-container">
-		  <p>パスワードの条件を満たしていないよ！</p>
-		</div>
-		<div class="ok-button close-popup">OK</div>
-		<img src="../img/kronon_question.png" class="pop-img"> </div>
-	</div>
-  </div>
-  <!--パスワード入力条件チェックポップアップここまで-------------------------------------------------------------->
-
-
-
-
-
-  <!--パスワード不一致チェックポップアップ-------popFlag4------------------------------------------------------------>
-<div id="pass-notsame-error" class="popup-wrapper error-popup">
-	<div class="pop-container">
-	  <div class="close-popup"> <i class="fa fa-2x fa-times"></i> </div>
-	  <div class="pop-container-inner">
-		<div class="message-container">
-		  <p>パスワードが一致していないよ！</p>
-		</div>
-		<div class="ok-button close-popup">OK</div>
-		<img src="../img/kronon_question.png" class="pop-img"> </div>
-	</div>
-  </div>
-  <!--パスワード不一致チェックポップアップここまで-------------------------------------------------------------->
-
-
-
-<!--内容確認ポップアップ----------------------------------------------------------------->
-  <div id="confirm-pop" class="popup-wrapper confirm-popup">
-	<div class="pop-container pop-container-large">
-	  <div class="close-popup"> <i class="fa fa-2x fa-times"></i> </div>
-	  <div class="pop-container-inner">
-		<div class="message-container-large">
-		  <h2 class="message-title">この内容で登録するよ。</h2>
-		  <table class="popup-table">
-			<tr>
-			  <th class="th">名前：</th>
-			  <td><%-- <c:out value="${userBean.userName}" /> --%></td>
-			</tr>
-			<tr>
-			  <th>予定日時：</th>
-			  <td>2020/7/11(月) 10:00-11:00</td>
-			</tr>
-			<tr>
-			  <th>タイトル：</th>
-			  <td>外部設計レビュー</td>
-			</tr>
-			<tr>
-			  <th class="last-table">内容：</th>
-			  <td class="last-table">森岡さん作成外部設計書レビュー<br>
-				〆切7/13</td>
-			</tr>
-		  </table>
-		</div>
-		<a href="#"><div class="ok-button">OK</div></a>
-		<div class="ng-button close-popup">キャンセル</div>
-		<img src="../img/kronon_question.png" class="pop-img"> </div>
-	</div>
-  </div>
-  <!--内容確認ポップアップここまで----------------------------------------------------------------->
-
-
-
-
-
-
-
-
-<%--   <!--エラーまたは完了ポップアップ表示用ボタン--->
-  <div  class="ok-button small-popup-button">エラー/完了</div>
-</c:if> --%>
-
-
-  <!--本当に戻りますかポップアップ------------------------------------------------------------------->
-  <div class="popup-wrapper back-popup">
-	<div class="pop-container">
-	  <div class="close-popup"> <i class="fa fa-2x fa-times"></i> </div>
-	  <div class="pop-container-inner">
-		<div class="message-container">
-		  <p>内容は保存されないよ。</p>
-		  <h2 class="message-title">本当に戻る？</h2>
-		</div>
-		<a href="#"><div class="ok-button">OK</div></a>
-		<div class="ng-button close-popup">キャンセル</div>
-		<img src="../img/star_angry.png" class="pop-img-top"> </div>
-	</div>
-  </div>
-  <!--本当に戻りますかポップアップここまで------------------------------------------------------------------->
-
-
-<%--
-<c:if test="${popFlag!=0}"> --%>
-
-
-  <div class="user-create-button-return">
-  <!--エラーまたは完了ポップアップ表示用ボタン----->
-  <div class="ok-button back-popup-button">戻る</div>
-</div>
-
-<%--
-</c:if> --%>
-
-
-<!--
-</form> -->
-</div>
-
-</article>
-<%--
-<%@ include file="../layout/common/footer.jsp" %> --%>
-<script src="js/common.js"></script>
-<script src="js/jquery.confirm.js"></script>
-<script src="js/user_new.js"></script>
+		<div class="user-create-button-return"><img alt="戻る" src="/kronon/img/back_buttom.png" class="back-popup-button"></div>
+	</article>
+	<script src="js/common.js"></script>
+	<script src="../js/common.js"></script>
+	<script src="js/user_new.js"></script>
+	<script src="../js/user_new.js"></script>
 </body>
 </html>
