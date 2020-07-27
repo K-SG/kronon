@@ -24,7 +24,7 @@ public class ScheduleDeleteServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 //		HttpSession session = request.getSession(true);
-		int id = Integer.parseInt(request.getParameter("id"));
+		int id = Integer.parseInt(request.getParameter("scheduleId"));
 
 		ConnectionManager connectionManager = new ConnectionManager();
 
