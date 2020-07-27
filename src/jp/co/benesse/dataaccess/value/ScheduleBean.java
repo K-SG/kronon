@@ -16,6 +16,10 @@ public class ScheduleBean {
 	 */
 	private Date scheduleDate;
 	/**
+	 * 実績一覧表示用予定日時「MM/dd(曜日)」
+	 */
+	private String scheduleDateActual;
+	/**
 	 * 予定開始時間
 	 */
 	private Time startTime;
@@ -126,6 +130,12 @@ public class ScheduleBean {
 	}
 	public void setScheduleDate(Date scheduleDate) {
 		this.scheduleDate = scheduleDate;
+	}
+	public String getScheduleDateActual() {
+		return scheduleDateActual;
+	}
+	public void setScheduleDateActual(String scheduleDateActual) {
+		this.scheduleDateActual = scheduleDateActual;
 	}
 	public Time getStartTime() {
 		return startTime;
