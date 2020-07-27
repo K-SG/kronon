@@ -130,7 +130,6 @@
 		</div>
 	</form>
 
-
   <!--エラーまたは完了ポップアップ------------------------------------------------------------------->
   <div class="popup-wrapper error-popup">
     <div class="pop-container">

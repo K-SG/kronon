@@ -19,7 +19,6 @@ public class TestScheduleEdit extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 
-
 		request.setAttribute("date", "2020-10-16");
 		request.setAttribute("startTime", "0900");
 		request.setAttribute("endTime", "1530");

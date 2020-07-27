@@ -127,7 +127,6 @@ $(function () {
         return;
   });
 
-
   /*ポップアップを閉じる際の動き*/
   $('.close-popup').click(function () {
     $('.confirm-popup').fadeOut();
