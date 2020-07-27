@@ -1,6 +1,7 @@
 package jp.co.benesse.actualservlet;
 
 import java.io.IOException;
+import java.sql.Connection;
 import java.sql.Time;
 
 import javax.servlet.RequestDispatcher;
@@ -9,7 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.websocket.Session;
+import javax.servlet.http.HttpSession;
 
 import jp.co.benesse.dataaccess.cm.ConnectionManager;
 import jp.co.benesse.dataaccess.dao.ScheduleDAO;
@@ -28,13 +29,17 @@ public class ActualDeleteServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-
-		String loginUser = Session.getAttribute("userName");
+		HttpSession session = request.getSession(true);
+		String loginUser = (String)session.getAttribute("userName");
 		String userName = request.getParameter("userName");
+		if(!(loginUser == userName)){
+			RequestDispatcher dispatcher = request.getRequestDispatcher("../WEB-INF/views/error/error.jsp");
+			dispatcher.forward(request, response);
+			return;
+		}
 
 
 		int scheduleId = Integer.parseInt(request.getParameter("scheduleId"));
-		String userName = request.getParameter("userName");
 		String actualTimeStr = request.getParameter("actualTimeStr");
 		String schduleDateActual = request.getParameter("scheduleDateActual");
 		String startTime = request.getParameter("startTime");
