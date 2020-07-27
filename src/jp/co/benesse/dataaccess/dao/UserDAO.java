@@ -36,10 +36,7 @@ public class UserDAO {
 		int result = 0;
 		try {
 			// SQLの定義
-
-
 			String sql = "INSERT INTO PUBLIC.USER (USER_ID,USER_NAME,MAIL,PASSWORD) VALUES (NEXTVAL('SEQ_USER'),?,?,?)";
-
 			// SQLの作成(準備)
 			preparedStatement = this.connection.prepareStatement(sql);
 			// SQLバインド変数への値設定
@@ -80,6 +77,7 @@ public class UserDAO {
 		try {
 			// SQLの定義
 			String sql = "SELECT * FROM PUBLIC.USER WHERE MAIL = ? AND PASSWORD = ?";
+
 			// SQLの作成(準備)
 			preparedStatement = this.connection.prepareStatement(sql);
 			// SQLバインド変数への値設定

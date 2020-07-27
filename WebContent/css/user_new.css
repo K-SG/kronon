@@ -1,115 +1,73 @@
-.user-create-content{
-	text-align:center;
-	margin-left:30vw;
-	margin-top:0vh;
-	width: 40vw;
-	height:80vh;
-}
-.user-create-area1
-{
-  font-family : UD デジタル 教科書体 NK-B;
-  font-weight : bold;
-  font-size : 5vh;
-  color : #FFFFFF;
-  color : rgb(255, 255, 255);
-}
-.user-create-area2
-{
-  font-family : UD デジタル 教科書体 NK-B;
-  font-weight : bold;
-  font-size : 4vh;
-  color : #FFFFFF;
-  color : rgb(255, 255, 255);
-  margin-top:2vh;
+@CHARSET "UTF-8";
+
+.create-user-content {
+	text-align: center;
+	font-size: 1.4vw;
 }
 
-
-.user-create-area3
-{
-  font-family : UD デジタル 教科書体 NK-B;
-  font-weight : bold;
-  font-size : 2vh;
-  color : #FFFFFF;
-  color : rgb(255, 255, 255);
-  margin-top:2vh;
-}
-.user-create-input1 input
-{
-	background : #FFFFFF;
-	background : rgba(255, 255, 255, 1);
-	border-radius : 10px;
-	-moz-border-radius : 10px;
-	-webkit-border-radius : 10px;
-	width: 50vh;
-	height:6vh;
-	font-size:2vh;
-	margin-top:2vh;
-	padding-left:1vh;
-	border:none;
-
+.create-user-system-name {
+	margin-bottom: 1.4vh;
+	margin-top: 0;
+	font-size: 2.5vw;
+	color: white;
 }
 
-.user-create-input2 input
-{
-	background : #FFFFFF;
-	background : rgba(255, 255, 255, 1);
-
-	border-radius : 10px;
-	-moz-border-radius : 10px;
-	-webkit-border-radius : 10px;
-	width: 50vh;
-	height:6vh;
-	font-size:2vh;
-	margin-top:2vh;
-	padding-left:1vh;
-	border:none;
-
+.create-user-title {
+	font-size: 2vw;
+	color: white;
 }
 
-.user-create-input3 input
-{
-	background : #FFFFFF;
-	background : rgba(255, 255, 255, 1);
-
-	border-radius : 10px;
-	-moz-border-radius : 10px;
-	-webkit-border-radius : 10px;
-	width: 50vh;
-	height:6vh;
-	font-size:2vh;
-	margin-top:2vh;
-	padding-left:1vh;
-	border:none;
-
-
+.create-user-note {
+  	margin-bottom: 2vh;
+  	margin-top: 2vh;
+  	font-size: 1vw;
+  	color: white;
 }
 
-.user-create-input4 input
-{
-	background : #FFFFFF;
-	background : rgba(255, 255, 255, 1);
-
-	border-radius : 10px;
-	-moz-border-radius : 10px;
-	-webkit-border-radius : 10px;
-	width: 50vh;
-	height:6vh;
-	font-size:2vh;
-	margin-top:2vh;
-	padding-left:1vh;
-	border:none;
-	margin-bottom:4vh;
-}
-.user-create-button
-{
-
+.create_textbox {
+	border-radius: 0.8vw;
+	border: none;
+	height: 6vh;
+	width: 30vw;
+	padding-left: 0.6vw;
+	margin-bottom: 2vh;
+	font-size: 1.4vw;
 }
 
-.user-create-button-return
-{
+input::-webkit-input-placeholder {
+    color: #999999;
+    padding-left: 0vw;
+    font-size: 1vw;
+}
+
+input[type="text"]:focus {
+  outline: 0;
+}
+
+.user-create-button {
+	border-style:none;
+    display: inline-block;
+	width: 30vw;
+	height: 7vh;
+	background-color: #DE9B50;
+	opacity:0.5;
+	border-radius: 0.8vw;
+	color: white;
+	margin-top: 0.7vh;
+	margin-bottom: 8vh;
+	cursor: pointer;
+    padding-top: 0.5vh;
+    border: solid white;
+    font-size: 1.5vw;
+}
+
+.user-create-button-return {
 	float:left;
-	background-image : url(./img/back_buttom.png);
-	/*CSS に参照される画像を作成するには、「選択した CSS を書き出し」コマンドを使用します。*/
-	background-repeat : no-repeat;
-
+	margin-left: 10vh;
+	margin-top: -3vh;
 }
+.user-create-button-return img {
+	width: min(100vh,5vw);
+	height: auto;
+}
+
