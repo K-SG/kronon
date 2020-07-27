@@ -2,6 +2,7 @@ package jp.co.benesse.scheduleservlet;
 
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.Time;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -27,15 +28,26 @@ public class ScheduleDeleteServlet extends HttpServlet {
 //		HttpSession session = request.getSession(true);
 //		int id = Integer.parseInt(request.getParameter("scheduleId"));
 
-		int id = Integer.parseInt(request.getParameter("scheduleId"));
 
-		ScheduleBean scheBean = (ScheduleBean)request.getAttribute("scheBean");
-		System.out.println("jspからの受取"+scheBean);
+		int scheduleId = Integer.parseInt(request.getParameter("scheduleId"));
+		String userName = request.getParameter("userName");
+		String actualTimeStr = request.getParameter("actualTimeStr");
+		String schduleDateActual = request.getParameter("scheduleDateActual");
+		String startTime = request.getParameter("startTime");
+		String endTime = request.getParameter("endTime");
 		String place = request.getParameter("place");
 		String title = request.getParameter("title");
 		String content = request.getParameter("content");
 
-
+		ScheduleBean scheduleBean = new ScheduleBean();
+		scheduleBean.setUserName(userName);
+		scheduleBean.setActualTimeStr(actualTimeStr);
+		scheduleBean.setScheduleDateActual(schduleDateActual);
+		scheduleBean.setStartTime(Time.valueOf(startTime));
+		scheduleBean.setEndTime(Time.valueOf(endTime));
+		scheduleBean.setPlace(place);
+		scheduleBean.setTitle(title);
+		scheduleBean.setContent(content);
 
 
 		ConnectionManager connectionManager = new ConnectionManager();
@@ -45,18 +57,18 @@ public class ScheduleDeleteServlet extends HttpServlet {
 			Connection connection = connectionManager.getConnection();
 			ScheduleDAO scheduleDAO = new ScheduleDAO(connection);
 
-			if (scheduleDAO.isDeleted(id)){
+			if (scheduleDAO.isDeleted(scheduleId)){
 				RequestDispatcher dispatcher = request.getRequestDispatcher("../WEB-INF/views/error/error.jsp");
 				dispatcher.forward(request, response);
 				return;
 			}
 
-			scheduleDAO.deleteSchedule(id);
+			scheduleDAO.deleteSchedule(scheduleId);
 			connectionManager.commit();
 
 			request.setAttribute("popFlag",1);
 
-			request.setAttribute("scheduleBean",scheBean);
+			request.setAttribute("scheduleBean",scheduleBean);
 
 
 			RequestDispatcher dispatcher = request.getRequestDispatcher("../WEB-INF/views/schedule/schedule_detail.jsp");
