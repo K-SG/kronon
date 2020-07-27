@@ -11,10 +11,10 @@
 		<ul class="nav">
 			<li><a href="user/calender">予定確認</a></li>
 	  		<li><a href="user/schedulenew">予定登録</a></li>
-	  		<li><a href="user/actualindex">実績確認</a></li>
+	  		<li><a href="actualindex">実績確認</a></li>
 			<div class="nav-right">
 				<div class="nav-right-img">
-					<a href="logout">
+					<a href="../logout">
 					<img class="logout-icon" alt="ログアウト" src="/kronon/img/logout_icon.png"></a>
 
 				</div>

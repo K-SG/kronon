@@ -15,6 +15,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import jp.co.benesse.dataaccess.cm.ConnectionManager;
 import jp.co.benesse.dataaccess.dao.ScheduleDAO;
@@ -32,10 +33,11 @@ public class ActualIndexServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// セッションスコープから値を取得
-		// HttpSession session = request.getSession();
-		// String userIdStr = (String) session.getAttribute("userId");
-		// int userId = Integer.parseInt(userIdStr);
-		int userId = 1;
+		 HttpSession session = request.getSession();
+		 int userId = (Integer)session.getAttribute("userId");
+//		 String userIdStr = (String) session.getAttribute("userId");
+//		 int userId = Integer.parseInt(userIdStr);
+//		int userId = 1;
 		// String userName = (String) session.getAttribute("userId");
 		String dateStr = request.getParameter("date");
 		// 月送りの判定フラグ

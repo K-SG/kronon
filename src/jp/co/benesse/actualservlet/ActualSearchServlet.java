@@ -33,9 +33,10 @@ public class ActualSearchServlet extends HttpServlet {
 			throws ServletException, IOException {
 		// セッションスコープからデータ取得
 		HttpSession session = request.getSession();
-		String userIdStr = (String) session.getAttribute("userId");
+//		String userIdStr = (String) session.getAttribute("userId");
 		// int userId = Integer.parseInt(userIdStr);
-		int userId = 1;
+//		int userId = 1;
+		 int userId = (Integer)session.getAttribute("userId");
 
 		// リクエストパラメータを取得
 		String scheduleDateStr = request.getParameter("date");
