@@ -12,11 +12,10 @@
 </head>
 <body>
 <input type = "hidden" id = "flag" value = "${flag}">
-<input type = "hidden" id = "year" value = "${year}">
-<input type = "hidden" id = "month" value = "${month}">
 	<%@ include file="/WEB-INF/views/layout/common/header.jsp"%>
 <article>
 	<div class="actual-search-area">
+	<form action = "../user/actualsearch" id = "search-form">
 		<div class="actual-search-date">
 			<div class="actual-input-font-lev1">日付</div>
 		</div>
@@ -31,9 +30,12 @@
 			<input name="title" type="text" maxlength="100" id = "input-title"/>
 		</div>
 		<div class="search-button">
+		<input type = "hidden" name = "year" id = "year" value = "${year}">
+		<input type = "hidden" name = "month" id = "month" value = "${month}">
 			<div class = "word">検索</div>
 			<div><img id = "search-img" alt="検索" src="../img/search_icon.png"></div>
 		</div>
+	</form>
 	</div>
 
 <div id = "actual-content" align=center>

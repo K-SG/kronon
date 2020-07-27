@@ -38,15 +38,14 @@ public class ActualIndexServlet extends HttpServlet {
 		int userId = 1;
 		// String userName = (String) session.getAttribute("userId");
 		String dateStr = request.getParameter("date");
-		//月送りの判定フラグ
+		// 月送りの判定フラグ
 		String monthFlag = request.getParameter("monthFlag");
 
 		LocalDate date;
 		List<ScheduleBean> scheduleBeanList = new ArrayList<>();
 
-
 		// 遷移元の判定フラグ
-		String flag = "0";
+		final String FLAG = "0";
 
 		ConnectionManager connectionManager = new ConnectionManager();
 		ScheduleDAO scheduleDAO;
@@ -66,7 +65,7 @@ public class ActualIndexServlet extends HttpServlet {
 				date = LocalDate.now();
 			}
 		} catch (DateTimeParseException e) {
-			//日付の不正入力のうち、フロントではじけなかった場合はエラー画面へ
+			// 日付の不正入力のうち、フロントではじけなかった場合はエラー画面へ
 			RequestDispatcher dispatcher = request.getRequestDispatcher("../WEB-INF/views/error/error.jsp");
 			dispatcher.forward(request, response);
 			return;
@@ -78,7 +77,7 @@ public class ActualIndexServlet extends HttpServlet {
 			scheduleBeanList = scheduleDAO.getOneMonthSchedule(date, userId);
 
 			// リクエストスコープにセット
-			request.setAttribute("flag", flag);
+			request.setAttribute("flag", FLAG);
 			request.setAttribute("date", date);
 			request.setAttribute("month", date.getMonthValue());
 			request.setAttribute("year", date.getYear());

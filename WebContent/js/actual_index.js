@@ -117,6 +117,7 @@ $(function() {
 		const inputTitle = document.getElementById("input-title").value;
 		const yearServlet = document.getElementById("year").value;
 		const monthServlet = document.getElementById("month").value;
+
 		//「-」で文字列を三つに分割し年、月、日を取得
 		const year = inputDate.split('-')[0];
 
@@ -131,7 +132,8 @@ $(function() {
 			$('#error2').css('display','block');
 			return;
 		}
-		window.location.href = `../user/actualsearch?scheduleDate=${inputDate}&title=${inputTitle}&year=${yearServlet}&month=${monthServlet}`;
+		//window.location.href = `../user/actualsearch?scheduleDate=${inputDate}&title=${inputTitle}&year=${yearServlet}&month=${monthServlet}`;
+		$('#search-form').submit();
 	})
 
 	//実績確認へ

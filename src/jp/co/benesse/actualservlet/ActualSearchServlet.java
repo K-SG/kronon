@@ -31,58 +31,77 @@ public class ActualSearchServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		//セッションスコープからデータ取得
+		// セッションスコープからデータ取得
 		HttpSession session = request.getSession();
 		String userIdStr = (String) session.getAttribute("userId");
 		// int userId = Integer.parseInt(userIdStr);
 		int userId = 1;
 
-		//リクエストパラメータを取得
-		String scheduleDateStr = request.getParameter("scheduleDate");
+		// リクエストパラメータを取得
+		String scheduleDateStr = request.getParameter("date");
 		String title = request.getParameter("title");
 		String year = request.getParameter("year");
 		String month = request.getParameter("month");
 
+		// 日付の整形
+		if (year.length() == 1) {
+			year = "0" + year;
+		}
+		if (month.length() == 1) {
+			month = "0" + month;
+		}
+
+		// タイトル検索に用いる（検索付きの中日を適当に一つ入れるだけでよい）
 		String dateStr = year + "-" + month + "-" + "15";
+
 		// 遷移元の判定フラグ
-		String flag = "1";
+		final String FLAG = "1";
 
 		List<ScheduleBean> scheduleBeanList = new ArrayList<>();
 
 		ConnectionManager connectionManager = new ConnectionManager();
 		ScheduleDAO scheduleDAO;
+		Date scheduleDate = null;
+		LocalDate LocalScheduleDate = null;
 
-		//検索結果0件の場合のエラーメッセージ
+		// 検索結果0件の場合のエラーメッセージ
 		String errorMsg = null;
 
 		try {
 			Connection connection = connectionManager.getConnection();
 			scheduleDAO = new ScheduleDAO(connection);
 
-			//AND検索、日付検索、タイトル検索の判定
+			// AND検索、日付検索、タイトル検索の判定
 			if (!scheduleDateStr.equals("") && !title.equals("")) {
-				Date scheduleDate = Date.valueOf(scheduleDateStr);
+				scheduleDate = Date.valueOf(scheduleDateStr);
 				scheduleBeanList = scheduleDAO.selectSchedule(userId, scheduleDate, title);
 			} else if (!scheduleDateStr.equals("") && title.equals("")) {
-				Date scheduleDate = Date.valueOf(scheduleDateStr);
+				scheduleDate = Date.valueOf(scheduleDateStr);
 				scheduleBeanList = scheduleDAO.selectSchedule(userId, scheduleDate);
 			} else if (scheduleDateStr.equals("") && !title.equals("")) {
-				LocalDate scheduleDate = LocalDate.parse(dateStr, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-				scheduleBeanList = scheduleDAO.getOneMonthScheduleByTitle(userId,scheduleDate,title);
-			}else{
+				LocalScheduleDate = LocalDate.parse(dateStr, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+				scheduleBeanList = scheduleDAO.getOneMonthScheduleByTitle(userId, LocalScheduleDate, title);
+			} else {
 				throw new RuntimeException();
 			}
 
-			if(scheduleBeanList.size() == 0){
+			if (scheduleBeanList.size() == 0) {
 				errorMsg = "検索結果は0件でした";
 				request.setAttribute("errorMsg", errorMsg);
 			}
 
 			// リクエストスコープにセット
-			request.setAttribute("flag", flag);
+			request.setAttribute("flag", FLAG);
 			request.setAttribute("scheduleBeanList", scheduleBeanList);
-			request.setAttribute("month", month);
-			request.setAttribute("year", year);
+
+			// 「yyyy年MM月の検索結果」表示用
+			if (scheduleDateStr.equals("")) {
+				request.setAttribute("month", month);
+				request.setAttribute("year", year);
+			} else {
+				request.setAttribute("month", scheduleDate.toLocalDate().getMonthValue());
+				request.setAttribute("year", scheduleDate.toLocalDate().getYear());
+			}
 
 			RequestDispatcher dispatcher = request.getRequestDispatcher("../WEB-INF/views/actual/actual_index.jsp");
 			dispatcher.forward(request, response);
