@@ -120,7 +120,7 @@ $(function () {
   /*登録完了ポップアップのOKボタン押下時の遷移先*/
   $('.next-popup').click(function () {
   var date = document.getElementById('date').value;
-    location.href= "user/calendar?date=" + date;
+    location.href= "calendar?date=" + date;
   });
 
     /*キャンセルボタンを押した際のポップアップ表示*/
