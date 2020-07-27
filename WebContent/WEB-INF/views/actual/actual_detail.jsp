@@ -61,7 +61,7 @@
 
     </div>
   </div>
-<div class="kronon-banzai"><img alt="banzai" src="./img/kronon/kronon_banzai.png"></div>
+<div class="kronon-banzai"><img alt="banzai" src="/kronon/img/kronon/kronon_banzai.png"></div>
 <div class="button-return"><img alt="戻る" src="/kronon/img/back_buttom.png" class="back-popup-button"></div>
 
 <div class="flex_test-box">
@@ -125,10 +125,11 @@
 		<input type="hidden" name = "title" value="${scheduleBean.title}">
 		<input type="hidden" name = "content" value="${scheduleBean.content}">
 		<input type="submit" class="ok-button" value="OK">
-      </form>
+
 
       <div class="ng-button close-popup">キャンセル</div>
-      <img src="img/kronon/kronon_question.png" class="pop-img"> </div>
+      <img src="/kronon/img/kronon/kronon_question.png" class="pop-img"> </div>
+      </form>
   </div>
 </div>
 <!--内容確認ポップアップここまで----------------------------------------------------------------->
