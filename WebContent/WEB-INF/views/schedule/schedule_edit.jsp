@@ -21,13 +21,16 @@
 			<div class="schedule-regist-area-1">
 				<div class="schedule-regist-area-1-block">
 					<div class="schedule-regist-font-lev1">日付<span>*</span></div>
-					<div class="schedule-regist-date-area"><input name="date" id="edit_date" type="date" value="${date}" /></div>
+					<!-- 本来はscheduleBean.date -->
+					<input type="hidden" value="${date}" id="set-date">
+					<div class="schedule-regist-date-area"><input name="date" id="edit-date" type="date" value="${date}" /></div>
 				</div>
 				<div class="schedule-regist-area-1-block">
 					<div class="schedule-regist-font-lev1">開始時刻<span>*</span></div>
 					<div class="schedule-regist-time">
-						<input type="hidden" value="${scheduleBean.startTimeHour}" id="set_start_hour">
-						<select name="start-hour" id="edit_start_hour">
+					<!-- 本来はscheduleBean.startTime -->
+						<input type="hidden" value="${startTime}" id="set-start-time">
+						<select name="start-hour" id="edit-start-hour">
 							<option value="8">8</option>
 							<option value="9">9</option>
 							<option value="10">10</option>
@@ -46,8 +49,7 @@
 
 					<div class="schedule-regist-time-text">時</div>
 					<div class="schedule-regist-time">
-					<input type="hidden" value="${scheduleBean.startTimeMin}" id="set_start_min">
-						<select name="start-minutes" id="edit_start_minutes">
+						<select name="start-minutes" id="edit-start-minutes">
 							<option value="00">00</option>
 							<option value="15">15</option>
 							<option value="30">30</option>
@@ -60,8 +62,9 @@
 				<div class="schedule-regist-area-1-block">
 					<div class="schedule-regist-font-lev1">終了時刻<span>*</span></div>
 					<div class="schedule-regist-time">
-					<input type="hidden" value="${scheduleBean.endTimeHour}" id="set_start_hour">
-						<select name="end-hour" id="edit_end_hour">
+					<!-- 本来はscheduleBean.endTime -->
+					<input type="hidden" value="${endTime}" id="set-end-time">
+						<select name="end-hour" id="edit-end-hour">
 							<option value="8">8</option>
 							<option value="9">9</option>
 							<option value="10">10</option>
@@ -80,8 +83,7 @@
 
 					<div class="schedule-regist-time-text">時</div>
 					<div class="schedule-regist-time">
-					<input type="hidden" value="${scheduleBean.endTimeMin}" id="set_end_min">
-						<select name="end-minutes" id="edit_end_minutes">
+						<select name="end-minutes" id="edit-end-minutes">
 							<option value="00">00</option>
 							<option value="15">15</option>
 							<option value="30">30</option>
@@ -96,8 +98,10 @@
 			<div class="schedule-regist-area-2">
 				<div class="schedule-regist-font-lev1">場所<span>*</span></div>
 				<div class="schedule-regist-place">
-					<input type="hidden" value="${scheduleBean.place}" id="set_place">
-						<select name="place" id="edit_place">
+
+				<!-- 本来はscheduleBean.place -->
+					<input type="hidden" value="${place}" id="set-place">
+						<select name="place" id="edit-place">
 							<option value="0">オフィス</option>
 							<option value="1">在宅</option>
 							<option value="2">外出</option>
@@ -107,14 +111,16 @@
 			<div class="schedule-regist-area-3">
 				<div class="schedule-regist-font-lev1">タイトル<span>*</span></div>
 				<div class="schedule-regist-title">
-					<textarea name="title" rows="1" cols="40" maxlength="100" placeholder="予定のタイトルを100字以内で入力してください"><c:out value="${title}" /></textarea>
+				<!-- 本来はscheduleBean.title -->
+					<textarea name="title" id="title" rows="1" cols="40" maxlength="100" placeholder="予定のタイトルを100字以内で入力してください"><c:out value="${title}" /></textarea>
 				</div>
 			</div>
 
 			<div class="schedule-regist-area-4">
 				<div class="schedule-regist-font-lev1">内容<span>*</span></div>
 				<div class="schedule-regist-content">
-					<textarea name="content" rows="13" cols="40" maxlength="1440" placeholder="予定の内容を1440字以内で入力してください"><c:out value="${content}" /></textarea>
+				<!-- 本来はscheduleBean.content -->
+					<textarea name="content" id="content" rows="13" cols="40" maxlength="1440" placeholder="予定の内容を1440字以内で入力してください"><c:out value="${content}" /></textarea>
 				</div>
 			</div>
 		</div>
@@ -122,17 +128,33 @@
 		<div class="kronon-banzai"><img alt="banzai" src="./img/kronon/kronon_banzai.png"></div>
 
 		<div class=schedule-regist-button>
-		<!--エラーまたは完了ポップアップ表示用ボタン---->
+		<!--修正ボタン---->
 			<div class=schedule-regist-button-left>
-				<div class="ok-button large-popup-button">修正</div>
+			<input type="button" class="ok-button large-popup-button" id="ok-button" value="修正" >
 			</div>
 
-		<!--エラーまたは完了ポップアップ表示用ボタン----->
+		<!--キャンセルボタン----->
 			<div class=schedule-regist-button-right>
-				<div class="ok-button back-popup-button">キャンセル</div>
+			<input type="button" class="ok-button back-popup-button" id="cancel-button" value="キャンセル">
 			</div>
 		</div>
 	</form>
+
+  <!--エラーまたは完了ポップアップ------------------------------------------------------------------->
+  <div class="popup-wrapper error-popup">
+    <div class="pop-container">
+      <div class="close-popup"> <i class="fa fa-2x fa-times"></i> </div>
+      <div class="pop-container-inner">
+        <div class="message-container">
+          <p class=edit-msg></p>
+        </div>
+        <div class="ok-button close-popup">OK</div>
+        <img src="img/kronon/kronon_question.png" class="pop-img"> </div>
+      </div>
+    </div>
+   <!--エラーまたは完了ポップアップここまで-------------------------------------------------------------->
+
+
 
 			<!--本当に戻りますかポップアップ------------------------------------------------------------------->
 		<div class="popup-wrapper back-popup">
@@ -143,13 +165,12 @@
 				<p>内容は保存されないよ。</p>
 				<h2 class="message-title">本当に戻る？</h2>
 			  </div>
-			  <a href="#"><div class="ok-button">OK</div></a>
+			  <a href="user/scheduledetail?id=${userId}"><div class="ok-button">OK</div></a>
 			  <div class="ng-button close-popup">キャンセル</div>
 			  <img src="../img/star_angry.png" class="pop-img-top"> </div>
 		  </div>
 		</div>
 		<!--本当に戻りますかポップアップここまで------------------------------------------------------------------->
-
 
 
 
@@ -163,24 +184,23 @@
 				<table class="popup-table">
 				  <tr>
 					<th class="th">名前：</th>
-					<td>樋口</td>
+					<td><c:out value="${userName }" /></td>
 				  </tr>
 				  <tr>
 					<th>予定日時：</th>
-					<td>2020/7/11(月) 10:00-11:00</td>
+					<td id="time-msg"></td>
 				  </tr>
 				  <tr>
 					<th>タイトル：</th>
-					<td>外部設計レビュー</td>
+					<td id="title-msg"></td>
 				  </tr>
 				  <tr>
 					<th class="last-table">内容：</th>
-					<td class="last-table">森岡さん作成外部設計書レビュー<br>
-					  〆切7/13</td>
+					<td class="last-table" id="content-msg"></td>
 				  </tr>
 				</table>
 			  </div>
-			  <a href="#"><div class="ok-button">OK</div></a>
+			  <input type="button" class="ok-button"  id="confirm-ok" value="OK">
 			  <div class="ng-button close-popup">キャンセル</div>
 			  <img src="../img/kronon_question.png" class="pop-img"> </div>
 		  </div>
@@ -190,6 +210,7 @@
 
 	</article>
 <%@ include file="../layout/common/footer.jsp" %>
-<script src="js/common.js"></script>
+<script src="js/schedule_edit.js"></script>
+<!-- <script src="js/common.js"></script> -->
 </body>
 </html>

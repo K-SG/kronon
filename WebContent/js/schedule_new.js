@@ -25,7 +25,7 @@ $(function () {
 
   /*登録ボタンを押した際のエラーチェックとポップアップ表示*/
   $('#ok-button').click(function () {
-    let date = document.getElementById('date').value;
+    let date = document.getElementById('new-date').value;
     let startHour = document.getElementById('new_start_hour').value;
     let startMin = document.getElementById('new_start_minutes').value;
     let endHour = document.getElementById('new_end_hour').value;

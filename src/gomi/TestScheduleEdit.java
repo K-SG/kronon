@@ -18,7 +18,16 @@ public class TestScheduleEdit extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/views/schedule/schedule_new.jsp");
+
+
+		request.setAttribute("date", "2020-10-16");
+		request.setAttribute("startTime", "0900");
+		request.setAttribute("endTime", "1530");
+		request.setAttribute("place", "2");
+		request.setAttribute("title", "予定が入るよ");
+		request.setAttribute("content", "内容が入るよ");
+
+		RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/views/schedule/schedule_edit.jsp");
 		dispatcher.forward(request, response);
 		return;
 	}
