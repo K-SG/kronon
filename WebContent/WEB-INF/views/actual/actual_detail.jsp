@@ -29,7 +29,6 @@
           <td><c:out value="${scheduleBean.scheduleDateActual}" /> <c:out value="${scheduleBean.startTime}" />～
           <c:out value="${scheduleBean.endTime}" /></td>
 
-
           	<c:if test="${place=='0'}" >
 			<td class=show-place1>オフィス</td>
 			</c:if>
