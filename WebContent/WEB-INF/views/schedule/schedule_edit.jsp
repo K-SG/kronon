@@ -26,7 +26,7 @@
 				<div class="schedule-regist-area-1-block">
 					<div class="schedule-regist-font-lev1">開始時刻<span>*</span></div>
 					<div class="schedule-regist-time">
-						<input type="hidden" value="${scheduleBean.hour}" id="set_start_hour">
+						<input type="hidden" value="${scheduleBean.startTimeHour}" id="set_start_hour">
 						<select name="start-hour" id="edit_start_hour">
 							<option value="8">8</option>
 							<option value="9">9</option>
@@ -46,6 +46,7 @@
 
 					<div class="schedule-regist-time-text">時</div>
 					<div class="schedule-regist-time">
+					<input type="hidden" value="${scheduleBean.startTimeMin}" id="set_start_min">
 						<select name="start-minutes" id="edit_start_minutes">
 							<option value="00">00</option>
 							<option value="15">15</option>
@@ -59,6 +60,7 @@
 				<div class="schedule-regist-area-1-block">
 					<div class="schedule-regist-font-lev1">終了時刻<span>*</span></div>
 					<div class="schedule-regist-time">
+					<input type="hidden" value="${scheduleBean.endTimeHour}" id="set_start_hour">
 						<select name="end-hour" id="edit_end_hour">
 							<option value="8">8</option>
 							<option value="9">9</option>
@@ -78,6 +80,7 @@
 
 					<div class="schedule-regist-time-text">時</div>
 					<div class="schedule-regist-time">
+					<input type="hidden" value="${scheduleBean.endTimeMin}" id="set_end_min">
 						<select name="end-minutes" id="edit_end_minutes">
 							<option value="00">00</option>
 							<option value="15">15</option>
@@ -93,6 +96,7 @@
 			<div class="schedule-regist-area-2">
 				<div class="schedule-regist-font-lev1">場所<span>*</span></div>
 				<div class="schedule-regist-place">
+					<input type="hidden" value="${scheduleBean.place}" id="set_place">
 						<select name="place" id="edit_place">
 							<option value="0">オフィス</option>
 							<option value="1">在宅</option>
