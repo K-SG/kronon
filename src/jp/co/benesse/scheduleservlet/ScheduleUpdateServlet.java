@@ -16,7 +16,6 @@ import javax.servlet.http.HttpSession;
 import jp.co.benesse.dataaccess.cm.ConnectionManager;
 import jp.co.benesse.dataaccess.dao.ScheduleDAO;
 import jp.co.benesse.dataaccess.value.ScheduleBean;
-import jp.co.benesse.dataaccess.value.UserBean;
 
 @WebServlet("/user/scheduleupdate")
 public class ScheduleUpdateServlet extends HttpServlet {
@@ -39,20 +38,26 @@ public class ScheduleUpdateServlet extends HttpServlet {
 		String place = request.getParameter("place");
 		String title = request.getParameter("title");
 		String content = request.getParameter("content");
-
+		Date date;
+		Time startTime;
+		Time endTime;
+		System.out.println(scheduleId+","+scheduleDate+","+startTimeHour+","+startTimeMin+","+endTimeHour+","+endTimeMin+","+place+","+title+","+content);
 		HttpSession session = request.getSession(true);
-		UserBean userBean = (UserBean)session.getAttribute("userBean");
+		int userId = (int)session.getAttribute("userId");
 
 		ConnectionManager connectionManager = new ConnectionManager();
 		try {
 			Connection connection = connectionManager.getConnection();
-
+			date=Date.valueOf(scheduleDate);
+			startTime = Time.valueOf(startTimeHour +":"+ startTimeMin + ":00");
+			endTime = Time.valueOf(endTimeHour +":"+ endTimeMin+ ":00");
 			ScheduleBean scheduleBean = new ScheduleBean();
-			scheduleBean.setUserId(userBean.getUserId());
+			scheduleBean.setUserId(userId);
+//			scheduleBean.setUserId(1);
 			scheduleBean.setScheduleId(scheduleId);
-			scheduleBean.setScheduleDate(Date.valueOf(scheduleDate));
-			scheduleBean.setStartTime(Time.valueOf(startTimeHour +":"+ startTimeMin));
-			scheduleBean.setEndTime(Time.valueOf(endTimeHour +":"+ endTimeMin));
+			scheduleBean.setScheduleDate(date);
+			scheduleBean.setStartTime(startTime);
+			scheduleBean.setEndTime(endTime);
 			scheduleBean.setPlace(place);
 			scheduleBean.setTitle(title);
 			scheduleBean.setContent(content);
@@ -61,6 +66,7 @@ public class ScheduleUpdateServlet extends HttpServlet {
 			ScheduleDAO scheduleDAO = new ScheduleDAO(connection);
 			boolean check = scheduleDAO.isDeleted(scheduleId);
 			if(check == true){
+				System.out.println("既に削除されている");
 				//error.jsp（エラー画面）にforwardする
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/viws/error/error.jsp");
 				dispatcher.forward(request, response);
@@ -84,8 +90,9 @@ public class ScheduleUpdateServlet extends HttpServlet {
 
 			//予定修正
 
-			int result = scheduleDAO.updateSchedule(scheduleId,Date.valueOf(scheduleDate),Time.valueOf(startTimeHour +":"+ startTimeMin),Time.valueOf(endTimeHour +":"+ endTimeMin),title,content,place);
+			int result = scheduleDAO.updateSchedule(scheduleId,date,startTime,endTime,title,content,place);
 			if(result != 1){
+				System.out.println("アップデートができていない");
 				//error.jsp（エラー画面）にforwardする
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/error/error.jsp");
 				dispatcher.forward(request, response);
@@ -97,6 +104,8 @@ public class ScheduleUpdateServlet extends HttpServlet {
 			request.setAttribute("scheduleBean", scheduleBean);
 
 		} catch(RuntimeException e){
+			System.out.println("予期せぬエラー");
+			e.printStackTrace();
 			connectionManager.rollback();
 			//error.jsp（エラー画面）にforwardする
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/error/error.jsp");

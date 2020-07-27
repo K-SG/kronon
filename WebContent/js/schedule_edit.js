@@ -6,9 +6,9 @@ let date = document.getElementById('set-date').value;
 let startTime = document.getElementById('set-start-time').value;
 let endTime = document.getElementById('set-end-time').value;
 let startHour = startTime.substring(0, 2);
-let startMin = startTime.substring(2,4);
+let startMin = startTime.substring(3,5);
 let endHour = endTime.substring(0, 2);
-let endMin = endTime.substring(2,4);
+let endMin = endTime.substring(3,5);
 let place = document.getElementById('set-place').value;
 
 console.log(startHour,startMin,endMin);
@@ -34,12 +34,12 @@ if (endHour.slice(0, 1) == 0) {
 	var popFlag = document.getElementById('flag').value;
 
 	/*登録が完了した場合*/
-	  if(popFlag == 0){
+	  if(popFlag === '0'){
 	  	$('.create-msg').html('登録が完了したよ！');
 	  	$('.complete-popup').fadeIn();
 	  	return;
 	  }
-	  if(popFlag == 1){
+	  if(popFlag === '1'){
 		  	$('.edit-msg').html('予定がかぶってるよ');
 		  	$('.error-popup').fadeIn();
 		  	return;
@@ -61,7 +61,7 @@ if (endHour.slice(0, 1) == 0) {
     let weekday = '日月火水木金土'[d.getDay()];
     //リリース年と月の取得
     let releaseYear = 2020;
-    let releaseMonth = 8;
+    let releaseMonth = 7;
     //サービス終了年と月の取得
     let releaseLastYear = 2023;
     let releaseLastMonth = 8;
