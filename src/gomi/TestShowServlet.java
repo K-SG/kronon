@@ -54,7 +54,7 @@ public class TestShowServlet extends HttpServlet {
 			System.out.println(scheduleBean);
 			request.setAttribute("scheduleBean", scheduleBean);
 		HttpSession session = request.getSession(true);
-		session.setAttribute("userId", "1");
+		session.setAttribute("userId", "4");
 		RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/views/schedule/schedule_detail.jsp");
 		dispatcher.forward(request, response);
 		return;

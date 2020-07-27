@@ -21,24 +21,24 @@
       <table class=schedule_detail>
 
         <tr>
-          <td>名前:<c:out value="${scheduleBean.userName}" /></td>
-          <td>実績時間:<c:out value="${scheduleBean.actualTime}" /></td>
+          <td>名前 : <c:out value="${scheduleBean.userName}" /></td>
+          <td>実績時間:<c:out value="${scheduleBean.actualTimeStr}" /></td>
         </tr>
 
         <tr>
-          <td><c:out value="${scheduleBean.scheduleDate}" /> <c:out value="${scheduleBean.startTime}" />～
+          <td><c:out value="${scheduleBean.scheduleDateActual}" /> <c:out value="${scheduleBean.startTime}" />～
           <c:out value="${scheduleBean.endTime}" /></td>
 
 
-          	<c:if test="${scheduleBean.place=='1'}" >
+          	<c:if test="${scheduleBean.place=='0'}" >
 			<td class=show-place1>オフィス</td>
 			</c:if>
 
-			<c:if test="${scheduleBean.place=='2'}" >
+			<c:if test="${scheduleBean.place=='1'}" >
 			<td class=show-place2>在宅</td>
 			</c:if>
 
-			<c:if test="${scheduleBean.place=='3'}" >
+			<c:if test="${scheduleBean.place=='2'}" >
 			<td class=show-place3>外出</td>
 			</c:if>
 
@@ -61,23 +61,27 @@
     </div>
   </div>
 <div class="kronon-banzai"><img alt="banzai" src="./img/kronon/kronon_banzai.png"></div>
-<div class="ok-button back-popup-button">戻る</div>
+<a href="/kronon/login"><div class="user-create-button-return"><img alt="戻る" src="/kronon/img/back_buttom.png" ></div></a>
+<
 
 <!-- sesseionスコープのuserIDとスケジュールのIDを比較 -->
-<c:if test="${scheduleBean.userId== userId}" >
+<c:set var="loginUserId" value="${sessionScope.userId}" />
+<c:set var="scheduleUserId" value="${scheduleBean.userId}" />
+
+<c:if test="${loginUserId == scheduleUserId }" >
 <div class="flex_test-box">
     <div class="flex_test-item">
-        <a href="scheduleEdit?schedule_id=${scheduleBean.sheduleId}">
-        <div class="ok-button">修正</div>
-        </a>
+
+        <a href="/user/scheduleedit?scheduleId=${scheduleBean.scheduleId}"><div class="ok-button">修正</div></a>
+
     </div>
     <div class="flex_test-item">
-    <a href="scheduleEdit?schedule_id=${scheduleBean.sheduleId}">
-        <div class="ok-button">実績入力</div>
-        </a>
+
+        <a href="/user/actualedit?scheduleId=${scheduleBean.scheduleId}"><div class="ok-button">実績入力</div></a>
+
     </div>
     <div class="flex_test-item">
-       <div class="ok-button large-popup-button">削除</div>
+       <div class="ok-button large-popup-button" id="${popFlag}">削除</div>
     </div>
 </div>
 </c:if>
@@ -97,7 +101,7 @@
           </tr>
           <tr>
             <th>予定日時：</th>
-            <td><c:out value="${scheduleBean.scheduleDate}" />
+            <td><c:out value="${scheduleBean.scheduleDateActual}" />
           <c:out value="${scheduleBean.startTime}" />～
           <c:out value="${scheduleBean.endTime}" /></td>
           </tr>
@@ -111,7 +115,10 @@
           </tr>
         </table>
       </div>
-      <a href="#"><div class="ok-button">OK</div></a>
+      <form action="http://localhost:8080/kronon/user/scheduledelete" method="post" >
+				<input type="hidden" id="flag" value="${popFlag}">
+				<input type="submit" class="ok-button" value="OK">
+      </form>
       <div class="ng-button close-popup">キャンセル</div>
       <img src="img/kronon/kronon_question.png" class="pop-img"> </div>
   </div>
@@ -119,9 +126,24 @@
 <!--内容確認ポップアップここまで----------------------------------------------------------------->
 
 
+<!--削除完了ポップアップ------------------------------------------------------------------->
+				<div class="popup-wrapper error-popup complete-popup">
+					<div class="pop-container">
+						<div class="close-popup"><i class="fa fa-2x fa-times"></i></div>
+						<div class="pop-container-inner">
+							<div class="message-container"><p class=create-msg></p></div>
+							<div class="ok-button next-popup">OK</div>
+							<img src="/kronon/img/kronon/kronon_question.png" class="pop-img">
+						</div>
+					</div>
+				</div>
+<!--削除完了ポップアップここまで-------------------------------------------------------------->
+
+
 
 </article>
 <%@ include file="/WEB-INF/views/layout/common/footer.jsp" %>
 <script src="js/common/common.js"></script>
+<script src="js/scheduledetail.js"></script>
 </body>
 </html>
