@@ -80,10 +80,10 @@ public class Calc {
 	/**
 	 *
 	 * [機 能] 日時表記整形メソッド<br>
-	 * [説 明] 予定日を「yyyy/MM/dd(曜日)」という書式で返す<br>
+	 * [説 明] 予定日を「MM/dd(曜日)」という書式で返す<br>
 	 * [備 考] なし
 	 *
-	 * @param 予定日（sql.Date）
+	 * @param 予定日
 	 * @return 整形された日付の文字列
 	 */
 	public static String convertActualDate(Date sqlScheduleDate){
@@ -101,5 +101,4 @@ public class Calc {
 		return scheduleDate.getYear()+ "/" + scheduleDate.getMonthValue() + "/" + scheduleDate.getDayOfMonth()
 		+ "(" + dayOfWeek.get(scheduleDate.getDayOfWeek().getValue())+ ")";
 	}
-
 }
