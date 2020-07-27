@@ -17,6 +17,7 @@
 	height:4vw;
 }
 
+/* カレンダーの枠設定 */
 .calendar-container{
 	position: relative;
 	height:max(40vw,73vh);
@@ -44,6 +45,7 @@
 	padding: 1.5vw 3vw;
 }
 
+/* 先月翌月ボタン */
 .triangle-button{
 	width:2.5vw;
 }
@@ -92,12 +94,6 @@ table{
 	margin:auto;
 
 }
-
-/*
-thead,tfoot{
-}vw;
-*/
-
 
 th,td{
 	width:8vw;
@@ -167,7 +163,7 @@ td .date{
 
 td .yotei{
 	width:6vw;
-	height:1.6vw;
+	height:1.5vw;
 	padding:0 0.5vw;
 	font-size:1vw;
 	margin:0.2vw 0.3vw;
@@ -177,6 +173,7 @@ td .yotei{
  	overflow: hidden;
 	text-overflow: ellipsis;
 	background-color: #FFFFE3;
+	padding-top:0.3vw;
 }
 
 /* 日付にカーソルを合わせたら色が変わるように */

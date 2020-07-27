@@ -50,7 +50,8 @@ public class CalendarServlet extends HttpServlet {
 		ConnectionManager connectionManager = new ConnectionManager();
 
 		try {
-			if (flag == null || dateStr == null) {// ログイン画面から
+			//いつの月の予定を表示するか
+			if (flag == null || dateStr == null) {
 				date = LocalDate.now();
 			} else if (flag.equals("0")) {// 前月
 				date = LocalDate.parse(dateStr, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
@@ -73,8 +74,8 @@ public class CalendarServlet extends HttpServlet {
 			Connection connection = connectionManager.getConnection();
 			ScheduleDAO scheduleDAO = new ScheduleDAO(connection);
 			scheduleBeanList = scheduleDAO.tooLongSQLSchedule(date, userId);
-
 		    System.out.println(scheduleBeanList);
+
 			//Beanのリスト→JSON形式の整形
 			String json = mapper.writeValueAsString(scheduleBeanList);
 			String json_replace = json.replaceAll("\"", "krnooon");
@@ -85,8 +86,6 @@ public class CalendarServlet extends HttpServlet {
 			request.setAttribute("month", date.getMonthValue());
 
 			request.setAttribute("year", date.getYear());
-//			System.out.println(date.getMonthValue());
-//			System.out.println(json);
 
 			RequestDispatcher dispatcher = request.getRequestDispatcher("../WEB-INF/views/calendar/schedule_index.jsp");
 			dispatcher.forward(request, response);

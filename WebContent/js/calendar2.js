@@ -124,7 +124,7 @@ let array = JSON.parse(json_replace);
         newElement.appendChild(newContent); // p要素にテキストノードを追加
         newElement.setAttribute("class", "date"); // p要素にidを設定
 
-        // 親要素の最後に子要素を追加
+        // 親要素tdに子要素pを追加
         td.appendChild(newElement);
 
         array.forEach(obj => {
@@ -134,24 +134,24 @@ let array = JSON.parse(json_replace);
           } else {
             check = date.date
           }
-          if (obj.jsonDate == year + "-" + ("0" + (month + 1)).slice(-2) + "-" + check) {
+          //今月の日にだけ表示
+          if (!date.isDisabled) {
+        	  //予定リストの日と考えている日が一致したらその予定タイトルを表示
+        	  if (obj.jsonDate == year + "-" + ("0" + (month + 1)).slice(-2) + "-" + check) {
 
-            // 追加する要素の作成
-            var newElement2 = document.createElement("p"); // p要素作成
-            var newContent2 = document.createTextNode(`${obj.title}`); // テキストノードを作成
-            newElement2.appendChild(newContent2); // p要素にテキストノードを追加
-            newElement2.setAttribute("class", "yotei"); // p要素にclassを設定
+	            // 追加する要素の作成
+	            var newElement2 = document.createElement("p"); // p要素作成
+	            var newContent2 = document.createTextNode(`${obj.title}`); // テキストノードを作成
+	            newElement2.appendChild(newContent2); // p要素にテキストノードを追加
+	            newElement2.setAttribute("class", "yotei"); // p要素にclassを設定
 
-            // 追加
-            td.appendChild(newElement2);
-
+	            // 追加
+	            td.appendChild(newElement2);
+        	  }
           }
         })
 
-        if (date.isToday) {
-          td.classList.add("today");
-        }
-
+        //今月でない日の部分は文字を薄くする
         if (date.isDisabled) {
           td.classList.add("disabled");
         }else{
