@@ -14,6 +14,37 @@ $(function () {
 		/*DBと照合した後のポップアップフラグ*/
 		var popFlag = document.getElementById('flag').value;
 
+		/*ScheduleCreateServlet返ってきたとき、値の保存をする*/
+		if(popFlag==='0'||popFlag==='1'){
+			let date = document.getElementById('set-date').value;
+			let startTime = document.getElementById('set-start-time').value;
+			let endTime = document.getElementById('set-end-time').value;
+			let startHour = startTime.substring(0, 2);
+			let startMin = startTime.substring(3,5);
+			let endHour = endTime.substring(0, 2);
+			let endMin = endTime.substring(3,5);
+			let place = document.getElementById('set-place').value;
+
+			console.log(startHour,startMin,endMin);
+
+			/*すべての初期選択を外す*/
+			$('select option').attr('selected', false);
+			/*開始時間と終了時間を09→9に変換*/
+			if (startHour.slice(0, 1) == 0) {
+				startHour = startHour.substring(1, 2);
+			}
+			if (endHour.slice(0, 1) == 0) {
+				endHour = endHour.substring(1, 2);
+			}
+			/*初期選択がされるようにselectedをつける*/
+				$('#new-start-hour').val(startHour);
+				$('#new-start-minutes').val(startMin);
+				$('#new-end-hour').val(endHour);
+				$('#new-end-minutes').val(endMin);
+				$('#new-place').val(place);
+		}
+
+
 		/*登録が完了した場合*/
 		  if(popFlag === '0'){
 		  	$('.create-msg').html('登録が完了したよ！');
