@@ -26,8 +26,7 @@
         </tr>
 
         <tr>
-          <td><c:out value="${scheduleDate}" />
-          <c:out value="${startTime}" />～
+          <td><c:out value="${scheduleDate}" /> <c:out value="${startTime}" />～
           <c:out value="${endTime}" /></td>
 
 
@@ -65,20 +64,7 @@
 <div class="ok-button back-popup-button">戻る</div>
 
 
-<div class="flex_test-box">
-    <div class="flex_test-item">
-        <div class="ok-button">修正</div>
-    </div>
-    <div class="flex_test-item">
-        <div class="ok-button">実績入力</div>
-    </div>
-    <div class="flex_test-item">
-       <div class="ok-button large-popup-button">削除</div>
-    </div>
-</div>
-
-
-<c:if test="${owner=={sessionScope.userName}}" >
+<c:if test="${owner== userName}" >
 <div class="flex_test-box">
     <div class="flex_test-item">
         <div class="ok-button">修正</div>
@@ -103,20 +89,21 @@
         <table class="popup-table">
           <tr>
             <th class="th">名前：</th>
-            <td>樋口</td>
+            <td><c:out value="${owner}" /></td>
           </tr>
           <tr>
             <th>予定日時：</th>
-            <td>2020/7/11(月) 10:00-11:00</td>
+            <td><c:out value="${scheduleDate}" />
+          <c:out value="${startTime}" />～
+          <c:out value="${endTime}" /></td>
           </tr>
           <tr>
             <th>タイトル：</th>
-            <td>外部設計レビュー</td>
+            <td><c:out value="${title}" /></td>
           </tr>
           <tr>
             <th class="last-table">内容：</th>
-            <td class="last-table">森岡さん作成外部設計書レビュー<br>
-              〆切7/13</td>
+            <td class="last-table"><c:out value="${content}" /></td>
           </tr>
         </table>
       </div>
