@@ -85,7 +85,7 @@
     </div>
 </div>
 </c:if>
-  <c:set var="schBean" value="${scheduleBean}" scope="request"/>
+  <c:set var="scheBean" value="${scheduleBean}" scope="request"/>
 
 <!--内容確認ポップアップ----------------------------------------------------------------->
 <div class="popup-wrapper confirm-popup">
@@ -130,7 +130,6 @@
 <!--削除完了ポップアップ------------------------------------------------------------------->
 				<div class="popup-wrapper error-popup complete-popup">
 					<div class="pop-container">
-						<div class="close-popup"><i class="fa fa-2x fa-times"></i></div>
 						<div class="pop-container-inner">
 							<div class="message-container"><p class=create-msg>削除が完了したよ</p></div>
 							<div class="ok-button next-popup">OK</div>
