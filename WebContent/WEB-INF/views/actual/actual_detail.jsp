@@ -1,4 +1,3 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -79,7 +78,9 @@
 <!--内容確認ポップアップ----------------------------------------------------------------->
 <div class="popup-wrapper confirm-popup">
   <div class="pop-container pop-container-large">
-    <div class="close-popup"> <i class="fa fa-2x fa-times"></i> </div>
+    <div class="close-popup">
+      <i class="fa fa-2x fa-times"></i>
+    </div>
     <div class="pop-container-inner">
       <div class="message-container-large">
         <h2 class="message-title">この内容を本当に削除する？</h2>
@@ -99,22 +100,42 @@
             <td><c:out value="${title}" /></td>
           </tr>
           <tr>
-            <th class="last-table">内容：</th>
-            <td class="last-table"><c:out value="${content}" /></td>
+            <th>内容：</th>
+            <td><c:out value="${content}" /></td>
+          </tr>
+
+          <tr>
+            <th class="last-table">コメント：</th>
+            <td class="last-table"><c:out value="${comment}" /></td>
           </tr>
         </table>
       </div>
-      <a href="#"><div class="ok-button">OK</div></a>
+
+      <input type="submit" id="user-create-button2" class="ok-button next-button" value="OK"/>
       <div class="ng-button close-popup">キャンセル</div>
       <img src="img/kronon/kronon_question.png" class="pop-img"> </div>
   </div>
 </div>
 <!--内容確認ポップアップここまで----------------------------------------------------------------->
 
+  <!--削除完了ポップアップ------------------------------------------------------------------->
+<div id="input-cmp" class="popup-wrapper error-popup complete-popup">
+  <div class="pop-container">
+    <div class="pop-container-inner">
+      <div class="message-container">
+        <p>削除が完了したよ！</p>
+      </div>
+    <div class="ok-button next-popup">OK</div>
+       <img src="img/kronon/kronon_question.png" class="pop-img">
+    </div>
+  </div>
+</div>
+  <!--削除完了ポップアップここまで-------------------------------------------------------------->
 
 
 </article>
 <%@ include file="/WEB-INF/views/layout/common/footer.jsp" %>
 <script src="js/common/common.js"></script>
+<script src="js/actual_detail.js"></script>
 </body>
 </html>
