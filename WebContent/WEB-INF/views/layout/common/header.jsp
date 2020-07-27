@@ -6,7 +6,7 @@
 	<header>
 		<ul class="top-head">
 			<li class="system-name"><a href="#home">予定管理システム　～くろのん～</a></li>
-			<li class="company-name"><img class="top-head-image" alt="くろ☆のすロゴ" src="./img/star/logo_header.png">（株）くろ☆のす</li>
+			<li class="company-name"><img class="top-head-image" alt="くろ☆のすロゴ" src="/kronon/img/star/logo_header.png">（株）くろ☆のす</li>
 		</ul>
 		<ul class="nav">
 			<li><a href="#">予定確認</a></li>
@@ -15,7 +15,7 @@
 			<div class="nav-right">
 				<div class="nav-right-img">
 					<a href="logout">
-					<img class="logout-icon" alt="ログアウト" src="./img/logout_icon.png"></a>
+					<img class="logout-icon" alt="ログアウト" src="/kronon/img/logout_icon.png"></a>
 
 				</div>
 				<div class="nav-right-user">
