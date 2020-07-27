@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import jp.co.benesse.dataaccess.cm.ConnectionManager;
 import jp.co.benesse.dataaccess.dao.ScheduleDAO;
-import jp.co.benesse.dataaccess.value.ScheduleBean;
 
 @WebServlet("/user/scheduledelete")
 public class ScheduleDeleteServlet extends HttpServlet {
@@ -25,9 +24,15 @@ public class ScheduleDeleteServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 //		HttpSession session = request.getSession(true);
+//		int id = Integer.parseInt(request.getParameter("scheduleId"));
+
 		int id = Integer.parseInt(request.getParameter("scheduleId"));
-		ScheduleBean scheBean = (ScheduleBean)request.getAttribute("scheBean");
-		System.out.println(scheBean);
+		String place = request.getParameter("place");
+		String title = request.getParameter("title");
+		String content = request.getParameter("content");
+
+
+
 
 		ConnectionManager connectionManager = new ConnectionManager();
 
@@ -46,7 +51,7 @@ public class ScheduleDeleteServlet extends HttpServlet {
 			connectionManager.commit();
 
 			request.setAttribute("popFlag",1);
-			request.setAttribute("schedulaBean",scheBean);
+			request.setAttribute("schedulaBean",scheduleBean);
 
 			RequestDispatcher dispatcher = request.getRequestDispatcher("../WEB-INF/views/schedule/schedule_detail.jsp");
 			dispatcher.forward(request, response);
