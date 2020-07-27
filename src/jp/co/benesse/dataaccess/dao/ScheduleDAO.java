@@ -82,8 +82,8 @@ public class ScheduleDAO {
 		try {
 			// SQLの定義
 			String sql = "INSERT INTO SCHEDULE (SCHEDULE_ID,USER_ID,SCHEDULE_DATE,"
-					+ "START_TIME,END_TIME,PLACE,TITLE,CONTENT,DELETE_FLAG)"
-					+ "VALUES (NEXTVAL('SEQ'),?,?,?,?,?,?,?,'0')";
+					+ "START_TIME,END_TIME,PLACE,TITLE,CONTENT,ACTUAL_TIME,DELETE_FLAG)"
+					+ "VALUES (NEXTVAL('SEQ'),?,?,?,?,?,?,?,1000,'0')";
 			// SQLの作成(準備)
 			preparedStatement = this.connection.prepareStatement(sql);
 			// SQLバインド変数への値設定
@@ -206,13 +206,16 @@ public class ScheduleDAO {
 	 */
 	public List<ScheduleBean> selectSchedule(int userId, Date scheduleDate, String title) {
 		List<ScheduleBean> scheduleBeanList = new ArrayList<>();
-
+if (title.contains("%")) {
+			title = title.replace("%", "\\%");
+		}
+		title = "%" + title + "%";
 		PreparedStatement preparedStatement = null;
 		try {
 
 			// SQLの定義
 			String sql = "SELECT * FROM SCHEDULE INNER JOIN PUBLIC.USER ON PUBLIC.USER.USER_ID = SCHEDULE.USER_ID "
-					+ "WHERE DELETE_FLAG = '0' AND (TITLE LIKE '%?%' AND SCHEDULE_DATE = ?) AND SCHEDULE.USER_ID = ?";
+					+ "WHERE DELETE_FLAG = '0' AND (TITLE LIKE ? AND SCHEDULE_DATE = ?) AND SCHEDULE.USER_ID = ? ORDER BY SCHEDULE_DATE,START_TIME";
 			// SQLの作成(準備)
 			preparedStatement = this.connection.prepareStatement(sql);
 			preparedStatement.setString(1, title);
@@ -238,6 +241,7 @@ public class ScheduleDAO {
 				scheduleBean.setComment(resultSet.getString("COMMENT"));
 				scheduleBean.setEstimateTime(Calc.calcEstimateTime(scheduleBean));
 				scheduleBean.setActualTimeStr(Calc.calcActualTime(scheduleBean));
+				scheduleBean.setScheduleDateActual(Calc.convertActualDate(scheduleBean.getScheduleDate().toLocalDate()));
 				scheduleBeanList.add(scheduleBean);
 			}
 
@@ -272,7 +276,7 @@ public class ScheduleDAO {
 
 			// SQLの定義
 			String sql = "SELECT * FROM SCHEDULE INNER JOIN PUBLIC.USER ON PUBLIC.USER.USER_ID = SCHEDULE.USER_ID "
-					+ "WHERE DELETE_FLAG = '0' AND SCHEDULE_DATE = ? AND SCHEDULE.USER_ID = ?";
+					+ "WHERE DELETE_FLAG = '0' AND SCHEDULE_DATE = ? AND SCHEDULE.USER_ID = ? ORDER BY SCHEDULE_DATE,START_TIME";
 			// SQLの作成(準備)
 			preparedStatement = this.connection.prepareStatement(sql);
 			preparedStatement.setDate(1, scheduleDate);
@@ -297,6 +301,7 @@ public class ScheduleDAO {
 				scheduleBean.setComment(resultSet.getString("COMMENT"));
 				scheduleBean.setEstimateTime(Calc.calcEstimateTime(scheduleBean));
 				scheduleBean.setActualTimeStr(Calc.calcActualTime(scheduleBean));
+				scheduleBean.setScheduleDateActual(Calc.convertActualDate(scheduleBean.getScheduleDate().toLocalDate()));
 				scheduleBeanList.add(scheduleBean);
 			}
 
@@ -325,13 +330,17 @@ public class ScheduleDAO {
 	 */
 	public List<ScheduleBean> selectSchedule(int userId, String title) {
 		List<ScheduleBean> scheduleBeanList = new ArrayList<>();
+		if (title.contains("%")) {
+			title = title.replace("%", "\\%");
+		}
+		title = "%" + title + "%";
 
 		PreparedStatement preparedStatement = null;
 		try {
 
 			// SQLの定義
 			String sql = "SELECT * FROM SCHEDULE INNER JOIN PUBLIC.USER ON PUBLIC.USER.USER_ID = SCHEDULE.USER_ID "
-					+ "WHERE DELETE_FLAG = '0' AND TITLE LIKE '%?%' AND SCHEDULE.USER_ID = ?";
+					+ "WHERE DELETE_FLAG = '0' AND TITLE LIKE ? AND SCHEDULE.USER_ID = ? ORDER BY SCHEDULE_DATE,START_TIME";
 			// SQLの作成(準備)
 			preparedStatement = this.connection.prepareStatement(sql);
 			preparedStatement.setString(1, title);
@@ -356,6 +365,7 @@ public class ScheduleDAO {
 				scheduleBean.setComment(resultSet.getString("COMMENT"));
 				scheduleBean.setEstimateTime(Calc.calcEstimateTime(scheduleBean));
 				scheduleBean.setActualTimeStr(Calc.calcActualTime(scheduleBean));
+				scheduleBean.setScheduleDateActual(Calc.convertActualDate(scheduleBean.getScheduleDate().toLocalDate()));
 				scheduleBeanList.add(scheduleBean);
 
 			}
@@ -422,7 +432,82 @@ public class ScheduleDAO {
 				scheduleBean.setComment(resultSet.getString("COMMENT"));
 				scheduleBean.setEstimateTime(Calc.calcEstimateTime(scheduleBean));
 				scheduleBean.setActualTimeStr(Calc.calcActualTime(scheduleBean));
+				scheduleBean.setScheduleDateActual(Calc.convertActualDate(scheduleBean.getScheduleDate().toLocalDate()));
 				scheduleBeanList.add(scheduleBean);
+			}
+
+			return scheduleBeanList;
+		} catch (SQLException e) {
+			throw new RuntimeException("SCHEDULEテーブルのSELECTに失敗しました", e);
+		} finally {
+			try {
+				if (preparedStatement != null) {
+					preparedStatement.close();
+				}
+			} catch (SQLException e) {
+				throw new RuntimeException("ステートメントの解放に失敗しました", e);
+			}
+		}
+	}
+
+	/**
+	 * [機 能] 実績検索メソッド<br>
+	 * [説 明] 入力されたタイトルから実績を取得する<br>
+	 * ※例外取得時にはRuntimeExceptionにラップし上位に送出する。<br>
+	 * [備 考] なし
+	 *
+	 * @param 利用者ID、タイトル
+	 * @return 予定リスト
+	 */
+	public List<ScheduleBean> getOneMonthScheduleByTitle(int userId, LocalDate scheduleDate,String title) {
+		List<ScheduleBean> scheduleBeanList = new ArrayList<>();
+		LocalDate lastDayOfMonth = scheduleDate.with(TemporalAdjusters.lastDayOfMonth()); // 末日
+		LocalDate firstDayOfMonth = scheduleDate.with(TemporalAdjusters.firstDayOfMonth()); // 初日
+		Date sqlLastDayOfMonth = Date.valueOf(lastDayOfMonth);
+		Date sqlFirstDayOfMonth = Date.valueOf(firstDayOfMonth);
+
+
+		if(title.contains("%")) {
+			title = title.replace("%", "\\%");
+		}
+
+		title = "%" + title + "%";
+		PreparedStatement preparedStatement = null;
+		try {
+
+			// SQLの定義
+			String sql = "SELECT * FROM SCHEDULE INNER JOIN PUBLIC.USER ON PUBLIC.USER.USER_ID = SCHEDULE.USER_ID "
+					+ "WHERE DELETE_FLAG = '0' AND TITLE LIKE ? AND SCHEDULE.USER_ID = ? "
+					+ "AND SCHEDULE_DATE BETWEEN ? AND ? ORDER BY SCHEDULE_DATE,START_TIME";
+			// SQLの作成(準備)
+			preparedStatement = this.connection.prepareStatement(sql);
+			preparedStatement.setString(1, title);
+			preparedStatement.setInt(2, userId);
+			preparedStatement.setDate(3, sqlFirstDayOfMonth);
+			preparedStatement.setDate(4, sqlLastDayOfMonth);
+			// SQLの実行
+			ResultSet resultSet = preparedStatement.executeQuery();
+
+			// 問い合わせ結果の取得
+
+			while (resultSet.next()) {
+				ScheduleBean scheduleBean = new ScheduleBean();
+				scheduleBean.setScheduleId(resultSet.getInt("SCHEDULE_ID"));
+				scheduleBean.setUserId(userId);
+				scheduleBean.setScheduleDate(resultSet.getDate("SCHEDULE_DATE"));
+				scheduleBean.setStartTime(resultSet.getTime("START_TIME"));
+				scheduleBean.setEndTime(resultSet.getTime("END_TIME"));
+				scheduleBean.setUserName(resultSet.getString("USER_NAME"));
+				scheduleBean.setPlace(resultSet.getString("PLACE"));
+				scheduleBean.setTitle(resultSet.getString("TITLE"));
+				scheduleBean.setContent(resultSet.getString("CONTENT"));
+				scheduleBean.setActualTime(resultSet.getInt("ACTUAL_TIME"));
+				scheduleBean.setComment(resultSet.getString("COMMENT"));
+				scheduleBean.setEstimateTime(Calc.calcEstimateTime(scheduleBean));
+				scheduleBean.setActualTimeStr(Calc.calcActualTime(scheduleBean));
+				scheduleBean.setScheduleDateActual(Calc.convertActualDate(scheduleBean.getScheduleDate().toLocalDate()));
+				scheduleBeanList.add(scheduleBean);
+
 			}
 
 			return scheduleBeanList;
@@ -479,6 +564,7 @@ public class ScheduleDAO {
 				scheduleBean.setActualTime(resultSet.getInt("ACTUAL_TIME"));
 				scheduleBean.setComment(resultSet.getString("COMMENT"));
 				scheduleBean.setActualTimeStr(Calc.calcActualTime(scheduleBean));
+				scheduleBean.setScheduleDateActual(Calc.convertActualDate(scheduleBean.getScheduleDate()));
 			}
 
 			return scheduleBean;
