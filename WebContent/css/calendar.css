@@ -1,5 +1,5 @@
 
-
+/* カレンダーの年月 */
 .calendar-title{
 	width:56vw;
 	margin:auto;
@@ -25,23 +25,23 @@
 	margin-bottom: 8vh;
 /* 	border:solid #000 0.1vw; */
 }
-.calendar-container-inner{
-	  position: absolute;  /*要素を浮かす*/
-  /*relativeを指定した親要素を支点とした位置をすべて0に指定↓*/
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  margin: auto; /*上下左右中央に*/
-  width: 60vw; /*widthの指定は必須*/
-  height:38vw; /*heightの指定は必須*/
-	border-radius: 1vw;
-/*	border:solid #999 1vw;*/
-	background-color:bisque;
 
-/*	background-color: #467021;
+.calendar-container-inner {
+	position: absolute; /*要素を浮かす*/
+	/*relativeを指定した親要素を支点とした位置をすべて0に指定↓*/
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	margin: auto; /*上下左右中央に*/
+	width: 60vw; /*widthの指定は必須*/
+	height: 38vw; /*heightの指定は必須*/
+	border-radius: 1vw;
+	/*	border:solid #999 1vw;*/
+	background-color: bisque;
+	/*	background-color: #467021;
 	border:solid #5E4222 1vw;*/
-	padding:1.5vw 3vw;
+	padding: 1.5vw 3vw;
 }
 
 .triangle-button{
@@ -137,14 +137,11 @@ tbody td:first-child {
     /*color: blue;*/
 	  background-color:#DFE4F4;
   }
-
+/* 祝日 */
   td.holiday{
-  background-color:#F8E0E1 !important;
+  background-color:#F8E0E1 ;
   }
 
-  tfoot {
-    font-weight: bold;
-  }
 
   td.disabled {
     /*opacity: 0.3;*/
@@ -182,23 +179,12 @@ td .yotei{
 	background-color: #FFFFE3;
 }
 
-
-
+/* 日付にカーソルを合わせたら色が変わるように */
 .cell-active{
 	background-color:antiquewhite !important;
 }
 
-
-
-/* .kronon-speak-container{
-	padding:0.5vw;;
-	margin:0;
-	float:right;
-	width:20vw;
-	height:70vh;
-	position:relative;
-} */
-
+/* ここから くろのんとセリフ */
 .kronon-speak{
 	width:18vw;
 	position:absolute;
@@ -215,6 +201,11 @@ td .yotei{
 	right:2vw;*/
 }
 
+.kronon-speak p{
+	padding:0;
+	margin:0;
+	padding-top:0.5vw;
+}
 
 .arrow-container{
 			float:bottom;

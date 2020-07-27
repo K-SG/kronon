@@ -41,11 +41,7 @@
         </div>
         <table class="calendar">
           <thead>
-            <!--      <tr>
-        <th id="prev">&laquo;</th>
-        <th id="title" colspan="5">2020/07</th>
-        <th id="next">&raquo;</th>
-      </tr>-->
+
             <tr class="youbi">
               <th>日</th>
               <th>月</th>
@@ -58,18 +54,13 @@
           </thead>
           <tbody>
           </tbody>
-          <!--    <tfoot>
-      <tr>
-        <td id="today" colspan="7">Today</td>
-      </tr>
-    </tfoot>-->
+
         </table>
 
 		<div class="kronon-speak-container">
 			<div class="kronon-speak">
 				<div class="arrow-container">
 					<div class="arrow_box" id="kronon-message">
-						<!-- おはよう★<br>今日はどんな予定があるの？ -->
 					</div>
 				</div>
 				<img src="/kronon/img/kronon/kronon_prin.png" class="kronon-img">

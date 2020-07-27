@@ -1,6 +1,7 @@
 "use strict";
 
 ///////////////////////////////////////////
+//表示する期間の設定
 const start_month = new Date(2020,6);//2020/07
 const end_month = new Date(2021,5);//2021/06
 ////////////////////////////////////////////
@@ -8,40 +9,23 @@ const end_month = new Date(2021,5);//2021/06
 //祝日
 const holidays = [[2020,[1,[1,13]],[2,[11,23]],[3,[20]],[4,[29]],[5,[3,4,5,6]],[6,[]],[7,[23,24]],[8,[10]],[9,[21,22]],[10,[]],[11,[3,23]],[12,[]]]
 ,[2021,[1,[1,11]],[2,[11,23]],[3,[20]],[4,[29]],[5,[3,4,5]],[6,[]],[7,[19]],[8,[11]],[9.[20]],[10,[11]],[11,[3,23]],[12,[]]]];
-console.log("祝日"+holidays[1][3][1]);
 
 
+//予定リストの取得
 const json = document.getElementById("list");
-console.log(json);
-console.log((json.value).toString());
 //「kronooon」を「"」に置換。全置換の場合は正規表現で//で挟みgをつける
 const json_replace = (json.value).toString().replace(/krnooon/g,'"');
-console.log(json_replace);
 //jsonライブラリの関数を使って、文字列を扱いやすい形に
 let array = JSON.parse(json_replace);
-console.log("start");
-console.log(array);
-console.log("end");
 
 
 {
-/*  const today = new Date(); //今日の日付
- *
-*/
+
+  //表示する年月の取得
   let year = document.getElementById("year").textContent; //2020
   let month = document.getElementById("month").textContent -1; ; //7-1
-/*
-  const day_challenge = new Date();
-  day_challenge.setMonth()*/
-
-  console.log("year:"+ year);
-  console.log("month:"+ month);
 
 
-  console.log(start_month.getMonth());
-  console.log(start_month.getYear());
-  console.log(start_month.getMonth() == month);
-  console.log(start_month.getYear()+1900 == year);
 //指定された3年間外にアクセスできないように、端では左右ボタンを表示しない
   if((start_month.getMonth() == month)&&(start_month.getYear()+1900 == year)){
 	  const left_button = document.getElementById("left");
@@ -51,8 +35,6 @@ console.log("end");
 	  const right_button = document.getElementById("right");
 	  right_button.style.display = 'none';
   }
-
-
 
 
   //次の月の分の日付
@@ -108,13 +90,6 @@ console.log("end");
         isDisabled: false,
       });
     }
-
-/*    //当月の当日のみ文字を太くする
-    if (year === today.getFullYear() && month === today.getMonth()) {
-      dates[today.getDate() - 1].isToday = true;
-    }*/
-
-
     return dates;
   }
 
@@ -143,29 +118,14 @@ console.log("end");
       week.forEach(date => {
         const td = document.createElement("td");
 
-
-        //                 if (item.itemdate == "2020-07-17") {
-        //                     $(this).text(`${date.date}\n${item.itemtask}`)
-        // //                    	td.tecxContent += `${item.itemtask}`;
-        //                 }
-        /*let day = document.getElementById("title").textContent;*/
-        /*        console.log("day=" + day);*/
-        /*td.innerHTML = `${date.date}\n`;*/
-        // 追加する要素を作成します
+        // 追加する要素の作成
         var newElement = document.createElement("p"); // p要素作成
         var newContent = document.createTextNode(`${date.date}\n`); // テキストノードを作成
         newElement.appendChild(newContent); // p要素にテキストノードを追加
         newElement.setAttribute("class", "date"); // p要素にidを設定
 
-        // ----------------------------
-        // 親要素の最後の子要素を追加します
-        // ----------------------------
-        // 親要素（div）への参照を取得
-        /*			var parentDiv = document.getElementById("parent-div");*/
-
-        // 追加
+        // 親要素の最後に子要素を追加
         td.appendChild(newElement);
-
 
         array.forEach(obj => {
           let check;
@@ -174,29 +134,19 @@ console.log("end");
           } else {
             check = date.date
           }
-          /*          console.log(check);*/
-          //if (obj.date == day.substring(0, 4) + "-" + day.substring(5, 7) + "-" + check) {
           if (obj.jsonDate == year + "-" + ("0" + (month + 1)).slice(-2) + "-" + check) {
-            /*td.textContent += `${obj.title}`;*/
 
-            // 追加する要素を作成します
+            // 追加する要素の作成
             var newElement2 = document.createElement("p"); // p要素作成
             var newContent2 = document.createTextNode(`${obj.title}`); // テキストノードを作成
             newElement2.appendChild(newContent2); // p要素にテキストノードを追加
             newElement2.setAttribute("class", "yotei"); // p要素にclassを設定
-
-            // ----------------------------
-            // 親要素の最後の子要素を追加します
-            // ----------------------------
-            // 親要素（div）への参照を取得
-            /*			var parentDiv = document.getElementById("parent-div");*/
 
             // 追加
             td.appendChild(newElement2);
 
           }
         })
-
 
         if (date.isToday) {
           td.classList.add("today");
@@ -213,7 +163,7 @@ console.log("end");
 	        	}
 	        }
         }
-
+        //追加
         tr.appendChild(td);
 
       });
@@ -234,7 +184,7 @@ console.log("end");
 
 
 //くろのんメッセージ
-//時間帯に応じて変わるよ
+//時間帯に応じて変わるよ //夜はランダムだよ
 const random = Math.random();
 
 let nt = new Date();

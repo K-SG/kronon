@@ -74,6 +74,7 @@ public class CalendarServlet extends HttpServlet {
 			ScheduleDAO scheduleDAO = new ScheduleDAO(connection);
 			scheduleBeanList = scheduleDAO.tooLongSQLSchedule(date, userId);
 
+		    System.out.println(scheduleBeanList);
 			//Beanのリスト→JSON形式の整形
 			String json = mapper.writeValueAsString(scheduleBeanList);
 			String json_replace = json.replaceAll("\"", "krnooon");
