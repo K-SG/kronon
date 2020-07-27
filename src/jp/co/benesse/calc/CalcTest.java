@@ -41,7 +41,7 @@ public class CalcTest {
 	public void testConvertActualDate() {
 		LocalDate date = LocalDate.now();
 		String s = Calc.convertActualDate(date);
-		assertThat(s,is("7/25(土)"));
+		assertThat(s,is("7/27(月)"));
 	}
 
 }

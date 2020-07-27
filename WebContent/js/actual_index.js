@@ -56,8 +56,11 @@ $(function() {
 	//検索結果が0件の場合はテーブルを非表示
 	if(errorMsg.trim() == "検索結果は0件でした"){
 		$('#actual-content').css('display','none');
+		$('#kronon-prin-img').css('display','block');
+		$('#actual-button').css('margin-bottom','');
 	}else{
 		$('#actual-content').css('display','block');
+		$('#kronon-prin-img').css('display','none');
 	}
 
 	//月送りボタン、実績確認ボタンの表示切替判定
@@ -72,7 +75,13 @@ $(function() {
 		$('#left').css('display','none');
 		$('#right').css('display','none');
 		$('#actual-button').css('display','block');
+		$('#actual-button').css('margin-bottom','15vh');
 	}
+
+	if(flag == 1 && errorMsg.trim() == "検索結果は0件でした"){
+		$('#actual-button').css('margin-bottom','');
+	}
+
 
 	//リリース月より遡れなくする
 	if(dateServlet.substring(0,7) == "2020-07"){
