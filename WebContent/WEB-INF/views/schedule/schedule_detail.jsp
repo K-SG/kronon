@@ -85,7 +85,6 @@
     </div>
 </div>
 </c:if>
-  <c:set var="scheBean" value="${scheduleBean}" scope="request"/>
 
 <!--内容確認ポップアップ----------------------------------------------------------------->
 <div class="popup-wrapper confirm-popup">
@@ -118,6 +117,14 @@
       <form action="http://localhost:8080/kronon/user/scheduledelete" method="post" >
 				<input type="hidden" id="flag" value="${popFlag}">
 				<input type="hidden" name = "scheduleId" value="${scheduleBean.scheduleId}">
+				<input type="hidden" name = "userName" value="${scheduleBean.userName}">
+				<input type="hidden" name = "actualTimeStr" value="${scheduleBean.actualTimeStr}">
+				<input type="hidden" name = "scheduleDateActual" value="${scheduleBean.scheduleDateActual}">
+				<input type="hidden" name = "startTime" value="${scheduleBean.startTime}">
+				<input type="hidden" name = "endTime" value="${scheduleBean.endTime}">
+				<input type="hidden" name = "place" value="${scheduleBean.place}">
+				<input type="hidden" name = "title" value="${scheduleBean.title}">
+				<input type="hidden" name = "content" value="${scheduleBean.content}">
 				<input type="submit" class="ok-button" value="OK">
       </form>
       <div class="ng-button close-popup">キャンセル</div>

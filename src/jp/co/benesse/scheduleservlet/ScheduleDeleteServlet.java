@@ -28,6 +28,7 @@ public class ScheduleDeleteServlet extends HttpServlet {
 //		HttpSession session = request.getSession(true);
 //		int id = Integer.parseInt(request.getParameter("scheduleId"));
 
+<<<<<<< HEAD
 		int scheduleId = Integer.parseInt(request.getParameter("scheduleId"));
 		int userId = Integer.parseInt(request.getParameter("userId"));
 		String userName = request.getParameter("userName");
@@ -35,6 +36,12 @@ public class ScheduleDeleteServlet extends HttpServlet {
 		String schduleDateActual = request.getParameter("schduleDateActual");
 		String startTime = request.getParameter("startTime");
 		String endTime = request.getParameter("endTime");
+
+		int id = Integer.parseInt(request.getParameter("scheduleId"));
+
+		ScheduleBean scheBean = (ScheduleBean)request.getAttribute("scheBean");
+		System.out.println("jspからの受取"+scheBean);
+
 		String place = request.getParameter("place");
 		String title = request.getParameter("title");
 		String content = request.getParameter("content");
