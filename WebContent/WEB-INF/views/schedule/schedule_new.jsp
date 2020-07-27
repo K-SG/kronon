@@ -17,6 +17,8 @@
 		<form action="user/schedulecreate" method="get" class="schedule-new-form">
 		<input type="hidden" value="${popFlag}" id="flag">
 		<div class="schedule-regist-area">
+		<div class="loose-leaf"><img src="../img/loose_leaf.svg" alt="loose-leaf" id="loose-leaf"></div>
+		  <div class="schedule-regist-area-inner">
 			<div class="schedule-regist-font-lev0">予定登録</div>
 			<div class="schedule-regist-border"></div>
 			<div class="schedule-regist-area-1">
@@ -113,6 +115,7 @@
 					<textarea name="content" id="content" rows="13" cols="40" maxlength="1440" placeholder="予定の内容を1440字以内で入力してください"></textarea>
 				</div>
 			</div>
+		  </div>
 		</div>
 
 		<div class="kronon-banzai"><img alt="banzai" src="/kronon/img/kronon/kronon_banzai.png"></div>
