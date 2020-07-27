@@ -1,8 +1,12 @@
 package jp.co.benesse.calc;
 
+import java.sql.Date;
 import java.sql.Time;
 import java.time.Duration;
+import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.HashMap;
+import java.util.Map;
 
 import jp.co.benesse.dataaccess.value.ScheduleBean;
 
@@ -48,4 +52,54 @@ public class Calc {
 		}
 
 	}
+
+	/**
+	 *
+	 * [機 能] 日時表記整形メソッド<br>
+	 * [説 明] 予定日を「MM/dd(曜日)」という書式で返す<br>
+	 * [備 考] なし
+	 *
+	 * @param 予定日
+	 * @return 整形された日付の文字列
+	 */
+	public static String convertActualDate(LocalDate scheduleDate){
+		Map<Integer,String> dayOfWeek = new HashMap<>();
+		dayOfWeek.put(1, "月");
+		dayOfWeek.put(2, "火");
+		dayOfWeek.put(3, "水");
+		dayOfWeek.put(4, "木");
+		dayOfWeek.put(5, "金");
+		dayOfWeek.put(6, "土");
+		dayOfWeek.put(7, "日");
+		scheduleDate.getMonthValue();
+		scheduleDate.getDayOfMonth();
+		return scheduleDate.getMonthValue() + "/" + scheduleDate.getDayOfMonth()
+		+ "(" + dayOfWeek.get(scheduleDate.getDayOfWeek().getValue())+ ")";
+	}
+
+	/**
+	 *
+	 * [機 能] 日時表記整形メソッド<br>
+	 * [説 明] 予定日を「yyyy/MM/dd(曜日)」という書式で返す<br>
+	 * [備 考] なし
+	 *
+	 * @param 予定日（sql.Date）
+	 * @return 整形された日付の文字列
+	 */
+	public static String convertActualDate(Date sqlScheduleDate){
+		LocalDate scheduleDate = sqlScheduleDate.toLocalDate();
+		Map<Integer,String> dayOfWeek = new HashMap<>();
+		dayOfWeek.put(1, "月");
+		dayOfWeek.put(2, "火");
+		dayOfWeek.put(3, "水");
+		dayOfWeek.put(4, "木");
+		dayOfWeek.put(5, "金");
+		dayOfWeek.put(6, "土");
+		dayOfWeek.put(7, "日");
+		scheduleDate.getMonthValue();
+		scheduleDate.getDayOfMonth();
+		return scheduleDate.getYear()+ "/" + scheduleDate.getMonthValue() + "/" + scheduleDate.getDayOfMonth()
+		+ "(" + dayOfWeek.get(scheduleDate.getDayOfWeek().getValue())+ ")";
+	}
+
 }

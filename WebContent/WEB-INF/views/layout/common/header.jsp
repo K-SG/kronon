@@ -9,9 +9,9 @@
 			<li class="company-name"><img class="top-head-image" alt="くろ☆のすロゴ" src="/kronon/img/star/logo_header.png">（株）くろ☆のす</li>
 		</ul>
 		<ul class="nav">
-			<li><a href="#">予定確認</a></li>
-	  		<li><a href="#">予定登録</a></li>
-	  		<li><a href="#">実績確認</a></li>
+			<li><a href="user/calender">予定確認</a></li>
+	  		<li><a href="user/schedulenew">予定登録</a></li>
+	  		<li><a href="user/actualindex">実績確認</a></li>
 			<div class="nav-right">
 				<div class="nav-right-img">
 					<a href="logout">

@@ -27,5 +27,6 @@
 </article>
 <%@ include file="/WEB-INF/views/layout/common/footer.jsp" %>
 <script src="js/common/common.js"></script>
+
 </body>
 </html>
