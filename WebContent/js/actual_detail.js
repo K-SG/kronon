@@ -15,6 +15,12 @@ $(function () {
 	    location.href= "kronon/user/actualDetail";
 	  });
 
+  $('.large-popup').click(function () {
+	  $('.confirm-popup').fadeIn();
+	  });
+
+
+
 
 
 

@@ -62,8 +62,6 @@
 <div class="kronon-banzai"><img alt="banzai" src="./img/kronon/kronon_banzai.png"></div>
 <div class="button-return"><img alt="戻る" src="/kronon/img/back_buttom.png" class="back-popup-button"></div>
 
-
-
 <div class="flex_test-box">
     <div class="flex_test-item">
     <a href="/user/scheduleedit?scheduleId=${scheduleBean.scheduleId}"><div class="ok-button">修正</div></a>
