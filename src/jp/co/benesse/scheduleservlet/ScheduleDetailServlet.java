@@ -27,7 +27,7 @@ public class ScheduleDetailServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		int id = Integer.parseInt(request.getParameter("id"));
-		ScheduleBean scheBean = request.getParameter("scheBean");
+
 
 		ConnectionManager connectionManager = new ConnectionManager();
 		ScheduleBean scheduleBean = new ScheduleBean();
