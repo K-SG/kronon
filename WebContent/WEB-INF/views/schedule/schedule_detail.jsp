@@ -108,7 +108,7 @@
 							</tr>
 							<tr>
 								<th>タイトル：</th>
-								<td><span class="actual-input-area-3"><c:out value="${scheduleBean.title}" /></span></td>
+								<td><span class="actual-input-area-4"><c:out value="${scheduleBean.title}" /></span></td>
 							</tr>
 							<tr>
 								<th class="last-table">内容：</th>
