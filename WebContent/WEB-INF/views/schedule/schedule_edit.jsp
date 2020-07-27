@@ -218,7 +218,7 @@
 				<div class="pop-container-inner">
 					<div class="message-container"><p class=create-msg></p></div>
 					<div class="ok-button next-popup">OK</div>
-					<img src="/kronon/img/kronon/kronon_question.png" class="pop-img">
+					<img src="../img/kronon/kronon_question.png" class="pop-img">
 				</div>
 			</div>
 		</div>

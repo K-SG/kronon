@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
- <link rel="stylesheet" href="./css/schedule_new.css">
+ <link rel="stylesheet" href="/kronon/css/schedule_new.css">
 <%@ include file="../layout/common/link.jsp" %>
 <title>予定登録</title>
 </head>
@@ -115,7 +115,7 @@
 			</div>
 		</div>
 
-		<div class="kronon-banzai"><img alt="banzai" src="./img/kronon/kronon_banzai.png"></div>
+		<div class="kronon-banzai"><img alt="banzai" src="/kronon/img/kronon/kronon_banzai.png"></div>
 
 		<div class=schedule-regist-button>
 		<!--登録ボタン---->
@@ -139,7 +139,7 @@
           <p class=new-msg></p>
         </div>
         <div class="ok-button close-popup">OK</div>
-        <img src="img/kronon/kronon_question.png" class="pop-img"> </div>
+        <img src="/kronon/img/kronon/kronon_question.png" class="pop-img"> </div>
       </div>
     </div>
    <!--エラーまたは完了ポップアップここまで-------------------------------------------------------------->
@@ -157,7 +157,7 @@
 			  </div>
 			  <a href="user/scheduledetail?id=${userId}"><div class="ok-button">OK</div></a>
 			  <div class="ng-button close-popup">キャンセル</div>
-			  <img src="../img/star_angry.png" class="pop-img-top"> </div>
+			  <img src="/kronon/img/star_angry.png" class="pop-img-top"> </div>
 		  </div>
 		</div>
 		<!--本当に戻りますかポップアップここまで------------------------------------------------------------------->
@@ -192,7 +192,7 @@
 			  </div>
 			  <input type="button" class="ok-button"  id="confirm-ok" value="OK">
 			  <div class="ng-button close-popup">キャンセル</div>
-			  <img src="../img/kronon_question.png" class="pop-img"> </div>
+			  <img src="/kronon/img/kronon_question.png" class="pop-img"> </div>
 		  </div>
 		</div>
 		<!--内容確認ポップアップここまで----------------------------------------------------------------->
@@ -213,7 +213,7 @@
 
 	</article>
 <%@ include file="../layout/common/footer.jsp" %>
-<script src="js/schedule_new.js"></script>
+<script src="/kronon/js/schedule_new.js"></script>
 <!-- <script src="js/common.js"></script> -->
 </body>
 </html>
