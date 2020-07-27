@@ -37,11 +37,7 @@ public class CalendarServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		String flag = request.getParameter("flag");
 		String dateStr = request.getParameter("date");
-		String userIdStr = "1";
-
-		// 本来はこっち
-		// String userIdStr = (String)session.getAttribute("userId");
-		int userId = Integer.parseInt(userIdStr);
+		int userId= (Integer) session.getAttribute("userId");
 
 		LocalDate date;
 		List<ScheduleBean> scheduleBeanList = new ArrayList<>();
