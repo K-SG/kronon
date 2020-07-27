@@ -2,12 +2,14 @@ $(function () {
 
 /*日付に今日の日付が挿入されるようにする*/
   window.onload = function () {
+	  if(document.getElementById("date").value != null){
 	    var date = new Date();
 	    date.setDate(date.getDate());
 	    var yyyy = date.getFullYear();
 	    var mm = ("0"+(date.getMonth()+1)).slice(-2);
 	    var dd = ("0"+date.getDate()).slice(-2);
 	    document.getElementById("date").value=yyyy+'-'+mm+'-'+dd;
+	  }
 
 		/*DBと照合した後のポップアップフラグ*/
 		var popFlag = document.getElementById('flag').value;
@@ -42,7 +44,7 @@ $(function () {
     let weekday = '日月火水木金土'[d.getDay()];
     //リリース年と月の取得
     let releaseYear = 2020;
-    let releaseMonth = 8;
+    let releaseMonth = 7;
     //サービス終了年と月の取得
     let releaseLastYear = 2023;
     let releaseLastMonth = 8;

@@ -14,7 +14,7 @@
 <%@ include file="../layout/common/header.jsp" %>
 
 	<article>
-		<form action="user/schedulecreate" method="get" class="schedule-new-form">
+		<form action="schedulecreate" method="get" class="schedule-new-form">
 		<input type="hidden" value="${popFlag}" id="flag">
 		<div class="schedule-regist-area">
 			<div class="schedule-regist-font-lev0">予定登録</div>
@@ -22,7 +22,7 @@
 			<div class="schedule-regist-area-1">
 				<div class="schedule-regist-area-1-block">
 					<div class="schedule-regist-font-lev1">日付<span>*</span></div>
-					<div class="schedule-regist-date-area"><input name="scheduleDate" id="date" type="date"/></div>
+					<div class="schedule-regist-date-area"><input name="scheduleDate" id="date" value="${param.scheduleDate}" type="date"/></div>
 				</div>
 				<div class="schedule-regist-area-1-block">
 					<div class="schedule-regist-font-lev1">開始時刻<span>*</span></div>
