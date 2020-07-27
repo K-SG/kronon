@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import jp.co.benesse.dataaccess.cm.ConnectionManager;
 import jp.co.benesse.dataaccess.dao.ScheduleDAO;
+import jp.co.benesse.dataaccess.value.ScheduleBean;
 
 @WebServlet("/user/scheduledelete")
 public class ScheduleDeleteServlet extends HttpServlet {
@@ -25,6 +26,7 @@ public class ScheduleDeleteServlet extends HttpServlet {
 
 //		HttpSession session = request.getSession(true);
 		int id = Integer.parseInt(request.getParameter("scheduleId"));
+		ScheduleBean scheBean = (ScheduleBean)request.getAttribute("scheBean");
 
 		ConnectionManager connectionManager = new ConnectionManager();
 
