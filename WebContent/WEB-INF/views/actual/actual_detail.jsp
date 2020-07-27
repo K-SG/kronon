@@ -61,12 +61,15 @@
     </div>
   </div>
 <div class="kronon-banzai"><img alt="banzai" src="./img/kronon/kronon_banzai.png"></div>
-<div class="ok-button back-popup-button">戻る</div>
+<div class="button-return"><img alt="戻る" src="/kronon/img/back_buttom.png" class="back-popup-button"></div>
+
 
 
 <div class="flex_test-box">
     <div class="flex_test-item">
         <div class="ok-button">修正</div>
+        <input type="submit" class="ok-button" value="修正">
+        <a href="kronon/user/"><div class="modify-button">修正</div></a>
     </div>
 
     <div class="flex_test-item">

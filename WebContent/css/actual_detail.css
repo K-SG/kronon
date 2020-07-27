@@ -6,3 +6,26 @@
 	margin-top: -15vh;
 	margin-left: 80vw;
 }
+
+.button-return {
+	float:left;
+	margin-left: 10vh;
+	margin-top: -3vh;
+}
+
+.modify-button{
+	border-style:none;
+    display: inline-block;
+	width: 30vw;
+	height: 7vh;
+	background-color: #DE9B50;
+	opacity:0.5;
+	border-radius: 0.8vw;
+	color: white;
+	margin-top: 0.7vh;
+	margin-bottom: 8vh;
+	cursor: pointer;
+    padding-top: 0.5vh;
+    border: solid white;
+    font-size: 1.5vw;
+}
