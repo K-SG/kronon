@@ -1,0 +1,53 @@
+@CHARSET "UTF-8";
+
+.white-text
+{
+  font-family : 小塚ゴシック Pr6N;
+  font-size : 1.4vw;
+  color : #FFFFFF;
+  color : rgb(255, 255, 255);
+  padding-left: 1vw;
+  padding-top: 0.8vw;
+}
+
+.blackboard
+{
+  background : #467021;
+  background : rgba(70, 112, 33, 1);
+  border-style : Solid;
+  border-color : #5E4222;
+  border-color : rgba(94, 66, 34, 1);
+  border-width : 1.3vw;
+  width : 50vw;
+  height : auto;
+  border-radius : 10px;
+  -moz-border-radius : 10px;
+  -webkit-border-radius : 10px;
+  position : relative ;
+  top : 2vw;
+  left : 23vw;
+  margin-bottom: 10vw;
+}
+
+.schedule_detail{
+  margin: 1vw;
+  border: 0.2vw white solid;
+  border-collapse: collapse;
+  width : 48vw;
+  height: auto;
+}
+
+.schedule_detail td{
+  padding: 1vw;
+  border: 0.2vw white solid;
+}
+
+.show-place
+{
+  background-color: #f8e58e;
+  background-color: #e6cde3;
+  background-color: #bce2e8;
+  color : #467021;
+  color : rgba(70, 112, 33, 1);
+  font-weight: bold;
+}
