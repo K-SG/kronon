@@ -9,7 +9,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import jp.co.benesse.dataaccess.cm.ConnectionManager;
 import jp.co.benesse.dataaccess.dao.ScheduleDAO;
@@ -24,8 +23,8 @@ public class ScheduleDeleteServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		HttpSession session = request.getSession(true);
-		int id = (Integer)(session.getAttribute("id"));
+//		HttpSession session = request.getSession(true);
+		int id = Integer.parseInt(request.getParameter("id"));
 
 		ConnectionManager connectionManager = new ConnectionManager();
 
