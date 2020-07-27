@@ -16,7 +16,6 @@ import javax.servlet.http.HttpSession;
 import jp.co.benesse.dataaccess.cm.ConnectionManager;
 import jp.co.benesse.dataaccess.dao.ScheduleDAO;
 import jp.co.benesse.dataaccess.value.ScheduleBean;
-import jp.co.benesse.dataaccess.value.UserBean;
 
 @WebServlet("/user/schedulecreate")
 public class ScheduleCreateServlet extends HttpServlet {
@@ -29,8 +28,7 @@ public class ScheduleCreateServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String scheduleIdStr = request.getParameter("scheduleId");
-		int scheduleId = Integer.parseInt(scheduleIdStr);
+
 		String scheduleDate = request.getParameter("scheduleDate");
 		String startTimeHour = request.getParameter("startTimeHour");
 		String startTimeMin = request.getParameter("startTimeMin");
@@ -41,15 +39,14 @@ public class ScheduleCreateServlet extends HttpServlet {
 		String content = request.getParameter("content");
 
 		HttpSession session = request.getSession(true);
-		UserBean userBean = (UserBean)session.getAttribute("userBean");
+		int userId = (int) session.getAttribute("userId");
 
 		ConnectionManager connectionManager = new ConnectionManager();
 		try {
 			Connection connection = connectionManager.getConnection();
 
 			ScheduleBean scheduleBean = new ScheduleBean();
-			scheduleBean.setUserId(userBean.getUserId());
-			scheduleBean.setScheduleId(scheduleId);
+			scheduleBean.setUserId(userId);
 			scheduleBean.setScheduleDate(Date.valueOf(scheduleDate));
 			scheduleBean.setStartTime(Time.valueOf(startTimeHour +":"+ startTimeMin));
 			scheduleBean.setEndTime(Time.valueOf(endTimeHour +":"+ endTimeMin));
@@ -57,27 +54,18 @@ public class ScheduleCreateServlet extends HttpServlet {
 			scheduleBean.setTitle(title);
 			scheduleBean.setContent(content);
 
-			//すでに削除されているかをチェック
 			ScheduleDAO scheduleDAO = new ScheduleDAO(connection);
-			boolean check = scheduleDAO.isDeleted(scheduleId);
-			if(check == true){
-				//error.jsp（エラー画面）にforwardする
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/viws/error/error.jsp");
-				dispatcher.forward(request, response);
-				return;
-			}
-
 			//予定が重複しているかをチェック
-			check = scheduleDAO.isBooking(scheduleBean);
+			boolean check = scheduleDAO.isBooking(scheduleBean);
 			if(check == true) {
-				request.setAttribute("popFlag",0);//予定重複フラグ
+				request.setAttribute("popFlag",1);//予定重複フラグ
 				request.setAttribute("scheduleBean", scheduleBean);
 				request.setAttribute("startTimeHour", startTimeHour);//開始時間
 				request.setAttribute("startTimeMin", startTimeMin);//開始分
 				request.setAttribute("endTimeHour", endTimeHour);//終了時間
 				request.setAttribute("endTimeMin", endTimeMin);//終了分
-				//schedule_edit.jsp（予定修正画面）にforwardする
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/schedule/schedule_edit.jsp");
+				//schedule_new.jsp（予定修正画面）にforwardする
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/schedule/schedule_new.jsp");
 				dispatcher.forward(request, response);
 				return;
 			}
@@ -92,7 +80,7 @@ public class ScheduleCreateServlet extends HttpServlet {
 			}
 			connectionManager.commit();
 
-			request.setAttribute("popFlag",0);//修正完了フラグ
+			request.setAttribute("popFlag",0);//登録完了フラグ
 			request.setAttribute("scheduleBean", scheduleBean);
 
 		} catch(RuntimeException e){
@@ -105,8 +93,8 @@ public class ScheduleCreateServlet extends HttpServlet {
 			connectionManager.closeConnection();
 		}
 
-		//schedule_edit.jsp（予定修正画面）にforwardする
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/schedule/schedule_edit.jsp");
+		//schedule_new.jsp（予定修正画面）にforwardする
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/schedule/schedule_new.jsp");
 		dispatcher.forward(request, response);
 		return;
 

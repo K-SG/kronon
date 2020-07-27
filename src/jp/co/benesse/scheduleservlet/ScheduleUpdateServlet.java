@@ -83,7 +83,8 @@ public class ScheduleUpdateServlet extends HttpServlet {
 			}
 
 			//予定修正
-			int result = scheduleDAO.registerSchedule(scheduleBean);
+
+			int result = scheduleDAO.updateSchedule(scheduleId,Date.valueOf(scheduleDate),Time.valueOf(startTimeHour +":"+ startTimeMin),Time.valueOf(endTimeHour +":"+ endTimeMin),title,content,place);
 			if(result != 1){
 				//error.jsp（エラー画面）にforwardする
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/error/error.jsp");

@@ -14,7 +14,7 @@
 <%@ include file="../layout/common/header.jsp" %>
 
 	<article>
-			<form action="user/schedulecreate" method="post" class="schedule-edit-form">
+			<form action="user/scheduleupdete" method="post" class="schedule-edit-form">
 		<input type="hidden" id="flag" value="${popFlag}">
 		<div class="schedule-regist-area">
 			<div class="schedule-regist-font-lev0">予定修正</div>
@@ -25,14 +25,14 @@
 					<div class="schedule-regist-font-lev1">日付<span>*</span></div>
 					<!-- 本来はscheduleBean.date -->
 					<input type="hidden" value="${date}" id="set-date">
-					<div class="schedule-regist-date-area"><input name="date" id="edit-date" type="date" value="${date}" /></div>
+					<div class="schedule-regist-date-area"><input name="scheduleDate" id="edit-date" type="date" value="${date}" /></div>
 				</div>
 				<div class="schedule-regist-area-1-block">
 					<div class="schedule-regist-font-lev1">開始時刻<span>*</span></div>
 					<div class="schedule-regist-time">
 					<!-- 本来はscheduleBean.startTime -->
 						<input type="hidden" value="${startTime}" id="set-start-time">
-						<select name="start-hour" id="edit-start-hour">
+						<select name="startTimeHour" id="edit-start-hour">
 							<option value="8">8</option>
 							<option value="9">9</option>
 							<option value="10">10</option>
@@ -51,7 +51,7 @@
 
 					<div class="schedule-regist-time-text">時</div>
 					<div class="schedule-regist-time">
-						<select name="start-minutes" id="edit-start-minutes">
+						<select name="startTimeMin" id="edit-start-minutes">
 							<option value="00">00</option>
 							<option value="15">15</option>
 							<option value="30">30</option>
@@ -66,7 +66,7 @@
 					<div class="schedule-regist-time">
 					<!-- 本来はscheduleBean.endTime -->
 					<input type="hidden" value="${endTime}" id="set-end-time">
-						<select name="end-hour" id="edit-end-hour">
+						<select name="endTimeHour" id="edit-end-hour">
 							<option value="8">8</option>
 							<option value="9">9</option>
 							<option value="10">10</option>
@@ -85,7 +85,7 @@
 
 					<div class="schedule-regist-time-text">時</div>
 					<div class="schedule-regist-time">
-						<select name="end-minutes" id="edit-end-minutes">
+						<select name="endTimeMin" id="edit-end-minutes">
 							<option value="00">00</option>
 							<option value="15">15</option>
 							<option value="30">30</option>
@@ -119,7 +119,7 @@
 			</div>
 
 			<div class="schedule-regist-area-4">
-				<div class="schedule-regist-font-lev1">内容<span>*</span></div>
+				<div class="schedule-regist-font-lev1">内容</div>
 				<div class="schedule-regist-content">
 				<!-- 本来はscheduleBean.content -->
 					<textarea name="content" id="content" rows="13" cols="40" maxlength="1440" placeholder="予定の内容を1440字以内で入力してください"><c:out value="${content}" /></textarea>
@@ -212,7 +212,7 @@
 		<!--内容確認ポップアップここまで----------------------------------------------------------------->
 
 		<!--登録完了ポップアップ------------------------------------------------------------------->
-		<div class="popup-wrapper error-popup complete-popup">
+		<div class="popup-wrapper complete-popup">
 			<div class="pop-container">
 				<div class="close-popup"><i class="fa fa-2x fa-times"></i></div>
 				<div class="pop-container-inner">

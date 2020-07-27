@@ -22,12 +22,12 @@
 			<div class="schedule-regist-area-1">
 				<div class="schedule-regist-area-1-block">
 					<div class="schedule-regist-font-lev1">日付<span>*</span></div>
-					<div class="schedule-regist-date-area"><input name="date" id="date" type="date"/></div>
+					<div class="schedule-regist-date-area"><input name="scheduleDate" id="date" type="date"/></div>
 				</div>
 				<div class="schedule-regist-area-1-block">
 					<div class="schedule-regist-font-lev1">開始時刻<span>*</span></div>
 					<div class="schedule-regist-time">
-						<select name="start-hour" id="new_start_hour">
+						<select name="startTimeHour" id="new_start_hour">
 							<option value="8">8</option>
 							<option value="9">9</option>
 							<option value="10">10</option>
@@ -46,7 +46,7 @@
 
 					<div class="schedule-regist-time-text">時</div>
 					<div class="schedule-regist-time">
-						<select name="start-minutes" id="new_start_minutes">
+						<select name="startTimeMin" id="new_start_minutes">
 							<option value="00">00</option>
 							<option value="15">15</option>
 							<option value="30">30</option>
@@ -59,7 +59,7 @@
 				<div class="schedule-regist-area-1-block">
 					<div class="schedule-regist-font-lev1">終了時刻<span>*</span></div>
 					<div class="schedule-regist-time">
-						<select name="end-hour" id="new_end_hour">
+						<select name="endTimeHour" id="new_end_hour">
 							<option value="8">8</option>
 							<option value="9">9</option>
 							<option value="10">10</option>
@@ -78,7 +78,7 @@
 
 					<div class="schedule-regist-time-text">時</div>
 					<div class="schedule-regist-time">
-						<select name="end-minutes" id="new_end_minutes">
+						<select name="endTimeMin" id="new_end_minutes">
 							<option value="00">00</option>
 							<option value="15">15</option>
 							<option value="30">30</option>
@@ -199,7 +199,7 @@
 		<!--内容確認ポップアップここまで----------------------------------------------------------------->
 
 <!--登録完了ポップアップ------------------------------------------------------------------->
-		<div class="popup-wrapper error-popup complete-popup">
+		<div class="popup-wrapper complete-popup">
 			<div class="pop-container">
 				<div class="close-popup"><i class="fa fa-2x fa-times"></i></div>
 				<div class="pop-container-inner">
@@ -210,6 +210,7 @@
 			</div>
 		</div>
 <!--登録完了ポップアップここまで-------------------------------------------------------------->
+
 
 	</article>
 <%@ include file="../layout/common/footer.jsp" %>

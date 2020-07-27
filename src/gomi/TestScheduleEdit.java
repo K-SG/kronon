@@ -28,7 +28,7 @@ public class TestScheduleEdit extends HttpServlet {
 		request.setAttribute("content", "内容が入るよ");
 		request.setAttribute("popFlag", "0");
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/views/schedule/schedule_edit.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/views/schedule/schedule_new.jsp");
 		dispatcher.forward(request, response);
 		return;
 	}

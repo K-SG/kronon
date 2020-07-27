@@ -1,25 +1,7 @@
 $(function () {
 
-	/*DBと照合した後のポップアップ表示*/
-	$(document).ready(function () {
-		let popFlag = document.getElementById('flag').value;
-
-		/*登録が完了した場合*/
-		  if(popFlag == 0){
-		  	$('.create-msg').html('登録が完了したよ！');
-		  	$('.complete-popup').fadeIn();
-		  	return;
-		  }
-	});
-
-	  /*登録完了ポップアップのOKボタン押下時の遷移先*/
-    $('.next-popup').click(function () {
-    	let scheduleId = document.getElementById('set-schedule-id').value;
-      location.href= "user/scheduledetail?id="+ scheduleId ;
-    });
-
-/*変更前の情報を事前に入力された状態にしておくために必要な変数*/
   window.onload = function () {
+ /*変更前の情報を事前に入力された状態にしておくために必要な変数*/
 let date = document.getElementById('set-date').value;
 let startTime = document.getElementById('set-start-time').value;
 let endTime = document.getElementById('set-end-time').value;
@@ -46,6 +28,22 @@ if (endHour.slice(0, 1) == 0) {
 	$('#edit-end-hour').val(endHour);
 	$('#edit-end-minutes').val(endMin);
 	$('#edit-place').val(place);
+
+
+	/*DBと照合した後のポップアップフラグ*/
+	var popFlag = document.getElementById('flag').value;
+
+	/*登録が完了した場合*/
+	  if(popFlag == 0){
+	  	$('.create-msg').html('登録が完了したよ！');
+	  	$('.complete-popup').fadeIn();
+	  	return;
+	  }
+	  if(popFlag == 1){
+		  	$('.edit-msg').html('予定がかぶってるよ');
+		  	$('.error-popup').fadeIn();
+		  	return;
+	  }
 }
 
   /*修正ボタンを押した際のエラーチェックとポップアップ表示*/
@@ -81,51 +79,47 @@ if (endHour.slice(0, 1) == 0) {
   //月初、月末の日付を取得
     let firstDayOfMonth = new Date(year, month - 1, 1).getDate();
     let lastDayOfMonth = new Date(year, month, 0).getDate();
-
 //    console.log(date,startHour,startMin,endHour,endMin,place,title,content);
 
     if(date==""||startHour=='' || startMin=='' || endHour=='' || endMin=='' || place=='' || title==''){
-    	popFlag='1';
+    	popFlag='3';
 
     }else if((startHour*60+startMin)-(endHour*60+endMin)>=0){
     	//終了時間よりも開始時間のほうが遅かったら
 //    	console.log("開始時間のほうが遅い");
-    	popFlag='2';
+    	popFlag='4';
     }else if(!(firstDayOfMonth <= day && day <= lastDayOfMonth)){
     	//存在しない日付を入力したら（2/31など）
 //    	console.log("存在しない日付");
-    	popFlag='2';
+    	popFlag='4';
     }else if(year < releaseYear || (year == releaseYear && month < releaseMonth)){
     	//リリース前の日付を選択したら
 //    	console.log("リリース前の日付");
-    	popFlag='2';
+    	popFlag='4';
     }else if(year > releaseLastYear || (year == releaseLastYear && month > releaseLastMonth)){
     	//サービス終了後の日付を選択したら
 //    	console.log("サービス終了後の日付");
-    	popFlag='2';
+    	popFlag='4';
     }else{
-    	popFlag='0';
+    	popFlag='5';
     }
 
 
-    if(popFlag==='0'){
+    if(popFlag==='5'){
         $('#time-msg').html(year + '/' + month + '/' + day +'(' + weekday + ')' + startHour +':'+ startMin +'～'+ endHour +':'+ endMin);
         $('#title-msg').html(title);
         $('#content-msg').html(content);
     	$('.confirm-popup').fadeIn();
-        popFlag='0';
         return;
     }
-    else if(popFlag==='1'){
+    else if(popFlag==='3'){
         $('.edit-msg').html('入力されていない<br>項目があるよ');
         $('.error-popup').fadeIn();
-        popFlag='0';
         return;
     }
-    else if(popFlag==='2'){
+    else if(popFlag==='4'){
         $('.edit-msg').html('日付や時間の入力が<br>おかしいよ');
         $('.error-popup').fadeIn();
-        popFlag='0';
         return;
     }
   });
@@ -136,19 +130,25 @@ if (endHour.slice(0, 1) == 0) {
       return;
 });
 
+  /*登録完了ポップアップのOKボタン押下時の遷移先*/
+  $('.next-popup').click(function () {
+  	let scheduleId = document.getElementById('set-schedule-id').value;
+    location.href= "user/scheduledetail?id="+ scheduleId ;
+  });
+
     /*キャンセルボタンを押した際のポップアップ表示*/
     $('#cancel-button').click(function () {
         $('.back-popup').fadeIn();
         return;
   });
 
+
   /*ポップアップを閉じる際の動き*/
   $('.close-popup').click(function () {
     $('.confirm-popup').fadeOut();
     $('.error-popup').fadeOut();
     $('.back-popup').fadeOut();
-    let password = document.getElementById('login-pass');
-    password.value='';
+    $('.complete-popup').fadeOut();
   });
 
 });
