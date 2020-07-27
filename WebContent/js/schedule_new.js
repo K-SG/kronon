@@ -5,7 +5,7 @@ $(function () {
 		let popFlag = document.getElementById('flag').value;
 
 		/*登録が完了した場合*/
-		  if(popFlag == 0){
+		  if(popFlag ==0){
 		  	$('.create-msg').html('登録が完了したよ！');
 		  	$('.complete-popup').fadeIn();
 		  	return;

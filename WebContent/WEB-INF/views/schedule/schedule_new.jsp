@@ -15,6 +15,7 @@
 
 	<article>
 		<form action="/user/schedulecreate" method="get" class="schedule-new-form">
+		<input type="hidden" value="${popFlag}" id="flag">
 		<div class="schedule-regist-area">
 			<div class="schedule-regist-font-lev0">予定登録</div>
 			<div class="schedule-regist-border"></div>
@@ -117,7 +118,6 @@
 		<div class="kronon-banzai"><img alt="banzai" src="./img/kronon/kronon_banzai.png"></div>
 
 		<div class=schedule-regist-button>
-		<input type="hidden" id="flag" value="${popFlag}">
 		<!--登録ボタン---->
 			<div class=schedule-regist-button-left>
 			<input type="button" class="ok-button large-popup-button" id="ok-button" value="登録" >

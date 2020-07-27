@@ -15,6 +15,7 @@
 
 	<article>
 			<form action="user/schedulecreate" method="post" class="schedule-edit-form">
+		<input type="hidden" id="flag" value="${popFlag}">
 		<div class="schedule-regist-area">
 			<div class="schedule-regist-font-lev0">予定修正</div>
 			<input type="hidden" value="${scheduleBean.scheduleId}" id="set-schedule-id">
@@ -129,7 +130,7 @@
 		<div class="kronon-banzai"><img alt="banzai" src="./img/kronon/kronon_banzai.png"></div>
 
 		<div class=schedule-regist-button>
-		<input type="hidden" id="flag" value="${popFlag}">
+
 		<!--修正ボタン---->
 
 			<div class=schedule-regist-button-left>
