@@ -14,34 +14,50 @@
 <%@ include file="/WEB-INF/views/layout/common/header.jsp" %>
 <article class="article">
 
-       <form action="../user/scheduleshowall" method="post" id="left-form">
-        <input type="hidden" name="flag" value="0">
-        <input type="hidden" name="date" value="${date}">
-        <div class="left-button-container"><img src="../img/left_button.png" alt="left"  id="left" class="left triangle-button"></div>
-      </form>
- <div class="blackboard-container">
+	<form action="../user/scheduleshowall" method="post" id="left-form">
+		<input type="hidden" name="flag" value="0"> <input
+			type="hidden" id="scheduleDate" name="scheduleDate" value="${scheduleDate}">
+		<div class="left-button-container">
+			<img src="../img/left_button.png" alt="left" id="left"
+				class="left triangle-button">
+		</div>
+	</form>
+	<div class="blackboard-container">
 
-      <div class="blackboard-inner">
-        <div class="blackboard-head">
-          <div class="today-list"><c:out value="${date}"/>2020/7/26(日)の予定</div>
-			<div class="hanrei">
-				<div class="hanrei-item hanrei-item1"></div> : オフィス
-				<div class="hanrei-item hanrei-item2"></div> : 在宅
-				<div class="hanrei-item hanrei-item3"></div> : 外出
+		<div class="blackboard-inner">
+			<div class="blackboard-head">
+				<div class="today-list">
+					<c:out value="${displayDate}" />
+					の予定
+				</div>
+				<div class="hanrei">
+					<div class="hanrei-item hanrei-item1"></div>
+					: オフィス
+					<div class="hanrei-item hanrei-item2"></div>
+					: 在宅
+					<div class="hanrei-item hanrei-item3"></div>
+					: 外出
+				</div>
 			</div>
-        </div>
-        <div id="blackboard-table"> <div id="name-container"></div></div>
-      </div>
+			<div id="blackboard-table">
+				<div id="name-container"></div>
+			</div>
+		</div>
 
-    </div>
-     <form action="../user/scheduleshowall" method="post" id="right-form">
-            <input type="hidden" name="flag" value="1">
-            <input type="hidden" name="date" value="${date}">
-            <div class="title-content"><img src="../img/right_button.png" alt="right" id="right" class="right triangle-button"></div>
-      </form>
+	</div>
+	<form action="../user/scheduleshowall" method="post" id="right-form">
+		<input type="hidden" name="flag" value="1"> <input
+			type="hidden" name="scheduleDate" value="${scheduleDate}">
+		<div class="title-content">
+			<img src="../img/right_button.png" alt="right" id="right"
+				class="right triangle-button">
+		</div>
+	</form>
 
-<input type="hidden" id="list" value='${json}' style="display:none">
-<input type="hidden" id="name-list" value='${json_name}' style="display:none">
+	<div><a href="../user/calendar"><img src="../img/back_buttom.png" alt="back-buttom" class="back-btn"></a></div>
+
+	<input type="hidden" id="list" value='${json}' style="display:none">
+	<input type="hidden" id="name-list" value='${json_name}' style="display:none">
 
 </article>
 <%@ include file="/WEB-INF/views/layout/common/footer.jsp" %>

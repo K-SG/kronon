@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.time.Period;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,6 +19,7 @@ import javax.servlet.http.HttpSession;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import jp.co.benesse.calc.Calc;
 import jp.co.benesse.dataaccess.cm.ConnectionManager;
 import jp.co.benesse.dataaccess.dao.ScheduleDAO;
 import jp.co.benesse.dataaccess.dao.UserDAO;
@@ -38,29 +40,40 @@ public class ScheduleShowAllServlet extends HttpServlet {
 		//SessionからユーザーIDを取ってくる
 		int userId= 1;//(int) session.getAttribute("userId");
 		//どこからこのサーブレットに来たか判断するためのフラグを取ってくる
-		String flag = (String) request.getAttribute("flag");
+		String flag = request.getParameter("flag");
+		String calendarDate = request.getParameter("date");
+		System.out.println("flag"+flag);
 
 		List<ArrayList<ScheduleBean>> getOneDayScheduleLists = new ArrayList<>();
 		List<ScheduleBean> getOneDayScheduleList = new ArrayList<>();
 		LocalDate scheduleDate;
-		if(flag==null){
-			Date date = Date.valueOf("2020-07-10");
-			scheduleDate=date.toLocalDate();//LocalDate.now();//今日の日付取得
+		if(flag==null ){
+			if( calendarDate!=null){
+				scheduleDate =LocalDate.parse(calendarDate, DateTimeFormatter.ofPattern("yyyy-MM-dd"));	//日付取得
+			}else{
+				scheduleDate=LocalDate.now();//今日の日付取得
+			}
 		}
-		else if(flag.equals('0')){	//先日ボタンが押されたとき
-			scheduleDate = (LocalDate)request.getAttribute("scheduleDate");	//日付取得
-			scheduleDate = scheduleDate.minus(Period.ofDays(1));//日付を-1する
+		else if(flag.equals("0")){	//先日ボタンが押されたとき
+			String dateStr = request.getParameter("scheduleDate");
+			LocalDate localDate =LocalDate.parse(dateStr, DateTimeFormatter.ofPattern("yyyy-MM-dd"));	//日付取得
+			scheduleDate = localDate.minus(Period.ofDays(1));//日付を-1する
 		}
-		else if(flag.equals('1')){		//翌日ボタンが押されたとき
-			scheduleDate = (LocalDate)request.getAttribute("scheduleDate");//日付取得
-			scheduleDate = scheduleDate.plus(Period.ofDays(1));//日付を+1する
+		else if(flag.equals("1")){		//翌日ボタンが押されたとき
+			String dateStr = request.getParameter("scheduleDate");
+			LocalDate localDate =LocalDate.parse(dateStr, DateTimeFormatter.ofPattern("yyyy-MM-dd"));	//日付取得
+			scheduleDate = localDate.plus(Period.ofDays(1));//日付を+1する
 		}
 		else{	//それ以外
 			scheduleDate=LocalDate.now();//今日の日付取得
 		}
+
+		//yyyy/MM/dd(日)の形式の取得
+		Date sqlDate = Date.valueOf(scheduleDate);
+		String displayDate = Calc.convertActualDate(sqlDate);
 		//日付をリクエスト領域にセットする
+		request.setAttribute("displayDate",displayDate);
 		request.setAttribute("scheduleDate",scheduleDate);
-		System.out.println(scheduleDate);
 
 		ConnectionManager connectionManager = new ConnectionManager();
 		ScheduleDAO scheduleDAO = null;
