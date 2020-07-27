@@ -27,7 +27,7 @@ public class ScheduleDeleteServlet extends HttpServlet {
 //		HttpSession session = request.getSession(true);
 		int id = Integer.parseInt(request.getParameter("scheduleId"));
 		ScheduleBean scheBean = (ScheduleBean)request.getAttribute("scheBean");
-		System.out.println(scheBean);
+		System.out.println("jspからの受取"+scheBean);
 
 		ConnectionManager connectionManager = new ConnectionManager();
 
