@@ -1,6 +1,7 @@
 package gomi;
 
 import java.io.IOException;
+import java.sql.Connection;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,6 +10,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import jp.co.benesse.dataaccess.cm.ConnectionManager;
+import jp.co.benesse.dataaccess.dao.ScheduleDAO;
+import jp.co.benesse.dataaccess.value.ScheduleBean;
 
 /**
  * Servlet implementation class TestShowServlet
@@ -29,21 +34,33 @@ public class TestShowServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//int id = Integer.parseInt(request.getParameter("id"));
+        int id = 2 ;
+		ConnectionManager connectionManager = new ConnectionManager();
+		ScheduleBean scheduleBean = new ScheduleBean();
 
-		request.setAttribute("owner", "樋口");
-		request.setAttribute("actualTime", "2時間");
-		request.setAttribute("scheduleDate", "2020/07/11");
-		request.setAttribute("startTime", "10:00");
-		request.setAttribute("endTime", "11:00");
-		request.setAttribute("place", "在宅");
-		request.setAttribute("title", "テスト");
-		request.setAttribute("content", "テストテスト");
+
+
+			Connection connection = connectionManager.getConnection();
+			ScheduleDAO scheduleDAO = new ScheduleDAO(connection);
+
+			if (scheduleDAO.isDeleted(id)){
+				RequestDispatcher dispatcher = request.getRequestDispatcher("../WEB-INF/views/error/error.jsp");
+				dispatcher.forward(request, response);
+				return;
+			}
+
+			scheduleBean = scheduleDAO.getScheduleByScheduleId(id);
+			System.out.println(scheduleBean);
+			request.setAttribute("scheduleBean", scheduleBean);
 		HttpSession session = request.getSession(true);
-		session.setAttribute("userName", "森岡");
+		session.setAttribute("userId", "1");
 		RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/views/schedule/schedule_detail.jsp");
 		dispatcher.forward(request, response);
 		return;
+
 	}
+
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

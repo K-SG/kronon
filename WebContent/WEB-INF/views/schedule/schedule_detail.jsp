@@ -21,38 +21,38 @@
       <table class=schedule_detail>
 
         <tr>
-          <td><c:out value="${owner}" /></td>
-          <td><c:out value="${actualTime}" /></td>
+          <td>名前:<c:out value="${scheduleBean.userName}" /></td>
+          <td>実績時間:<c:out value="${scheduleBean.actualTime}" /></td>
         </tr>
 
         <tr>
-          <td><c:out value="${scheduleDate}" /> <c:out value="${startTime}" />～
-          <c:out value="${endTime}" /></td>
+          <td><c:out value="${scheduleBean.scheduleDate}" /> <c:out value="${scheduleBean.startTime}" />～
+          <c:out value="${scheduleBean.endTime}" /></td>
 
 
-          	<c:if test="${place=='オフィス'}" >
-			<td class=show-place1><c:out value="${place}" /></td>
+          	<c:if test="${scheduleBean.place=='1'}" >
+			<td class=show-place1>オフィス</td>
 			</c:if>
 
-			<c:if test="${place=='在宅'}" >
-			<td class=show-place2><c:out value="${place}" /></td>
+			<c:if test="${scheduleBean.place=='2'}" >
+			<td class=show-place2>在宅</td>
 			</c:if>
 
-			<c:if test="${place=='外出'}" >
-			<td class=show-place3><c:out value="${place}" /></td>
+			<c:if test="${scheduleBean.place=='3'}" >
+			<td class=show-place3>外出</td>
 			</c:if>
 
         </tr>
 
         <tr>
           <td colspan="2">
-            <c:out value="${title}" />
+            <c:out value="${scheduleBean.title}" />
           </td>
         </tr>
 
         <tr>
           <td colspan="2">
-            <c:out value="${content}" />
+            <c:out value="${scheduleBean.content}" />
           </td>
         </tr>
 
@@ -63,14 +63,18 @@
 <div class="kronon-banzai"><img alt="banzai" src="./img/kronon/kronon_banzai.png"></div>
 <div class="ok-button back-popup-button">戻る</div>
 
-
-<c:if test="${owner== userName}" >
+<!-- sesseionスコープのuserIDとスケジュールのIDを比較 -->
+<c:if test="${scheduleBean.userId== userId}" >
 <div class="flex_test-box">
     <div class="flex_test-item">
+        <a href="scheduleEdit?schedule_id=${scheduleBean.sheduleId}">
         <div class="ok-button">修正</div>
+        </a>
     </div>
     <div class="flex_test-item">
+    <a href="scheduleEdit?schedule_id=${scheduleBean.sheduleId}">
         <div class="ok-button">実績入力</div>
+        </a>
     </div>
     <div class="flex_test-item">
        <div class="ok-button large-popup-button">削除</div>
@@ -89,21 +93,21 @@
         <table class="popup-table">
           <tr>
             <th class="th">名前：</th>
-            <td><c:out value="${owner}" /></td>
+            <td><c:out value="${scheduleBean.userName}" /></td>
           </tr>
           <tr>
             <th>予定日時：</th>
-            <td><c:out value="${scheduleDate}" />
-          <c:out value="${startTime}" />～
-          <c:out value="${endTime}" /></td>
+            <td><c:out value="${scheduleBean.scheduleDate}" />
+          <c:out value="${scheduleBean.startTime}" />～
+          <c:out value="${scheduleBean.endTime}" /></td>
           </tr>
           <tr>
             <th>タイトル：</th>
-            <td><c:out value="${title}" /></td>
+            <td><c:out value="${scheduleBean.title}" /></td>
           </tr>
           <tr>
             <th class="last-table">内容：</th>
-            <td class="last-table"><c:out value="${content}" /></td>
+            <td class="last-table"><c:out value="${scheduleBean.content}" /></td>
           </tr>
         </table>
       </div>
