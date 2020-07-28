@@ -47,7 +47,7 @@ public class ActualDetailServlet extends HttpServlet {
 			System.out.println(scheduleBean);
 			request.setAttribute("scheduleBean", scheduleBean);
 
-			RequestDispatcher dispatcher = request.getRequestDispatcher("kronon/WEB-INF/views/actual/actual_detail.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("../WEB-INF/views/actual/actual_detail.jsp");
 			dispatcher.forward(request, response);
 			return;
 

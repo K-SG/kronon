@@ -31,15 +31,15 @@
 			<span id="endTime"><c:out value="${scheduleBean.endTime}" /></span>
 		  </td>
 
-          	<c:if test="${place=='0'}" >
+          	<c:if test="${scheduleBean.place=='0'}" >
 			<td class=show-place1>オフィス</td>
 			</c:if>
 
-			<c:if test="${place=='1'}" >
+			<c:if test="${scheduleBean.place=='1'}" >
 			<td class=show-place2>在宅</td>
 			</c:if>
 
-			<c:if test="${place=='2'}" >
+			<c:if test="${scheduleBean.place=='2'}" >
 			<td class=show-place3>外出</td>
 			</c:if>
 
