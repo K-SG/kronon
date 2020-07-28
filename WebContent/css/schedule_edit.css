@@ -17,6 +17,7 @@ article{
 	background-size: 95%;
 	top:0vw;
 	position:relative;
+	margin-bottom:2vw;/* ボタンがフッターに埋まらないように */
 }
 
 
