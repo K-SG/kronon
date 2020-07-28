@@ -31,7 +31,7 @@ if (endHour.slice(0, 1) == 0) {
 
 
 	/*DBと照合した後のポップアップフラグ*/
-	var popFlag = document.getElementById('flag').value;
+	let popFlag = document.getElementById('flag').value;
 
 	/*登録が完了した場合*/
 	  if(popFlag === '0'){
@@ -56,6 +56,7 @@ if (endHour.slice(0, 1) == 0) {
     let place = document.getElementById('edit-place').value;
     let title=document.getElementById('title').value;
     let content=document.getElementById('content').value;
+    let popFlag;
 
     let d = new Date(date);
     let weekday = '日月火水木金土'[d.getDay()];
@@ -115,7 +116,7 @@ if (endHour.slice(0, 1) == 0) {
         $('#time-msg').html(year + '/' + month + '/' + day +'(' + weekday + ')' + startHour +':'+ startMin +'～'+ endHour +':'+ endMin);
         $('#title-msg').html(title);
         $('#content-msg').html(content);
-    	$('.confirm-popup').fadeIn();
+    	$('#confirm-popup2').fadeIn();
         return;
     }
   });
@@ -134,15 +135,15 @@ if (endHour.slice(0, 1) == 0) {
 
     /*キャンセルボタンを押した際のポップアップ表示*/
     $('#cancel-button').click(function () {
-        $('.back-popup').fadeIn();
+        $('.cancel-popup').fadeIn();
         return;
   });
 
   /*ポップアップを閉じる際の動き*/
   $('.close-popup').click(function () {
-    $('.confirm-popup').fadeOut();
+    $('#confirm-popup2').fadeOut();
     $('.error-popup').fadeOut();
-    $('.back-popup').fadeOut();
+    $('.cancel-popup').fadeOut();
     $('.complete-popup').fadeOut();
   });
 
