@@ -66,7 +66,7 @@ public class ScheduleBean {
 	private String estimateTime;
 
 	/**
-	 * json整形用に使う「hh時間mm分」
+	 * json整形用
 	 */
 	private String jsonDate;
 

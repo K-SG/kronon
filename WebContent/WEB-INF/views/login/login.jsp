@@ -34,7 +34,7 @@ pageEncoding="UTF-8"%>
       </div>
 
       <form action="usernew">
-        <input type="button" class="register-button" value="新規登録">
+        <input type="submit" class="register-button" value="新規登録">
       </form>
 
   <!--エラーポップアップ------------------------------------------------------------------->
