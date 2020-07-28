@@ -75,7 +75,7 @@ public class ScheduleUpdateServlet extends HttpServlet {
 
 			//予定が重複しているかをチェック
 			check = scheduleDAO.isBooking(scheduleBean);
-			if(check == true) {
+			if(check != true) {
 				request.setAttribute("popFlag",0);//予定重複フラグ
 				request.setAttribute("scheduleBean", scheduleBean);
 				request.setAttribute("startTimeHour", startTimeHour);//開始時間
@@ -91,6 +91,7 @@ public class ScheduleUpdateServlet extends HttpServlet {
 			//予定修正
 
 			int result = scheduleDAO.updateSchedule(scheduleId,date,startTime,endTime,title,content,place);
+			System.out.println(result);
 			if(result != 1){
 				System.out.println("アップデートができていない");
 				//error.jsp（エラー画面）にforwardする

@@ -25,9 +25,7 @@ public class ScheduleEditServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String scheduleIdStr = request.getParameter("scheduleId");
-//		String scheduleIdStr = "1";
 		int scheduleId = Integer.parseInt(scheduleIdStr);
-
 		ConnectionManager connectionManager = new ConnectionManager();
 		try {
 			Connection connection = connectionManager.getConnection();

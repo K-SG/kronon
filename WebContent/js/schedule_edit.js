@@ -130,7 +130,7 @@ if (endHour.slice(0, 1) == 0) {
   /*登録完了ポップアップのOKボタン押下時の遷移先*/
   $('.next-popup').click(function () {
   	let scheduleId = document.getElementById('set-schedule-id').value;
-    location.href= "user/scheduledetail?id="+ scheduleId ;
+    location.href= "scheduledetail?scheduleId="+ scheduleId ;
   });
 
     /*キャンセルボタンを押した際のポップアップ表示*/
