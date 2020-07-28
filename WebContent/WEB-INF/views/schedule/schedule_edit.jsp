@@ -152,7 +152,7 @@
           <p class=edit-msg></p>
         </div>
         <div class="ok-button close-popup">OK</div>
-        <img src="/kronon/img/kronon/kronon_question.png" class="pop-img"> </div>
+        <img src="/kronon/img/kronon/kronon_komatta.png" class="pop-img"> </div>
       </div>
     </div>
    <!--エラーまたは完了ポップアップここまで-------------------------------------------------------------->
