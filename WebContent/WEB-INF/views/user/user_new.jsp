@@ -22,8 +22,8 @@
 			<div class="create-user-note">表示名は日本語で15文字以内、パスワードは半角英数字で8～20文字、<br>大文字・小文字・数字を必ず使用して設定してください。</div>
 
 			<!-- <form action="/WEB-INF/views/user/usercreate" method="post" id="user_create_form" class="user_create_form"> -->
-			<form action="http://localhost:8080/kronon/user/usercreate" method="post" class="user_create_form" id="id_create_form">
-				<input type="text" name="userName" id="create_name" class="create_textbox" placeholder="表示名" maxlength="15" value=${userName }><br>
+			<form action="http://localhost:8080/kronon/user/usercreate" method="post" class="user_create_form" id="id_create_form" >
+				<input type="text" name="userName" id="create_name" class="create_textbox" placeholder="表示名" maxlength="15" value=${username }><br>
 				<input type="text" name="mail" id="create_mail" class="create_textbox" placeholder="メールアドレス" maxlength="100" value="${mail}"><br>
 				<input type="password" name="password" id="create_password1" class="create_textbox" placeholder="パスワード" maxlength="20" value=${password }><br>
 				<input type="password" name="password" id="create_password2" class="create_textbox" placeholder="パスワード確認" maxlength="20" value=${password }><br>
@@ -68,11 +68,11 @@
 										<td><div id="confirmUserName"></div></td>
 									</tr>
 									<tr>
-										<th>メールアドレス</th>
-										<td><div id="confirmMail"></div></td>
+										<th>メールアドレス：</th>
+										<td  class="confirmMailView"><span ><div id="confirmMail"></div></span></td>
 									</tr>
 									<tr>
-										<th>パスワード</th>
+										<th>パスワード：</th>
 										<td><div id="confirmPassword"></div></td>
 									</tr>
 								</table>
@@ -107,6 +107,7 @@
 		</div>
 		<div class="user-create-button-return"><img alt="戻る" src="/kronon/img/back_buttom.png" class="back-popup-button"></div>
 	</article>
+
 	<script src="js/common.js"></script>
 	<script src="../js/common.js"></script>
 	<script src="js/user_new.js"></script>

@@ -40,9 +40,9 @@ public class Test {
 		ConnectionManager connectionManager = new ConnectionManager();
 		Connection connection = connectionManager.getConnection();
 		UserDAO userDAO = new UserDAO(connection);
-		UserBean bean=userDAO.findUser("test@email.com",  CryptographyLogic.encryptStr("9KY7fxp3e"));
-		assertThat(bean.getUserName(),is("test"));
-		assertThat(bean.getUserId(),is(2));
+		UserBean bean=userDAO.findUser("sugi@gmail.com",  CryptographyLogic.encryptStr("Kronon1122"));
+		assertThat(bean.getUserName(),is("杉"));
+		assertThat(bean.getUserId(),is(1));
 	}
 	@org.junit.Test
 	public void userCreateTest(){
@@ -60,8 +60,8 @@ public class Test {
 		Connection connection = connectionManager.getConnection();
 		UserDAO userDAO = new UserDAO(connection);
 		String answerStr = null;
-		answerStr = userDAO.getUserName(2);
-		assertThat(answerStr, is("test"));
+		answerStr = userDAO.getUserName(1);
+		assertThat(answerStr, is("杉"));
 		System.out.println(answerStr);
 	}
 	@org.junit.Test
@@ -70,7 +70,7 @@ public class Test {
 		Connection connection = connectionManager.getConnection();
 		UserDAO userDAO = new UserDAO(connection);
 		Boolean answerFlg;
-		answerFlg = userDAO.isBooking("test@email.com");
+		answerFlg = userDAO.isBooking("sugi@gmail.com");
 		assertThat(answerFlg, is(true));
 		System.out.println(answerFlg);
 	}

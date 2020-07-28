@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <%@ include file="/WEB-INF/views/layout/common/link.jsp" %>
 <link rel="stylesheet" href="/kronon/css/schedule_table.css">
-<title>Insert title here</title>
+<title>予定一覧</title>
 </head>
 <body>
 
