@@ -19,15 +19,13 @@ import jp.co.benesse.dataaccess.value.ScheduleBean;
 public class ScheduleDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		doPost(request, response);
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-//		HttpSession session = request.getSession(true);
-//		int id = Integer.parseInt(request.getParameter("scheduleId"));
-
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
 		int scheduleId = Integer.parseInt(request.getParameter("scheduleId"));
 		String userName = request.getParameter("userName");
@@ -49,7 +47,6 @@ public class ScheduleDeleteServlet extends HttpServlet {
 		scheduleBean.setTitle(title);
 		scheduleBean.setContent(content);
 
-
 		ConnectionManager connectionManager = new ConnectionManager();
 
 		try {
@@ -57,7 +54,7 @@ public class ScheduleDeleteServlet extends HttpServlet {
 			Connection connection = connectionManager.getConnection();
 			ScheduleDAO scheduleDAO = new ScheduleDAO(connection);
 
-			if (scheduleDAO.isDeleted(scheduleId)){
+			if (scheduleDAO.isDeleted(scheduleId)) {
 				RequestDispatcher dispatcher = request.getRequestDispatcher("../WEB-INF/views/error/error.jsp");
 				dispatcher.forward(request, response);
 				return;
@@ -66,22 +63,21 @@ public class ScheduleDeleteServlet extends HttpServlet {
 			scheduleDAO.deleteSchedule(scheduleId);
 			connectionManager.commit();
 
-			request.setAttribute("popFlag",1);
-
-			request.setAttribute("scheduleBean",scheduleBean);
-
+			request.setAttribute("popFlag", 1);
+			request.setAttribute("scheduleBean", scheduleBean);
 
 			RequestDispatcher dispatcher = request.getRequestDispatcher("../WEB-INF/views/schedule/schedule_detail.jsp");
 			dispatcher.forward(request, response);
 			return;
 
 		} catch (RuntimeException e) {
+
 			connectionManager.rollback();
 			throw e;
 
 		} finally {
+
 			connectionManager.closeConnection();
 		}
 	}
-
 }
