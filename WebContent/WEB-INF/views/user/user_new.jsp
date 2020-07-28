@@ -107,13 +107,7 @@
 		</div>
 		<div class="user-create-button-return"><img alt="戻る" src="/kronon/img/back_buttom.png" class="back-popup-button"></div>
 	</article>
-	<script type="text/javascript">
-	$(function() {
-		  $(document).on("keypress", "input:not(.allow_submit)", function(event) {
-		    return event.which !== 13;
-		  });
-		});
-	</script>
+
 	<script src="js/common.js"></script>
 	<script src="../js/common.js"></script>
 	<script src="js/user_new.js"></script>
