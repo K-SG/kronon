@@ -32,7 +32,7 @@
 			<tr><td id="actual-date"><c:out value="${scheduleBean.scheduleDateActual}"/><span id="startTime" class="startTime"><c:out value="${scheduleBean.startTime}" /></span>～
 			<span id="endTime" class="endTime"><c:out value="${scheduleBean.endTime}" /></span></td><td id="actual-place"></td></tr>
 			<tr><td class="actual-title" colspan="2"><p><c:out value="${scheduleBean.title}" /></p></td></tr>
-			<tr><td class="sctual-naiyou" colspan="2"><p><c:out value="${scheduleBean.content}" /></p></td></tr>
+			<tr><td class="actual-naiyou" colspan="2"><p><c:out value="${scheduleBean.content}" /></p></td></tr>
 			</table>
 			</div>
 			<div class="actual-regist-area-1">

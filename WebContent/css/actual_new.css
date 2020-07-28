@@ -2,7 +2,7 @@
 /* @import url(sanitize.css); */
 
 article{
-	padding-bottom:5vw;
+	margin-bottom:10vw;;
 }
 
 /*予定登録ルーズリーフエリアの枠*/
@@ -16,6 +16,7 @@ article{
 	background-size: 95%;
 	top:0vw;
 	position:relative;
+	margin-bottom:2vw;
 }
 
 
@@ -43,22 +44,19 @@ article{
 	font-size : 1.8vw;
 	color : #333333;
 	color : rgb(51, 51, 51);
-	width: 100%;;
+	width: 95%;;
 	height: 2.5vw;
 	text-align: center;
 	padding-top:2.5vw;
-	float:right;
+	float:left;
 }
 
 /*[予定登録]の下線*/
 .actual-regist-border
 {
-	border-style : Solid;
-	border-color : #333333;
-	border-color : rgba(51, 51, 51, 1);
-	border-width : 1px;
+	border-bottom:solid #333 0.1vw;
 	width: 40vw;
-	margin-left:5vw;
+	margin-left:4.5vw;
 	float:left;
 }
 
@@ -79,7 +77,7 @@ article{
 	float:right;
 	text-align:left;
 	width: 45vw;
-	height: 11vw;
+	/* height: 11vw; */
 	font-size:1.0vw;
 }
 
@@ -89,6 +87,7 @@ article{
   border:0.02vw solid #666;
   margin-top:1vw;
   background-color:#FEF0DE;
+  /* width:35vw; */
 }
 
 .actual-table td{
@@ -109,7 +108,7 @@ article{
 
 
 .actual-title{
-	width:38vw;
+	width:37vw;
 	height:2.5vw !important;
 
 }
@@ -122,9 +121,9 @@ article{
 }
 
 .actual-naiyou{
-	height:4vw !important;
+	/* height:4vw !important; */
 	overflow: hidden;
-	width:38vw;
+	width:37vw;
 }
 /* ２行まで表示。2行以上になる場合は…を表示 */
 .actual-naiyou p{
@@ -137,7 +136,7 @@ article{
 /*1段目のエリアの各エリアの実績時間*/
 .actual-regist-area-1-block {
 	width: 14vw;
-	height: 4.8vw;
+	/* height: 4.8vw; */
 	float:left;
 	text-align: left;
 	margin-top: 1vw;
