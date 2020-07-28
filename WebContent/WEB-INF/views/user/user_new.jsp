@@ -68,11 +68,11 @@
 										<td><div id="confirmUserName"></div></td>
 									</tr>
 									<tr>
-										<th>メールアドレス</th>
-										<td><div id="confirmMail"></div></td>
+										<th>メールアドレス：</th>
+										<td  class="confirmMailView"><span ><div id="confirmMail"></div></span></td>
 									</tr>
 									<tr>
-										<th>パスワード</th>
+										<th>パスワード：</th>
 										<td><div id="confirmPassword"></div></td>
 									</tr>
 								</table>

@@ -71,3 +71,9 @@ input[type="text"]:focus {
 	height: auto;
 }
 
+.confirmMailView span {
+	word-break: break-all;
+	float: left;
+	width: 22vw;
+	-webkit-line-clamp: 5;/*...表示(5行)	*/
+}
