@@ -21,7 +21,7 @@ $(function () {
 
   /*削除完了ポップアップでのOKボタン*/
   $('.next-popup').click(function () {
-	    location.href= "user/actualdetail";
+	    location.href= "/user/actualindex";
 	  });
 
   $('.large-popup').click(function () {
