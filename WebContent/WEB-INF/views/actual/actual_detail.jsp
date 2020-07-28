@@ -31,15 +31,15 @@
 			<span id="endTime"><c:out value="${scheduleBean.endTime}" /></span>
 		  </td>
 
-          	<c:if test="${place=='0'}" >
+          	<c:if test="${scheduleBean.place=='0'}" >
 			<td class=show-place1>オフィス</td>
 			</c:if>
 
-			<c:if test="${place=='1'}" >
+			<c:if test="${scheduleBean.place=='1'}" >
 			<td class=show-place2>在宅</td>
 			</c:if>
 
-			<c:if test="${place=='2'}" >
+			<c:if test="${scheduleBean.place=='2'}" >
 			<td class=show-place3>外出</td>
 			</c:if>
 
@@ -98,13 +98,14 @@
           <c:out value="${scheduleBean.endTime}" /></td>
           </tr>
           <tr>
-            <th>タイトル：</th>
-            <td><c:out value="${scheduleBean.title}" /></td>
-          </tr>
-          <tr>
-            <th>内容：</th>
-            <td><c:out value="${scheduleBean.content}" /></td>
-          </tr>
+			<th>タイトル：</th>
+			<td><span class="actual-input-area-4"><c:out value="${scheduleBean.title}" /></span></td>
+			</tr>
+			<tr>
+			<th class="last-table">内容：</th>
+			<td class="last-table"><span class="actual-input-area-4"><c:out
+					value="${scheduleBean.content}" /></span></td>
+		</tr>
 
           <tr>
             <th class="last-table">コメント：</th>
