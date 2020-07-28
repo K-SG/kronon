@@ -15,7 +15,7 @@
 <%@ include file="../layout/common/header.jsp" %>
 
 	<article>
-		<form action="schedulecreate" method="post" class="actual-new-form">
+		<form action="acutualupdate" method="post" class="actual-new-form">
 		<input type="hidden" value="${popFlag}" id="flag">
 		<div class="actual-regist-area">
 <!-- 		<div class="loose-leaf"><img src="../img/loose_leaf.svg" alt="loose-leaf" id="loose-leaf"></div> -->
@@ -25,15 +25,18 @@
 			<div class="actual-regist-border"></div>
 			<div class="table-container">
 			<input type="hidden" name="scheduleDate" value="${scheduleBean.scheduleDate}" id="set-date">
+			<input type="hidden" value="${scheduleBean.startTime}" id="set-start-time">
+			<input type="hidden" value="${scheduleBean.endlTime}" id="set-end-time">
 			<input type="hidden" name="schedulePlace" value="${scheduleBean.schedulePlace}" id="set-place">
-			<table>
-			<tr><td class="actual-date">日付入れるとこ</td><td class="actual-place">場所入れるとこ</td></tr>
-			<tr><td>タイトルいれるとこ</td></tr>
-			<tr><td>内容</td></tr>
+			<table class="actual-table">
+			<tr><td id="actual-date">日付入れるとこ</td><td id="actual-place">場所入れるとこ</td></tr>
+			<tr><td class="actual-title" colspan="2"><c:out value="${scheduleBean.title}" /></td></tr>
+			<tr><td class="sctual-naiyou" colspan="2"><c:out value="${scheduleBean.content}" /></td></tr>
 			</table>
+
 			</div>
 			<div class="actual-regist-area-1">
-					<div class="actual-regist-font-lev1">実績時刻<span>*</span></div>
+					<div class="actual-regist-font-lev1">実績時間<span>*</span></div>
 					<div class="actual-regist-time">
 					<input type="hidden" value="${scheduleBean.actualTime}" id="set-start-time">
 						<select name="actualHour" id="actual-hour">
@@ -64,9 +67,9 @@
 					<div class="actual-regist-time-text">分</div>
 				</div>
 			<div class="actual-regist-area-4">
-				<div class="actual-regist-font-lev1">内容</div>
+				<div class="actual-regist-font-lev1">コメント</div>
 				<div class="actual-regist-content">
-					<textarea name="content" id="content" rows="13" cols="40" maxlength="1440" placeholder="予定の内容を1440字以内で入力してください"><c:out value="${scheduleBean.content}" /></textarea>
+					<textarea name="content" id="content" rows="13" cols="40" maxlength="1440" placeholder="コメントを1440字以内で入力してください"><c:out value="${scheduleBean.comment}" /></textarea>
 				</div>
 			</div>
 		  </div>
@@ -79,7 +82,7 @@
 
 			<!--キャンセルボタン----->
 				<div class=actual-regist-button-right>
-				<input type="button" class="ok-button" id="cancel-button" value="キャンセル">
+					<input type="button" class="ok-button" id="cancel-button" value="キャンセル">
 				</div>
 			</div>
 			<div class="clear"></div>
@@ -162,7 +165,8 @@
 				<div class="close-popup"><i class="fa fa-2x fa-times"></i></div>
 				<div class="pop-container-inner">
 					<div class="message-container"><p class=create-msg></p></div>
-					<div class="ok-button next-popup">OK</div>
+					<div class="ok-button scheduleshowall-popup">予定表画面へ</div>
+					<div class="ok-button actualindex-popup">実績一覧へ</div>
 					<img src="/kronon/img/kronon/kronon_star.png" class="pop-img">
 				</div>
 			</div>
