@@ -328,7 +328,6 @@ public class ScheduleDAO {
 	 */
 	public List<ScheduleBean> selectSchedule(int userId, String title) {
 		List<ScheduleBean> scheduleBeanList = new ArrayList<>();
-
 		title = "%" + title + "%";
 
 		PreparedStatement preparedStatement = null;
