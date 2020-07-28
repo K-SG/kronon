@@ -4,7 +4,7 @@
 <html>
 <<<<<<< HEAD
 <head>
- <link rel="stylesheet" href="css/error.css">
+ <link rel="stylesheet" href="/kronon/css/error.css">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <%@ include file="../layout/common/link.jsp" %>
 <title>エラー画面</title>
@@ -19,7 +19,7 @@
 
 </article>
 <%@ include file="../layout/common/footer.jsp" %>
-<script src="js/common.js"></script>
+<script src="/kronon/js/common.js"></script>
 </body>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
