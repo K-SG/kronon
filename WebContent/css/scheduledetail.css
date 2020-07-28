@@ -1,5 +1,5 @@
 .kronon-banzai img{
-	margin-top: -10vw;
+	margin-top: -8vw;
 	float:right;
 	width: 17vw;
 	height:auto;
@@ -24,7 +24,7 @@
 .user-create-button-return {
 	float:left;
 	margin-left: 5vw;
-	margin-top: -1.5vw;
+	margin-top: -8vw;
 }
 .user-create-button-return img {
 	width: min(50vw,5vw);
