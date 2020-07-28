@@ -71,12 +71,10 @@ public class ScheduleDeleteServlet extends HttpServlet {
 			return;
 
 		} catch (RuntimeException e) {
-
 			connectionManager.rollback();
 			throw e;
 
 		} finally {
-
 			connectionManager.closeConnection();
 		}
 	}
