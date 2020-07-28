@@ -27,14 +27,15 @@
   top : 200vw;
   left : 23vw;
   margin-bottom: 0vw;
-  margin-top: -20vh;
+  margin-top: -20vw;
 }
 
 .schedule_detail{
-  margin: 1vw;
+  margin-top: 4vw;
+
   border: 0.2vw white solid;
   border-collapse: collapse;
-  width : 48vw;
+  width : 49vw;
   height: auto;
 }
 
