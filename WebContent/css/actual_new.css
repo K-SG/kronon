@@ -2,7 +2,7 @@
 /* @import url(sanitize.css); */
 
 article{
-	padding-bottom:5vw;
+	margin-bottom:10vw;;
 }
 
 /*予定登録ルーズリーフエリアの枠*/
@@ -16,6 +16,7 @@ article{
 	background-size: 95%;
 	top:0vw;
 	position:relative;
+	margin-bottom:2vw;
 }
 
 
