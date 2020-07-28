@@ -30,8 +30,9 @@
 			<input type="hidden" name="schedulePlace" value="${scheduleBean.place}" id="set-place">
 			<table class="actual-table">
 			<tr><td id="actual-date">日付入れるとこ</td><td id="actual-place">場所入れるとこ</td></tr>
-			<tr><td class="actual-title" colspan="2"><p><c:out value="${scheduleBean.title}" /></p></td></tr>
-			<tr><td class="sctual-naiyou" colspan="2"><p><c:out value="${scheduleBean.content}" /></p></td></tr>
+			<tr><td class="actual-title" colspan="2"><p>あああああああああああああああああああああああああああああああああああああああああああああああああああああああ<c:out value="${scheduleBean.title}" /></p></td></tr>
+			<tr><td class="actual-naiyou" colspan="2"><p>あああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ
+			<c:out value="${scheduleBean.content}" /></p></td></tr>
 			</table>
 			</div>
 			<div class="actual-regist-area-1">
