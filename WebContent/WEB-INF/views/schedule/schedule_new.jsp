@@ -20,15 +20,18 @@
 		<div class="loose-leaf"><img src="../img/loose_leaf.svg" alt="loose-leaf" id="loose-leaf"></div>
 		  <div class="schedule-regist-area-inner">
 			<div class="schedule-regist-font-lev0">予定登録</div>
+			<input type="hidden" name="scheduleId" value="${scheduleBean.scheduleId}" id="set-schedule-id">
 			<div class="schedule-regist-border"></div>
 			<div class="schedule-regist-area-1">
 				<div class="schedule-regist-area-1-block">
 					<div class="schedule-regist-font-lev1">日付<span>*</span></div>
+					<input type="hidden" value="${scheduleBean.scheduleDate}" id="set-date">
 					<div class="schedule-regist-date-area"><input name="scheduleDate" id="date" value="${scheduleBean.scheduleDate}" type="date"/></div>
 				</div>
 				<div class="schedule-regist-area-1-block">
 					<div class="schedule-regist-font-lev1">開始時刻<span>*</span></div>
 					<div class="schedule-regist-time">
+					<input type="hidden" value="${scheduleBean.startTime}" id="set-start-time">
 						<select name="startTimeHour" id="new-start-hour">
 							<option value="8">8</option>
 							<option value="9">9</option>
@@ -61,6 +64,7 @@
 				<div class="schedule-regist-area-1-block">
 					<div class="schedule-regist-font-lev1">終了時刻<span>*</span></div>
 					<div class="schedule-regist-time">
+					<input type="hidden" value="${scheduleBean.endTime}" id="set-end-time">
 						<select name="endTimeHour" id="new-end-hour">
 							<option value="8">8</option>
 							<option value="9">9</option>
@@ -95,6 +99,7 @@
 			<div class="schedule-regist-area-2">
 				<div class="schedule-regist-font-lev1">場所<span>*</span></div>
 				<div class="schedule-regist-place">
+				<input type="hidden" value="${scheduleBean.place}" id="set-place">
 						<select name="place" id="new-place">
 							<option value="0">オフィス</option>
 							<option value="1">在宅</option>
