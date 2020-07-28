@@ -14,7 +14,7 @@
 <%@ include file="../layout/common/header.jsp" %>
 
 	<article>
-		<form action="schedulecreate" method="get" class="actual-new-form">
+		<form action="schedulecreate" method="post" class="actual-new-form">
 		<input type="hidden" value="${popFlag}" id="flag">
 		<div class="actual-regist-area">
 <!-- 		<div class="loose-leaf"><img src="../img/loose_leaf.svg" alt="loose-leaf" id="loose-leaf"></div> -->
@@ -23,8 +23,9 @@
 			<input type="hidden" name="scheduleId" value="${scheduleBean.scheduleId}" id="set-actual-id">
 			<div class="actual-regist-border"></div>
 			<div class="table-container">
+			<input type="hidden" name="scheduleId" value="${scheduleBean.scheduleDate}" id="set-actual-date">
 			<table>
-			<tr><td>日付入れるとこ</td><td>場所入れるとこ</td></tr>
+			<tr><td class="actual-new">日付入れるとこ</td><td>場所入れるとこ</td></tr>
 			<tr><td>タイトルいれるとこ</td></tr>
 			<tr><td>内容</td></tr>
 			</table>
