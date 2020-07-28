@@ -26,7 +26,7 @@ public class ActualDetailServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// int id = Integer.parseInt(request.getParameter("id"));
-		int id = 2;
+		int scheduleId = 2;
 
 		ConnectionManager connectionManager = new ConnectionManager();
 		ScheduleBean scheduleBean = new ScheduleBean();
@@ -36,13 +36,13 @@ public class ActualDetailServlet extends HttpServlet {
 			Connection connection = connectionManager.getConnection();
 			ScheduleDAO scheduleDAO = new ScheduleDAO(connection);
 
-			if (scheduleDAO.isDeleted(id)) {
+			if (scheduleDAO.isDeleted(scheduleId)) {
 				RequestDispatcher dispatcher = request.getRequestDispatcher("../WEB-INF/views/error/error.jsp");
 				dispatcher.forward(request, response);
 				return;
 			}
 
-			scheduleBean = scheduleDAO.getScheduleByScheduleId(id);
+			scheduleBean = scheduleDAO.getScheduleByScheduleId(scheduleId);
 			System.out.println(scheduleBean);
 			request.setAttribute("scheduleBean", scheduleBean);
 
