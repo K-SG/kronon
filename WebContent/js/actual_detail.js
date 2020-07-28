@@ -21,16 +21,11 @@ $(function () {
 
   /*削除完了ポップアップでのOKボタン*/
   $('.next-popup').click(function () {
-	    location.href= "kronon/user/actualDetail";
+	    location.href= "user/actualdetail";
 	  });
 
   $('.large-popup').click(function () {
 	  $('.confirm-popup').fadeIn();
 	  });
-
-
-
-
-
 
 });
