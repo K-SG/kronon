@@ -165,7 +165,7 @@
 			  </div>
 			  <a href="scheduledetail?scheduleId=${scheduleBean.scheduleId}"><div class="ok-button">OK</div></a>
 			  <div class="ng-button close-popup">キャンセル</div>
-			  <img src="/kronon/img/star_angry.png" class="pop-img-top"> </div>
+			  <img src="/kronon/img/star/star_angry.png" class="pop-img-top"> </div>
 		  </div>
 		</div>
 		<!--本当に戻りますかポップアップここまで------------------------------------------------------------------->
@@ -200,7 +200,7 @@
 			  </div>
 			  <input type="button" class="ok-button"  id="confirm-ok" value="OK">
 			  <div class="ng-button close-popup">キャンセル</div>
-			  <img src="/kronon/img/kronon_question.png" class="pop-img"> </div>
+			  <img src="/kronon/img/kronon/kronon_question.png" class="pop-img"> </div>
 		  </div>
 		</div>
 		<!--内容確認ポップアップここまで----------------------------------------------------------------->
