@@ -27,9 +27,9 @@ $(function () {
 	    let password1 = document.getElementById('create_password1').value;
 	    let password2 = document.getElementById('create_password2').value;
 
-	    if(userName==''|| mail=='' || password1=='' || password2==''){
+	    if(userName.trim()==''|| mail=='' || password1=='' || password2==''){
 	    	popFlag=2;
-	    }else if(!mail.match(/^[A-Za-z0-9]+[\w_]+@[\w\._]+\.\w{2,}$/)){
+	    }else if(!mail.match(/^[A-Za-z0-9]+[\w\-_]+@[\w\._]+\.\w{2,}$/)){
 	    	popFlag=3;
         }else if(password1.length < 8 || !password1.match(/([a-z].*[A-Z])|([A-Z].*[a-z])/) || !password1.match(/([a-zA-Z])/) && password1.match(/([0-9])/)){
 	        popFlag=4;
