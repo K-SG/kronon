@@ -17,7 +17,6 @@ $(function () {
 
         }
 
-
 		/*DBと照合した後のポップアップフラグ*/
 		let popFlag = document.getElementById('flag').value;
 
