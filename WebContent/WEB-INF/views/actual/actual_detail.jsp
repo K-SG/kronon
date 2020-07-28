@@ -62,13 +62,13 @@
     </div>
   </div>
 <div class="kronon-banzai"><img alt="banzai" src="/kronon/img/kronon/kronon_banzai.png"></div>
-<a href="/user/scheduleshowall"><div class="user-create-button-return">
+<a href="/user/actualindex"><div class="user-create-button-return">
 <img alt="戻る" src="/kronon/img/back_buttom.png"></div>
 </a>
 
 <div class="flex_test-box">
     <div class="flex_test-item">
-    <a href="/user/scheduleedit?scheduleId=${scheduleBean.scheduleId}"><div class="ok-button">修正</div></a>
+    <a href="/user/actualedit?scheduleId=${scheduleBean.scheduleId}"><div class="ok-button">修正</div></a>
     </div>
 
     <div class="flex_test-item">
@@ -102,8 +102,8 @@
 			<td><c:out value="${scheduleBean.title}" /></td>
 			</tr>
 			<tr>
-			<th class="last-table">内容：</th>
-			<td class="last-table"><c:out value="${scheduleBean.content}" /></td>
+			<th>内容：</th>
+			<td><c:out value="${scheduleBean.content}" /></td>
 		</tr>
 
           <tr>
