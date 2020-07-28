@@ -177,7 +177,6 @@
 		</div>
 <!--登録完了ポップアップここまで-------------------------------------------------------------->
 
-
 	</article>
 <%@ include file="../layout/common/footer.jsp" %>
 <script src="/kronon/js/actual_new.js"></script>

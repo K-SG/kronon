@@ -48,7 +48,6 @@ $(function () {
 		  }
 	}
 
-
   /*登録ボタンを押した際のエラーチェックとポップアップ表示*/
   $('#ok-button').click(function () {
 
