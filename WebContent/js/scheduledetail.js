@@ -16,7 +16,6 @@ $(function () {
 		document.getElementsById("actual-time-z").textContent = "-";
 	}
 
-
 	const stTime = startTime.substring(0,5);
 	const edTime = endTime.substring(0,5);
 	$('#startTime').text(stTime) ;
