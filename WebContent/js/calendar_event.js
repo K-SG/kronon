@@ -33,7 +33,6 @@ $(function () {
 			date_0 = date;
 		}
 		let date_submit = date_servlet.slice(0,-2) + date_0;
-		alert("次のサーブレットに送るパラメータは"+date_submit);
 		window.location.href=`../user/scheduleshowall?date=${date_submit}`;//calendar.html
 
 	})

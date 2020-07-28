@@ -15,7 +15,7 @@
 <%@ include file="../layout/common/header.jsp" %>
 
 	<article>
-		<form action="schedulecreate" method="get" class="actual-new-form">
+		<form action="schedulecreate" method="post" class="actual-new-form">
 		<input type="hidden" value="${popFlag}" id="flag">
 		<div class="actual-regist-area">
 		<div class="loose-leaf"><img src="../img/loose_leaf.svg" alt="loose-leaf" id="loose-leaf"></div>
@@ -24,10 +24,12 @@
 			<input type="hidden" name="scheduleId" value="${scheduleBean.scheduleId}" id="set-actual-id">
 			<div class="actual-regist-border"></div>
 			<div class="table-container">
-			<table class="actual-table">
-			<tr><td>日付入れるとこ</td><td>場所入れるとこ</td></tr>
-			<tr><td>タイトルいれるとこ</td></tr>
-			<tr><td>内容</td></tr>
+			<input type="hidden" name="scheduleDate" value="${scheduleBean.scheduleDate}" id="set-date">
+			<input type="hidden" name="schedulePlace" value="${scheduleBean.schedulePlace}" id="set-place">
+			<table>
+			<tr><td class="actual-date">日付入れるとこ</td><td class="actual-place">場所入れるとこ</td></tr>
+			<tr><td class="title">タイトルいれるとこ</td></tr>
+			<tr><td class="naiyou">内容</td></tr>
 			</table>
 			</div>
 			<div class="actual-regist-area-1">
@@ -97,7 +99,6 @@
       </div>
     </div>
    <!--エラーまたは完了ポップアップここまで-------------------------------------------------------------->
-
 
 
 			<!--本当に戻りますかポップアップ------------------------------------------------------------------->

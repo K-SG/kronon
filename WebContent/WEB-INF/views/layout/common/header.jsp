@@ -20,7 +20,7 @@
 	  		<li><a href="actualindex">実績確認</a></li>
 			<div class="nav-right">
 				<div class="nav-right-img">
-					<a href="../logout">
+					<a type="button" class="logout-button">
 					<img class="logout-icon" alt="ログアウト" src="/kronon/img/logout_icon.png"></a>
 				</div>
 				<div class="nav-right-user">

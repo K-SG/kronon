@@ -14,7 +14,7 @@
 <%@ include file="../layout/common/header.jsp" %>
 
 	<article>
-		<form action="schedulecreate" method="get" class="schedule-new-form">
+		<form action="schedulecreate" method="POST" class="schedule-new-form">
 		<input type="hidden" value="${popFlag}" id="flag">
 		<div class="schedule-regist-area">
 		<div class="loose-leaf"><img src="../img/loose_leaf.svg" alt="loose-leaf" id="loose-leaf"></div>

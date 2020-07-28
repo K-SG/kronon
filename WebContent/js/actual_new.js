@@ -1,19 +1,24 @@
 $(function () {
 
-/*日付に今日の日付が挿入されるようにする*/
   window.onload = function () {
-	  /*予定がかぶっていた時などは日付が保持されるようにするための処理*/
-	  if(document.getElementById("date").value == ""){
-	    let date = new Date();
-	    date.setDate(date.getDate());
-	    let yyyy = date.getFullYear();
-	    let mm = ("0"+(date.getMonth()+1)).slice(-2);
-	    let dd = ("0"+date.getDate()).slice(-2);
-	    document.getElementById("date").value=yyyy+'-'+mm+'-'+dd;
-	  }
+	  /*日付の入力*/
+	    let date = document.getElementById("set-date").value;
+	    let d = new Date(date);
+	    let weekday = '日月火水木金土'[d.getDay()];
+        $('#actual-date').html(year + '/' + month + '/' + day +'(' + weekday + ')' + startHour +':'+ startMin +'～'+ endHour +':'+ endMin);
+
+        /*場所の入力*/
+        let place = document.getElementById('set-place').value;
+        if(place == 0){
+
+        }else if(){
+
+        }else if(){
+
+        }
 
 		/*DBと照合した後のポップアップフラグ*/
-		var popFlag = document.getElementById('flag').value;
+		let popFlag = document.getElementById('flag').value;
 
 		/*ScheduleCreateServlet返ってきたとき、値の保存をする*/
 		if(popFlag==='0'||popFlag==='1'){
