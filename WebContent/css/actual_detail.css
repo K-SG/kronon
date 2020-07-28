@@ -1,7 +1,7 @@
 @CHARSET "UTF-8";
 
 .kronon-banzai img{
-	margin-top: -20vh;
+	margin-top: -8vw;
 	float:right;
 	width: 17vw;
 	height:auto;
@@ -14,6 +14,7 @@
     display: flex;              /* フレックスボックスにする */
     justify-content:center;
     align-items: center;
+    margin-top: -8vw;
 }
 
 .flex_test-item {
@@ -23,32 +24,16 @@
 
 .user-create-button-return {
 	float:left;
-	margin-left: 10vh;
-	margin-top: -3vh;
+	margin-left: 5vw;
+	margin-top: -8vw;
+
 }
 .user-create-button-return img {
 	width: min(100vh,5vw);
 	height: auto;
 }
 
-.actual-input-area-3 {
-	float: left;
-	width: 22vw;
-	overflow: hidden;/*はみ出た文字を隠す*/
-	display: -webkit-box;/*...表示*/
-	-webkit-box-orient: vertical;/*...表示*/
-	-webkit-line-clamp: 1;/*...表示(2行目の最後に「...をつける」)	*/
-}
 
-.actual-input-area-4 {
-	float: left;
-	width: 22vw;
-	overflow: hidden;/*はみ出た文字を隠す*/
-	display: -webkit-box;/*...表示*/
-	-webkit-box-orient: vertical;/*...表示*/
-	-webkit-line-clamp: 2;/*...表示(2行目の最後に「...をつける」)	*/
-
-}
 
 
 
