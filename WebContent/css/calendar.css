@@ -1,0 +1,238 @@
+/* カレンダーの年月 */
+.calendar-title {
+	width: 56vw;
+	margin: auto;
+	margin-top: 0vw;
+}
+
+.title-content {
+	float: left;
+	display: inline-block;
+}
+
+.clear {
+	clear: left;
+	height: 4vw;
+}
+
+/* カレンダーの枠設定 */
+.calendar-container {
+	position: relative;
+	height: max(40vw, 73vh);
+	margin: 0;
+	width: 80vw;
+	margin-bottom: 8vh;
+	/* 	border:solid #000 0.1vw; */
+}
+
+.calendar-container-inner {
+	position: absolute; /*要素を浮かす*/
+	/*relativeを指定した親要素を支点とした位置をすべて0に指定↓*/
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	margin: auto; /*上下左右中央に*/
+	width: 60vw; /*widthの指定は必須*/
+	height: 38vw; /*heightの指定は必須*/
+	border-radius: 1vw;
+	background-color: bisque;
+	padding: 1.5vw 3vw;
+}
+
+/* 先月翌月ボタン */
+.triangle-button {
+	width: 2.5vw;
+}
+
+.hidden-button {
+	display: none !important;
+}
+
+#month {
+	position: absolute;
+	left: 18vw;
+	padding-left: 10vw;
+	width: 10vw;
+	font-size: 3vw;
+	text-align: center;
+	margin: auto;
+	color: #666;
+}
+
+#year {
+	position: absolute;
+	right: 8vw;
+	width: 8vw;
+	font-size: 1.4vw;
+	text-align: right;
+	margin: auto;
+	margin-right: 2vw;
+	color: #666;
+	margin-top: 1.5vw;
+}
+
+#left {
+	position: absolute;
+	left: 5vw;
+	cursor: pointer;
+}
+
+#right {
+	position: absolute;
+	right: 5vw;
+	cursor: pointer;
+}
+
+table {
+	border-collapse: collapse;
+	border: 0.2vw solid #DE9B50;
+	margin: auto;
+}
+
+th, td {
+	width: 8vw;
+	text-align: center;
+	font-size: 1.2vw;
+	border: solid #BBB 0.1vw;
+}
+
+.youbi {
+	height: 3vh;
+	background: #DE9B50;
+	color: white;
+}
+
+.calendar #title {
+	height: 8vh;
+	background: white;
+	color: #666;
+	font-size: 1.6vw;
+}
+
+td {
+	height: 5vw;
+	background-color: white;
+	color: #666;
+	vertical-align: top;
+	cursor: pointer;
+}
+/*日曜日  */
+tbody td:first-child {
+	/*color: red;*/
+	background-color: #F8E0E1;
+}
+/* 土曜日 */
+tbody td:last-child {
+	/*color: blue;*/
+	background-color: #DFE4F4;
+}
+/* 祝日 */
+td.holiday {
+	background-color: #F8E0E1;
+}
+
+td.disabled {
+	/*opacity: 0.3;*/
+	color: #CCC;
+	cursor: default;
+}
+
+td.today {
+	font-weight: bold;
+}
+
+#prev, #next, #today {
+	cursor: pointer;
+	user-select: none;
+}
+
+td .date {
+	margin: 0 auto;
+	margin-top: 0.2vw;
+}
+
+td .yotei {
+	width: 6vw;
+	height: 1.5vw;
+	padding: 0 0.5vw;
+	font-size: 1vw;
+	margin: 0.2vw 0.3vw;
+	border: 0.05vw solid #666;
+	border-radius: 0.3vw;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	background-color: #FFFFE3;
+	padding-top: 0.3vw;
+}
+
+/* 日付にカーソルを合わせたら色が変わるように */
+.cell-active {
+	background-color: antiquewhite !important;
+}
+
+/* ここから くろのんとセリフ */
+.kronon-speak {
+	width: 18vw;
+	position: absolute;
+	bottom: 6vh;
+	right: 2vw;
+	position: fixed;
+}
+
+.kronon-img {
+	float: bottom;
+	width: 100%;
+	/*	position:absolute;
+	bottom:0vh;
+	right:2vw;*/
+}
+
+.kronon-speak p {
+	padding: 0;
+	margin: 0;
+	padding-top: 0.5vw;
+}
+
+.arrow-container {
+	float: bottom;
+	padding: 0 1vw;
+	width: 100%;
+	position: relative;
+}
+
+/*吹き出し*/
+.arrow_box {
+	margin-bottom: 2vw;
+	position: relative;
+	width: 15vw;
+	height: 7vw;;
+	background: #DE9B50;
+	padding: 1.5vw 1vw;
+	text-align: center;
+	color: #FFFFFF;
+	font-size: 1.5vw;
+	font-weight: bold;
+	border-radius: 1vw;
+	font-size: 1.8vw;
+}
+
+.arrow_box:after {
+	border: solid transparent;
+	content: '';
+	height: 0;
+	width: 0;
+	pointer-events: none;
+	position: absolute;
+	border-color: rgba(0, 153, 255, 0);
+	border-top-width: 1.8vw;
+	border-bottom-width: 1.8vw;
+	border-left-width: 1vw;
+	border-right-width: 1vw;
+	margin-top: -0.2vw;
+	margin-left: 0vw;
+	border-top-color: #DE9B50;
+	top: 100%;
+	left: 50%;
+}
