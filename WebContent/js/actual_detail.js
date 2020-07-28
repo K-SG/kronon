@@ -1,6 +1,5 @@
 $(function () {
 
-
 	let startTime = document.getElementById("startTime").textContent;
 	let endTime = document.getElementById("endTime").textContent;
 
@@ -12,20 +11,15 @@ $(function () {
 	/*削除完了ポップアップ表示*/
 	$(document).ready(function () {
 	let popFlag = document.getElementById('flag').value;
-
-	  if(popFlag == 1){
+	if(popFlag == 1){
 	  	$('.complete-popup').fadeIn();
 	  	return;
 	  }
 	});
 
-  /*削除完了ポップアップでのOKボタン*/
-  $('.next-popup').click(function () {
-	    location.href= "user/actualdetail";
-	  });
-
-  $('.large-popup').click(function () {
-	  $('.confirm-popup').fadeIn();
+    /*削除完了ポップアップでのOKボタン*/
+    $('.next-popup').click(function () {
+	    location.href= "/user/actualindex";
 	  });
 
 });

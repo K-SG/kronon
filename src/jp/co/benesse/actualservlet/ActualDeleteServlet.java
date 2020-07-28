@@ -10,7 +10,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import jp.co.benesse.dataaccess.cm.ConnectionManager;
 import jp.co.benesse.dataaccess.dao.ScheduleDAO;
@@ -29,21 +28,8 @@ public class ActualDeleteServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		HttpSession session = request.getSession(true);
-//		String loginUser = (String)session.getAttribute("userName");
-		String loginUser = "haruka";
-		String userName = request.getParameter("userName");
-		System.out.println(loginUser);
-		System.out.println(userName);
-		System.out.println(loginUser.equals(userName));
-		if(!(loginUser.equals(userName))){
-			RequestDispatcher dispatcher = request.getRequestDispatcher("../WEB-INF/views/error/error.jsp");
-			dispatcher.forward(request, response);
-			return;
-		}
-
-
 		int scheduleId = Integer.parseInt(request.getParameter("scheduleId"));
+		String userName = request.getParameter("userName");
 		String actualTimeStr = request.getParameter("actualTimeStr");
 		String schduleDateActual = request.getParameter("scheduleDateActual");
 		String startTime = request.getParameter("startTime");
@@ -61,7 +47,6 @@ public class ActualDeleteServlet extends HttpServlet {
 		scheduleBean.setPlace(place);
 		scheduleBean.setTitle(title);
 		scheduleBean.setContent(content);
-
 
 		ConnectionManager connectionManager = new ConnectionManager();
 
