@@ -18,7 +18,7 @@
 		<form action="acutualupdate" method="post" class="actual-new-form">
 		<input type="hidden" value="${popFlag}" id="flag">
 		<div class="actual-regist-area">
-<!-- 		<div class="loose-leaf"><img src="../img/loose_leaf.svg" alt="loose-leaf" id="loose-leaf"></div> -->
+		<div class="loose-leaf"><img src="../img/loose_leaf.svg" alt="loose-leaf" id="loose-leaf"></div>
 		  <div class="actual-regist-area-inner">
 			<div class="actual-regist-font-lev0">実績登録</div>
 			<input type="hidden" name="scheduleId" value="${scheduleBean.scheduleId}" id="set-actual-id">
@@ -30,15 +30,14 @@
 			<input type="hidden" name="schedulePlace" value="${scheduleBean.schedulePlace}" id="set-place">
 			<table class="actual-table">
 			<tr><td id="actual-date">日付入れるとこ</td><td id="actual-place">場所入れるとこ</td></tr>
-			<tr><td class="actual-title" colspan="2"><c:out value="${scheduleBean.title}" /></td></tr>
-			<tr><td class="sctual-naiyou" colspan="2"><c:out value="${scheduleBean.content}" /></td></tr>
+			<tr><td class="actual-title" colspan="2"><p><c:out value="${scheduleBean.title}" /></p></td></tr>
+			<tr><td class="sctual-naiyou" colspan="2"><p><c:out value="${scheduleBean.content}" /></p></td></tr>
 			</table>
-
 			</div>
 			<div class="actual-regist-area-1">
-					<div class="actual-regist-font-lev1">実績時間<span>*</span></div>
-					<div class="actual-regist-time">
-					<input type="hidden" value="${scheduleBean.actualTime}" id="set-start-time">
+				<div class="actual-regist-font-lev1">実績時間<span>*</span></div>
+				<div class="actual-regist-time">
+				<input type="hidden" value="${scheduleBean.actualTime}" id="set-start-time">
 						<select name="actualHour" id="actual-hour">
 							<option value="0">0</option>
 							<option value="1">1</option>
@@ -54,25 +53,25 @@
 							<option value="11">11</option>
 							<option value="12">12</option>
 						</select>
-					</div>
-					<div class="actual-regist-time-text">時</div>
-					<div class="actual-regist-time">
+				</div>
+				<div class="actual-regist-time-text">時間</div>
+				<div class="actual-regist-time">
 						<select name="actualMin" id="actual-min">
 							<option value="00">00</option>
 							<option value="15">15</option>
 							<option value="30">30</option>
 							<option value="45">45</option>
 						</select>
-					</div>
-					<div class="actual-regist-time-text">分</div>
 				</div>
+				<div class="actual-regist-time-text">分</div>
+			</div>
 			<div class="actual-regist-area-4">
 				<div class="actual-regist-font-lev1">コメント</div>
-				<div class="actual-regist-content">
-					<textarea name="content" id="content" rows="13" cols="40" maxlength="1440" placeholder="コメントを1440字以内で入力してください"><c:out value="${scheduleBean.comment}" /></textarea>
+					<div class="actual-regist-content">
+						<textarea name="content" id="content" rows="13" cols="40" maxlength="1440" placeholder="予定の内容を1440字以内で入力してください"><c:out value="${scheduleBean.content}" /></textarea>
+					</div>
 				</div>
-			</div>
-		  </div>
+		 	</div>
 			<div class="kronon-banzai"><img alt="banzai" src="/kronon/img/kronon/kronon_banzai.png"></div>
 			<div class=actual-regist-button>
 			<!--登録ボタン---->
