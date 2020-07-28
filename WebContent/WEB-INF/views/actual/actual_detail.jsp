@@ -62,14 +62,13 @@
     </div>
   </div>
 <div class="kronon-banzai"><img alt="banzai" src="/kronon/img/kronon/kronon_banzai.png"></div>
-<div class="button-return"><img alt="戻る" src="/kronon/img/back_buttom.png" class="back-popup-button"></div>
+<a href="/user/scheduleshowall"><div class="user-create-button-return">
+<img alt="戻る" src="/kronon/img/back_buttom.png"></div>
+</a>
 
 <div class="flex_test-box">
     <div class="flex_test-item">
     <a href="/user/scheduleedit?scheduleId=${scheduleBean.scheduleId}"><div class="ok-button">修正</div></a>
-<!--         <div class="ok-button">修正</div>
-        <input type="submit" class="ok-button" value="修正">
-        <a href="kronon/user/"><div class="modify-button">修正</div></a> -->
     </div>
 
     <div class="flex_test-item">
