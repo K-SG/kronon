@@ -113,7 +113,7 @@
           </tr>
         </table>
       </div>
-      <form action="http://localhost:8080/kronon/user/actualDelete" method="post" >
+      <form action="http://localhost:8080/kronon/user/actualdelete" method="post" >
 		<input type="hidden" id="flag" value="${popFlag}">
 		<input type="hidden" name = "scheduleId" value="${scheduleBean.scheduleId}">
 		<input type="hidden" name = "userName" value="${scheduleBean.userName}">

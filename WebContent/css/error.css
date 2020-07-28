@@ -24,9 +24,8 @@ article {
 }
 
 .kronon-komatta img{
-	float:right;
-	width: 17vw;
-	height:auto;
+	width: 17vh;
 	margin-top: 20vh;
+	margin-left: 100vh;
 }
 

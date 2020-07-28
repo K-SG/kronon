@@ -30,9 +30,13 @@ public class ActualDeleteServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		HttpSession session = request.getSession(true);
-		String loginUser = (String)session.getAttribute("userName");
+//		String loginUser = (String)session.getAttribute("userName");
+		String loginUser = "haruka";
 		String userName = request.getParameter("userName");
-		if(!(loginUser == userName)){
+		System.out.println(loginUser);
+		System.out.println(userName);
+		System.out.println(loginUser.equals(userName));
+		if(!(loginUser.equals(userName))){
 			RequestDispatcher dispatcher = request.getRequestDispatcher("../WEB-INF/views/error/error.jsp");
 			dispatcher.forward(request, response);
 			return;
@@ -67,6 +71,7 @@ public class ActualDeleteServlet extends HttpServlet {
 			ScheduleDAO scheduleDAO = new ScheduleDAO(connection);
 
 			if (scheduleDAO.isDeleted(scheduleId)){
+				System.out.println(scheduleDAO.isDeleted(scheduleId));
 				RequestDispatcher dispatcher = request.getRequestDispatcher("../WEB-INF/views/error/error.jsp");
 				dispatcher.forward(request, response);
 				return;
@@ -76,11 +81,9 @@ public class ActualDeleteServlet extends HttpServlet {
 			connectionManager.commit();
 
 			request.setAttribute("popFlag",1);
-
 			request.setAttribute("scheduleBean",scheduleBean);
 
-
-			RequestDispatcher dispatcher = request.getRequestDispatcher("../WEB-INF/views/schedule/schedule_detail.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("../WEB-INF/views/actual/actual_detail.jsp");
 			dispatcher.forward(request, response);
 			return;
 
