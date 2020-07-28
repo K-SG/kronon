@@ -5,8 +5,15 @@ $(function () {
 
 	const stTime = startTime.substring(0,5);
 	const edTime = endTime.substring(0,5);
+
 	$('#startTime').text(stTime) ;
 	$('#endTime').text(edTime) ;
+	$('#startTimePop').text(stTime) ;
+	$('#endTimePop').text(edTime) ;
+
+
+
+
 
 	/*削除完了ポップアップ表示*/
 	$(document).ready(function () {

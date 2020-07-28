@@ -94,17 +94,16 @@
           <tr>
             <th>予定日時：</th>
             <td><c:out value="${scheduleBean.scheduleDateActual}" />
-          <c:out value="${scheduleBean.startTime}" />～
-          <c:out value="${scheduleBean.endTime}" /></td>
+          <span id="startTimePop"><c:out value="${scheduleBean.startTime}" /></span>～
+          <span id="endTimePop"><c:out value="${scheduleBean.endTime}" /></span></td>
           </tr>
           <tr>
 			<th>タイトル：</th>
-			<td><span class="actual-input-area-4"><c:out value="${scheduleBean.title}" /></span></td>
+			<td><c:out value="${scheduleBean.title}" /></td>
 			</tr>
 			<tr>
 			<th class="last-table">内容：</th>
-			<td class="last-table"><span class="actual-input-area-4"><c:out
-					value="${scheduleBean.content}" /></span></td>
+			<td class="last-table"><c:out value="${scheduleBean.content}" /></td>
 		</tr>
 
           <tr>
