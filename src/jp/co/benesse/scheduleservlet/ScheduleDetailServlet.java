@@ -55,6 +55,5 @@ public class ScheduleDetailServlet extends HttpServlet {
 		} finally {
 			connectionManager.closeConnection();
 		}
-
 	}
 }
