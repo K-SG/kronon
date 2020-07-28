@@ -121,21 +121,22 @@
 				</div>
 			</div>
 		  </div>
-		</div>
 
-		<div class="kronon-banzai"><img alt="banzai" src="/kronon/img/kronon/kronon_banzai.png"></div>
+			<div class="kronon-banzai"><img alt="banzai" src="/kronon/img/kronon/kronon_banzai.png"></div>
 
-		<div class=schedule-regist-button>
-		<!--登録ボタン---->
-			<div class=schedule-regist-button-left>
-			<input type="button" class="ok-button large-popup-button" id="ok-button" value="登録" >
+			<div class=schedule-regist-button>
+			<!--登録ボタン---->
+				<div class=schedule-regist-button-left>
+				<input type="button" class="ok-button large-popup-button" id="ok-button" value="登録" >
+				</div>
+
+			<!--キャンセルボタン----->
+				<div class=schedule-regist-button-right>
+				<input type="button" class="ok-button back-popup-button" id="cancel-button" value="キャンセル">
+				</div>
 			</div>
-
-		<!--キャンセルボタン----->
-			<div class=schedule-regist-button-right>
-			<input type="button" class="ok-button back-popup-button" id="cancel-button" value="キャンセル">
-			</div>
-		</div>
+			<div class="clear"></div>
+	 	 </div>
 	</form>
 
   <!--エラーまたは完了ポップアップ------------------------------------------------------------------->

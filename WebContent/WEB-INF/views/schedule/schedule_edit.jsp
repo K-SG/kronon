@@ -12,11 +12,13 @@
 <body>
 
 <%@ include file="../layout/common/header.jsp" %>
-a
+
 	<article>
 			<form action="scheduleupdate" method="post" class="schedule-edit-form">
 		<input type="hidden" id="flag" value="${popFlag}">
 		<div class="schedule-regist-area">
+		  <div class="loose-leaf"><img src="../img/loose_leaf.svg" alt="loose-leaf" id="loose-leaf"></div>
+		   <div class="schedule-regist-area-inner">
 			<div class="schedule-regist-font-lev0">予定修正</div>
 			<input type="hidden" name="scheduleId" value="${scheduleBean.scheduleId}" id="set-schedule-id">
 			<div class="schedule-regist-border"></div>
@@ -119,7 +121,8 @@ a
 					<textarea name="content" id="content" rows="13" cols="40" maxlength="1440" placeholder="予定の内容を1440字以内で入力してください"><c:out value="${scheduleBean.content}" /></textarea>
 				</div>
 			</div>
-		</div>
+		  </div>
+
 
 		<div class="kronon-banzai"><img alt="banzai" src="/kronon/img/kronon/kronon_banzai.png"></div>
 
@@ -135,7 +138,9 @@ a
 			<div class=schedule-regist-button-right>
 			<input type="button" class="ok-button back-popup-button" id="cancel-button" value="キャンセル">
 			</div>
-		</div>
+	  	</div>
+	  	<div class="clear"></div>
+	  </div>
 	</form>
 
   <!--エラーまたは完了ポップアップ------------------------------------------------------------------->
