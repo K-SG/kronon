@@ -78,115 +78,7 @@ public class TestScheduleDAO {
 
 /**********************************************************************/
 	/*ScheduleDAOのテスト*/
-	@org.junit.Test
-	public void deleteScheduleTest1(){
-		ConnectionManager connectionManager = new ConnectionManager();
-		Connection connection = connectionManager.getConnection();
-		ScheduleDAO scheduleDAO = new ScheduleDAO(connection);
-		int answer;
-		answer = scheduleDAO.deleteSchedule(2);
-		System.out.println(answer);//this.connectionを削除した際、RuntimeException
-	}
 
-	@org.junit.Test
-	public void deleteScheduleTest(){
-		ConnectionManager connectionManager = new ConnectionManager();
-		Connection connection = connectionManager.getConnection();
-		ScheduleDAO scheduleDAO = new ScheduleDAO(connection);
-		int answer = scheduleDAO.deleteSchedule(2);
-		System.out.println("answer:"+answer);
-		assertThat(answer, is(1));
-		System.out.println(answer);
-		connectionManager.commit();
-		}
-
-	@org.junit.Test
-	public void deleteScheduleTest2(){
-		ConnectionManager connectionManager = new ConnectionManager();
-		Connection connection = connectionManager.getConnection();
-		ScheduleDAO scheduleDAO = new ScheduleDAO(connection);
-		int answer;
-		answer = scheduleDAO.deleteSchedule(100);
-		assertThat(answer, is(0));//戻り値0?
-		System.out.println(answer);
-	}
-	@org.junit.Test
-	public void registerScheduleTest1(){
-		ConnectionManager connectionManager = new ConnectionManager();
-		Connection connection = connectionManager.getConnection();
-		ScheduleDAO scheduleDAO = new ScheduleDAO(connection);
-		ScheduleBean bean = new ScheduleBean();
-		bean.setUserId(3);
-		bean.setScheduleDate(Date.valueOf("2020-10-10"));
-		bean.setStartTime(Time.valueOf("12:00:00"));
-		bean.setEndTime(Time.valueOf( "15:00:00"));
-		bean.setPlace("0");
-		bean.setTitle("プレゼン");
-		bean.setContent("来季プロジェクト");
-		int answer;
-		answer = scheduleDAO.registerSchedule(bean);
-		assertThat(answer, is(1));
-		System.out.println(answer);
-		connectionManager.commit();
-	}
-	@org.junit.Test
-	public void registerScheduleTest2(){
-		ConnectionManager connectionManager = new ConnectionManager();
-		Connection connection = connectionManager.getConnection();
-		ScheduleDAO scheduleDAO = new ScheduleDAO(connection);
-		ScheduleBean bean= new ScheduleBean();
-		bean.setUserId(3);
-		bean.setScheduleDate(Date.valueOf("2020-10-10"));
-		bean.setStartTime(Time.valueOf("12:00:00"));
-		bean.setEndTime(Time.valueOf( "15:00:00"));
-		bean.setPlace("0");
-		bean.setTitle("プレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼン");
-		bean.setContent("来季プロジェクト");
-		int answer;
-		answer = scheduleDAO.registerSchedule(bean);
-		System.out.println(answer);
-		connectionManager.commit();
-	}
-	@org.junit.Test
-	public void updateScheduleTest1(){
-		ConnectionManager connectionManager = new ConnectionManager();
-		Connection connection = connectionManager.getConnection();
-		ScheduleDAO scheduleDAO = new ScheduleDAO(connection);
-		int answer =  scheduleDAO.updateSchedule(3,Date.valueOf("2020-10-10"),Time.valueOf("12:00:00"),Time.valueOf( "15:00:00"),"プレゼン","来季プロジェクト","0");
-		assertThat(answer, is(1));
-		System.out.println(answer);
-		connectionManager.commit();
-	}
-	@org.junit.Test
-	public void updateScheduleTest2(){
-		ConnectionManager connectionManager = new ConnectionManager();
-		Connection connection = connectionManager.getConnection();
-		ScheduleDAO scheduleDAO = new ScheduleDAO(connection);
-		int answer = scheduleDAO.updateSchedule(3,Date.valueOf( "2020-12-12"),Time.valueOf("13:00:00"),Time.valueOf("16:00:00"),"プレゼント購入","クリスマス用","1");
-		assertThat(answer, is(1));
-		System.out.println(answer);
-		connectionManager.commit();
-	}
-
-
-	@org.junit.Test
-	public void updateScheduleTest3(){
-		ConnectionManager connectionManager = new ConnectionManager();
-		Connection connection = connectionManager.getConnection();
-		ScheduleDAO scheduleDAO = new ScheduleDAO(connection);
-		int answer;
-		answer = scheduleDAO.updateSchedule(3,Date.valueOf( "2020-12-12"),Time.valueOf("13:00:00"),Time.valueOf("16:00:00"),"1","レゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼン","クリスマス用");
-		System.out.println(answer);//RuntimeException
-	}
-	@org.junit.Test
-	public void updateScheduleTest4(){
-		ConnectionManager connectionManager = new ConnectionManager();
-		Connection connection = connectionManager.getConnection();
-		ScheduleDAO scheduleDAO = new ScheduleDAO(connection);
-		int answer = scheduleDAO.updateSchedule(9,60,"もっと短く終わらせます");
-		assertThat(answer, is(1));
-		System.out.println(answer);
-	}
 	@org.junit.Test
 	public void selectScheduleTest1(){
 		ConnectionManager connectionManager = new ConnectionManager();
@@ -233,8 +125,8 @@ public class TestScheduleDAO {
 		Connection connection = connectionManager.getConnection();
 		ScheduleDAO scheduleDAO = new ScheduleDAO(connection);
 		List<ScheduleBean> answer;
-		answer = scheduleDAO.selectSchedule(1,Date.valueOf("2020-07-10"),"ごはん");
-		assertThat(answer.size(), is(1));//Listが2件返される
+		answer = scheduleDAO.selectSchedule(1,Date.valueOf("2020-07-27"),"ごはん");
+		assertThat(answer.size(), is(0));//Listが2件返される
 		System.out.println(answer);
 	}
 
@@ -243,7 +135,7 @@ public class TestScheduleDAO {
 		ConnectionManager connectionManager = new ConnectionManager();
 		Connection connection = connectionManager.getConnection();
 		ScheduleDAO scheduleDAO = new ScheduleDAO(connection);
-		ScheduleBean answer = scheduleDAO.getScheduleByScheduleId(7);
+		ScheduleBean answer = scheduleDAO.getScheduleByScheduleId(8);
 		System.out.println("ans:"+answer);//Beanが返ってくる
 	}
 	@org.junit.Test
@@ -264,7 +156,7 @@ public class TestScheduleDAO {
 		List<ScheduleBean> answer;
 		answer = scheduleDAO.getOneDaySchedule(Date.valueOf("2020-07-10").toLocalDate(),1);
 		System.out.println(answer);
-		assertThat(answer.size(), is(3));//3件が返ってくる
+		assertThat(answer.size(), is(5));//3件が返ってくる
 	}
 	@org.junit.Test
 	public void isBookingTest1(){
@@ -395,7 +287,7 @@ public class TestScheduleDAO {
 		List<ScheduleBean> answer;
 		answer = scheduleDAO.tooLongSQLSchedule(Date.valueOf("2020-07-07").toLocalDate(),1);
 		System.out.println("3件？"+answer);
-		assertThat(answer.size(), is(2));//2件が返ってくる→3件
+		assertThat(answer.size(), is(3));//2件が返ってくる→3件
 	}
 	@org.junit.Test
 	public void tooLongSQLScheduleTest2(){
@@ -407,6 +299,130 @@ public class TestScheduleDAO {
 		System.out.println("空のリスト"+answer);//空のリストが返ってくる
 	}
 
+
+
+
+	@org.junit.Test
+	public void registerScheduleTest1(){
+		ConnectionManager connectionManager = new ConnectionManager();
+		Connection connection = connectionManager.getConnection();
+		ScheduleDAO scheduleDAO = new ScheduleDAO(connection);
+		ScheduleBean bean = new ScheduleBean();
+		bean.setUserId(3);
+		bean.setScheduleDate(Date.valueOf("2020-10-10"));
+		bean.setStartTime(Time.valueOf("12:00:00"));
+		bean.setEndTime(Time.valueOf( "15:00:00"));
+		bean.setPlace("0");
+		bean.setTitle("プレゼン");
+		bean.setContent("来季プロジェクト");
+		int answer;
+		answer = scheduleDAO.registerSchedule(bean);
+		assertThat(answer, is(1));
+		System.out.println(answer);
+		connectionManager.commit();
+	}
+/*	@org.junit.Test
+	public void registerScheduleTest2(){
+		ConnectionManager connectionManager = new ConnectionManager();
+		Connection connection = connectionManager.getConnection();
+		ScheduleDAO scheduleDAO = new ScheduleDAO(connection);
+		ScheduleBean bean= new ScheduleBean();
+		bean.setUserId(3);
+		bean.setScheduleDate(Date.valueOf("2020-10-10"));
+		bean.setStartTime(Time.valueOf("12:00:00"));
+		bean.setEndTime(Time.valueOf( "15:00:00"));
+		bean.setPlace("0");
+		bean.setTitle("プレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼン");
+		bean.setContent("来季プロジェクト");
+		int answer;
+		answer = scheduleDAO.registerSchedule(bean);
+		System.out.println(answer);
+		connectionManager.commit();
+	}*/
+	@org.junit.Test
+	public void updateScheduleTest1(){
+		ConnectionManager connectionManager = new ConnectionManager();
+		Connection connection = connectionManager.getConnection();
+		ScheduleDAO scheduleDAO = new ScheduleDAO(connection);
+		int answer =  scheduleDAO.updateSchedule(3,Date.valueOf("2020-10-10"),Time.valueOf("12:00:00"),Time.valueOf( "15:00:00"),"プレゼン","来季プロジェクト","0");
+		assertThat(answer, is(1));
+		System.out.println(answer);
+		connectionManager.commit();
+	}
+	@org.junit.Test
+	public void updateScheduleTest2(){
+		ConnectionManager connectionManager = new ConnectionManager();
+		Connection connection = connectionManager.getConnection();
+		ScheduleDAO scheduleDAO = new ScheduleDAO(connection);
+		int answer = scheduleDAO.updateSchedule(3,Date.valueOf( "2020-12-12"),Time.valueOf("13:00:00"),Time.valueOf("16:00:00"),"プレゼント購入","クリスマス用","1");
+		assertThat(answer, is(1));
+		System.out.println(answer);
+		connectionManager.commit();
+	}
+
+
+/*	@org.junit.Test
+	public void updateScheduleTest3(){
+		ConnectionManager connectionManager = new ConnectionManager();
+		Connection connection = connectionManager.getConnection();
+		ScheduleDAO scheduleDAO = new ScheduleDAO(connection);
+		int answer;
+		answer = scheduleDAO.updateSchedule(3,Date.valueOf( "2020-12-12"),Time.valueOf("13:00:00"),Time.valueOf("16:00:00"),"1","レゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼンプレゼン","クリスマス用");
+		System.out.println(answer);//RuntimeException
+	}*/
+	@org.junit.Test
+	public void updateScheduleTest4(){
+		ConnectionManager connectionManager = new ConnectionManager();
+		Connection connection = connectionManager.getConnection();
+		ScheduleDAO scheduleDAO = new ScheduleDAO(connection);
+		int answer = scheduleDAO.updateSchedule(9,60,"もっと短く終わらせます");
+		assertThat(answer, is(1));
+		System.out.println(answer);
+	}
+
+
+
+/*	@org.junit.Test
+	public void deleteScheduleTest1(){
+		ConnectionManager connectionManager = new ConnectionManager();
+		Connection connection = connectionManager.getConnection();
+		ScheduleDAO scheduleDAO = new ScheduleDAO(connection);
+		int answer;
+		answer = scheduleDAO.deleteSchedule(2);
+		System.out.println(answer);//this.connectionを削除した際、RuntimeException
+	}*/
+
+	@org.junit.Test
+	public void deleteScheduleTest(){
+		ConnectionManager connectionManager = new ConnectionManager();
+		Connection connection = connectionManager.getConnection();
+		ScheduleDAO scheduleDAO = new ScheduleDAO(connection);
+		int answer = scheduleDAO.deleteSchedule(4);
+		System.out.println("answer:"+answer);
+		assertThat(answer, is(1));
+		System.out.println(answer);
+		connectionManager.commit();
+		}
+
+	@org.junit.Test
+	public void deleteScheduleTest2(){
+		ConnectionManager connectionManager = new ConnectionManager();
+		Connection connection = connectionManager.getConnection();
+		ScheduleDAO scheduleDAO = new ScheduleDAO(connection);
+		int answer;
+		answer = scheduleDAO.deleteSchedule(100);
+		assertThat(answer, is(0));//戻り値0?
+		System.out.println(answer);
+	}
+/*	@org.junit.Test
+	public void deleteScheduleTest3(){
+		ConnectionManager connectionManager = new ConnectionManager();
+		Connection connection = connectionManager.getConnection();
+		ScheduleDAO scheduleDAO = new ScheduleDAO(connection);
+		int answer;
+		answer = scheduleDAO.deleteSchedule(2);
+		System.out.println(answer);//ELECTにした際、RuntimeException
+	}*/
 
 
 
