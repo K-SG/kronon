@@ -83,7 +83,6 @@ if (endHour.slice(0, 1) == 0) {
 
     if(date==""||startHour=='' || startMin=='' || endHour=='' || endMin=='' || place=='' || title==''){
     	popFlag='3';
-
     }else if((startHour*60+startMin)-(endHour*60+endMin)>=0){
     	//終了時間よりも開始時間のほうが遅かったら
 //    	console.log("開始時間のほうが遅い");
@@ -104,22 +103,19 @@ if (endHour.slice(0, 1) == 0) {
     	popFlag='5';
     }
 
-
-    if(popFlag==='5'){
+    if(popFlag==='3'){
+        $('.edit-msg').html('入力されていない<br>項目があるよ');
+        $('.error-popup').fadeIn();
+        return;
+    }else if(popFlag==='4'){
+        $('.edit-msg').html('日付や時間の入力が<br>おかしいよ');
+        $('.error-popup').fadeIn();
+        return;
+    }else if(popFlag==='5'){
         $('#time-msg').html(year + '/' + month + '/' + day +'(' + weekday + ')' + startHour +':'+ startMin +'～'+ endHour +':'+ endMin);
         $('#title-msg').html(title);
         $('#content-msg').html(content);
     	$('.confirm-popup').fadeIn();
-        return;
-    }
-    else if(popFlag==='3'){
-        $('.edit-msg').html('入力されていない<br>項目があるよ');
-        $('.error-popup').fadeIn();
-        return;
-    }
-    else if(popFlag==='4'){
-        $('.edit-msg').html('日付や時間の入力が<br>おかしいよ');
-        $('.error-popup').fadeIn();
         return;
     }
   });

@@ -122,22 +122,19 @@ $(function () {
     	popFlag='5';
     }
 
-
-    if(popFlag==='5'){
+    if(popFlag==='3'){
+        $('.new-msg').html('入力されていない<br>項目があるよ');
+        $('.error-popup').fadeIn();
+        return;
+    }else if(popFlag==='4'){
+        $('.new-msg').html('日付や時間の入力が<br>おかしいよ');
+        $('.error-popup').fadeIn();
+        return;
+    }else if(popFlag==='5'){
         $('#time-msg').html(year + '/' + month + '/' + day +'(' + weekday + ')' + startHour +':'+ startMin +'～'+ endHour +':'+ endMin);
         $('#title-msg').html(title);
         $('#content-msg').html(content);
     	$('.confirm-popup').fadeIn();
-        return;
-    }
-    else if(popFlag==='3'){
-        $('.new-msg').html('入力されていない<br>項目があるよ');
-        $('.error-popup').fadeIn();
-        return;
-    }
-    else if(popFlag==='4'){
-        $('.new-msg').html('日付や時間の入力が<br>おかしいよ');
-        $('.error-popup').fadeIn();
         return;
     }
   });
