@@ -24,7 +24,7 @@
   -moz-border-radius : 10px;
   -webkit-border-radius : 10px;
   position : relative ;
-  top : 10vw;
+  top : 2vw;
   left : 23vw;
   margin-bottom: 10vw;
 }
@@ -42,12 +42,31 @@
   border: 0.2vw white solid;
 }
 
-.show-place
+.show-place1
+{
+  background-color: #e6cde3;
+  color : #467021;
+  color : rgba(70, 112, 33, 1);
+  font-weight: bold;
+}
+
+.show-place2
 {
   background-color: #f8e58e;
-  background-color: #e6cde3;
+  color : #467021;
+  color : rgba(70, 112, 33, 1);
+  font-weight: bold;
+}
+
+
+
+.show-place3
+{
   background-color: #bce2e8;
   color : #467021;
   color : rgba(70, 112, 33, 1);
   font-weight: bold;
 }
+
+
+
