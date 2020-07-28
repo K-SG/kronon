@@ -148,7 +148,7 @@
           <p class=new-msg></p>
         </div>
         <div class="ok-button close-popup">OK</div>
-        <img src="/kronon/img/kronon/kronon_question.png" class="pop-img"> </div>
+        <img src="/kronon/img/kronon/kronon_komatta.png" class="pop-img"> </div>
       </div>
     </div>
    <!--エラーまたは完了ポップアップここまで-------------------------------------------------------------->
@@ -213,7 +213,7 @@
 				<div class="pop-container-inner">
 					<div class="message-container"><p class=create-msg></p></div>
 					<div class="ok-button next-popup">OK</div>
-					<img src="/kronon/img/kronon/kronon_question.png" class="pop-img">
+					<img src="/kronon/img/kronon/kronon_star.png" class="pop-img">
 				</div>
 			</div>
 		</div>
