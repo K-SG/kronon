@@ -24,9 +24,10 @@
 			<input type="hidden" name="scheduleId" value="${scheduleBean.scheduleId}" id="set-actual-id">
 			<div class="actual-regist-border"></div>
 			<div class="table-container">
-			<input type="hidden" name="scheduleId" value="${scheduleBean.scheduleDate}" id="set-actual-date">
+			<input type="hidden" name="scheduleDate" value="${scheduleBean.scheduleDate}" id="set-date">
+			<input type="hidden" name="schedulePlace" value="${scheduleBean.schedulePlace}" id="set-place">
 			<table>
-			<tr><td class="actual-new">日付入れるとこ</td><td>場所入れるとこ</td></tr>
+			<tr><td class="actual-date">日付入れるとこ</td><td class="actual-place">場所入れるとこ</td></tr>
 			<tr><td>タイトルいれるとこ</td></tr>
 			<tr><td>内容</td></tr>
 			</table>
