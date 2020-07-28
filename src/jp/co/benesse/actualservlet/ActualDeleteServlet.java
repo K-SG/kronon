@@ -33,15 +33,12 @@ public class ActualDeleteServlet extends HttpServlet {
 //		String loginUser = (String)session.getAttribute("userName");
 		String loginUser = "haruka";
 		String userName = request.getParameter("userName");
-		System.out.println(loginUser);
-		System.out.println(userName);
-		System.out.println(loginUser.equals(userName));
+
 		if(!(loginUser.equals(userName))){
 			RequestDispatcher dispatcher = request.getRequestDispatcher("../WEB-INF/views/error/error.jsp");
 			dispatcher.forward(request, response);
 			return;
 		}
-
 
 		int scheduleId = Integer.parseInt(request.getParameter("scheduleId"));
 		String actualTimeStr = request.getParameter("actualTimeStr");
@@ -61,7 +58,6 @@ public class ActualDeleteServlet extends HttpServlet {
 		scheduleBean.setPlace(place);
 		scheduleBean.setTitle(title);
 		scheduleBean.setContent(content);
-
 
 		ConnectionManager connectionManager = new ConnectionManager();
 
