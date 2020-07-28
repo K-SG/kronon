@@ -12,7 +12,7 @@ import jp.co.benesse.dataaccess.cm.ConnectionManager;
 import jp.co.benesse.dataaccess.dao.ScheduleDAO;
 import jp.co.benesse.dataaccess.value.ScheduleBean;
 
-public class Test {
+public class TestScheduleDAO {
 /*
 	@org.junit.Test
 	public void testGetColor1() {
