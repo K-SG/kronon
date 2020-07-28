@@ -11,9 +11,16 @@ $(function () {
 	$('#startTimePop').text(stTime) ;
 	$('#endTimePop').text(edTime) ;
 
+	let actualTime = document.getElementById("actual-time-z").textContent;
+	let actualTimeArray = actualTime.substring(5,12).split(/\D/g);
+	let actualHour = Number(actualTimeArray[0]);
+	let actualMinute = Number(actualTimeArray[2]);
+	let actualTimeMinute = 60*actualHour + actualMinute;
 
-
-
+	//実績時間未入力（今回はdefaultで1000を格納）の場合は「-」に書き換え
+	if(actualTimeMinute > 720){
+		document.getElementById("actual-time-z").textContent = "実績時間:　　　―";
+	}
 
 	/*削除完了ポップアップ表示*/
 	$(document).ready(function () {
@@ -26,7 +33,7 @@ $(function () {
 
     /*削除完了ポップアップでのOKボタン*/
     $('.next-popup').click(function () {
-	    location.href= "/user/actualindex";
+	    window.location.href= "actualindex";
 	  });
 
 });

@@ -22,7 +22,7 @@
 
         <tr>
           <td>名前 : <c:out value="${scheduleBean.userName}" /></td>
-          <td>実績時間:<c:out value="${scheduleBean.actualTimeStr}" /></td>
+          <td id = "actual-time-z">実績時間:<c:out value="${scheduleBean.actualTimeStr}" /></td>
         </tr>
 
         <tr>
@@ -62,7 +62,7 @@
     </div>
   </div>
 <div class="kronon-banzai"><img alt="banzai" src="/kronon/img/kronon/kronon_banzai.png"></div>
-<a href="/user/actualindex"><div class="user-create-button-return">
+<a href="actualindex"><div class="user-create-button-return">
 <img alt="戻る" src="/kronon/img/back_buttom.png"></div>
 </a>
 
