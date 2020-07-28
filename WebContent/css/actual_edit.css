@@ -8,6 +8,7 @@ article{
 /*予定登録ルーズリーフエリアの枠*/
 .schedule-regist-area
 {
+	/* background-image:url("../img/loose_leaf.svg"); */
 	background-repeat: no-repeat;
 	margin:0;
 	padding:0;
@@ -62,9 +63,7 @@ article{
 	float:left;
 }
 
-.table-container{
-	float: left;
-}
+
 
 /*1段目:日付・時刻のエリア*/
 .schedule-regist-area-1 {
@@ -250,6 +249,7 @@ article{
 .schedule-regist-button{
 	float:left;
 }
+
 /* 戻るボタン */
 .back-btn {
 	width: 4vw;
@@ -258,6 +258,7 @@ article{
 	top: 83vh;
 	cursor:pointer;
 }
+
 /*登録*/
 .schedule-regist-button-left{
 	position:absolute;
@@ -271,7 +272,7 @@ article{
 	right:10vw;
 	top:32vw;
 }
-
+/* float解除 */
 .clear{
 	clear:both;
 	height:38vw;
