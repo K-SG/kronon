@@ -104,8 +104,8 @@
 						<tr>
 							<th>予定日時：</th>
 							<td><c:out value="${scheduleBean.scheduleDateActual}" /> <span
-						id="startTimee"><c:out value="${scheduleBean.startTime}" /></span>～
-						<span id="endTimee"><c:out value="${scheduleBean.endTime}" /></span></td>
+						id="startTimePop"><c:out value="${scheduleBean.startTime}" /></span>～
+						<span id="endTimePop"><c:out value="${scheduleBean.endTime}" /></span></td>
 						</tr>
 						<tr>
 							<th>タイトル：</th>
