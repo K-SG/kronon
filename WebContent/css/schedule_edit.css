@@ -1,0 +1,290 @@
+/* CSS Document */
+/* @import url(sanitize.css); */
+
+article{
+	padding-bottom:5vw;
+}
+
+/*予定登録ルーズリーフエリアの枠*/
+.schedule-regist-area
+{
+	/* background-image:url("../img/loose_leaf.svg"); */
+	background-repeat: no-repeat;
+	margin:0;
+	padding:0;
+	margin-left:25vw;
+	width: 50vw;
+	background-size: 95%;
+	top:0vw;
+	position:relative;
+}
+
+
+.schedule-regist-area-inner{
+	width:50vw;
+	position:absolute;
+	top:0vw;
+	left:2.0vw;
+	z-index:11;
+}
+
+#loose-leaf{
+	width:50vw;
+	position:absolute;
+	top:0vw;
+	left:0vw;
+	z-index:10;
+}
+
+/*[予定登録]の文字*/
+.schedule-regist-font-lev0
+{
+	font-family : UD デジタル 教科書体 NK-B;
+	font-weight : bold;
+	font-size : 1.8vw;
+	color : #333333;
+	color : rgb(51, 51, 51);
+	width: 100%;;
+	height: 2.5vw;
+	text-align: center;
+	padding-top:2.5vw;
+	float:right;
+}
+
+/*[予定登録]の下線*/
+.schedule-regist-border
+{
+	border-style : Solid;
+	border-color : #333333;
+	border-color : rgba(51, 51, 51, 1);
+	border-width : 1px;
+	width: 40vw;
+	margin-left:5vw;
+	float:left;
+}
+
+
+
+/*1段目:日付・時刻のエリア*/
+.schedule-regist-area-1 {
+	margin-top:0.5vw;
+	width: 45vw;
+	height: 4.6vw;;
+	float:right;
+	text-align: left;
+	margin-top:0.5vw;;
+}
+/*1段目のエリアの各エリアの幅:日付・開始時刻・終了時刻*/
+.schedule-regist-area-1-block {
+	margin-top:0.5vw;
+	width: 14vw;
+	height: 4.8vw;
+	float:left;
+	text-align: left;
+	margin-top: 0.5vw;
+}
+/*2段目:場所のエリア*/
+.schedule-regist-area-2 {
+	margin-top:0.5vw;
+	width: 45vw;
+	height: 4.4vw;
+	float:right;
+	text-align: left;
+}
+/*3段目:タイトルのエリア*/
+.schedule-regist-area-3 {
+	margin-top:0.5vw;
+	width: 45vw;
+	height: 4.4vw;;
+	float:right;
+	text-align: left;
+}
+/*4段目:内容のエリア*/
+.schedule-regist-area-4 {
+	margin-top:1.0vw;
+	width: 45vw;
+	height: 7.5vw;;
+	float:right;
+	text-align: left;
+}
+
+/*日付などのフォント*/
+.schedule-regist-font-lev1
+{
+  font-family : UD デジタル 教科書体 NK-B;
+  font-weight : bold;
+  font-size : 1.2vw;;
+  color : #333333;
+  color : rgb(51, 51, 51);
+  margin:0;
+  padding:0;
+  height:2.0vw;
+}
+
+/*必須マーク*/
+.schedule-regist-font-lev1 span
+{
+  font-family : 小塚ゴシック Pr6N;
+  font-size : 1.2vw;
+  color : #FF1002;
+  color : rgb(255, 16, 2);
+}
+
+
+/*日付入力枠*/
+.schedule-regist-date-area input
+{
+	border-style : Solid;
+	border-color : #333333;
+	border-color : rgba(51, 51, 51, 1);
+	border-width : 0.02vw;
+	border-radius : 0.3vw;
+	font-family : 小塚ゴシック Pr6N;
+	font-size : 1.0vw;
+	color :  #333;
+	width: 10vw;
+	height: 2.0vw;
+	float: left;
+	padding-left:1vw;
+}
+/*開始時刻/終了時刻の[時]と[分]のプルダウン*/
+.schedule-regist-time select
+{
+	border-style : Solid;
+	border-color : #333333;
+	border-color : rgba(51, 51, 51, 1);
+	border-width : 0.02vw;
+	border-radius : 0.3vw;
+	float: left;
+	width: 3.5vw;
+	height: 2.0vw;
+	font-family : 小塚ゴシック Pr6N;
+	font-size : 1.0vw;
+	color :  #333;
+	padding-left:0.2vw;
+}
+/*開始時刻/終了時刻の[時]と[分]の文字*/
+.schedule-regist-time-text {
+	font-family : UD デジタル 教科書体 NK-B;
+	font-weight : bold;
+	font-size : 1vw;
+	color : #333333;
+	color : rgb(51, 51, 51);
+	float: left;
+	width: 2vw;
+	height: 2.5vw;;
+	margin-top:0.5vw;
+	padding-left:0.5vw;
+}
+
+/*場所*/
+.schedule-regist-place select
+{
+	border-style : Solid;
+	border-color : #333333;
+	border-color : rgba(51, 51, 51, 1);
+	border-width : 0.02vw;
+	border-radius : 0.3vw;
+	float: left;
+	width: 15vw;
+	height: 2.0vw;
+	font-family : 小塚ゴシック Pr6N;
+	font-size : 1.0vw;
+	color :  #333;
+	padding-left:1vw;
+}
+
+/*タイトル*/
+.schedule-regist-title textarea
+{
+	border-style : Solid;
+	border-color : #333333;
+	border-color : rgba(51, 51, 51, 1);
+	border-width : 0.02vw;
+	border-radius : 0.3vw;
+	font-family : 小塚ゴシック Pr6N;
+	font-size : 1.0vw;;
+	color :  #333;
+	width: 37vw;
+	height: 2.2vw;
+	float:left;
+	margin-right:2.5vw;
+	padding:0vw 1vw;
+}
+
+.schedule-regist-area-4 .schedule-regist-font-lev1{
+	height:1.5vw;
+}
+
+/*内容*/
+.schedule-regist-content textarea
+{
+	border-style : Solid;
+	border-color : #333333;
+	border-color : rgba(51, 51, 51, 1);
+	border-width : 0.02vw;
+	border-radius : 0.3vw;
+	font-family : 小塚ゴシック Pr6N;
+	font-size : 1.1vw;
+	color :  #333;
+	width: 37vw;
+	height: 6.5vw;
+	float:left;
+	margin-right:2.5vw;
+	margin-top:0vw;
+	padding:0vw 1vw;
+}
+
+/*くろのんバンザイ画像の配置*/
+.kronon-banzai img{
+	position:absolute;
+	top:18vw;
+	left:53vw;
+	width: 17vw;
+
+}
+
+
+/*ボタン配置*/
+.schedule-regist-button{
+	float:left;
+}
+
+/* 戻るボタン */
+.back-btn {
+	width: 4vw;
+	position: fixed;
+	left: 3vw;
+	top: 83vh;
+	cursor:pointer;
+}
+
+/*登録*/
+.schedule-regist-button-left{
+	position:absolute;
+	left:10vw;
+	top:32vw;;
+	float:left;
+}
+/*キャンセル*/
+.schedule-regist-button-right{
+		position:absolute;
+	right:10vw;
+	top:32vw;
+}
+/* float解除 */
+.clear{
+	clear:both;
+	height:38vw;
+}
+
+.message-container-large{
+	color: #000000;
+}
+.pop-container{
+	color: #000000;
+}
+
+footer{
+	z-index:100;
+}

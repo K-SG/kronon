@@ -1,4 +1,4 @@
-package jp.co.benesse.userservlet;
+package jp.co.benesse.scheduleservlet;
 
 import java.io.IOException;
 
@@ -9,27 +9,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class UserNewServlet
- */
-@WebServlet("/usernew")
-public class UserNewServlet extends HttpServlet {
+@WebServlet("/user/schedulenew")
+public class ScheduleNewServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//doGetされたものをdoPostに変換
-		this.doPost(request, response);
+		this.doPost(request,response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//user_new.jsp(アカウント新規作成画面)にforwardする。
-		request.setAttribute("popFlag",7);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/user/user_new.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/schedule/schedule_new.jsp");
 		dispatcher.forward(request, response);
 		return;
 	}
-
 }

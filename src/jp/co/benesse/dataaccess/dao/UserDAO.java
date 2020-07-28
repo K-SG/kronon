@@ -36,10 +36,7 @@ public class UserDAO {
 		int result = 0;
 		try {
 			// SQLの定義
-
-
 			String sql = "INSERT INTO PUBLIC.USER (USER_ID,USER_NAME,MAIL,PASSWORD) VALUES (NEXTVAL('SEQ_USER'),?,?,?)";
-
 			// SQLの作成(準備)
 			preparedStatement = this.connection.prepareStatement(sql);
 			// SQLバインド変数への値設定
@@ -80,6 +77,7 @@ public class UserDAO {
 		try {
 			// SQLの定義
 			String sql = "SELECT * FROM PUBLIC.USER WHERE MAIL = ? AND PASSWORD = ?";
+
 			// SQLの作成(準備)
 			preparedStatement = this.connection.prepareStatement(sql);
 			// SQLバインド変数への値設定
@@ -100,7 +98,7 @@ public class UserDAO {
 			}
 		return userBean;
 	} catch (SQLException e) {
-		throw new RuntimeException("'user'テーブルのSELECTに失敗しました", e);
+		throw new RuntimeException("userテーブルのSELECTに失敗しました", e);
 	} finally {
 		try {
 			if (preparedStatement != null) {
@@ -112,6 +110,43 @@ public class UserDAO {
 		}
 	}
 }
+	/**
+	 * [機 能] メアド重複判定メソッド<br>
+	 * [説 明] 新規登録したいメアドがDBに保存されているメアドと被っているかどうかを判定する<br>
+	 * ※例外取得時にはRuntimeExceptionにラップし上位に送出する。<br>
+	 * [備 考] なし
+	 *
+	 * @param メールアドレス
+	 * @return メアド重複判定フラグ（重複があればtrueを返す）
+	 */
+	//200726コメントアウトしましたby中根
+/*	public String getUserName(int userId){
+		PreparedStatement preparedStatement = null;
+		String userName = null;
+		try {
+			String sql = "SELECT user_name FROM 'user' WHERE userId = ?";
+			preparedStatement = this.connection.prepareStatement(sql);
+			preparedStatement.setInt(1, userId);
+			// SQLの実行
+			ResultSet resultSet = preparedStatement.executeQuery();
+			// 問い合わせ結果の取得
+			if (resultSet.next()) {
+				userName = resultSet.getString("useName");
+			}
+			return userName;
+		} catch (SQLException e) {
+			throw new RuntimeException("'user'テーブルのSELECTに失敗しました", e);
+		} finally {
+			try {
+				if (preparedStatement != null) {
+					preparedStatement.close();
+					System.out.println("ステートメントの解放に成功しました");
+				}
+			} catch (SQLException e) {
+				throw new RuntimeException("ステートメントの解放に失敗しました", e);
+			}
+		}
+	}*/
 
 	/**
 	 * [機 能] ユーザー名取得メソッド<br>
