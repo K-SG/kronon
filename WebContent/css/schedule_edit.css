@@ -249,6 +249,16 @@ article{
 .schedule-regist-button{
 	float:left;
 }
+
+/* 戻るボタン */
+.back-btn {
+	width: 4vw;
+	position: fixed;
+	left: 3vw;
+	top: 83vh;
+	cursor:pointer;
+}
+
 /*登録*/
 .schedule-regist-button-left{
 	position:absolute;

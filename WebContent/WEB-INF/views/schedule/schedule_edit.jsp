@@ -136,12 +136,15 @@
 
 		<!--キャンセルボタン----->
 			<div class=schedule-regist-button-right>
-			<input type="button" class="ok-button" id="cancel-button" value="キャンセル">
+			<input type="button" class="ok-button cancel-button" id="cancel-button" value="キャンセル">
 			</div>
 	  	</div>
 	  	<div class="clear"></div>
 	  </div>
 	</form>
+	<!-- 戻るボタン -->
+	<div class="cancel-button"><img src="/kronon/img/back_buttom.png" alt="back-buttom" class="back-btn"></div>
+	<%-- <a href="scheduledetail?scheduleId=${scheduleBean.scheduleId}"> --%>
 
   <!--エラーまたは完了ポップアップ------------------------------------------------------------------->
   <div class="popup-wrapper error-popup">
@@ -168,7 +171,7 @@
 				<p>内容は保存されないよ。</p>
 				<h2 class="message-title">本当に戻る？</h2>
 			  </div>
-			  <a href="user/scheduledetail?id=${userId}"><div class="ok-button">OK</div></a>
+			  <a href="scheduledetail?id=${scheduleBean.scheduleId}"><div class="ok-button">OK</div></a>
 			  <div class="ng-button close-popup">キャンセル</div>
 			  <img src="/kronon/img/star/star_angry.png" class="pop-img-top"> </div>
 		  </div>
