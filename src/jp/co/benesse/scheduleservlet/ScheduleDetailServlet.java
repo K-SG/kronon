@@ -28,6 +28,7 @@ public class ScheduleDetailServlet extends HttpServlet {
 
 		int scheduleId = Integer.parseInt(request.getParameter("scheduleId"));
 
+
 		ConnectionManager connectionManager = new ConnectionManager();
 		ScheduleBean scheduleBean = new ScheduleBean();
 

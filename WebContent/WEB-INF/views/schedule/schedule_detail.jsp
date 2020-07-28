@@ -59,7 +59,7 @@
 	</div>
 <!-- くろのんの画像 -->
 	<div class="kronon-banzai">
-		<img alt="banzai" src="./img/kronon/kronon_banzai.png">
+		<img alt="banzai" src="/kronon/img/kronon/kronon_banzai.png">
 	</div>
 <!-- 戻るボタン -->
 	<a href="/user/scheduleshowall"><div class="user-create-button-return">
