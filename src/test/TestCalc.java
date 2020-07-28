@@ -21,6 +21,7 @@ public class TestCalc {
 		assertThat(time,is("1時間40分"));
 	}
 
+
 	@Test
 	public void testCalcEstimateTime() {
 		ScheduleBean scheduleBean = new ScheduleBean();
