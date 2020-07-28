@@ -131,6 +131,27 @@ ul.nav li:last-child {
 	float: right;
 }
 
+/* .nav .nav-right-img{
+	float: right;
+	padding-right: 7vh;
+	padding-top:0vh;
+	padding-bottom:0;
+	width:8%;
+	height: auto;
+} */
+
+
+nav .nav-right-img{
+	float: right;
+	padding-right: 7vh;
+	padding-top:0vh;
+	padding-bottom:0vh;
+	width:2.5vw;
+	height: auto;
+}
+.nav .nav-right-img img {
+	padding-top:0.5vh;
+}
 
 
 .nav .nav-right-img a{
