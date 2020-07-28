@@ -20,7 +20,7 @@ public class ActualNewServlet extends HttpServlet {
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String forwardPath = "WEB-INF/views/actual/actual_new.jsp";
+		String forwardPath = "../WEB-INF/views/actual/actual_new.jsp";
 		RequestDispatcher dispatcher = request.getRequestDispatcher(forwardPath);
 		dispatcher.forward(request, response);
 	}
