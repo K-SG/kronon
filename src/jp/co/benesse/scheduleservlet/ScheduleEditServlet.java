@@ -25,6 +25,8 @@ public class ScheduleEditServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String scheduleIdStr = request.getParameter("scheduleId");
+
+		//urlに残っているのでtry-catchが必要
 		int scheduleId = Integer.parseInt(scheduleIdStr);
 		ConnectionManager connectionManager = new ConnectionManager();
 		try {

@@ -27,6 +27,8 @@ public class ScheduleDetailServlet extends HttpServlet {
 			throws ServletException, IOException {
 		String scheduleStr = request.getParameter("scheduleId");
 		System.out.println(request.getParameter("scheduleId"));
+
+		//urlに残っているのでtry-catchが必要
 		int scheduleId = Integer.parseInt(scheduleStr);
 
 		ConnectionManager connectionManager = new ConnectionManager();

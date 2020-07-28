@@ -47,6 +47,9 @@ public class ScheduleShowAllServlet extends HttpServlet {
 		List<ArrayList<ScheduleBean>> getOneDayScheduleLists = new ArrayList<>();
 		List<ScheduleBean> getOneDayScheduleList = new ArrayList<>();
 		LocalDate scheduleDate;
+
+		//URLにdate=hogeというのを残すならtry-catchが必要
+		/////////////////////////////////////////////
 		if(flag==null ){
 			if( calendarDate!=null){
 				scheduleDate =LocalDate.parse(calendarDate, DateTimeFormatter.ofPattern("yyyy-MM-dd"));	//日付取得
@@ -67,6 +70,9 @@ public class ScheduleShowAllServlet extends HttpServlet {
 		else{	//それ以外
 			scheduleDate=LocalDate.now();//今日の日付取得
 		}
+		////////////////////////////////////////////
+
+
 
 		//yyyy/MM/dd(日)の形式の取得
 		Date sqlDate = Date.valueOf(scheduleDate);
