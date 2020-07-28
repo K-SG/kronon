@@ -1,7 +1,6 @@
 $(function () {
-	let startTime = document.getElementById("startTime").textContent;
-	let endTime = document.getElementById("endTime").textContent;
-	console.log(startTime);
+	let startTime = document.getElementById('startTime').textContent;
+	let endTime = document.getElementById('endTime').textContent;
 	const stTime = startTime.substring(0,5);
 	const edTime = endTime.substring(0,5);
 	$('.startTime').text(stTime) ;
@@ -11,13 +10,13 @@ $(function () {
     let place = document.getElementById('set-place').value;
     let placeMsg;
     if(place == 0){
-    	placeMsg="オフィス";
+    	placeMsg='オフィス';
     }else if(place == 1){
-    	placeMsg="在宅";
+    	placeMsg='在宅';
     }else if(place == 2){
-    	placeMsg="外出";
+    	placeMsg='外出';
     }
-    $('#actual-place').html("作業("+placeMsg+")")
+    $('#actual-place').html('作業('+placeMsg+')')
 
   window.onload = function () {
 
@@ -25,22 +24,21 @@ $(function () {
 		let popFlag = document.getElementById('flag').value;
 
 		/*ScheduleCreateServlet返ってきたとき、値の保存をする*/
-		if(popFlag==='0'){
+
 			let date = document.getElementById('set-date').value;
-			let actualTime = document.getElementById('set-tart-time').value;
-			let actualHour = actualTime.substring(0, 2);
-			let actualMin = actualTime.substring(3,5);
+			let actualTime = document.getElementById('set-actual-time').value;
+			let actualHour = Math.floor(actualTime / 60);
+			let actualMin = actualTime % 60;
 
 			/*すべての初期選択を外す*/
 			$('select option').attr('selected', false);
-			/*開始時間と終了時間を09→9に変換*/
-			if (actualHour.slice(0, 1) == 0) {
-				actualHour = actualHour.substring(1, 2);
-			}
 			/*初期選択がされるようにselectedをつける*/
+			console.log(actualHour,actualMin);
+
 				$('#actual-hour').val(actualHour);
 				$('#actual-min').val(actualMin);
 
+				if(popFlag==='0'){
 				/*実績登録ポップアップ*/
 				$('.create-msg').html('実績を登録したよ！');
 				$('.complete-popup').fadeIn();
@@ -54,12 +52,12 @@ $(function () {
 	    let actualHour = document.getElementById('actual-hour').value;
 	    let actualMin = document.getElementById('actual-min').value;
 	    let comment = document.getElementById('actual-comment').value;
-	    let actualTime = actualHour + "時間" + actualMin +'分';
+	    let actualTime = actualHour + '時間' + actualMin +'分';
 
 //ポッププラグ変数作成
     let popFlag;
 
-    if(actualHour==""||actualMin==''){
+    if(actualHour==''||actualMin==''){
     	popFlag='3';
     }else{
     	popFlag='5';
@@ -85,13 +83,13 @@ $(function () {
   /*登録完了ポップアップの予定表へボタン押下時の遷移先*/
   $('.scheduleshowall-popup').click(function () {
   let date = document.getElementById('set-date').value;
-    location.href= "scheduleshowall?date=" + date;
+    location.href='scheduleshowall?date=' + date;
   });
 
   /*登録完了ポップアップの実績一覧へボタン押下時の遷移先*/
   $('.actualindex-popup').click(function () {
   let date = document.getElementById('set-date').value;
-    location.href= "actualindex?date=" + date;
+    location.href='actualindex?date=' + date;
   });
 
     /*キャンセルボタンを押した際のポップアップ表示*/

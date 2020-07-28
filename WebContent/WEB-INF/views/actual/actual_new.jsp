@@ -27,7 +27,8 @@
 			<input type="hidden" name="scheduleDate" value="${scheduleBean.scheduleDate}" id="set-date">
 			<input type="hidden" value="${scheduleBean.startTime}" id="set-start-time">
 			<input type="hidden" value="${scheduleBean.endTime}" id="set-end-time">
-			<input type="hidden" name="schedulePlace" value="${scheduleBean.place}" id="set-place">
+			<input type="hidden" value="${scheduleBean.actualTime}" id="set-actual-time">
+			<input type="hidden" value="${scheduleBean.place}" id="set-place">
 			<table class="actual-table">
 			<tr><td id="actual-date"><c:out value="${scheduleBean.scheduleDateActual}"/><span id="startTime" class="startTime"><c:out value="${scheduleBean.startTime}" /></span>～
 			<span id="endTime" class="endTime"><c:out value="${scheduleBean.endTime}" /></span></td><td id="actual-place"></td></tr>
@@ -38,7 +39,7 @@
 			<div class="actual-regist-area-1">
 				<div class="actual-regist-font-lev1">実績時間<span>*</span></div>
 				<div class="actual-regist-time">
-				<input type="hidden" value="${scheduleBean.actualTime}" id="set-start-time">
+				<input type="hidden" value="${scheduleBean.actualTime}" >
 						<select name="actualHour" id="actual-hour">
 							<option value="0">0</option>
 							<option value="1">1</option>

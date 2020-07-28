@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import jp.co.benesse.dataaccess.cm.ConnectionManager;
 import jp.co.benesse.dataaccess.dao.ScheduleDAO;
+import jp.co.benesse.dataaccess.value.ScheduleBean;
 
 @WebServlet("/user/acutualupdate")
 public class AcutualUpdateServlet extends HttpServlet {
@@ -62,6 +63,10 @@ public class AcutualUpdateServlet extends HttpServlet {
 
 			// 更新しましたポップアップのフラグをセット
 			request.setAttribute("popFlag", popFlag);
+
+			ScheduleBean scheduleBean = new ScheduleBean();
+			scheduleBean = scheduleDAO.getScheduleByScheduleId(scheduleId);
+			request.setAttribute("scheduleBean",scheduleBean);
 
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/actual/actual_new.jsp");
 			dispatcher.forward(request, response);
