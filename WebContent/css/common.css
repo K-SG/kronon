@@ -150,6 +150,7 @@ article{
 	text-align: left;
 	margin-top:2vw;
 	margin-bottom: 2vw;
+	table-layout: fixed !important;
 }
 
 /*th, td{
@@ -169,6 +170,8 @@ article{
 	padding:1.2vw 0vw;
 	border-bottom: 0.1vw #888888 solid;
 	margin:0;
+	word-wrap: break-word;
+	word-break : break-all;
 }
 
 .last-table{

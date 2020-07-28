@@ -72,7 +72,7 @@
           </tr>
           <tr>
             <th>タイトル：</th>
-            <td>外部設計レビュー</td>
+            <td>外部設計レビューaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</td>
           </tr>
           <tr>
             <th class="last-table">内容：</th>
