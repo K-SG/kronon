@@ -23,7 +23,7 @@
 
 			<!-- <form action="/WEB-INF/views/user/usercreate" method="post" id="user_create_form" class="user_create_form"> -->
 			<form action="http://localhost:8080/kronon/user/usercreate" method="post" class="user_create_form" id="id_create_form" >
-				<input type="text" name="userName" id="create_name" class="create_textbox" placeholder="表示名" maxlength="15" value=${userName }><br>
+				<input type="text" name="username" id="create_name" class="create_textbox" placeholder="表示名" maxlength="15" value=${username }><br>
 				<input type="text" name="mail" id="create_mail" class="create_textbox" placeholder="メールアドレス" maxlength="100" value="${mail}"><br>
 				<input type="password" name="password" id="create_password1" class="create_textbox" placeholder="パスワード" maxlength="20" value=${password }><br>
 				<input type="password" name="password" id="create_password2" class="create_textbox" placeholder="パスワード確認" maxlength="20" value=${password }><br>

@@ -140,17 +140,17 @@ ul.nav li:last-child {
 .nav .nav-right-user{
 	float: right;
 	padding-top:2vh;
-	padding-right: 4vh;
-	font-size: min(3vh,2vw);
+	padding-right: 1vh;
+	font-size: min(2.5vh,2vw);
 	color:#FFFFFF;
 }
 
 .nav .nav-right-img{
 	float: right;
 	padding-right: 7vh;
-	padding-top:1vh;
+	padding-top:0vh;
 	padding-bottom:0;
-	width:10%;
+	width:8%;
 	height: auto;
 }
 
