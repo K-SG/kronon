@@ -114,8 +114,10 @@ ul.nav li:last-child {
 .nav .nav-right-user{
 	float: right;
 	padding-top:3vh;
-	padding-right: 4vh;
-	font-size: 3vh;
+	/* padding-right: 4vh; */
+	padding-right: 1vh;
+	/* font-size: 3vh; */
+	font-size: min(2.5vh,2vw);
 	color:#FFFFFF;
 }
 
