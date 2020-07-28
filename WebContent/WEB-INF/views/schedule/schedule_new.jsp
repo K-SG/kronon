@@ -132,7 +132,7 @@
 
 			<!--キャンセルボタン----->
 				<div class=schedule-regist-button-right>
-				<input type="button" class="ok-button back-popup-button" id="cancel-button" value="キャンセル">
+				<input type="button" class="ok-button" id="cancel-button" value="キャンセル">
 				</div>
 			</div>
 			<div class="clear"></div>
@@ -156,7 +156,7 @@
 
 
 			<!--本当に戻りますかポップアップ------------------------------------------------------------------->
-		<div class="popup-wrapper back-popup">
+		<div class="popup-wrapper cancel-popup">
 		  <div class="pop-container">
 			<div class="close-popup"> <i class="fa fa-2x fa-times"></i> </div>
 			<div class="pop-container-inner">
@@ -164,7 +164,7 @@
 				<p>内容は保存されないよ。</p>
 				<h2 class="message-title">本当に戻る？</h2>
 			  </div>
-			  <a href="scheduledetail?scheduleId=${scheduleBean.scheduleId}"><div class="ok-button">OK</div></a>
+			  <a href="calendar"><div class="ok-button">OK</div></a>
 			  <div class="ng-button close-popup">キャンセル</div>
 			  <img src="/kronon/img/star/star_angry.png" class="pop-img-top"> </div>
 		  </div>
@@ -174,7 +174,7 @@
 
 
 		<!--内容確認ポップアップ----------------------------------------------------------------->
-		<div class="popup-wrapper confirm-popup">
+		<div class="popup-wrapper confirm-popup2" id="confirm-popup2">
 		  <div class="pop-container pop-container-large">
 			<div class="close-popup"> <i class="fa fa-2x fa-times"></i> </div>
 			<div class="pop-container-inner">
@@ -223,6 +223,6 @@
 	</article>
 <%@ include file="../layout/common/footer.jsp" %>
 <script src="/kronon/js/schedule_new.js"></script>
-<!-- <script src="js/common.js"></script> -->
+<script src="js/common.js"></script>
 </body>
 </html>

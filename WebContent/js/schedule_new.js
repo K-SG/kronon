@@ -2,12 +2,13 @@ $(function () {
 
 /*日付に今日の日付が挿入されるようにする*/
   window.onload = function () {
-	  if(document.getElementById("date").value != null){
-	    var date = new Date();
+	  /*予定がかぶっていた時などは日付が保持されるようにするための処理*/
+	  if(document.getElementById("date").value == ""){
+	    let date = new Date();
 	    date.setDate(date.getDate());
-	    var yyyy = date.getFullYear();
-	    var mm = ("0"+(date.getMonth()+1)).slice(-2);
-	    var dd = ("0"+date.getDate()).slice(-2);
+	    let yyyy = date.getFullYear();
+	    let mm = ("0"+(date.getMonth()+1)).slice(-2);
+	    let dd = ("0"+date.getDate()).slice(-2);
 	    document.getElementById("date").value=yyyy+'-'+mm+'-'+dd;
 	  }
 
@@ -134,7 +135,7 @@ $(function () {
         $('#time-msg').html(year + '/' + month + '/' + day +'(' + weekday + ')' + startHour +':'+ startMin +'～'+ endHour +':'+ endMin);
         $('#title-msg').html(title);
         $('#content-msg').html(content);
-    	$('.confirm-popup').fadeIn();
+    	$('#confirm-popup2').fadeIn();
         return;
     }
   });
@@ -147,21 +148,21 @@ $(function () {
 
   /*登録完了ポップアップのOKボタン押下時の遷移先*/
   $('.next-popup').click(function () {
-  var date = document.getElementById('date').value;
+  let date = document.getElementById('date').value;
     location.href= "calendar?date=" + date;
   });
 
     /*キャンセルボタンを押した際のポップアップ表示*/
     $('#cancel-button').click(function () {
-        $('.back-popup').fadeIn();
+        $('.cancel-popup').fadeIn();
         return;
   });
 
   /*ポップアップを閉じる際の動き*/
   $('.close-popup').click(function () {
-    $('.confirm-popup').fadeOut();
+	$('#confirm-popup2').fadeOut();
     $('.error-popup').fadeOut();
-    $('.back-popup').fadeOut();
+    $('.cancel-popup').fadeOut();
     $('.complete-popup').fadeOut();
   });
 
