@@ -98,7 +98,7 @@ public class UserDAO {
 			}
 		return userBean;
 	} catch (SQLException e) {
-		throw new RuntimeException("'user'テーブルのSELECTに失敗しました", e);
+		throw new RuntimeException("userテーブルのSELECTに失敗しました", e);
 	} finally {
 		try {
 			if (preparedStatement != null) {

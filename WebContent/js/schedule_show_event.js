@@ -13,7 +13,7 @@ $(function () {
 	$('.schedule-item').click(function(){
 		var id = $(this).children('.schedule_id').text();
 		alert("次のURLに"+id+"を送ります");
-		window.location.href='../user/scheduleDetail?scheduleId='+id;//calendar.html
+		window.location.href='../user/scheduledetail?scheduleId='+id;//calendar.html
 
 	})
 
