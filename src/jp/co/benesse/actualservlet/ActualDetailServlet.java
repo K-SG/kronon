@@ -25,8 +25,8 @@ public class ActualDetailServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-//		int scheduleId = Integer.parseInt(request.getParameter("scheduleId"));
-		int scheduleId = 2;
+
+		int scheduleId = Integer.parseInt(request.getParameter("scheduleId"));
 
 		ConnectionManager connectionManager = new ConnectionManager();
 		ScheduleBean scheduleBean = new ScheduleBean();
