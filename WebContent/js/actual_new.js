@@ -54,7 +54,7 @@ $(function () {
 	    let actualHour = document.getElementById('actual-hour').value;
 	    let actualMin = document.getElementById('actual-min').value;
 	    let comment = document.getElementById('actual-comment').value;
-	    let actualTime = actualHour + ":" + actualMin;
+	    let actualTime = actualHour + "時間" + actualMin +'分';
 
 //ポッププラグ変数作成
     let popFlag;

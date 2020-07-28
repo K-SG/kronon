@@ -57,7 +57,7 @@
 				</div>
 				<div class="actual-regist-time-text">時間</div>
 				<div class="actual-regist-time">
-						<select name="actualMin" id="actual-min">
+						<select name="actualMinute" id="actual-min">
 							<option value="00">00</option>
 							<option value="15">15</option>
 							<option value="30">30</option>

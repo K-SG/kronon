@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import jp.co.benesse.dataaccess.cm.ConnectionManager;
 import jp.co.benesse.dataaccess.dao.ScheduleDAO;
 
-@WebServlet("/user/AcutualUpdateServlet")
+@WebServlet("/user/acutualupdate")
 public class AcutualUpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
