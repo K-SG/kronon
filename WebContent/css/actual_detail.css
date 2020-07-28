@@ -31,6 +31,24 @@
 	height: auto;
 }
 
+.actual-input-area-3 {
+	float: left;
+	width: 22vw;
+	overflow: hidden;/*はみ出た文字を隠す*/
+	display: -webkit-box;/*...表示*/
+	-webkit-box-orient: vertical;/*...表示*/
+	-webkit-line-clamp: 1;/*...表示(2行目の最後に「...をつける」)	*/
+}
+
+.actual-input-area-4 {
+	float: left;
+	width: 22vw;
+	overflow: hidden;/*はみ出た文字を隠す*/
+	display: -webkit-box;/*...表示*/
+	-webkit-box-orient: vertical;/*...表示*/
+	-webkit-line-clamp: 2;/*...表示(2行目の最後に「...をつける」)	*/
+
+}
 
 
 
