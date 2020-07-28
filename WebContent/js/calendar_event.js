@@ -23,38 +23,26 @@ $(function () {
 			return;
 		}
 
-
 		var date = $(this).children('.date').text();
 
-		/*var set = '<c:set var="date" value=';
-  		console.log(date);
-		set += date;
-		set += ' scope="session"/>';
-		alert(set);
-		$(this).append(set);
-		$(this).append('<c:set var="date2" value="07-22" scope="session"/>');*/
-		if(date.length === 1){
-			date = "0"+date;
+		//一桁の場合は0うめ
+		let date_0;
+		if(date < 10){
+			date_0 = "0"+date;
+		}else{
+			date_0 = date;
 		}
-/*		let date_0 = (String)("0"+date);
-		let date_0_cut = date_0.subString(-2,0);*/
-		let date_submit = date_servlet.slice(0,-2) + date;
-		//date_servlet.setDate(date);
-		alert("次のサーブレットに送るパラメータは"+date_submit);
-		window.location.href=`miracle?date3=${date_submit}`;//calendar.html
+		let date_submit = date_servlet.slice(0,-2) + date_0;
+		window.location.href=`../user/scheduleshowall?date=${date_submit}`;//calendar.html
 
 	})
 
+	//先月へ
 	$('.left').click(function(){
-		/*alert(date_servlet);*/
-		//window.location.href=`../user/calendar?flag=0&date=${date_servlet}`;
 		$('#left-form').submit();
-
 	})
-
-		$('.right').click(function(){
-			/*alert(date_servlet);*/
-		//window.location.href=`../user/calendar?flag=1&date=${date_servlet}`;
+	//翌月へ
+	$('.right').click(function(){
 		$('#right-form').submit();
 	})
 

@@ -83,7 +83,7 @@ public class ScheduleDAO {
 			// SQLの定義
 			String sql = "INSERT INTO SCHEDULE (SCHEDULE_ID,USER_ID,SCHEDULE_DATE,"
 					+ "START_TIME,END_TIME,PLACE,TITLE,CONTENT,ACTUAL_TIME,DELETE_FLAG)"
-					+ "VALUES (NEXTVAL('SEQ'),?,?,?,?,?,?,?,1000,'0')";
+					+ "VALUES (NEXTVAL('SEQ_SCHEDULE'),?,?,?,?,?,?,?,1000,'0')";
 			// SQLの作成(準備)
 			preparedStatement = this.connection.prepareStatement(sql);
 			// SQLバインド変数への値設定
@@ -333,8 +333,8 @@ if (title.contains("%")) {
 		if (title.contains("%")) {
 			title = title.replace("%", "\\%");
 		}
-
 		title = "%" + title + "%";
+
 		PreparedStatement preparedStatement = null;
 		try {
 

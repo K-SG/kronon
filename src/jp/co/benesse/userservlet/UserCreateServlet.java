@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import jp.co.benesse.dataaccess.cm.ConnectionManager;
+import jp.co.benesse.dataaccess.crypt.CryptographyLogic;
 import jp.co.benesse.dataaccess.dao.UserDAO;
 import jp.co.benesse.dataaccess.value.UserBean;
 
@@ -31,13 +32,14 @@ public class UserCreateServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String username = request.getParameter("username");
+		String userName = request.getParameter("userName");
 		String mail = request.getParameter("mail");
 		String password = request.getParameter("password");
 
-		request.setAttribute("username", username);
-		request.setAttribute("mail", mail);
-		request.setAttribute("password", password);
+		String hash = CryptographyLogic.encryptStr(password);
+//		request.setAttribute("userName", userName);
+//		request.setAttribute("mail", mail);
+//		request.setAttribute("password", password);
 
 		ConnectionManager connectionManager = new ConnectionManager();
 
@@ -59,7 +61,7 @@ public class UserCreateServlet extends HttpServlet {
 			}
 
 			//新規登録をするために
-			int result = userDAO.createUser(username,mail,password);
+			int result = userDAO.createUser(userName,mail,hash);
 			if(result!=1){
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/error/error.jsp");
 				dispatcher.forward(request, response);
@@ -69,7 +71,7 @@ public class UserCreateServlet extends HttpServlet {
 
 			UserBean userBean = new UserBean();
 
-			userBean = userDAO.findUser(mail,password);
+			userBean = userDAO.findUser(mail,hash);
 			HttpSession session = request.getSession();
 			session.setAttribute("userName",userBean.getUserName());
 			session.setAttribute("userId",userBean.getUserId());
@@ -87,7 +89,7 @@ public class UserCreateServlet extends HttpServlet {
 		catch(RuntimeException e){
 
 			connectionManager.rollback();
-
+			e.printStackTrace();
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/error/error.jsp");
 			dispatcher.forward(request, response);
 			return;

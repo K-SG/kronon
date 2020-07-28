@@ -1,4 +1,4 @@
-package jp.co.benesse.calendarservlet;
+package jp.co.benesse.actualservlet;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -17,14 +17,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-
 import jp.co.benesse.dataaccess.cm.ConnectionManager;
 import jp.co.benesse.dataaccess.dao.ScheduleDAO;
 import jp.co.benesse.dataaccess.value.ScheduleBean;
 
-@WebServlet("/user/calendar")
-public class CalendarServlet extends HttpServlet {
+@WebServlet("/user/actualindex")
+public class ActualIndexServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -34,33 +32,42 @@ public class CalendarServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		HttpSession session = request.getSession();
-		String flag = request.getParameter("flag");
+		// セッションスコープから値を取得
+		 HttpSession session = request.getSession();
+		 int userId = (Integer)session.getAttribute("userId");
+//		 String userIdStr = (String) session.getAttribute("userId");
+//		 int userId = Integer.parseInt(userIdStr);
+//		int userId = 1;
+		// String userName = (String) session.getAttribute("userId");
 		String dateStr = request.getParameter("date");
-		int userId= 1;// (Integer) session.getAttribute("userId");
+		// 月送りの判定フラグ
+		String monthFlag = request.getParameter("monthFlag");
 
 		LocalDate date;
 		List<ScheduleBean> scheduleBeanList = new ArrayList<>();
 
-		ObjectMapper mapper = new ObjectMapper();
+		// 遷移元の判定フラグ
+		final String FLAG = "0";
+
 		ConnectionManager connectionManager = new ConnectionManager();
+		ScheduleDAO scheduleDAO;
 
 		try {
-			//いつの月の予定を表示するか
-			if (flag == null || dateStr == null) {
+			if (monthFlag == null || dateStr == null) {// 実績確認画面以外から
 				date = LocalDate.now();
-			} else if (flag.equals("0")) {// 前月
+			} else if (monthFlag.equals("0")) {// 前月
 				date = LocalDate.parse(dateStr, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 				LocalDate firstDayOfMonth = date.with(TemporalAdjusters.firstDayOfMonth()); // 初日
 				date = firstDayOfMonth.minusDays(1);// 先月の末日
-			} else if (flag.equals("1")) {// 翌月
+			} else if (monthFlag.equals("1")) {// 翌月
 				date = LocalDate.parse(dateStr, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 				LocalDate lastDayOfMonth = date.with(TemporalAdjusters.lastDayOfMonth()); // 末日
 				date = lastDayOfMonth.plusDays(1);// 次月の初日
-			} else {// ログイン画面から
+			} else {// 実績確認画面以外から
 				date = LocalDate.now();
 			}
 		} catch (DateTimeParseException e) {
+			// 日付の不正入力のうち、フロントではじけなかった場合はエラー画面へ
 			RequestDispatcher dispatcher = request.getRequestDispatcher("../WEB-INF/views/error/error.jsp");
 			dispatcher.forward(request, response);
 			return;
@@ -68,26 +75,26 @@ public class CalendarServlet extends HttpServlet {
 
 		try {
 			Connection connection = connectionManager.getConnection();
-			ScheduleDAO scheduleDAO = new ScheduleDAO(connection);
-			scheduleBeanList = scheduleDAO.tooLongSQLSchedule(date, userId);
+			scheduleDAO = new ScheduleDAO(connection);
+			scheduleBeanList = scheduleDAO.getOneMonthSchedule(date, userId);
 
-			//Beanのリスト→JSON形式の整形
-			String json = mapper.writeValueAsString(scheduleBeanList);
-			String json_replace = json.replaceAll("\"", "krnooon");
-
-			//リクエストスコープにセット
-			request.setAttribute("json", json_replace);
+			// リクエストスコープにセット
+			request.setAttribute("flag", FLAG);
 			request.setAttribute("date", date);
 			request.setAttribute("month", date.getMonthValue());
-
 			request.setAttribute("year", date.getYear());
+			request.setAttribute("scheduleBeanList", scheduleBeanList);
 
-			RequestDispatcher dispatcher = request.getRequestDispatcher("../WEB-INF/views/calendar/schedule_index.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("../WEB-INF/views/actual/actual_index.jsp");
 			dispatcher.forward(request, response);
+			return;
 		} catch (RuntimeException e) {
-			throw e;
+			RequestDispatcher dispatcher = request.getRequestDispatcher("../WEB-INF/views/error/error.jsp");
+			dispatcher.forward(request, response);
+			return;
 		} finally {
 			connectionManager.closeConnection();
 		}
 	}
+
 }
