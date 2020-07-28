@@ -35,7 +35,7 @@ public class TestShowServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//int id = Integer.parseInt(request.getParameter("id"));
-        int id = 4 ;
+        int id = 5 ;
 		ConnectionManager connectionManager = new ConnectionManager();
 		ScheduleBean scheduleBean = new ScheduleBean();
 
@@ -54,7 +54,7 @@ public class TestShowServlet extends HttpServlet {
 			System.out.println(scheduleBean);
 			request.setAttribute("scheduleBean", scheduleBean);
 		HttpSession session = request.getSession(true);
-		session.setAttribute("userId", "3");
+		session.setAttribute("userId", "2");
 		RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/views/schedule/schedule_detail.jsp");
 		dispatcher.forward(request, response);
 		return;
