@@ -26,10 +26,11 @@
 			<div class="table-container">
 			<input type="hidden" name="scheduleDate" value="${scheduleBean.scheduleDate}" id="set-date">
 			<input type="hidden" value="${scheduleBean.startTime}" id="set-start-time">
-			<input type="hidden" value="${scheduleBean.endlTime}" id="set-end-time">
+			<input type="hidden" value="${scheduleBean.endTime}" id="set-end-time">
 			<input type="hidden" name="schedulePlace" value="${scheduleBean.place}" id="set-place">
 			<table class="actual-table">
-			<tr><td id="actual-date">日付入れるとこ</td><td id="actual-place">場所入れるとこ</td></tr>
+			<tr><td id="actual-date"><c:out value="${scheduleBean.scheduleDateActual}"/><span id="startTime" class="startTime"><c:out value="${scheduleBean.startTime}" /></span>～
+			<span id="endTime" class="endTime"><c:out value="${scheduleBean.endTime}" /></span></td><td id="actual-place"></td></tr>
 			<tr><td class="actual-title" colspan="2"><p><c:out value="${scheduleBean.title}" /></p></td></tr>
 			<tr><td class="sctual-naiyou" colspan="2"><p><c:out value="${scheduleBean.content}" /></p></td></tr>
 			</table>
@@ -68,7 +69,7 @@
 			<div class="actual-regist-area-4">
 				<div class="actual-regist-font-lev1">コメント</div>
 					<div class="actual-regist-content">
-						<textarea name="content" id="content" rows="13" cols="40" maxlength="1440" placeholder="予定の内容を1440字以内で入力してください"><c:out value="${scheduleBean.content}" /></textarea>
+						<textarea name="comment" id="actual-comment" rows="13" cols="40" maxlength="1440" placeholder="予定の内容を1440字以内で入力してください"> <c:out value="${scheduleBean.comment}" /></textarea>
 					</div>
 				</div>
 		 	</div>
@@ -135,19 +136,23 @@
 				  </tr>
 				  <tr>
 					<th>予定日時：</th>
-					<td id="time-msg"></td>
+					<td id="time-msg"><c:out value="${scheduleBean.scheduleDateActual}"/><span class="startTime"><c:out value="${scheduleBean.startTime}" /></span>～<span class="endTime"><c:out value="${scheduleBean.endTime}" /></span></td><td id="actual-place"></td>
 				  </tr>
 				  <tr>
 					<th>実績時間：</th>
-					<td id="actual-msg"></td>
+					<td id="actual-time-msg"></td>
 				  </tr>
 				  <tr>
 					<th>タイトル：</th>
-					<td id="title-msg"></td>
+					<td id="title-msg"><c:out value="${scheduleBean.title}"/></td>
 				  </tr>
 				  <tr>
 					<th class="last-table">内容：</th>
-					<td class="last-table" id="content-msg"></td>
+					<td class="last-table" id="content-msg"><c:out value="${scheduleBean.content}"/></td>
+				  </tr>
+				  	<tr>
+					<th class="last-table">コメント：</th>
+					<td class="last-table" id="comment-msg"></td>
 				  </tr>
 				</table>
 			  </div>

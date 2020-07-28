@@ -1,27 +1,25 @@
 $(function () {
+	let startTime = document.getElementById("startTime").textContent;
+	let endTime = document.getElementById("endTime").textContent;
+	console.log(startTime);
+	const stTime = startTime.substring(0,5);
+	const edTime = endTime.substring(0,5);
+	$('.startTime').text(stTime) ;
+	$('.endTime').text(edTime) ;
+
+    /*場所の入力*/
+    let place = document.getElementById('set-place').value;
+    let placeMsg;
+    if(place == 0){
+    	placeMsg="オフィス";
+    }else if(place == 1){
+    	placeMsg="在宅";
+    }else if(place == 2){
+    	placeMsg="外出";
+    }
+    $('#actual-place').html("作業("+placeMsg+")")
 
   window.onload = function () {
-	  /*日付の入力*/
-	    let date = document.getElementById("set-date").value;
-	    let startTime = document.getElementById("set-start-time").value;
-	    let endTime = document.getElementById("set-end-time").value;
-	    let d = new Date(date);
-	    let weekday = '日月火水木金土'[d.getDay()];
-        $('#actual-date').html(date +'(' + weekday + ')' + startTime +'～'+ endTime);
-
-        /*場所の入力*/
-        let place = document.getElementById('set-place').value;
-        let placeMsg;
-        if(place == 0){
-        	placeMsg="オフィス";
-        }else if(palace == 1){
-        	placeMsg="在宅";
-        }else if(place == 2){
-        	placeMsg="外出";
-        }
-        $('#actual-place').html("作業("+placeMsg+")")
-
-
 
 		/*DBと照合した後のポップアップフラグ*/
 		let popFlag = document.getElementById('flag').value;
@@ -53,18 +51,28 @@ $(function () {
 
   /*登録ボタンを押した際のエラーチェックとポップアップ表示*/
   $('#ok-button').click(function () {
+
 	    let actualHour = document.getElementById('actual-hour').value;
 	    let actualMin = document.getElementById('actual-min').value;
+	    let comment = document.getElementById('actual-comment').value;
+	    let actualTime = actualHour + ":" + actualMin;
 
 //ポッププラグ変数作成
     let popFlag;
 
     if(actualHour==""||actualMin==''){
     	popFlag='3';
+    }else{
+    	popFlag='5';
     }
     if(popFlag==='3'){
         $('.new-msg').html('入力されていない<br>項目があるよ');
         $('.error-popup').fadeIn();
+        return;
+    }else if(popFlag==='5'){
+        $('#actual-time-msg').html(actualTime);
+        $('#comment-msg').html(comment);
+    	$('#confirm-popup2').fadeIn();
         return;
     }
   });
