@@ -14,19 +14,18 @@ import jp.co.benesse.dataaccess.cm.ConnectionManager;
 import jp.co.benesse.dataaccess.dao.ScheduleDAO;
 import jp.co.benesse.dataaccess.value.ScheduleBean;
 
-/**
- * Servlet implementation class ActualDetailServlet
- */
 @WebServlet("/user/actualdetail")
 public class ActualDetailServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		doPost(request, response);
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		int id = Integer.parseInt(request.getParameter("id"));
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// int id = Integer.parseInt(request.getParameter("id"));
 		int id = 2;
 
 		ConnectionManager connectionManager = new ConnectionManager();
@@ -37,7 +36,7 @@ public class ActualDetailServlet extends HttpServlet {
 			Connection connection = connectionManager.getConnection();
 			ScheduleDAO scheduleDAO = new ScheduleDAO(connection);
 
-			if (scheduleDAO.isDeleted(id)){
+			if (scheduleDAO.isDeleted(id)) {
 				RequestDispatcher dispatcher = request.getRequestDispatcher("../WEB-INF/views/error/error.jsp");
 				dispatcher.forward(request, response);
 				return;
@@ -53,6 +52,7 @@ public class ActualDetailServlet extends HttpServlet {
 
 		} catch (RuntimeException e) {
 			throw e;
+
 		} finally {
 			connectionManager.closeConnection();
 		}
