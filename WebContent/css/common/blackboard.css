@@ -30,7 +30,7 @@
 }
 
 .schedule_detail{
-  margin: 1vw;
+  margin: 1vw auto;
   border: 0.2vw white solid;
   border-collapse: collapse;
   width : 48vw;
