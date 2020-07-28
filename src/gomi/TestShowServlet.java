@@ -35,7 +35,7 @@ public class TestShowServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//int id = Integer.parseInt(request.getParameter("id"));
-        int id = 4 ;
+        int id = 2 ;
 		ConnectionManager connectionManager = new ConnectionManager();
 		ScheduleBean scheduleBean = new ScheduleBean();
 
