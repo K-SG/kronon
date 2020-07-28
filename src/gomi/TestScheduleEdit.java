@@ -20,8 +20,8 @@ public class TestScheduleEdit extends HttpServlet {
 
 
 		request.setAttribute("date", "2020-10-16");
-		request.setAttribute("startTime", "0900");
-		request.setAttribute("endTime", "1530");
+		request.setAttribute("startTime", "09:00");
+		request.setAttribute("endTime", "15:30");
 		request.setAttribute("place", "2");
 		request.setAttribute("title", "予定が入るよ");
 		request.setAttribute("content", "内容が入るよ");

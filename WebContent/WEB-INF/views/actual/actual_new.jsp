@@ -27,7 +27,7 @@
 			<input type="hidden" name="scheduleDate" value="${scheduleBean.scheduleDate}" id="set-date">
 			<input type="hidden" value="${scheduleBean.startTime}" id="set-start-time">
 			<input type="hidden" value="${scheduleBean.endlTime}" id="set-end-time">
-			<input type="hidden" name="schedulePlace" value="${scheduleBean.schedulePlace}" id="set-place">
+			<input type="hidden" name="schedulePlace" value="${scheduleBean.place}" id="set-place">
 			<table class="actual-table">
 			<tr><td id="actual-date">日付入れるとこ</td><td id="actual-place">場所入れるとこ</td></tr>
 			<tr><td class="actual-title" colspan="2"><p><c:out value="${scheduleBean.title}" /></p></td></tr>

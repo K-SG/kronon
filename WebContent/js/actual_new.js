@@ -29,24 +29,19 @@ $(function () {
 		/*ScheduleCreateServlet返ってきたとき、値の保存をする*/
 		if(popFlag==='0'){
 			let date = document.getElementById('set-date').value;
-			let startHour = startTime.substring(0, 2);
-			let startMin = startTime.substring(3,5);
+			let actualTime = document.getElementById('set-tart-time').value;
+			let actualHour = actualTime.substring(0, 2);
+			let actualMin = actualTime.substring(3,5);
 
 			/*すべての初期選択を外す*/
 			$('select option').attr('selected', false);
 			/*開始時間と終了時間を09→9に変換*/
-			if (startHour.slice(0, 1) == 0) {
-				startHour = startHour.substring(1, 2);
-			}
-			if (endHour.slice(0, 1) == 0) {
-				endHour = endHour.substring(1, 2);
+			if (actualHour.slice(0, 1) == 0) {
+				actualHour = actualHour.substring(1, 2);
 			}
 			/*初期選択がされるようにselectedをつける*/
-				$('#new-start-hour').val(startHour);
-				$('#new-start-minutes').val(startMin);
-				$('#new-end-hour').val(endHour);
-				$('#new-end-minutes').val(endMin);
-				$('#new-place').val(place);
+				$('#actual-hour').val(actualHour);
+				$('#actual-min').val(actualMin);
 
 				/*実績登録ポップアップ*/
 				$('.create-msg').html('実績を登録したよ！');
