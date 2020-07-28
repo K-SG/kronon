@@ -12,9 +12,7 @@ $(function () {
 
 	$('.schedule-item').click(function(){
 		var id = $(this).children('.schedule_id').text();
-		alert("次のURLに"+id+"を送ります");
 		window.location.href='../user/scheduledetail?scheduleId='+id;//calendar.html
-
 	})
 
 	//前日へ

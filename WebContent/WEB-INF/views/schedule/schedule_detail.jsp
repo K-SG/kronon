@@ -59,10 +59,10 @@
 	</div>
 <!-- くろのんの画像 -->
 	<div class="kronon-banzai">
-		<img alt="banzai" src="./img/kronon/kronon_banzai.png">
+		<img alt="banzai" src="../img/kronon/kronon_banzai.png">
 	</div>
 <!-- 戻るボタン -->
-	<a href="/user/scheduleshowall"><div class="user-create-button-return">
+	<a href="scheduleshowall?date=${scheduleBean.scheduleDate}"><div class="user-create-button-return">
 			<img alt="戻る" src="/kronon/img/back_buttom.png"></div>
 	</a>
 
@@ -75,11 +75,11 @@
 		<div class="flex_test-box">
 			<div class="flex_test-item">
 
-				<a href="/user/scheduleedit?scheduleId=${scheduleBean.scheduleId}"><div class="ok-button">修正</div></a>
+				<a href="scheduleedit?scheduleId=${scheduleBean.scheduleId}"><div class="ok-button">修正</div></a>
 			</div>
 			<div class="flex_test-item">
 
-				<a href="/user/actualedit?scheduleId=${scheduleBean.scheduleId}"><div class="ok-button">実績入力</div></a>
+				<a href="actualedit?scheduleId=${scheduleBean.scheduleId}"><div class="ok-button">実績入力</div></a>
 			</div>
 			<div class="flex_test-item">
 				<div class="ok-button large-popup-button" id="${popFlag}">削除</div>
