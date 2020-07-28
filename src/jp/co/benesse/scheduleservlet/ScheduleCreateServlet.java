@@ -11,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import jp.co.benesse.dataaccess.cm.ConnectionManager;
 import jp.co.benesse.dataaccess.dao.ScheduleDAO;
@@ -37,9 +38,9 @@ public class ScheduleCreateServlet extends HttpServlet {
 		String title = request.getParameter("title");
 		String content = request.getParameter("content");
 
-//		HttpSession session = request.getSession(true);
-		int userId = 1;
-//		int userId = (int) session.getAttribute("userId");
+		HttpSession session = request.getSession(true);
+//		int userId = 1;
+		int userId = (Integer) session.getAttribute("userId");
 
 		ConnectionManager connectionManager = new ConnectionManager();
 		try {

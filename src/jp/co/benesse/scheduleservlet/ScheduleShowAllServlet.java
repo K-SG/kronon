@@ -38,7 +38,7 @@ public class ScheduleShowAllServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 
 		//SessionからユーザーIDを取ってくる
-		int userId= 1;//(int) session.getAttribute("userId");
+		int userId= (Integer)session.getAttribute("userId");
 		//どこからこのサーブレットに来たか判断するためのフラグを取ってくる
 		String flag = request.getParameter("flag");
 		String calendarDate = request.getParameter("date");

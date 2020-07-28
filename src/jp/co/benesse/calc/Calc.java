@@ -57,7 +57,7 @@ public class Calc {
 	 *
 	 * [機 能] 日時表記整形メソッド<br>
 	 * [説 明] 予定日を「MM/dd(曜日)」という書式で返す<br>
-	 * [備 考] なし
+	 * [備 考] 例外発生時にはRuntimeExceptionにラップして上位に送出する
 	 *
 	 * @param 予定日
 	 * @return 整形された日付の文字列
@@ -71,34 +71,42 @@ public class Calc {
 		dayOfWeek.put(5, "金");
 		dayOfWeek.put(6, "土");
 		dayOfWeek.put(7, "日");
-		scheduleDate.getMonthValue();
-		scheduleDate.getDayOfMonth();
-		return scheduleDate.getMonthValue() + "/" + scheduleDate.getDayOfMonth()
-		+ "(" + dayOfWeek.get(scheduleDate.getDayOfWeek().getValue())+ ")";
+		try{
+			scheduleDate.getMonthValue();
+			scheduleDate.getDayOfMonth();
+			return scheduleDate.getMonthValue() + "/" + scheduleDate.getDayOfMonth()
+			+ "(" + dayOfWeek.get(scheduleDate.getDayOfWeek().getValue())+ ")";
+		}catch(NullPointerException e){
+			throw new RuntimeException("引数にnullが渡されました");
+		}
 	}
 
 	/**
 	 *
 	 * [機 能] 日時表記整形メソッド<br>
 	 * [説 明] 予定日を「MM/dd(曜日)」という書式で返す<br>
-	 * [備 考] なし
+	 * [備 考] 例外発生時にはRuntimeExceptionにラップして上位に送出する
 	 *
 	 * @param 予定日
 	 * @return 整形された日付の文字列
 	 */
 	public static String convertActualDate(Date sqlScheduleDate){
-		LocalDate scheduleDate = sqlScheduleDate.toLocalDate();
-		Map<Integer,String> dayOfWeek = new HashMap<>();
-		dayOfWeek.put(1, "月");
-		dayOfWeek.put(2, "火");
-		dayOfWeek.put(3, "水");
-		dayOfWeek.put(4, "木");
-		dayOfWeek.put(5, "金");
-		dayOfWeek.put(6, "土");
-		dayOfWeek.put(7, "日");
-		scheduleDate.getMonthValue();
-		scheduleDate.getDayOfMonth();
-		return scheduleDate.getYear()+ "/" + scheduleDate.getMonthValue() + "/" + scheduleDate.getDayOfMonth()
-		+ "(" + dayOfWeek.get(scheduleDate.getDayOfWeek().getValue())+ ")";
+		try{
+			LocalDate scheduleDate = sqlScheduleDate.toLocalDate();
+			Map<Integer,String> dayOfWeek = new HashMap<>();
+			dayOfWeek.put(1, "月");
+			dayOfWeek.put(2, "火");
+			dayOfWeek.put(3, "水");
+			dayOfWeek.put(4, "木");
+			dayOfWeek.put(5, "金");
+			dayOfWeek.put(6, "土");
+			dayOfWeek.put(7, "日");
+			scheduleDate.getMonthValue();
+			scheduleDate.getDayOfMonth();
+			return scheduleDate.getYear()+ "/" + scheduleDate.getMonthValue() + "/" + scheduleDate.getDayOfMonth()
+			+ "(" + dayOfWeek.get(scheduleDate.getDayOfWeek().getValue())+ ")";
+		}catch(NullPointerException e){
+			throw new RuntimeException("引数にnullが渡されました");
+		}
 	}
 }

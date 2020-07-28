@@ -17,23 +17,27 @@
   border-style : Solid;
   border-color : #5E4222;
   border-color : rgba(94, 66, 34, 1);
-  border-width : 1.3vw;
-  width : 50vw;
+  border-width : 1vw;
+  width : 52vw;
   height : auto;
   border-radius : 10px;
   -moz-border-radius : 10px;
   -webkit-border-radius : 10px;
   position : relative ;
   top : 2vw;
+  margin: auto;
   left : 23vw;
-  margin-bottom: 10vw;
+  margin-bottom: 0vw;
+  margin-top: -20vw;
 }
 
+
 .schedule_detail{
-  margin: 1vw;
+  margin-top: 4vw;
+
   border: 0.2vw white solid;
   border-collapse: collapse;
-  width : 48vw;
+  width : 49vw;
   height: auto;
 }
 
