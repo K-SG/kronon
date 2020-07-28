@@ -24,16 +24,16 @@
 			<input type="hidden" name="scheduleId" value="${scheduleBean.scheduleId}" id="set-actual-id">
 			<div class="actual-regist-border"></div>
 			<div class="table-container">
-			<input type="hidden" name="scheduleDate" value="${scheduleBean.scheduleDate}" id="set-date">
-			<input type="hidden" name="schedulePlace" value="${scheduleBean.schedulePlace}" id="set-place">
-			<table>
-			<tr><td class="actual-date">日付入れるとこ</td><td class="actual-place">場所入れるとこ</td></tr>
-			<tr><td class="title">タイトルいれるとこ</td></tr>
-			<tr><td class="naiyou">内容</td></tr>
-			</table>
+				<input type="hidden" name="scheduleDate" value="${scheduleBean.scheduleDate}" id="set-date">
+				<input type="hidden" name="schedulePlace" value="${scheduleBean.schedulePlace}" id="set-place">
+				<table class="actual-table">
+					<tr><td class="actual-date">日付入れるとこ</td><td class="actual-place">場所入れるとこ</td></tr>
+					<tr><td class="actual-title" colspan= "2"><p>タイトルaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p></td></tr>
+					<tr><td class="actual-naiyou" colspan= "2"><p>内容あああああああOhooooooooooooooooooooooooooooooooああああああああああああああああああoooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo</p></td></tr>
+				</table>
 			</div>
 			<div class="actual-regist-area-1">
-				<div class="actual-regist-font-lev1">実績時刻<span>*</span></div>
+				<div class="actual-regist-font-lev1">実績時間<span>*</span></div>
 				<div class="actual-regist-time">
 				<input type="hidden" value="${scheduleBean.actualTime}" id="set-start-time">
 						<select name="actualHour" id="actual-hour">
@@ -52,7 +52,7 @@
 							<option value="12">12</option>
 						</select>
 				</div>
-				<div class="actual-regist-time-text">時</div>
+				<div class="actual-regist-time-text">時間</div>
 				<div class="actual-regist-time">
 						<select name="actualMin" id="actual-min">
 							<option value="00">00</option>
