@@ -172,7 +172,7 @@
 					<div class="message-container"><p class=create-msg></p></div>
 					<div class="ok-button scheduleshowall-popup">予定表画面へ</div>
 					<div class="ok-button actualindex-popup">実績一覧へ</div>
-					<img src="/kronon/img/kronon/kronon_star.png" class="pop-img">
+					<img src="/kronon/img/star/star_glass.png" class="pop-img-top">
 				</div>
 			</div>
 		</div>
