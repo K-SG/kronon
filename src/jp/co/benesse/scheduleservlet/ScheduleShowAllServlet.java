@@ -29,109 +29,133 @@ import jp.co.benesse.dataaccess.value.ScheduleBean;
 public class ScheduleShowAllServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//doGetされたものをdoPostに変換
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// doGetされたものをdoPostに変換
 		this.doPost(request, response);
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession();
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
-		//SessionからユーザーIDを取ってくる
-		int userId= (Integer)session.getAttribute("userId");
-		//どこからこのサーブレットに来たか判断するためのフラグを取ってくる
-		String flag = request.getParameter("flag");
-		String calendarDate = request.getParameter("date");
-		System.out.println("flag"+flag);
-
-		List<ArrayList<ScheduleBean>> getOneDayScheduleLists = new ArrayList<>();
-		List<ScheduleBean> getOneDayScheduleList = new ArrayList<>();
-		LocalDate scheduleDate;
-
-		//URLにdate=hogeというのを残すならtry-catchが必要
-		/////////////////////////////////////////////
-		if(flag==null ){
-			if( calendarDate!=null){
-				scheduleDate =LocalDate.parse(calendarDate, DateTimeFormatter.ofPattern("yyyy-MM-dd"));	//日付取得
-			}else{
-				scheduleDate=LocalDate.now();//今日の日付取得
-			}
-		}
-		else if(flag.equals("0")){	//先日ボタンが押されたとき
-			String dateStr = request.getParameter("scheduleDate");
-			LocalDate localDate =LocalDate.parse(dateStr, DateTimeFormatter.ofPattern("yyyy-MM-dd"));	//日付取得
-			scheduleDate = localDate.minus(Period.ofDays(1));//日付を-1する
-		}
-		else if(flag.equals("1")){		//翌日ボタンが押されたとき
-			String dateStr = request.getParameter("scheduleDate");
-			LocalDate localDate =LocalDate.parse(dateStr, DateTimeFormatter.ofPattern("yyyy-MM-dd"));	//日付取得
-			scheduleDate = localDate.plus(Period.ofDays(1));//日付を+1する
-		}
-		else{	//それ以外
-			scheduleDate=LocalDate.now();//今日の日付取得
-		}
-		////////////////////////////////////////////
-
-
-
-		//yyyy/MM/dd(日)の形式の取得
-		Date sqlDate = Date.valueOf(scheduleDate);
-		String displayDate = Calc.convertActualDate(sqlDate);
-		//日付をリクエスト領域にセットする
-		request.setAttribute("displayDate",displayDate);
-		request.setAttribute("scheduleDate",scheduleDate);
-
-		ConnectionManager connectionManager = new ConnectionManager();
+		int userId = 0;
+		String flag = null;
+		String calendarDate = null;
+		String dateStr = null;
+		String displayDate = null;
+		String userName = null;
+		String json = null;
+		String jsonReplace = null;
+		String jsonName = null;
+		String jsonNameReplace = null;
+		Date sqlDate = null;
+		LocalDate scheduleDate = null;
+		LocalDate localDate = null;
+		ConnectionManager connectionManager = null;
 		ScheduleDAO scheduleDAO = null;
 		UserDAO userDAO = null;
+		ObjectMapper mapper = null;
+		List<String> userNameList = null;
+		List<ArrayList<ScheduleBean>> getOneDayScheduleLists = null;
+		List<ScheduleBean> getOneDayScheduleList = null;
+		Connection connection = null;
+		HttpSession session = null;
+		RequestDispatcher dispatcher = null;
 
-		try{
-			Connection connection = connectionManager.getConnection();
+		try {
+			// セッションスコープから値を取得
+			session = request.getSession();
+			userId = (Integer) session.getAttribute("userId");
+
+			// リクエストパラメータを取得
+			flag = request.getParameter("flag");
+			calendarDate = request.getParameter("date");
+			dateStr = request.getParameter("scheduleDate");
+			System.out.println("flag" + flag);
+
+			getOneDayScheduleLists = new ArrayList<>();
+			getOneDayScheduleList = new ArrayList<>();
+
+			if (flag == null) {
+				if (calendarDate != null) {
+					scheduleDate = LocalDate.parse(calendarDate, DateTimeFormatter.ofPattern("yyyy-MM-dd")); // 日付取得
+				} else {
+					scheduleDate = LocalDate.now();// 今日の日付取得
+				}
+			} else if (flag.equals("0")) { // 先日ボタンが押されたとき
+				localDate = LocalDate.parse(dateStr, DateTimeFormatter.ofPattern("yyyy-MM-dd")); // 日付取得
+				scheduleDate = localDate.minus(Period.ofDays(1));// 日付を-1する
+			} else if (flag.equals("1")) { // 翌日ボタンが押されたとき
+				localDate = LocalDate.parse(dateStr, DateTimeFormatter.ofPattern("yyyy-MM-dd")); // 日付取得
+				scheduleDate = localDate.plus(Period.ofDays(1));// 日付を+1する
+			} else { // それ以外
+				scheduleDate = LocalDate.now();// 今日の日付取得
+			}
+
+			// yyyy/MM/dd(日)の形式の取得
+			sqlDate = Date.valueOf(scheduleDate);
+			displayDate = Calc.convertActualDate(sqlDate);
+
+			connectionManager = new ConnectionManager();
+			scheduleDAO = null;
+			userDAO = null;
+
+			connection = connectionManager.getConnection();
 			scheduleDAO = new ScheduleDAO(connection);
 			userDAO = new UserDAO(connection);
-			List<String> userNameList = new ArrayList<String>();
-			String userName;
-			if(userId<=5){
-				//まずはログインユーザーの予定を取得する
-				getOneDayScheduleList = scheduleDAO.getOneDaySchedule(scheduleDate,userId);
-				getOneDayScheduleLists.add((ArrayList<ScheduleBean>)getOneDayScheduleList);
+			userNameList = new ArrayList<String>();
+
+			// ログインユーザーの予定を取得
+			if (userId <= 5) {
+				getOneDayScheduleList = scheduleDAO.getOneDaySchedule(scheduleDate, userId);
+				getOneDayScheduleLists.add((ArrayList<ScheduleBean>) getOneDayScheduleList);
 				userName = userDAO.getUserName(userId);
 				userNameList.add(userName);
 			}
-			for(int i=1;i<=5;i++){
-				if(i!=userId){
-					//まずはログインユーザー以外の予定を取得する
-					getOneDayScheduleList = scheduleDAO.getOneDaySchedule(scheduleDate,i);
-					getOneDayScheduleLists.add((ArrayList<ScheduleBean>)getOneDayScheduleList);
+
+			// ログインユーザー以外の予定を取得
+			for (int i = 1; i <= 5; i++) {
+				if (i != userId) {
+					getOneDayScheduleList = scheduleDAO.getOneDaySchedule(scheduleDate, i);
+					getOneDayScheduleLists.add((ArrayList<ScheduleBean>) getOneDayScheduleList);
 					userName = userDAO.getUserName(i);
 					userNameList.add(userName);
 				}
 			}
 
-			//json形式に変換し、リクエスト領域にset
-			ObjectMapper mapper = new ObjectMapper();
-			String json = mapper.writeValueAsString(getOneDayScheduleLists);
-			String jsonReplace = json.replaceAll("\"","krnooon");
-			request.setAttribute("json", jsonReplace);
+			// json形式に変換し、リクエスト領域にset
+			mapper = new ObjectMapper();
+			json = mapper.writeValueAsString(getOneDayScheduleLists);
+			jsonReplace = json.replaceAll("\"", "krnooon");
 			System.out.println(json);
 
-			String jsonName = mapper.writeValueAsString(userNameList);
-			String jsonNameReplace = jsonName.replaceAll("\"","krnooon");
-			request.setAttribute("json_name", jsonNameReplace);
+			jsonName = mapper.writeValueAsString(userNameList);
+			jsonNameReplace = jsonName.replaceAll("\"", "krnooon");
 			System.out.println(jsonName);
 
-			request.setAttribute("userNameList",userNameList);
-			request.setAttribute("getOneDayScheduleList",getOneDayScheduleList);
-			RequestDispatcher dispatcher = request.getRequestDispatcher("../WEB-INF/views/schedule/schedule_show.jsp");
+			// 日付をリクエスト領域にセットする
+			request.setAttribute("displayDate", displayDate);
+			request.setAttribute("scheduleDate", scheduleDate);
+			request.setAttribute("json", jsonReplace);
+			request.setAttribute("json_name", jsonNameReplace);
+			request.setAttribute("userNameList", userNameList);
+			request.setAttribute("getOneDayScheduleList", getOneDayScheduleList);
+			dispatcher = request.getRequestDispatcher("../WEB-INF/views/schedule/schedule_show.jsp");
 			dispatcher.forward(request, response);
-	}catch(RuntimeException e){
-		RequestDispatcher dispatcher = request.getRequestDispatcher("../WEB-INF/views/error/error.jsp");
-		dispatcher.forward(request, response);
-	}
-		finally{
+			return;
+		} catch (RuntimeException e) {
+			e.printStackTrace();
+			dispatcher = request.getRequestDispatcher("../WEB-INF/views/error/error.jsp");
+			dispatcher.forward(request, response);
+			return;
+		} catch (Exception e) {
+			e.printStackTrace();
+			dispatcher = request.getRequestDispatcher("../WEB-INF/views/error/error.jsp");
+			dispatcher.forward(request, response);
+			return;
+		} finally {
 			connectionManager.closeConnection();
 		}
 
+	}
 }
-}
-

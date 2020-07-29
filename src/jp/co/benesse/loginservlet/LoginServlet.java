@@ -1,4 +1,5 @@
 package jp.co.benesse.loginservlet;
+
 //loginservletのプッシュ確認
 import java.io.IOException;
 import java.sql.Connection;
@@ -20,50 +21,64 @@ import jp.co.benesse.dataaccess.value.UserBean;
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/views/login/login.jsp");
 		dispatcher.forward(request, response);
 		return;
 	}
 
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		String mail = request.getParameter("mail");
-		String password = request.getParameter("password");
-		String hash;
-
-
-		ConnectionManager connectionManager = new ConnectionManager();
-		UserBean userBean = new UserBean();
+		String mail = null;
+		String password = null;
+		String hash = null;
+		ConnectionManager connectionManager = null;
+		UserBean userBean = null;
+		UserDAO userDAO = null;
+		Connection connection = null;
+		HttpSession session = null;
+		RequestDispatcher dispatcher = null;
 
 		try {
-			hash= CryptographyLogic.encryptStr(password);
+			mail = request.getParameter("mail");
+			password = request.getParameter("password");
+			hash = CryptographyLogic.encryptStr(password);
+
+			connectionManager = new ConnectionManager();
+			userBean = new UserBean();
+
 			System.out.println(hash);
-			Connection connection = connectionManager.getConnection();
-			UserDAO userDAO = new UserDAO(connection);
+			connection = connectionManager.getConnection();
+			userDAO = new UserDAO(connection);
 			userBean = userDAO.findUser(mail, hash);
 			System.out.println(userBean);
 
-
-			if(userBean == null){
+			if (userBean == null) {
 				request.setAttribute("popFlag", 2);
-				request.setAttribute("mail",mail);
-				RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/views/login/login.jsp");
+				request.setAttribute("mail", mail);
+				dispatcher = request.getRequestDispatcher("WEB-INF/views/login/login.jsp");
 				dispatcher.forward(request, response);
 				return;
 			}
 
-			HttpSession session = request.getSession(true);
+			session = request.getSession(true);
 			session.setAttribute("userId", userBean.getUserId());
 			session.setAttribute("userName", userBean.getUserName());
 
 			response.sendRedirect("user/calendar");
 			return;
 
-		}catch(RuntimeException e){
-			throw e;
-		}finally {
+		} catch (RuntimeException e) {
+			e.printStackTrace();
+			response.sendRedirect("login");
+			return;
+		} catch (Exception e) {
+			e.printStackTrace();
+			response.sendRedirect("login");
+			return;
+		} finally {
 			connectionManager.closeConnection();
 		}
 

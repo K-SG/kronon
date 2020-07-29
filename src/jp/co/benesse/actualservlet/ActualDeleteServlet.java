@@ -15,67 +15,85 @@ import jp.co.benesse.dataaccess.cm.ConnectionManager;
 import jp.co.benesse.dataaccess.dao.ScheduleDAO;
 import jp.co.benesse.dataaccess.value.ScheduleBean;
 
-/**
- * Servlet implementation class ActualDeleteServlet
- */
 @WebServlet("/user/actualdelete")
 public class ActualDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		doPost(request, response);
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
-		int scheduleId = Integer.parseInt(request.getParameter("scheduleId"));
-		String userName = request.getParameter("userName");
-		String actualTimeStr = request.getParameter("actualTimeStr");
-		String schduleDateActual = request.getParameter("scheduleDateActual");
-		String startTime = request.getParameter("startTime");
-		String endTime = request.getParameter("endTime");
-		String place = request.getParameter("place");
-		String title = request.getParameter("title");
-		String content = request.getParameter("content");
-
-		ScheduleBean scheduleBean = new ScheduleBean();
-		scheduleBean.setUserName(userName);
-		scheduleBean.setActualTimeStr(actualTimeStr);
-		scheduleBean.setScheduleDateActual(schduleDateActual);
-		scheduleBean.setStartTime(Time.valueOf(startTime));
-		scheduleBean.setEndTime(Time.valueOf(endTime));
-		scheduleBean.setPlace(place);
-		scheduleBean.setTitle(title);
-		scheduleBean.setContent(content);
-
-		ConnectionManager connectionManager = new ConnectionManager();
+		int scheduleId = 0;
+		String userName = null;
+		String actualTimeStr = null;
+		String schduleDateActual = null;
+		String startTime = null;
+		String endTime = null;
+		String place = null;
+		String title = null;
+		String content = null;
+		ScheduleBean scheduleBean = null;
+		ConnectionManager connectionManager = null;
+		ScheduleDAO scheduleDAO = null;
+		Connection connection = null;
+		RequestDispatcher dispatcher = null;
 
 		try {
+			scheduleId = Integer.parseInt(request.getParameter("scheduleId"));
+			userName = request.getParameter("userName");
+			actualTimeStr = request.getParameter("actualTimeStr");
+			schduleDateActual = request.getParameter("scheduleDateActual");
+			startTime = request.getParameter("startTime");
+			endTime = request.getParameter("endTime");
+			place = request.getParameter("place");
+			title = request.getParameter("title");
+			content = request.getParameter("content");
 
-			Connection connection = connectionManager.getConnection();
-			ScheduleDAO scheduleDAO = new ScheduleDAO(connection);
+			scheduleBean = new ScheduleBean();
+			scheduleBean.setUserName(userName);
+			scheduleBean.setActualTimeStr(actualTimeStr);
+			scheduleBean.setScheduleDateActual(schduleDateActual);
+			scheduleBean.setStartTime(Time.valueOf(startTime));
+			scheduleBean.setEndTime(Time.valueOf(endTime));
+			scheduleBean.setPlace(place);
+			scheduleBean.setTitle(title);
+			scheduleBean.setContent(content);
 
-			if (scheduleDAO.isDeleted(scheduleId)){
-				System.out.println(scheduleDAO.isDeleted(scheduleId));
-				RequestDispatcher dispatcher = request.getRequestDispatcher("../WEB-INF/views/error/error.jsp");
-				dispatcher.forward(request, response);
-				return;
+			connectionManager = new ConnectionManager();
+			connection = connectionManager.getConnection();
+			scheduleDAO = new ScheduleDAO(connection);
+
+			//既に削除されている場合
+			if (scheduleDAO.isDeleted(scheduleId)) {
+				throw new RuntimeException("予定が既に削除されている");
 			}
 
 			scheduleDAO.deleteSchedule(scheduleId);
 			connectionManager.commit();
 
-			request.setAttribute("popFlag",1);
-			request.setAttribute("scheduleBean",scheduleBean);
+			request.setAttribute("popFlag", 1);
+			request.setAttribute("scheduleBean", scheduleBean);
 
-			RequestDispatcher dispatcher = request.getRequestDispatcher("../WEB-INF/views/actual/actual_detail.jsp");
+			dispatcher = request.getRequestDispatcher("../WEB-INF/views/actual/actual_detail.jsp");
 			dispatcher.forward(request, response);
 			return;
 
 		} catch (RuntimeException e) {
 			connectionManager.rollback();
-			throw e;
-
+			e.printStackTrace();
+			dispatcher = request.getRequestDispatcher("../WEB-INF/views/error/error.jsp");
+			dispatcher.forward(request, response);
+			return;
+		} catch (Exception e) {
+			connectionManager.rollback();
+			e.printStackTrace();
+			dispatcher = request.getRequestDispatcher("../WEB-INF/views/error/error.jsp");
+			dispatcher.forward(request, response);
+			return;
 		} finally {
 			connectionManager.closeConnection();
 		}

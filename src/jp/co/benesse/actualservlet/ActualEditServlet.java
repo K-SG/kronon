@@ -25,20 +25,44 @@ public class ActualEditServlet extends HttpServlet {
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String scheduleIdStr = request.getParameter("scheduleId");
-		int scheduleId = Integer.parseInt(scheduleIdStr);
 
-		ConnectionManager connectionManager = new ConnectionManager();
-		Connection connection = connectionManager.getConnection();
-		ScheduleDAO scheduleDAO= new ScheduleDAO(connection);
-		ScheduleBean scheduleBean = new ScheduleBean();
-		scheduleBean = scheduleDAO.getScheduleByScheduleId(scheduleId);
+		int scheduleId = 0;
+		String scheduleIdStr = null;
+		ConnectionManager connectionManager = null;
+		ScheduleDAO scheduleDAO= null;
+		ScheduleBean scheduleBean = null;
+		Connection connection = null;
+		RequestDispatcher dispatcher = null;
 
-		request.setAttribute("scheduleBean",scheduleBean);
+		try{
+			//リクエストパラメータを取得
+			scheduleIdStr = request.getParameter("scheduleId");
+			scheduleId = Integer.parseInt(scheduleIdStr);
 
-		String forwardPath = "/WEB-INF/views/actual/actual_edit.jsp";
-		RequestDispatcher dispatcher = request.getRequestDispatcher(forwardPath);
-		dispatcher.forward(request, response);
+			connectionManager = new ConnectionManager();
+			connection = connectionManager.getConnection();
+			scheduleDAO= new ScheduleDAO(connection);
+			scheduleBean = scheduleDAO.getScheduleByScheduleId(scheduleId);
+
+			request.setAttribute("scheduleBean",scheduleBean);
+
+			dispatcher = request.getRequestDispatcher("/WEB-INF/views/actual/actual_edit.jsp");
+			dispatcher.forward(request, response);
+			return;
+		}catch(RuntimeException e){
+			e.printStackTrace();
+			dispatcher = request.getRequestDispatcher("../WEB-INF/views/error/error.jsp");
+			dispatcher.forward(request, response);
+			return;
+		}catch(Exception e){
+			e.printStackTrace();
+			dispatcher = request.getRequestDispatcher("../WEB-INF/views/error/error.jsp");
+			dispatcher.forward(request, response);
+			return;
+		}finally{
+			connectionManager.closeConnection();
+		}
+
 	}
 
 }

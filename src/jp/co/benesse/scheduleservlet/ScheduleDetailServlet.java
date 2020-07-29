@@ -25,36 +25,48 @@ public class ScheduleDetailServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String scheduleStr = request.getParameter("scheduleId");
-		System.out.println(request.getParameter("scheduleId"));
 
-		//urlに残っているのでtry-catchが必要
-		int scheduleId = Integer.parseInt(scheduleStr);
-
-		ConnectionManager connectionManager = new ConnectionManager();
-		ScheduleBean scheduleBean = new ScheduleBean();
+		int scheduleId = 0;
+		String scheduleStr = null;
+		ConnectionManager connectionManager = null;
+		ScheduleBean scheduleBean = null;
+		ScheduleDAO scheduleDAO = null;
+		Connection connection = null;
+		RequestDispatcher dispatcher = null;
 
 		try {
+			// リクエストパラメータを取得
+			scheduleStr = request.getParameter("scheduleId");
+			scheduleId = Integer.parseInt(scheduleStr);
 
-			Connection connection = connectionManager.getConnection();
-			ScheduleDAO scheduleDAO = new ScheduleDAO(connection);
+			connectionManager = new ConnectionManager();
+			connection = connectionManager.getConnection();
+			scheduleDAO = new ScheduleDAO(connection);
 
+			//予定が既に削除されている場合
 			if (scheduleDAO.isDeleted(scheduleId)) {
-				RequestDispatcher dispatcher = request.getRequestDispatcher("../WEB-INF/views/error/error.jsp");
-				dispatcher.forward(request, response);
-				return;
+				throw new RuntimeException("予定が既に削除されている");
 			}
 
+			scheduleBean = new ScheduleBean();
 			scheduleBean = scheduleDAO.getScheduleByScheduleId(scheduleId);
 			request.setAttribute("scheduleBean", scheduleBean);
 
-			RequestDispatcher dispatcher = request.getRequestDispatcher("../WEB-INF/views/schedule/schedule_detail.jsp");
+			dispatcher = request.getRequestDispatcher("../WEB-INF/views/schedule/schedule_detail.jsp");
 			dispatcher.forward(request, response);
 			return;
 
 		} catch (RuntimeException e) {
-			throw e;
+			e.printStackTrace();
+			dispatcher = request.getRequestDispatcher("../WEB-INF/views/error/error.jsp");
+			dispatcher.forward(request, response);
+			return;
 
+		} catch (Exception e) {
+			e.printStackTrace();
+			dispatcher = request.getRequestDispatcher("../WEB-INF/views/error/error.jsp");
+			dispatcher.forward(request, response);
+			return;
 		} finally {
 			connectionManager.closeConnection();
 		}
