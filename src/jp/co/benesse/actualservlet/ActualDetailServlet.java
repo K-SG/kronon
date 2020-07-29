@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import jp.co.benesse.dataaccess.cm.ConnectionManager;
 import jp.co.benesse.dataaccess.dao.ScheduleDAO;
@@ -26,7 +27,10 @@ public class ActualDetailServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		//げっぱらしたものをいきなりパースイントするのは怖い（URLでパラメータを送っている場合）
+		//セッションからIdを取得
+		HttpSession session = request.getSession();
+		int userId = (int)session.getAttribute("userId");
+
 		int scheduleId = Integer.parseInt(request.getParameter("scheduleId"));
 
 		ConnectionManager connectionManager = new ConnectionManager();
@@ -37,14 +41,18 @@ public class ActualDetailServlet extends HttpServlet {
 			Connection connection = connectionManager.getConnection();
 			ScheduleDAO scheduleDAO = new ScheduleDAO(connection);
 
+			//予定が既に削除されている場合
 			if (scheduleDAO.isDeleted(scheduleId)) {
-				RequestDispatcher dispatcher = request.getRequestDispatcher("../WEB-INF/views/error/error.jsp");
-				dispatcher.forward(request, response);
-				return;
+				throw new RuntimeException("予定が既に削除されている");
 			}
 
 			scheduleBean = scheduleDAO.getScheduleByScheduleId(scheduleId);
-			System.out.println(scheduleBean);
+
+			//ログイン者以外の予定にアクセスできないようにする
+			if(userId != scheduleBean.getUserId()){
+				throw new RuntimeException("ログイン者以外の予定にアクセスした");
+			}
+
 			request.setAttribute("scheduleBean", scheduleBean);
 
 			RequestDispatcher dispatcher = request.getRequestDispatcher("../WEB-INF/views/actual/actual_detail.jsp");
@@ -52,8 +60,9 @@ public class ActualDetailServlet extends HttpServlet {
 			return;
 
 		} catch (RuntimeException e) {
-			throw e;
-
+			RequestDispatcher dispatcher = request.getRequestDispatcher("../WEB-INF/views/error/error.jsp");
+			dispatcher.forward(request, response);
+			return;
 		} finally {
 			connectionManager.closeConnection();
 		}
