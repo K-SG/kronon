@@ -31,19 +31,21 @@ public class UserDAO {
 	 * @return 登録件数
 	 */
 	public int createUser(String userName,String mail, String password){
-		// ステートメントの定義
-		PreparedStatement preparedStatement = null;
+
 		int result = 0;
+		String sql = null;
+		PreparedStatement preparedStatement = null;
+
 		try {
-			// SQLの定義
-			String sql = "INSERT INTO PUBLIC.USER (USER_ID,USER_NAME,MAIL,PASSWORD) VALUES (NEXTVAL('SEQ_USER'),?,?,?)";
-			// SQLの作成(準備)
+
+			sql = "INSERT INTO PUBLIC.USER (USER_ID,USER_NAME,MAIL,PASSWORD) VALUES (NEXTVAL('SEQ_USER'),?,?,?)";
+
 			preparedStatement = this.connection.prepareStatement(sql);
-			// SQLバインド変数への値設定
+
 			preparedStatement.setString(1, userName);
 			preparedStatement.setString(2, mail);
 			preparedStatement.setString(3, password);
-			// SQLの実行
+
 			result = preparedStatement.executeUpdate();
 			return result;
 	} catch (SQLException e) {
@@ -52,7 +54,6 @@ public class UserDAO {
 		try {
 			if (preparedStatement != null) {
 				preparedStatement.close();
-				System.out.println("ステートメントの解放に成功しました");
 			}
 		} catch (SQLException e) {
 			throw new RuntimeException("ステートメントの解放に失敗しました", e);
@@ -71,28 +72,28 @@ public class UserDAO {
 	 * @return ユーザーインスタンス（格納されているのはユーザーIDとユーザー名のみ）
 	 */
 	public UserBean findUser(String mail ,String password){
-		UserBean userBean = null;
-		// ステートメントの定義
-		PreparedStatement preparedStatement = null;
-		try {
-			// SQLの定義
-			String sql = "SELECT * FROM PUBLIC.USER WHERE MAIL = ? AND PASSWORD = ?";
 
-			// SQLの作成(準備)
+		int userId = 0;
+		String sql = null;
+		String userName = null;
+		UserBean userBean = null;
+
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+
+		try {
+			sql = "SELECT * FROM PUBLIC.USER WHERE MAIL = ? AND PASSWORD = ?";
 			preparedStatement = this.connection.prepareStatement(sql);
-			// SQLバインド変数への値設定
+
 			preparedStatement.setString(1, mail);
 			preparedStatement.setString(2, password);
 
+			resultSet = preparedStatement.executeQuery();
 
-			//SQLの実行
-			ResultSet resultSet = preparedStatement.executeQuery();
 			while(resultSet.next()) {
+				userId = resultSet.getInt("USER_ID");
+				userName = resultSet.getString("USER_NAME");
 				userBean = new UserBean();
-				//userIdの取得
-				int userId = resultSet.getInt("USER_ID");
-				//userNameの取得
-				String userName = resultSet.getString("USER_NAME");
 				userBean.setUserId(userId);
 				userBean.setUserName(userName);
 			}
@@ -103,7 +104,6 @@ public class UserDAO {
 		try {
 			if (preparedStatement != null) {
 				preparedStatement.close();
-				System.out.println("ステートメントの解放に成功しました");
 			}
 		} catch (SQLException e) {
 			throw new RuntimeException("ステートメントの解放に失敗しました", e);
@@ -121,15 +121,20 @@ public class UserDAO {
 	 * @return メアド重複判定フラグ（重複があればtrueを返す）
 	 */
 	public String getUserName(int userId){
-		PreparedStatement preparedStatement = null;
+
+		String sql = null;
 		String userName = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+
 		try {
-			String sql = "SELECT USER_NAME FROM PUBLIC.USER WHERE USER_ID = ?";
+			sql = "SELECT USER_NAME FROM PUBLIC.USER WHERE USER_ID = ?";
+
 			preparedStatement = this.connection.prepareStatement(sql);
 			preparedStatement.setInt(1, userId);
-			// SQLの実行
-			ResultSet resultSet = preparedStatement.executeQuery();
-			// 問い合わせ結果の取得
+
+			resultSet = preparedStatement.executeQuery();
+
 			if (resultSet.next()) {
 				userName = resultSet.getString("USER_NAME");
 			}
@@ -143,7 +148,6 @@ public class UserDAO {
 			try {
 				if (preparedStatement != null) {
 					preparedStatement.close();
-					System.out.println("ステートメントの解放に成功しました");
 				}
 			} catch (SQLException e) {
 				throw new RuntimeException("ステートメントの解放に失敗しました", e);
@@ -161,17 +165,21 @@ public class UserDAO {
 	 * @return メアド重複判定フラグ（重複があればtrueを返す）
 	 */
 	public Boolean  isBooking(String mail){
+
+		int count = 0;
+		String sql = null;
 		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+
 		try {
-			String sql = "SELECT COUNT(*) FROM public.user WHERE mail = ?";
+			sql = "SELECT COUNT(*) FROM public.user WHERE mail = ?";
+
 			preparedStatement = this.connection.prepareStatement(sql);
 			preparedStatement.setString(1, mail);
-			// SQLの実行
-			ResultSet resultSet = preparedStatement.executeQuery();
-			// 問い合わせ結果の取得
-			int count = 0;
+
+			resultSet = preparedStatement.executeQuery();
+
 			while (resultSet.next()) {
-				// COUNT(*)を取得
 				count = resultSet.getInt(1);
 			}
 			if (count != 0) {
@@ -185,7 +193,6 @@ public class UserDAO {
 			try {
 				if (preparedStatement != null) {
 					preparedStatement.close();
-					System.out.println("ステートメントの解放に成功しました");
 				}
 			} catch (SQLException e) {
 				throw new RuntimeException("ステートメントの解放に失敗しました", e);

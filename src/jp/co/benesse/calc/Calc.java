@@ -36,15 +36,23 @@ public class Calc {
 	 * @return 見積時間
 	 */
 	public static String calcEstimateTime(ScheduleBean scheduleBean) {
-		Time start = scheduleBean.getStartTime();
-		Time end = scheduleBean.getEndTime();
-		try{
-			LocalTime startLocal = start.toLocalTime();
-			LocalTime endLocal = end.toLocalTime();
 
-			Duration duration = Duration.between(startLocal, endLocal);
-			int estimateMinutes = (int) duration.toMinutes();
-			String estimateTimeStr = estimateMinutes / 60 + "時間" + estimateMinutes % 60 + "分";
+		int estimateMinutes = 0;
+		String estimateTimeStr = null;
+		Time start = null;
+		Time end = null;
+		LocalTime startLocal = null;
+		LocalTime endLocal = null;
+		Duration duration = null;
+
+		try{
+			start = scheduleBean.getStartTime();
+			end = scheduleBean.getEndTime();
+			startLocal = start.toLocalTime();
+			endLocal = end.toLocalTime();
+			duration = Duration.between(startLocal, endLocal);
+			estimateMinutes = (int) duration.toMinutes();
+			estimateTimeStr = estimateMinutes / 60 + "時間" + estimateMinutes % 60 + "分";
 
 			return estimateTimeStr;
 		}catch(NullPointerException e){
@@ -91,16 +99,17 @@ public class Calc {
 	 * @return 整形された日付の文字列
 	 */
 	public static String convertActualDate(Date sqlScheduleDate){
+		LocalDate scheduleDate = null;
+		Map<Integer,String> dayOfWeek = new HashMap<>();
+		dayOfWeek.put(1, "月");
+		dayOfWeek.put(2, "火");
+		dayOfWeek.put(3, "水");
+		dayOfWeek.put(4, "木");
+		dayOfWeek.put(5, "金");
+		dayOfWeek.put(6, "土");
+		dayOfWeek.put(7, "日");
 		try{
-			LocalDate scheduleDate = sqlScheduleDate.toLocalDate();
-			Map<Integer,String> dayOfWeek = new HashMap<>();
-			dayOfWeek.put(1, "月");
-			dayOfWeek.put(2, "火");
-			dayOfWeek.put(3, "水");
-			dayOfWeek.put(4, "木");
-			dayOfWeek.put(5, "金");
-			dayOfWeek.put(6, "土");
-			dayOfWeek.put(7, "日");
+			scheduleDate = sqlScheduleDate.toLocalDate();
 			scheduleDate.getMonthValue();
 			scheduleDate.getDayOfMonth();
 			return scheduleDate.getYear()+ "/" + scheduleDate.getMonthValue() + "/" + scheduleDate.getDayOfMonth()

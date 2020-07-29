@@ -21,21 +21,23 @@ public class CryptographyLogic {
 	* @return ハッシュ化した計算値(16進数)
 	*/
 	public static String encryptStr(String text) {
-	    MessageDigest md = null;
+
+		byte[] valueArray = null;
+		String tmpStr = null;
+		MessageDigest md = null;
 	    StringBuffer buffer = new StringBuffer();
 
 	    try {
 	        md = MessageDigest.getInstance("SHA-256");
 	    } catch (NoSuchAlgorithmException e) {
-	        System.out.println("指定された暗号化アルゴリズムがありません");
-	        throw new RuntimeException("暗号化に失敗しました");
+	        throw new RuntimeException("指定された暗号化アルゴリズムがありません。暗号化に失敗しました");
 	    }
-	    md.update(text.getBytes());
 
-	    byte[] valueArray = md.digest();
+	    md.update(text.getBytes());
+	    valueArray = md.digest();
 
 	    for(int i = 0; i < valueArray.length; i++){
-	        String tmpStr = Integer.toHexString(valueArray[i] & 0xff);
+	        tmpStr = Integer.toHexString(valueArray[i] & 0xff);
 	        if(tmpStr.length() == 1){
 	            buffer.append('0').append(tmpStr);
 	        } else {
