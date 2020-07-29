@@ -101,7 +101,7 @@ public class ScheduleUpdateServlet extends HttpServlet {
 
 			if (check) {
 				System.out.println("trueで入ってるよ！ブッキングなう");
-				request.setAttribute("popFlag", 0);// 予定重複フラグ
+				request.setAttribute("popFlag", 1);// 予定重複フラグ
 				request.setAttribute("scheduleBean", scheduleBean);
 				request.setAttribute("startTimeHour", startTimeHour);// 開始時間
 				request.setAttribute("startTimeMin", startTimeMin);// 開始分

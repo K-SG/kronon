@@ -1,50 +1,49 @@
 $(function () {
 
-  window.onload = function () {
- /*変更前の情報を事前に入力された状態にしておくために必要な変数*/
-let date = document.getElementById('set-date').value;
-let startTime = document.getElementById('set-start-time').value;
-let endTime = document.getElementById('set-end-time').value;
-let startHour = startTime.substring(0, 2);
-let startMin = startTime.substring(3,5);
-let endHour = endTime.substring(0, 2);
-let endMin = endTime.substring(3,5);
-let place = document.getElementById('set-place').value;
+	window.onload = function () {
+		/*変更前の情報を事前に入力された状態にしておくために必要な変数*/
+	  let date = document.getElementById('set-date').value;
+	  let startTime = document.getElementById('set-start-time').value;
+	  let endTime = document.getElementById('set-end-time').value;
+	  let startHour = startTime.substring(0, 2);
+	  let startMin = startTime.substring(3,5);
+	  let endHour = endTime.substring(0, 2);
+	  let endMin = endTime.substring(3,5);
+	  let place = document.getElementById('set-place').value;
 
-console.log(startHour,startMin,endMin);
+	  console.log(startHour,startMin,endMin);
 
-/*すべての初期選択を外す*/
-$('select option').attr('selected', false);
-/*開始時間と終了時間を09→9に変換*/
-if (startHour.slice(0, 1) == 0) {
-	startHour = startHour.substring(1, 2);
-}
-if (endHour.slice(0, 1) == 0) {
-	endHour = endHour.substring(1, 2);
-}
-/*初期選択がされるようにselectedをつける*/
-	$('#edit-start-hour').val(startHour);
-	$('#edit-start-minutes').val(startMin);
-	$('#edit-end-hour').val(endHour);
-	$('#edit-end-minutes').val(endMin);
-	$('#edit-place').val(place);
-
+	  /*すべての初期選択を外す*/
+	  $('select option').attr('selected', false);
+	  /*開始時間と終了時間を09→9に変換*/
+	  if (startHour.slice(0, 1) == 0) {
+		  startHour = startHour.substring(1, 2);
+	  }
+	  if (endHour.slice(0, 1) == 0) {
+		  endHour = endHour.substring(1, 2);
+	  }
+	  /*初期選択がされるようにselectedをつける*/
+	  $('#edit-start-hour').val(startHour);
+	  $('#edit-start-minutes').val(startMin);
+	  $('#edit-end-hour').val(endHour);
+	  $('#edit-end-minutes').val(endMin);
+	  $('#edit-place').val(place);
 
 	/*DBと照合した後のポップアップフラグ*/
-	let popFlag = document.getElementById('flag').value;
+	  let popFlag = document.getElementById('flag').value;
 
 	/*登録が完了した場合*/
 	  if(popFlag === '0'){
-	  	$('.create-msg').html('登録が完了したよ！');
-	  	$('.complete-popup').fadeIn();
-	  	return;
+		  $('.create-msg').html('登録が完了したよ！');
+		  $('.complete-popup').fadeIn();
+		  return;
 	  }
 	  if(popFlag === '1'){
-		  	$('.edit-msg').html('予定がかぶってるよ');
-		  	$('.error-popup').fadeIn();
-		  	return;
+		  $('.edit-msg').html('予定がかぶってるよ');
+		  $('.error-popup').fadeIn();
+		  return;
 	  }
-}
+	}
 
   /*修正ボタンを押した際のエラーチェックとポップアップ表示*/
   $('#ok-button').click(function () {
