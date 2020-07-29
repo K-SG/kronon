@@ -36,12 +36,12 @@ public class LoginFilter implements Filter {
 		// セッションが存在しない場合NULLを返す
 		HttpSession session = ((HttpServletRequest) request).getSession(false);
 
-		if (session.getAttribute("userBean") != null) {
+		if (session.getAttribute("userId") != null) {
 			// セッションがNULLでなければ、通常どおりの遷移
 			chain.doFilter(request, response);
 		} else {
 			// セッションがNullならば、ログイン画面へ飛ばす
-			((HttpServletResponse) response).sendRedirect("/login");
+			((HttpServletResponse) response).sendRedirect("../login");
 		}
 	}
 
