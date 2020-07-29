@@ -277,6 +277,10 @@ article{
 	color: #000000;
 }
 
+.popup-wrapper{
+	z-index:101 !important;
+}
+
 footer{
 	z-index:100;
 }
