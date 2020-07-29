@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <%@ include file="/WEB-INF/views/layout/common/link.jsp"%>
 <link rel="stylesheet" href="../css/actual_index.css">
-<link rel="stylesheet" href="../css/actual_new.css">
+<link rel="stylesheet" href="../css/actual_index_search.css">
 <title>実績一覧</title>
 </head>
 <body>

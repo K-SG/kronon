@@ -1,0 +1,720 @@
+/* CSS Document */
+@import url(sanitize.css);
+
+/*本体*/
+body {
+	font-family : UD デジタル 教科書体 NK-B;
+	margin:0;
+	padding:0;
+	background-color: #FFD5A8;
+}
+/*ヘッダー部分*/
+header{
+	width:100vw;
+	margin:0;
+	padding:0;
+	position: fixed; /* ヘッダーを固定する */
+	top: 0; /* 上部から配置の基準位置を決める */
+	left: 0; /* 左から配置の基準位置を決める */
+}
+
+.top-head{
+  width: 9vh;
+  height: 9vh;
+  margin: 0;
+}
+ul.top-head {
+	display:table;
+	table-layout:fixed;
+	width:100vw;
+	background-color:#DE9B50;
+}
+ul.top-head li {
+	display:table-cell;
+	vertical-align:middle;
+}
+
+ul.top-head li a {
+    text-decoration:none;
+    color:#FFFFFF;
+}
+ul.top-head li a:hover {
+opacity: 0.5;
+}
+/*予定管理システム~くろのん~*/
+.system-name
+{
+	font-weight : bold;
+	font-size : 5.5vh;
+	color : #FFFFFF;
+}
+
+/*会社名☆ロゴ画像*/
+.company-name img.top-head-image
+{
+	background-repeat : no-repeat;
+	width: 8vh;
+	height: 8vh;
+	padding:0;
+}
+
+/*（株）くろ☆のす*/
+.company-name
+{
+	font-weight: bold;
+	font-size: 4vh;
+	text-align: right;
+	color: #FFFFFF;
+	padding-right: 4vh;
+	padding-left: 35vh;
+	padding-top: 0;
+}
+
+
+
+
+/*ナビゲーションバー*/
+ul.nav {
+  margin: 0;
+  padding: 0;
+  width:100vw;
+  background-color :rgba(222, 155, 80, 0.5);
+  color:#FFFFFFF;
+ }
+
+ul.nav li {
+  display: inline-block;
+  text-align: center;
+  font-size:3.5vh;
+  padding-top:2vh;
+  padding-bottom:2vh;
+  padding-right:2vh;
+  padding-left:2vh;
+  margin-top: 0;
+}
+
+
+ul.nav li a {
+	display: block;
+	text-decoration:none;
+	color:#FFFFFF;
+}
+
+ul.nav li:hover {
+	background-color:#d98425;
+}
+
+
+
+ul.nav li:last-child {
+  width:50vh;
+  text-align: center;
+}
+
+.nav .nav-right-user{
+	float: right;
+	padding-top:3vh;
+	padding-right: 4vh;
+	font-size: 3vh;
+	color:#FFFFFF;
+}
+
+.nav .nav-right-img{
+	float: right;
+	padding-right: 7vh;
+	padding-top:2vh;
+}
+
+.nav .nav-right {
+	float: right;
+}
+
+
+
+.nav .nav-right-img a{
+  position: relative;
+}
+.nav .nav-right-img a:hover{
+ opacity: 0.8;
+}
+
+.nav .nav-right-img a:after{
+  content: "";
+  position: absolute;
+  top: -3vh;
+  right: -3vw;
+  display: inline-block;
+  pointer-events: none;
+  width: 7vh;
+  height: 7vh;
+}
+
+.nav .nav-right-img a:hover:after{
+  background: url(../img/star/star_hyoko.png); /* 表示する画像 */
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center top;
+}
+
+
+
+/*本文*/
+article {
+	width:auto;
+	margin:autp;
+	padding:0;
+	padding-top:20vh;
+	background-color: #FFD5A8;
+	font-size: 4vh;
+	height: auto;
+	color:#FFFFFF;
+}
+
+
+
+
+/*実績検索の枠*/
+.actual-search-area
+{
+  background : #FFEEDB;
+  background : rgba(255, 238, 219, 1);
+  border-style : Solid;
+  border-color : #DE9B50;
+  border-color : rgba(222, 155, 80, 1);
+  border-width : 2px;
+  position : absolute ;
+  border-radius : 10px;
+  -moz-border-radius : 10px;
+  -webkit-border-radius : 10px;
+	margin-left:14vw;
+	width: 69vw;
+	height: 8vh;
+	float:left;
+	padding-left:2vw;
+}
+
+
+/*日付検索*/
+.actual-search-date {
+	float:left;
+	width: 3vw;
+	margin-left: 4vw;
+	margin-top:2vh;
+}
+/*日付検索入力枠*/
+.actual-search-date-area input
+{
+	border-style : Solid;
+	border-color : #333333;
+	border-color : rgba(51, 51, 51, 1);
+	border-width : 1px;
+	border-radius : 5px;
+	-moz-border-radius : 5px;
+	-webkit-border-radius : 5px;
+	font-family : 小塚ゴシック Pr6N;
+	font-size : 2vh;
+	color :  #888888;
+	width: 10vw;
+	height: 4vh;
+	float: left;
+	margin-top:2vh;
+	margin-left:1vh;
+
+}
+/*タイトル検索*/
+.actual-search-title{
+	float:left;
+	width: 4vw;
+	margin-left: 2vw;
+	margin-top:2vh;
+}
+.actual-search-title-area input {
+	border-style : Solid;
+	border-color : #333333;
+	border-color : rgba(51, 51, 51, 1);
+	border-width : 1px;
+	border-radius : 5px;
+	-moz-border-radius : 5px;
+	-webkit-border-radius : 5px;
+	font-family : 小塚ゴシック Pr6N;
+	font-size : 2vh;
+	color :  #888888;
+	width: 25vw;
+	height: 4vh;
+	float: left;
+	margin-top:2vh;
+	margin-left:3vh;
+
+}
+
+
+/*検索ボタン*/
+.search-button {
+  display: inline-block;
+  width: 7vw;
+  height:3vh;
+
+  background-color: #DE9B50;
+  border: none;
+  border-radius: 0.3vw;
+  color: white;
+  margin-left: 6vh;
+  cursor: pointer;
+  text-align: center;
+  font-size: 1.5vw;
+  float:left;
+  padding-top:0.8vh;
+  padding-left:2.5vh;
+  font-size:2.5vh;
+  padding-bottom:0.5vh;
+  margin-top:2vh;
+
+}
+.search-button img {
+	width:3vh;
+
+}
+
+.word{
+	float:left;
+	margin-left:0.9vw;
+}
+
+/*「実績確認へ」ボタン*/
+#actual-button {
+  width: 10vw;
+  height:4vh;
+  padding: 0.5vw;
+  background-color: #DE9B50;
+  border: none;
+  border-radius: 0.3vw;
+  color: white;
+  cursor: pointer;
+  margin-left:45vw;
+  font-size: 2.0vw;
+  font-size:2.5vh;
+}
+
+/*実績詳細へ*/
+.schedule-actual{
+	 cursor: pointer;
+}
+
+#actual-title{
+	margin-top:3vh;
+	margin-bottom:3vh;
+}
+
+#actual-result{
+	margin-top:3vh;
+	margin-bottom:3vh;
+}
+
+/*見出しと一覧*/
+#actual-content{
+	color:#454545;
+	background-color:white;
+	width: 70vw;
+	margin-top: 5vw;
+	margin-left: 25vw;
+	border-radius: 10px;
+	padding-top:3vh;
+	padding-bottom:10vh;
+	margin:auto;
+	margin-top:10vh;
+}
+
+table{
+	width:60vw;
+	max-width:60vw;
+	font-size:70%;
+	border-collapse:collapse;
+}
+
+table td{
+	height:10vh;
+	padding:0.5vw;
+	max-width:16vw;
+	word-wrap: break-word;
+}
+
+#date-in-table{
+	width:7vw;
+	max-width:7vw;
+	text-align:center;
+}
+
+#date-in-thead{
+	width:7vw;
+	max-width:7vw;
+}
+
+#title{
+	max-width: 11vw;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  	overflow: hidden;/*はみ出た文字を隠す*/
+  	width:12vw;
+}
+#title-in-thead{
+	width:11vw;
+	max-width:11vw;
+	border:none;
+}
+
+/* .title-and-content.contents{
+	border:none;
+} */
+.item{
+	border:none;
+}
+
+.contents{
+	width:16vw;
+	max-width:16vw;
+	/* display: -webkit-box;...表示
+	-webkit-box-orient: vertical;...表示
+	-webkit-line-clamp: 2;...表示
+	-webkit-border-before:unset;
+	overflow: hidden;はみ出た文字を隠す
+	border-left-width:0;
+	border-right-width:0; */
+
+
+}
+#content-in-thead{
+	width:16vw;
+	max-width:16vw;
+}
+
+#schedule-date-hidden{
+	display:none;
+}
+
+.cell-active{
+	background : #FFEEDB;
+  	background : rgba(255, 238, 219, 1);
+}
+
+.time{
+	width:9vw;
+	max-width:9vw;
+	text-align:center;
+}
+
+#estimate-in-thead{
+	width:9vw;
+	max-width:9vw;
+}
+
+#actual-in-thead{
+	width:9vw;
+	max-width:9vw;
+}
+
+.hyphen{
+	color:#454545!important;
+}
+
+
+/*実績確認ルーズリーフ全体の枠*/
+.actual-input-area
+{
+  background : #FFFFFF;
+  background : rgba(255, 255, 255, 1);
+  position : absolute ;
+  top : 28vh;
+  border-radius : 20px;
+  -moz-border-radius : 20px;
+  -webkit-border-radius : 20px;
+	margin-left:25vw;
+	width: 53vw;
+	height: auto;
+	float:left;
+
+}
+
+/*[〇年〇月の実績]の文字*/
+.actual-input-font-lev0
+{
+	font-family : UD デジタル 教科書体 NK-B;
+	font-weight : bold;
+	font-size : 3vh;
+	color : #333333;
+	color : rgb(51, 51, 51);
+	width: 53vw;
+	height: 7vh;
+	text-align: center;
+	padding-top:2vh;
+	float:right;
+	border:solid red;
+}
+
+
+/*1段目:日時と場所エリア*/
+.actual-input-area-1 {
+	width: 40vw;
+	height: 6vh;
+	float:right;
+	text-align: left;
+	margin-right: 5vw;
+	margin-top: 1vh;
+	border: none;
+	background : rgba(255, 213, 168, 0.5);
+}
+/*1段目のエリアの各エリアの幅:日時・場所*/
+.actual-input-area-1-block {
+	width: 20vw;
+	height: 6vh;
+	float:left;
+	text-align: left;
+	border: solid #666666 0.1vh;
+	padding: 1.5vh 0.5vw;
+}
+/*2段目:タイトルのエリア*/
+.actual-input-area-2 {
+	width: 40vw;
+	height: 6vh;
+	float:right;
+	text-align: left;
+	margin-right: 5vw;
+	border: solid #666666 0.1vh;
+	background : rgba(255, 213, 168, 0.5);
+	padding: 1.5vh 0.5vw;
+	overflow: hidden;/*はみ出た文字を隠す*/
+}
+.actual-input-area-2  p{
+	margin-top:0;
+	display: -webkit-box;/*...表示*/
+  	-webkit-box-orient: vertical;/*...表示*/
+  	-webkit-line-clamp: 1;/*...表示*/
+  	overflow: hidden;/*はみ出た文字を隠す*/
+}
+/*3段目:内容のエリア*/
+.actual-input-area-3 {
+	width: 40vw;
+	height: 9vh;
+	float:right;
+	text-align: left;
+	margin-right: 5vw;
+	border: solid #666666 0.1vh;
+	background : rgba(255, 213, 168, 0.5);
+	padding: 1.5vh 0.5vw;
+	overflow: hidden;/*はみ出た文字を隠す*/
+}
+
+.actual-input-area-3 p{
+	margin-top:0;
+	display: -webkit-box;/*...表示*/
+	-webkit-box-orient: vertical;/*...表示*/
+	-webkit-line-clamp: 2;/*...表示*/
+	overflow: hidden;/*はみ出た文字を隠す*/
+
+}
+/*4段目:実績時間のエリア*/
+.actual-input-area-4 {
+	width: 40vw;
+	height: 9vh;
+	float:right;
+	text-align: left;
+	margin-right: 5vw;
+	margin-top:1vh;
+}
+/*5段目:コメントのエリア*/
+.actual-input-area-5 {
+	width: 40vw;
+	height: 20vh;
+	float:right;
+	text-align: left;
+	margin-right: 5vw;
+}
+
+/*フォントサイズ*/
+.actual-input-font-lev1
+{
+  font-family : UD デジタル 教科書体 NK-B;
+  font-weight : bold;
+  font-size : 2.7vh;
+  width : 10vh;
+  margin-top:0.5vh;
+  color : #333333;
+  color : rgb(51, 51, 51);
+}
+
+/*必須マーク*/
+.actual-input-font-lev1 span
+{
+  font-family : 小塚ゴシック Pr6N;
+  font-size : 2vh;
+  color : #FF1002;
+  color : rgb(255, 16, 2);
+}
+
+/*[時間]のプルダウンのベース*/
+.actual-input-time1 label {
+	position: relative;
+}
+.actual-input-time1 label:before {
+	content: "";
+	position: absolute;
+	top: 50%;
+	display: block;
+	width: 0;
+	height: 0;
+	margin: 1.5vh 0 0 2.5vw;
+	border: 10px solid transparent;/*プルダウンの▽*/
+	border-top: 12px solid #999999;/*プルダウンの▽*/
+	pointer-events: none;/* クリック出来るよう */
+}
+/*[分]のプルダウンのベース*/
+.actual-input-time2 label {
+	position: relative;
+}
+.actual-input-time2 label:before {
+	content: "";
+	position: absolute;
+	top: 50%;
+	display: block;
+	width: 0;
+	height: 0;
+	margin: 1.5vh 0 0 9.5vw;
+	border: 10px solid transparent;/*プルダウンの▽*/
+	border-top: 12px solid #999999;/*プルダウンの▽*/
+	pointer-events: none;/* クリック出来るよう */
+}
+::-ms-expand {
+    display: none;/*プルダウンのデフォルトを無効化*/
+}
+
+/*[時間]のプルダウン*/
+.actual-input-time1 select
+{
+	border-style : Solid;
+	border-color : #333333;
+	border-color : rgba(51, 51, 51, 1);
+	border-width : 1px;
+	border-radius : 5px;
+	-moz-border-radius : 5px;
+	-webkit-border-radius : 5px;
+	float: left;
+	width: 4vw;
+	height: 4vh;
+	font-family : 小塚ゴシック Pr6N;
+	font-size : 2vh;
+	color :  #888888;
+	padding-left:1vh;
+	-webkit-appearance: none;/*デフォルトの▽を消去*/
+	appearance: none;/*デフォルトの▽を消去*/
+	cursor: pointer;
+	display: block;
+	position: relative;/*これがないと▽を押せない*/
+	background: transparent;
+}
+/*[分]のプルダウン*/
+.actual-input-time2 select
+{
+	border-style : Solid;
+	border-color : #333333;
+	border-color : rgba(51, 51, 51, 1);
+	border-width : 1px;
+	border-radius : 5px;
+	-moz-border-radius : 5px;
+	-webkit-border-radius : 5px;
+	float: left;
+	width: 4vw;
+	height: 4vh;
+	font-family : 小塚ゴシック Pr6N;
+	font-size : 2vh;
+	color :  #888888;
+	padding-left:1vh;
+	-webkit-appearance: none;/*デフォルトの▽を消去*/
+	appearance: none;/*デフォルトの▽を消去*/
+	cursor: pointer;
+	display: block;
+	position: relative;/*これがないと▽を押せない*/
+	background: transparent;
+}
+
+/*開始時刻/終了時刻の[時]と[分]の文字*/
+.actual-input-time-text {
+	font-family : UD デジタル 教科書体 NK-B;
+	font-weight : bold;
+	font-size : 2vh;
+	color : #333333;
+	color : rgb(51, 51, 51);
+	float: left;
+	width: 3vw;
+	height: 4vh;
+	margin-top:1vh;
+}
+
+
+
+
+
+/*コメント*/
+.actual-input-comment textarea
+{
+	border-style : Solid;
+	border-color : #333333;
+	border-color : rgba(51, 51, 51, 1);
+	border-width : 1px;
+	border-radius : 5px;
+	-moz-border-radius : 5px;
+	-webkit-border-radius : 5px;
+	font-family : 小塚ゴシック Pr6N;
+	font-size : 2vh;
+	color :  #888888;
+	width: 40vw;
+	height: 15vh;
+	float:left;
+	margin-right:2.5vw;
+}
+
+
+/*くろのんバンザイ画像の配置*/
+.kronon-banzai img{
+	float:right;
+	width: 17vw;
+	height:auto;
+	margin-top: 30vh;
+	margin-left:3vw;
+}
+
+
+
+/*ボタン配置*/
+.schedule-regist-button{
+	float:left;
+	margin-left:35vw;
+}
+/*登録*/
+.schedule-regist-button-left{
+	float:left;
+}
+/*キャンセル*/
+.schedule-regist-button-right{
+	float:left;
+	margin-left:15vw;
+}
+
+
+/*フッター*/
+footer{
+	width:100vw;
+	margin:0;
+	padding-top:1vh;
+	padding-bottom:1vh;
+	padding-right:3vh;
+	padding-left:0;
+	background-color: #DE9B50;
+	text-align: right;
+	color : #FFFFFF;
+	font-size: 3vh;
+	position: fixed; /* フッターを固定する */
+	bottom: 0; /* 上部から配置の基準位置を決める */
+	left: 0; /* 左から配置の基準位置を決める */
+
+}
+
+
