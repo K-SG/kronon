@@ -83,12 +83,14 @@
 
 			<!--キャンセルボタン----->
 				<div class=actual-regist-button-right>
-					<input type="button" class="ok-button" id="cancel-button" value="キャンセル">
+					<input type="button" class="ok-button cancel-button" id="cancel-button" value="キャンセル">
 				</div>
 			</div>
 			<div class="clear"></div>
 	 	 </div>
 	</form>
+		<!-- 戻るボタン -->
+	<div class="cancel-button"><img src="/kronon/img/back_buttom.png" alt="back-buttom" class="back-btn"></div>
 
   <!--エラーまたは完了ポップアップ------------------------------------------------------------------->
   <div class="popup-wrapper error-popup">

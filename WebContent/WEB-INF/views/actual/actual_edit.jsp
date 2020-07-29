@@ -8,7 +8,7 @@
 
  <link rel="stylesheet" href="/kronon/css/actual_new.css">
 <%@ include file="../layout/common/link.jsp" %>
-<title>実績修正</title>
+<title>実績更新</title>
 </head>
 <body>
 
@@ -20,7 +20,7 @@
 		<div class="actual-regist-area">
 		<div class="loose-leaf"><img src="../img/loose_leaf.svg" alt="loose-leaf" id="loose-leaf"></div>
 		  <div class="actual-regist-area-inner">
-			<div class="actual-regist-font-lev0">実績修正</div>
+			<div class="actual-regist-font-lev0">実績更新</div>
 			<input type="hidden" name="scheduleId" value="${scheduleBean.scheduleId}" id="set-actual-id">
 			<div class="actual-regist-border"></div>
 			<div class="table-container">
@@ -76,19 +76,21 @@
 		 	</div>
 			<div class="kronon-banzai"><img alt="banzai" src="/kronon/img/kronon/kronon_banzai.png"></div>
 			<div class=actual-regist-button>
-			<!--登録ボタン---->
+			<!--更新ボタン---->
 				<div class=actual-regist-button-left>
-				<input type="button" class="ok-button large-popup-button" id="ok-button" value="登録" >
+				<input type="button" class="ok-button large-popup-button" id="ok-button" value="更新" >
 				</div>
 
 			<!--キャンセルボタン----->
 				<div class=actual-regist-button-right>
-					<input type="button" class="ok-button" id="cancel-button" value="キャンセル">
+					<input type="button" class="ok-button cancel-button" id="cancel-button" value="キャンセル">
 				</div>
 			</div>
 			<div class="clear"></div>
 	 	 </div>
 	</form>
+		<!-- 戻るボタン -->
+	<div class="cancel-button"><img src="/kronon/img/back_buttom.png" alt="back-buttom" class="back-btn"></div>
 
   <!--エラーまたは完了ポップアップ------------------------------------------------------------------->
   <div class="popup-wrapper error-popup">
@@ -114,7 +116,7 @@
 				<p>内容は保存されないよ。</p>
 				<h2 class="message-title">本当に戻る？</h2>
 			  </div>
-			  <a href="calendar"><div class="ok-button">OK</div></a>
+			  <a href="actualdatail?scheduleId=${scheduleBean.scheduleId}"><div class="ok-button">OK</div></a>
 			  <div class="ng-button close-popup">キャンセル</div>
 			  <img src="/kronon/img/star/star_angry.png" class="pop-img-top"> </div>
 		  </div>
@@ -180,7 +182,7 @@
 
 	</article>
 <%@ include file="../layout/common/footer.jsp" %>
-<script src="/kronon/js/actual_new.js"></script>
+<script src="/kronon/js/actual_edit.js"></script>
 <script src="js/common.js"></script>
 </body>
 </html>
