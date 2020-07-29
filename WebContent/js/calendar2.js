@@ -18,7 +18,6 @@ const json_replace = (json.value).toString().replace(/krnooon/g,'"');
 //jsonライブラリの関数を使って、文字列を扱いやすい形に
 let array = JSON.parse(json_replace);
 
-
 {
 
   //表示する年月の取得
