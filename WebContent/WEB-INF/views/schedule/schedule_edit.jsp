@@ -142,6 +142,7 @@
 	  	<div class="clear"></div>
 	  </div>
 	</form>
+
 	<!-- 戻るボタン -->
 	<div class="cancel-button"><img src="/kronon/img/back_buttom.png" alt="back-buttom" class="back-btn"></div>
 	<%-- <a href="scheduledetail?scheduleId=${scheduleBean.scheduleId}"> --%>

@@ -1,6 +1,7 @@
 package gomi;
 
 import java.io.IOException;
+import java.sql.Connection;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,27 +10,31 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import jp.co.benesse.dataaccess.cm.ConnectionManager;
+import jp.co.benesse.dataaccess.dao.ScheduleDAO;
+import jp.co.benesse.dataaccess.value.ScheduleBean;
+
 /**
  * Servlet implementation class TestScheduleEdit
  */
-@WebServlet("/user/TestScheduleEdit")
-public class TestScheduleEdit extends HttpServlet {
+@WebServlet("/user/testactualnew")
+public class TestActualNew extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		ConnectionManager connectionManager = new ConnectionManager();
+		Connection connection = connectionManager.getConnection();
+		ScheduleDAO scheduleDAO= new ScheduleDAO(connection);
+		ScheduleBean scheduleBean = new ScheduleBean();
+		scheduleBean = scheduleDAO.getScheduleByScheduleId(1);
 
 
-		request.setAttribute("date", "2020-10-16");
-		request.setAttribute("startTime", "09:00");
-		request.setAttribute("endTime", "15:30");
-		request.setAttribute("place", "2");
-		request.setAttribute("title", "予定が入るよ");
-		request.setAttribute("content", "内容が入るよ");
-		request.setAttribute("popFlag", "1");
+
+		request.setAttribute("userName","長澤");
+		request.setAttribute("scheduleBean",scheduleBean);
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("../WEB-INF/views/actual/actual_new.jsp");
 		dispatcher.forward(request, response);
 		return;
 	}
-
 }

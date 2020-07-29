@@ -1,547 +1,336 @@
+/* CSS Document */
+/* @import url(sanitize.css); */
 
-/*実績検索の枠*/
-.actual-search-area
+article{
+	margin-bottom:10vw;;
+}
+
+/*予定登録ルーズリーフエリアの枠*/
+.actual-regist-area
 {
-  background : #FFEEDB;
-  background : rgba(255, 238, 219, 1);
-  border-style : Solid;
-  border-color : #DE9B50;
-  border-color : rgba(222, 155, 80, 1);
-  border-width : 2px;
-  position : absolute ;
-  border-radius : 10px;
-  -moz-border-radius : 10px;
-  -webkit-border-radius : 10px;
-	margin-left:14vw;
-	width: 69vw;
-	height: 8vh;
-	float:left;
-	padding-left:2vw;
-}
-
-
-/*日付検索*/
-.actual-search-date {
-	float:left;
-	width: 3vw;
-	margin-left: 4vw;
-	margin-top:2vh;
-}
-/*日付検索入力枠*/
-.actual-search-date-area input
-{
-	border-style : Solid;
-	border-color : #333333;
-	border-color : rgba(51, 51, 51, 1);
-	border-width : 1px;
-	border-radius : 5px;
-	-moz-border-radius : 5px;
-	-webkit-border-radius : 5px;
-	font-family : 小塚ゴシック Pr6N;
-	font-size : 2vh;
-	color :  #888888;
-	width: 10vw;
-	height: 4vh;
-	float: left;
-	margin-top:2vh;
-	margin-left:1vh;
-
-}
-/*タイトル検索*/
-.actual-search-title{
-	float:left;
-	width: 4vw;
-	margin-left: 2vw;
-	margin-top:2vh;
-}
-.actual-search-title-area input {
-	border-style : Solid;
-	border-color : #333333;
-	border-color : rgba(51, 51, 51, 1);
-	border-width : 1px;
-	border-radius : 5px;
-	-moz-border-radius : 5px;
-	-webkit-border-radius : 5px;
-	font-family : 小塚ゴシック Pr6N;
-	font-size : 2vh;
-	color :  #888888;
-	width: 25vw;
-	height: 4vh;
-	float: left;
-	margin-top:2vh;
-	margin-left:3vh;
-
-}
-
-
-/*検索ボタン*/
-.search-button {
-  display: inline-block;
-  width: 7vw;
-  height:3vh;
-
-  background-color: #DE9B50;
-  border: none;
-  border-radius: 0.3vw;
-  color: white;
-  margin-left: 6vh;
-  cursor: pointer;
-  text-align: center;
-  font-size: 1.5vw;
-  float:left;
-  padding-top:0.8vh;
-  padding-left:2.5vh;
-  font-size:2.5vh;
-  padding-bottom:0.5vh;
-  margin-top:2vh;
-
-}
-.search-button img {
-	width:3vh;
-
-}
-
-.word{
-	float:left;
-	margin-left:0.9vw;
-}
-
-/*「実績確認へ」ボタン*/
-#actual-button {
-  width: 10vw;
-  height:4vh;
-  padding: 0.5vw;
-  padding-top: 1.5vh;
-  background-color: #DE9B50;
-  border: none;
-  border-radius: 0.3vw;
-  color: white;
-  cursor: pointer;
-  margin-left:45vw;
-  font-size: 2.0vw;
-  font-size:2.8vh;
-}
-
-/*実績詳細へ*/
-.schedule-actual{
-	 cursor: pointer;
-}
-
-#actual-title{
-	margin-top:3vh;
-	margin-bottom:3vh;
-}
-
-#actual-result{
-	margin-top:3vh;
-	margin-bottom:3vh;
-}
-
-/*見出しと一覧*/
-#actual-content{
-	color:#454545;
-	background-color:white;
-	width: 70vw;
-	margin-top: 5vw;
-	margin-left: 25vw;
-	border-radius: 10px;
-	padding-top:3vh;
-	padding-bottom:10vh;
-	margin:auto;
-	margin-top:10vh;
-}
-
-table{
-	width:60vw;
-	max-width:60vw;
-	font-size:70%;
-	border-collapse:collapse;
-}
-
-table td{
-	height:10vh;
-	padding:0.5vw;
-	max-width:16vw;
-	word-wrap: break-word;
-}
-
-#date-in-table{
-	width:7vw;
-	max-width:7vw;
-	text-align:center;
-}
-
-#date-in-thead{
-	width:7vw;
-	max-width:7vw;
-}
-
-#title{
-	max-width: 11vw;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  	overflow: hidden;/*はみ出た文字を隠す*/
-  	width:12vw;
-}
-#title-in-thead{
-	width:11vw;
-	max-width:11vw;
-	border:none;
-}
-
-/* .title-and-content.contents{
-	border:none;
-} */
-.item{
-	border:none;
-}
-
-.contents{
-	width:16vw;
-	max-width:16vw;
-	/* display: -webkit-box;...表示
-	-webkit-box-orient: vertical;...表示
-	-webkit-line-clamp: 2;...表示
-	-webkit-border-before:unset;
-	overflow: hidden;はみ出た文字を隠す
-	border-left-width:0;
-	border-right-width:0; */
-
-
-}
-#content-in-thead{
-	width:16vw;
-	max-width:16vw;
-}
-
-#schedule-date-hidden{
-	display:none;
-}
-
-.cell-active{
-	background : #FFEEDB;
-  	background : rgba(255, 238, 219, 1);
-}
-
-.time{
-	width:9vw;
-	max-width:9vw;
-	text-align:center;
-}
-
-#estimate-in-thead{
-	width:9vw;
-	max-width:9vw;
-}
-
-#actual-in-thead{
-	width:9vw;
-	max-width:9vw;
-}
-
-.hyphen{
-	color:#454545!important;
-}
-
-
-/*実績確認ルーズリーフ全体の枠*/
-.actual-input-area
-{
-  background : #FFFFFF;
-  background : rgba(255, 255, 255, 1);
-  position : absolute ;
-  top : 28vh;
-  border-radius : 20px;
-  -moz-border-radius : 20px;
-  -webkit-border-radius : 20px;
+	background-repeat: no-repeat;
+	margin:0;
+	padding:0;
 	margin-left:25vw;
-	width: 53vw;
-	height: auto;
-	float:left;
-
+	width: 50vw;
+	background-size: 95%;
+	top:0vw;
+	position:relative;
+	margin-bottom:2vw;
 }
 
-/*[〇年〇月の実績]の文字*/
-.actual-input-font-lev0
+
+.actual-regist-area-inner{
+	width:50vw;
+	position:absolute;
+	top:0vw;
+	left:2.0vw;
+	z-index:11;
+}
+
+#loose-leaf{
+	width:50vw;
+	position:absolute;
+	top:0vw;
+	left:0vw;
+	z-index:10;
+}
+
+/*[予定登録]の文字*/
+.actual-regist-font-lev0
 {
 	font-family : UD デジタル 教科書体 NK-B;
 	font-weight : bold;
-	font-size : 3vh;
+	font-size : 1.8vw;
 	color : #333333;
 	color : rgb(51, 51, 51);
-	width: 53vw;
-	height: 7vh;
+	width: 95%;;
+	height: 2.5vw;
 	text-align: center;
-	padding-top:2vh;
-	float:right;
-	border:solid red;
+	padding-top:2.5vw;
+	float:left;
 }
 
-
-/*1段目:日時と場所エリア*/
-.actual-input-area-1 {
+/*[予定登録]の下線*/
+.actual-regist-border
+{
+	border-bottom:solid #333 0.1vw;
 	width: 40vw;
-	height: 6vh;
+	margin-left:4.5vw;
+	float:left;
+}
+
+.table-container{
+	float: left;
+}
+
+/*1段目:日付・時刻のエリア*/
+.actual-regist-area-1 {
+	margin-top:0.5vw;
+	width: 45vw;
+	height: 4.4vw;;
 	float:right;
 	text-align: left;
-	margin-right: 5vw;
-	margin-top: 1vh;
-	border: none;
-	background : rgba(255, 213, 168, 0.5);
 }
-/*1段目のエリアの各エリアの幅:日時・場所*/
-.actual-input-area-1-block {
-	width: 20vw;
-	height: 6vh;
+
+.table-container{
+	float:right;
+	text-align:left;
+	width: 45vw;
+	/* height: 11vw; */
+	font-size : 1.1vw;
+	line-height:1.5vw;
+}
+
+.actual-table{
+  table-layout: fixed;
+  border-collapse: collapse;
+  border:0.02vw solid #666;
+  margin-top:1vw;
+  background-color:#FEF0DE;
+  color:#333;
+  /* width:35vw; */
+}
+
+.actual-table td{
+	border:0.02vw solid #666;
+	height:2.8vw;
+	padding:0vw 1vw;
+	word-wrap: break-word;
+	word-break : break-all;
+}
+
+#actual-date{
+	width:22vw;
+}
+
+.actual-place{
+	/* width:15vw: */
+}
+
+
+.actual-title{
+	width:37vw;
+	height:2.5vw !important;
+
+}
+
+.actual-title p{
+	display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+    margin-top:0.5vw !important;
+    margin-bottom:0.5vw !important;
+}
+
+.actual-naiyou{
+	/* height:4vw !important; */
+	overflow: hidden;
+	width:37vw;
+}
+/* ２行まで表示。2行以上になる場合は…を表示 */
+.actual-naiyou p{
+	display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    margin-top:0.5vw !important;
+    margin-bottom:0.5vw !important;
+}
+
+/*1段目のエリアの各エリアの実績時間*/
+.actual-regist-area-1-block {
+	width: 14vw;
+	/* height: 4.8vw; */
 	float:left;
 	text-align: left;
-	border: solid #666666 0.1vh;
-	padding: 1.5vh 0.5vw;
-}
-/*2段目:タイトルのエリア*/
-.actual-input-area-2 {
-	width: 40vw;
-	height: 6vh;
-	float:right;
-	text-align: left;
-	margin-right: 5vw;
-	border: solid #666666 0.1vh;
-	background : rgba(255, 213, 168, 0.5);
-	padding: 1.5vh 0.5vw;
-	overflow: hidden;/*はみ出た文字を隠す*/
-}
-.actual-input-area-2  p{
-	margin-top:0;
-	display: -webkit-box;/*...表示*/
-  	-webkit-box-orient: vertical;/*...表示*/
-  	-webkit-line-clamp: 1;/*...表示*/
-  	overflow: hidden;/*はみ出た文字を隠す*/
-}
-/*3段目:内容のエリア*/
-.actual-input-area-3 {
-	width: 40vw;
-	height: 9vh;
-	float:right;
-	text-align: left;
-	margin-right: 5vw;
-	border: solid #666666 0.1vh;
-	background : rgba(255, 213, 168, 0.5);
-	padding: 1.5vh 0.5vw;
-	overflow: hidden;/*はみ出た文字を隠す*/
+	margin-top: 1vw;
 }
 
-.actual-input-area-3 p{
-	margin-top:0;
-	display: -webkit-box;/*...表示*/
-	-webkit-box-orient: vertical;/*...表示*/
-	-webkit-line-clamp: 2;/*...表示*/
-	overflow: hidden;/*はみ出た文字を隠す*/
-
-}
-/*4段目:実績時間のエリア*/
-.actual-input-area-4 {
-	width: 40vw;
-	height: 9vh;
+/*4段目:内容のエリア*/
+.actual-regist-area-4 {
+	margin-top:0.5vw;
+	width: 45vw;
+	height: 7.0vw;;
 	float:right;
 	text-align: left;
-	margin-right: 5vw;
-	margin-top:1vh;
-}
-/*5段目:コメントのエリア*/
-.actual-input-area-5 {
-	width: 40vw;
-	height: 20vh;
-	float:right;
-	text-align: left;
-	margin-right: 5vw;
 }
 
-/*フォントサイズ*/
-.actual-input-font-lev1
+
+/*日付などのフォント*/
+.actual-regist-font-lev1
 {
   font-family : UD デジタル 教科書体 NK-B;
   font-weight : bold;
-  font-size : 2.7vh;
-  width : 10vh;
-  margin-top:0.5vh;
+  font-size : 1.2vw;;
   color : #333333;
   color : rgb(51, 51, 51);
+  margin:0;
+  padding:0;
+  height:2.0vw;
 }
 
 /*必須マーク*/
-.actual-input-font-lev1 span
+.actual-regist-font-lev1 span
 {
   font-family : 小塚ゴシック Pr6N;
-  font-size : 2vh;
+  font-size : 1.2vw;
   color : #FF1002;
   color : rgb(255, 16, 2);
 }
 
-/*[時間]のプルダウンのベース*/
-.actual-input-time1 label {
-	position: relative;
-}
-.actual-input-time1 label:before {
-	content: "";
-	position: absolute;
-	top: 50%;
-	display: block;
-	width: 0;
-	height: 0;
-	margin: 1.5vh 0 0 2.5vw;
-	border: 10px solid transparent;/*プルダウンの▽*/
-	border-top: 12px solid #999999;/*プルダウンの▽*/
-	pointer-events: none;/* クリック出来るよう */
-}
-/*[分]のプルダウンのベース*/
-.actual-input-time2 label {
-	position: relative;
-}
-.actual-input-time2 label:before {
-	content: "";
-	position: absolute;
-	top: 50%;
-	display: block;
-	width: 0;
-	height: 0;
-	margin: 1.5vh 0 0 9.5vw;
-	border: 10px solid transparent;/*プルダウンの▽*/
-	border-top: 12px solid #999999;/*プルダウンの▽*/
-	pointer-events: none;/* クリック出来るよう */
-}
-::-ms-expand {
-    display: none;/*プルダウンのデフォルトを無効化*/
-}
 
-/*[時間]のプルダウン*/
-.actual-input-time1 select
+/*日付入力枠*/
+.actual-regist-date-area input
 {
 	border-style : Solid;
 	border-color : #333333;
 	border-color : rgba(51, 51, 51, 1);
-	border-width : 1px;
-	border-radius : 5px;
-	-moz-border-radius : 5px;
-	-webkit-border-radius : 5px;
-	float: left;
-	width: 4vw;
-	height: 4vh;
+	border-width : 0.02vw;
+	border-radius : 0.3vw;
 	font-family : 小塚ゴシック Pr6N;
-	font-size : 2vh;
-	color :  #888888;
-	padding-left:1vh;
-	-webkit-appearance: none;/*デフォルトの▽を消去*/
-	appearance: none;/*デフォルトの▽を消去*/
-	cursor: pointer;
-	display: block;
-	position: relative;/*これがないと▽を押せない*/
-	background: transparent;
+	font-size : 1.0vw;
+	color :  #333;
+	width: 10vw;
+	height: 2.0vw;
+	float: left;
+	padding-left:1vw;
 }
-/*[分]のプルダウン*/
-.actual-input-time2 select
+/*開始時刻/終了時刻の[時間]と[分]のプルダウン*/
+.actual-regist-time select
 {
 	border-style : Solid;
 	border-color : #333333;
 	border-color : rgba(51, 51, 51, 1);
-	border-width : 1px;
-	border-radius : 5px;
-	-moz-border-radius : 5px;
-	-webkit-border-radius : 5px;
+	border-width : 0.02vw;
+	border-radius : 0.3vw;
 	float: left;
-	width: 4vw;
-	height: 4vh;
+	width: 3.5vw;
+	height: 2.0vw;
 	font-family : 小塚ゴシック Pr6N;
-	font-size : 2vh;
-	color :  #888888;
-	padding-left:1vh;
-	-webkit-appearance: none;/*デフォルトの▽を消去*/
-	appearance: none;/*デフォルトの▽を消去*/
-	cursor: pointer;
-	display: block;
-	position: relative;/*これがないと▽を押せない*/
-	background: transparent;
+	font-size : 1.0vw;
+	color :  #333;
+	padding-left:0.2vw;
 }
-
 /*開始時刻/終了時刻の[時]と[分]の文字*/
-.actual-input-time-text {
+.actual-regist-time-text {
 	font-family : UD デジタル 教科書体 NK-B;
 	font-weight : bold;
-	font-size : 2vh;
+	font-size : 1vw;
 	color : #333333;
 	color : rgb(51, 51, 51);
 	float: left;
-	width: 3vw;
-	height: 4vh;
-	margin-top:1vh;
+	width: 2vw;
+	height: 2.5vw;;
+	margin-top:0.5vw;
+	padding-left:0.5vw;
+	padding-right:0.8vw;
 }
 
-
-
-
-
-/*コメント*/
-.actual-input-comment textarea
+/*場所*/
+.actual-regist-place select
 {
 	border-style : Solid;
 	border-color : #333333;
 	border-color : rgba(51, 51, 51, 1);
-	border-width : 1px;
-	border-radius : 5px;
-	-moz-border-radius : 5px;
-	-webkit-border-radius : 5px;
+	border-width : 0.02vw;
+	border-radius : 0.3vw;
+	float: left;
+	width: 15vw;
+	height: 2.0vw;
 	font-family : 小塚ゴシック Pr6N;
-	font-size : 2vh;
-	color :  #888888;
-	width: 40vw;
-	height: 15vh;
-	float:left;
-	margin-right:2.5vw;
+	font-size : 1.0vw;
+	color :  #333;
+	padding-left:1vw;
 }
 
+.actual-regist-area-4 .actual-regist-font-lev1{
+	height:1.5vw;
+}
+
+/*内容*/
+.actual-regist-content textarea
+{
+	border-style : Solid;
+	border-color : #333333;
+	border-color : rgba(51, 51, 51, 1);
+	border-width : 0.02vw;
+	border-radius : 0.3vw;
+	font-family : 小塚ゴシック Pr6N;
+	font-size : 1.1vw;
+	line-height:1.5vw;
+	color :  #333;
+	width: 37vw;
+	height: 5.5vw;
+	float:left;
+	margin-right:2.5vw;
+	margin-top:0vw;
+	padding:0.5vw 1vw;
+}
 
 /*くろのんバンザイ画像の配置*/
 .kronon-banzai img{
-	float:right;
+	position:absolute;
+	top:18vw;
+	left:53vw;
 	width: 17vw;
-	height:auto;
-	margin-top: 30vh;
-	margin-left:3vw;
-}
 
+}
 
 
 /*ボタン配置*/
-.schedule-regist-button{
+.actual-regist-button{
 	float:left;
-	margin-left:35vw;
+}
+/* 戻るボタン */
+.back-btn {
+	width: 4vw;
+	position: fixed;
+	left: 3vw;
+	top: 83vh;
+	cursor:pointer;
 }
 /*登録*/
-.schedule-regist-button-left{
+.actual-regist-button-left{
+	position:absolute;
+	left:10vw;
+	top:32vw;;
 	float:left;
 }
 /*キャンセル*/
-.schedule-regist-button-right{
-	float:left;
-	margin-left:15vw;
+.actual-regist-button-right{
+		position:absolute;
+	right:10vw;
+	top:32vw;
+}
+
+.clear{
+	clear:both;
+	height:38vw;
+}
+
+.message-container-large{
+	color: #000000;
+}
+.pop-container{
+	color: #000000;
+}
+
+.popup-table td{
+	width:50vw !important;
+}
+/* thが二行にわたってしまう部分があったので広げました */
+.actual-pop-th{
+	width:15vw !important;
+
+}
+/* footerよりも上に来るよう鬼 */
+.popup-wrapper{
+	z-index:101 !important;
 }
 
 
-/*フッター*/
 footer{
-	width:100vw;
-	margin:0;
-	padding-top:1vh;
-	padding-bottom:1vh;
-	padding-right:3vh;
-	padding-left:0;
-	background-color: #DE9B50;
-	text-align: right;
-	color : #FFFFFF;
-	font-size: 3vh;
-	position: fixed; /* フッターを固定する */
-	bottom: 0; /* 上部から配置の基準位置を決める */
-	left: 0; /* 左から配置の基準位置を決める */
-
+	z-index:100;
 }
-
-
