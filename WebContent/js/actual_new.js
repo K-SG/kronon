@@ -93,7 +93,7 @@ $(function () {
   });
 
     /*キャンセルボタンを押した際のポップアップ表示*/
-    $('#cancel-button').click(function () {
+    $('.cancel-button').click(function () {
         $('.cancel-popup').fadeIn();
         return;
   });
