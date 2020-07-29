@@ -97,7 +97,10 @@ public class ScheduleUpdateServlet extends HttpServlet {
 
 			// 予定が重複しているかをチェック
 			check = scheduleDAO.isBooking(scheduleBean);
-			if (check != true) {
+			System.out.println(check+"ブッキングしていたら");
+
+			if (check) {
+				System.out.println("trueで入ってるよ！ブッキングなう");
 				request.setAttribute("popFlag", 0);// 予定重複フラグ
 				request.setAttribute("scheduleBean", scheduleBean);
 				request.setAttribute("startTimeHour", startTimeHour);// 開始時間
@@ -111,6 +114,8 @@ public class ScheduleUpdateServlet extends HttpServlet {
 			}
 
 			result = scheduleDAO.updateSchedule(scheduleId, date, startTime, endTime, title, content, place);
+
+			System.out.println(result+"updateできたよ");
 			if (result != 1) {
 				throw new RuntimeException("予定修正に失敗");
 			}
