@@ -46,11 +46,11 @@
 				</tr>
 
 				<tr>
-					<td colspan="2"><c:out value="${scheduleBean.title}" /></td>
+					<td colspan="2">タイトル：<c:out value="${scheduleBean.title}" /></td>
 				</tr>
 
 				<tr>
-					<td colspan="2"><c:out value="${scheduleBean.content}" /></td>
+					<td colspan="2">内容：<c:out value="${scheduleBean.content}" /></td>
 				</tr>
 
 			</table>

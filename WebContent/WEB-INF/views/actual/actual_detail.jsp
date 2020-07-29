@@ -47,13 +47,18 @@
 
         <tr>
           <td colspan="2">
-            <c:out value="${scheduleBean.title}" />
+            タイトル：<c:out value="${scheduleBean.title}" />
           </td>
         </tr>
 
         <tr>
           <td colspan="2">
-            <c:out value="${scheduleBean.content}" />
+            内容：<c:out value="${scheduleBean.content}" />
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            コメント：<c:out value="${scheduleBean.comment}" />
           </td>
         </tr>
 
