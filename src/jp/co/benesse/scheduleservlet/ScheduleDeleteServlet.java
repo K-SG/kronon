@@ -101,9 +101,7 @@ public class ScheduleDeleteServlet extends HttpServlet {
 			dispatcher.forward(request, response);
 			return;
 		} finally {
-			System.out.println("???");
 			connectionManager.closeConnection();
-			System.out.println("???");
 		}
 	}
 }
