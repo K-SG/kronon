@@ -132,27 +132,27 @@
 				<h2 class="message-title">この内容で登録するよ。</h2>
 				<table class="popup-table">
 				  <tr>
-					<th class="th">名前：</th>
+					<th class="actual-pop-th">名前：</th>
 					<td><c:out value="${userName }" /></td>
 				  </tr>
 				  <tr>
-					<th>予定日時：</th>
-					<td id="time-msg"><c:out value="${scheduleBean.scheduleDateActual}"/><span class="startTime"><c:out value="${scheduleBean.startTime}" /></span>～<span class="endTime"><c:out value="${scheduleBean.endTime}" /></span></td><td id="actual-place"></td>
+					<th class="actual-pop-th">予定日時：</th>
+					<td id="time-msg"><c:out value="${scheduleBean.scheduleDateActual}"/><span class="startTime"><c:out value="${scheduleBean.startTime}" /></span>～<span class="endTime"><c:out value="${scheduleBean.endTime}" /></span></td>
 				  </tr>
 				  <tr>
-					<th>実績時間：</th>
+					<th class="actual-pop-th">実績時間：</th>
 					<td id="actual-time-msg"></td>
 				  </tr>
 				  <tr>
-					<th>タイトル：</th>
+					<th class="actual-pop-th">タイトル：</th>
 					<td id="title-msg"><c:out value="${scheduleBean.title}"/></td>
 				  </tr>
 				  <tr>
-					<th class="last-table">内容：</th>
-					<td class="last-table" id="content-msg"><c:out value="${scheduleBean.content}"/></td>
+					<th class="actual-pop-th">内容：</th>
+					<td id="content-msg"><c:out value="${scheduleBean.content}"/></td>
 				  </tr>
 				  	<tr>
-					<th class="last-table">コメント：</th>
+					<th class="last-table actual-pop-th">コメント：</th>
 					<td class="last-table" id="comment-msg"></td>
 				  </tr>
 				</table>

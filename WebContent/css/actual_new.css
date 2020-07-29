@@ -66,7 +66,7 @@ article{
 
 /*1段目:日付・時刻のエリア*/
 .actual-regist-area-1 {
-	margin-top:0.2vw;
+	margin-top:0.5vw;
 	width: 45vw;
 	height: 4.4vw;;
 	float:right;
@@ -78,7 +78,8 @@ article{
 	text-align:left;
 	width: 45vw;
 	/* height: 11vw; */
-	font-size:1.0vw;
+	font-size : 1.1vw;
+	line-height:1.5vw;
 }
 
 .actual-table{
@@ -87,19 +88,20 @@ article{
   border:0.02vw solid #666;
   margin-top:1vw;
   background-color:#FEF0DE;
+  color:#333;
   /* width:35vw; */
 }
 
 .actual-table td{
 	border:0.02vw solid #666;
-	height:2.5vw;
+	height:2.8vw;
 	padding:0vw 1vw;
 	word-wrap: break-word;
 	word-break : break-all;
 }
 
-.actual-date{
-	width:25vw;
+#actual-date{
+	width:22vw;
 }
 
 .actual-place{
@@ -118,6 +120,8 @@ article{
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 1;
     overflow: hidden;
+    margin-top:0.5vw !important;
+    margin-bottom:0.5vw !important;
 }
 
 .actual-naiyou{
@@ -131,6 +135,8 @@ article{
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
     overflow: hidden;
+    margin-top:0.5vw !important;
+    margin-bottom:0.5vw !important;
 }
 
 /*1段目のエリアの各エリアの実績時間*/
@@ -239,24 +245,6 @@ article{
 	padding-left:1vw;
 }
 
-/*タイトル*/
-.actual-regist-title textarea
-{
-	border-style : Solid;
-	border-color : #333333;
-	border-color : rgba(51, 51, 51, 1);
-	border-width : 0.02vw;
-	border-radius : 0.3vw;
-	font-family : 小塚ゴシック Pr6N;
-	font-size : 1.0vw;;
-	color :  #333;
-	width: 37vw;
-	height: 2.2vw;
-	float:left;
-	margin-right:2.5vw;
-	padding:0vw 1vw;
-}
-
 .actual-regist-area-4 .actual-regist-font-lev1{
 	height:1.5vw;
 }
@@ -271,13 +259,14 @@ article{
 	border-radius : 0.3vw;
 	font-family : 小塚ゴシック Pr6N;
 	font-size : 1.1vw;
+	line-height:1.5vw;
 	color :  #333;
 	width: 37vw;
-	height: 6.5vw;
+	height: 5.5vw;
 	float:left;
 	margin-right:2.5vw;
 	margin-top:0vw;
-	padding:0vw 1vw;
+	padding:0.5vw 1vw;
 }
 
 /*くろのんバンザイ画像の配置*/
@@ -326,6 +315,19 @@ article{
 }
 .pop-container{
 	color: #000000;
+}
+
+.popup-table td{
+	width:50vw !important;
+}
+/* thが二行にわたってしまう部分があったので広げました */
+.actual-pop-th{
+	width:15vw !important;
+
+}
+/* footerよりも上に来るよう鬼 */
+.popup-wrapper{
+	z-index:101 !important;
 }
 
 footer{
