@@ -43,7 +43,6 @@ public class ScheduleDetailServlet extends HttpServlet {
 			connection = connectionManager.getConnection();
 			scheduleDAO = new ScheduleDAO(connection);
 
-			//予定が既に削除されている場合
 			if (scheduleDAO.isDeleted(scheduleId)) {
 				throw new RuntimeException("予定が既に削除されている");
 			}

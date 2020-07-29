@@ -25,56 +25,62 @@ public class AcutualUpdateServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// リクエストパラメータの取得
-		String scheduleIdStr = request.getParameter("scheduleId");
-		String actualHourStr = request.getParameter("actualHour");
-		String actualMinuteStr = request.getParameter("actualMinute");
-		String comment = request.getParameter("comment");
 
-		// パラメータの変換・換算
-		int actualTime = Integer.parseInt(actualHourStr) * 60 + Integer.parseInt(actualMinuteStr);
-		int scheduleId = Integer.parseInt(scheduleIdStr);
-
-		//ポップアップ用のフラグ
-		int popFlag = 0;
-
-		ConnectionManager connectionManager = new ConnectionManager();
+		int actualTime = 0;
+		int scheduleId = 0;
+		int result = 0;
+		int popFlag = 0;// ポップアップ用のフラグ
+		String scheduleIdStr = null;
+		String actualHourStr = null;
+		String actualMinuteStr = null;
+		String comment = null;
+		ConnectionManager connectionManager = null;
+		ScheduleBean scheduleBean = null;
+		ScheduleDAO scheduleDAO = null;
+		Connection connection = null;
+		RequestDispatcher dispatcher = null;
 
 		try {
-			Connection connection = connectionManager.getConnection();
-			ScheduleDAO scheduleDAO = new ScheduleDAO(connection);
+			// リクエストパラメータの取得
+			scheduleIdStr = request.getParameter("scheduleId");
+			actualHourStr = request.getParameter("actualHour");
+			actualMinuteStr = request.getParameter("actualMinute");
+			comment = request.getParameter("comment");
 
-			if (scheduleDAO.isDeleted(scheduleId)) {// すでに別タブで予定が削除されていた場合
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/error/error.jsp");
-				dispatcher.forward(request, response);
-				return;
+			// パラメータの変換・換算
+			actualTime = Integer.parseInt(actualHourStr) * 60 + Integer.parseInt(actualMinuteStr);
+			scheduleId = Integer.parseInt(scheduleIdStr);
+
+			connectionManager = new ConnectionManager();
+			connection = connectionManager.getConnection();
+			scheduleDAO = new ScheduleDAO(connection);
+
+			if (scheduleDAO.isDeleted(scheduleId)) {
+				throw new RuntimeException("既に削除されている");
 			}
 
 			// 実績、振り返りコメントを更新
-			int result = scheduleDAO.updateSchedule(scheduleId, actualTime, comment);
+			result = scheduleDAO.updateSchedule(scheduleId, actualTime, comment);
 			connectionManager.commit();
 
-			//更新件数0件の場合はエラー画面へフォワード
-			if(result != 1){
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/error/error.jsp");
-				dispatcher.forward(request, response);
-				return;
+			if (result != 1) {
+				throw new RuntimeException("更新できていない");
 			}
+
+			scheduleBean = scheduleDAO.getScheduleByScheduleId(scheduleId);
 
 			// 更新しましたポップアップのフラグをセット
 			request.setAttribute("popFlag", popFlag);
+			request.setAttribute("scheduleBean", scheduleBean);
 
-			ScheduleBean scheduleBean = new ScheduleBean();
-			scheduleBean = scheduleDAO.getScheduleByScheduleId(scheduleId);
-			request.setAttribute("scheduleBean",scheduleBean);
-
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/actual/actual_new.jsp");
+			dispatcher = request.getRequestDispatcher("/WEB-INF/views/actual/actual_new.jsp");
 			dispatcher.forward(request, response);
 			return;
 
 		} catch (RuntimeException e) {
 			connectionManager.rollback();
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/error/error.jsp");
+			e.printStackTrace();
+			dispatcher = request.getRequestDispatcher("/WEB-INF/views/error/error.jsp");
 			dispatcher.forward(request, response);
 			return;
 		} finally {

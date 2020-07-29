@@ -89,7 +89,7 @@ $(function() {
 	}
 
 	//サービス終了月より先を見れなくする
-	if(dateServlet.substring(0,7) == "2020-09"){
+	if(dateServlet.substring(0,7) == "2023-07"){
 		$('#right').css('display','none');
 	}
 

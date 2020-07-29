@@ -7,7 +7,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <%@ include file="/WEB-INF/views/layout/common/link.jsp"%>
 <link rel="stylesheet" href="../css/actual_index.css">
-<link rel="stylesheet" href="../css/actual_index_search.css">
 <title>実績一覧</title>
 </head>
 <body>
@@ -70,9 +69,9 @@
 			<tr>
 				<th id = "date-in-thead">日付</th>
 				<th id = "title-in-thead">タイトル</th>
-				<th id = "content-in-thead">内容</th>
-				<th id = "estimate-in-thead">見積時間</th>
-				<th id = "actual-in-thead">実績時間</th>
+				<th id = "content-in-thead" class = "contents">内容</th>
+				<th id = "estimate-in-thead" class = "time">見積時間</th>
+				<th id = "actual-in-thead" class = "time">実績時間</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -82,7 +81,7 @@
 				<tr class = "schedule-actual">
 					<td id = "date-in-table"><c:out value="${scheduleBeanList.scheduleDateActual}" /></td>
 					<td class = "schedule-id" style = "display:none;"><c:out value="${scheduleBeanList.scheduleId}" /></td>
-					<td id = "title" class = "title-and-content"><c:out value="${scheduleBeanList.title}" /></td>
+					<td id = "title" class = "title"><c:out value="${scheduleBeanList.title}" /></td>
 					<td class = "title-and-content contents"><div class = "item"><c:out value="${scheduleBeanList.content}" /></div></td>
 					<td class = "estimate-time time"><c:out value="${scheduleBeanList.estimateTime}" /></td>
 					<td class = "actual-time time"><c:out value="${scheduleBeanList.actualTimeStr}" /></td>

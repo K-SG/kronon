@@ -94,7 +94,7 @@ public class ScheduleCreateServlet extends HttpServlet {
 			// 予定修正
 			result = scheduleDAO.registerSchedule(scheduleBean);
 			if (result != 1) {
-				throw new RuntimeException("予定登録に失敗");
+				throw new RuntimeException("予定修正に失敗");
 			}
 			connectionManager.commit();
 

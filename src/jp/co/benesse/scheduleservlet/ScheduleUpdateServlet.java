@@ -91,7 +91,6 @@ public class ScheduleUpdateServlet extends HttpServlet {
 			scheduleDAO = new ScheduleDAO(connection);
 			check = scheduleDAO.isDeleted(scheduleId);
 
-			// 既に削除されている場合
 			if (check == true) {
 				throw new RuntimeException("既に削除されている");
 			}
