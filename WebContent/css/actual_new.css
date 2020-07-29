@@ -323,9 +323,11 @@ article{
 /* thが二行にわたってしまう部分があったので広げました */
 .actual-pop-th{
 	width:15vw !important;
+	word-wrap: break-word;
+	word-break : break-all;
 
 }
-/* footerよりも上に来るよう鬼 */
+/* footerよりも上に来るように */
 .popup-wrapper{
 	z-index:101 !important;
 }
