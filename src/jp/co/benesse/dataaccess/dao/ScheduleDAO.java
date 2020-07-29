@@ -765,7 +765,7 @@ public class ScheduleDAO {
 			String sql = "SELECT SCHEDULE_DATE,START_TIME,MIN(TITLE) FROM SCHEDULE "
 					+ "WHERE USER_ID = ? AND DELETE_FLAG = '0' "
 					+ "AND SCHEDULE_DATE BETWEEN ? AND ? AND (SCHEDULE_DATE,START_TIME) IN ("
-					+ "SELECT SCHEDULE_DATE,MIN(START_TIME) FROM SCHEDULE GROUP BY SCHEDULE_DATE)"
+					+ "SELECT SCHEDULE_DATE,MIN(START_TIME) FROM SCHEDULE WHERE USER_ID = ? GROUP BY SCHEDULE_DATE)"
 					+ "GROUP BY SCHEDULE_DATE,START_TIME";
 
 			// SQLの作成(準備)
@@ -773,6 +773,7 @@ public class ScheduleDAO {
 			preparedStatement.setInt(1, userId);
 			preparedStatement.setDate(2, sqlFirstDayOfMonth);
 			preparedStatement.setDate(3, sqlLastDayOfMonth);
+			preparedStatement.setInt(4, userId);
 
 			// SQLの実行
 			ResultSet resultSet = preparedStatement.executeQuery();

@@ -147,11 +147,11 @@
 				  </tr>
 				  <tr>
 					<th class="actual-pop-th">タイトル：</th>
-					<td id="title-msg"><c:out value="${scheduleBean.title}"/></td>
+					<td id="title-msg"><p><c:out value="${scheduleBean.title}"/></p></td>
 				  </tr>
 				  <tr>
 					<th class="actual-pop-th">内容：</th>
-					<td id="content-msg"><c:out value="${scheduleBean.content}"/></td>
+					<td id="content-msg"><p><c:out value="${scheduleBean.content}"/></p></td>
 				  </tr>
 				  	<tr>
 					<th class="last-table actual-pop-th">コメント：</th>

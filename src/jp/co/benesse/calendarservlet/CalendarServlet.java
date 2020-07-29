@@ -85,6 +85,7 @@ public class CalendarServlet extends HttpServlet {
 			mapper = new ObjectMapper();
 			json = mapper.writeValueAsString(scheduleBeanList);
 			json_replace = json.replaceAll("\"", "krnooon");
+			System.out.println("calendar:"+scheduleBeanList);
 
 			// リクエストスコープにセット
 			request.setAttribute("json", json_replace);

@@ -327,6 +327,21 @@ article{
 	word-break : break-all;
 
 }
+
+#title-msg p{
+	display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+}
+
+#content-msg p{
+	display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+}
+
 /* footerよりも上に来るように */
 .popup-wrapper{
 	z-index:101 !important;
