@@ -1,4 +1,4 @@
-package co.jp.benesse.actualservlet;
+package jp.co.benesse.actualservlet;
 
 import java.io.IOException;
 import java.sql.Connection;

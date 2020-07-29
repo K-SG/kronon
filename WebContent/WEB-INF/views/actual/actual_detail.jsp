@@ -68,7 +68,7 @@
 
 <div class="flex_test-box">
     <div class="flex_test-item">
-    <a href="/user/actualedit?scheduleId=${scheduleBean.scheduleId}"><div class="ok-button">修正</div></a>
+    <a href="actualedit?scheduleId=${scheduleBean.scheduleId}"><div class="ok-button">修正</div></a>
     </div>
 
     <div class="flex_test-item">

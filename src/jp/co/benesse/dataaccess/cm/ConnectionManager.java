@@ -40,14 +40,13 @@ public class ConnectionManager {
 	 */
 	private static final String PASSWORD = "postgresql";
 
-	static {
+	public ConnectionManager(){
 		try {
 			Class.forName(DRIVER_NAME);
 		} catch (ClassNotFoundException e) {
 			throw new RuntimeException("ドライバーのロードに失敗しました", e);
 		}
 	}
-
 	/**
 	 *
 	 * [機 能] コネクション取得メソッド<br>
