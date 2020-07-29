@@ -2,6 +2,7 @@ package jp.co.benesse.scheduleservlet;
 
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.Time;
 
 import javax.servlet.RequestDispatcher;
@@ -36,6 +37,8 @@ public class ScheduleDeleteServlet extends HttpServlet {
 		String place = request.getParameter("place");
 		String title = request.getParameter("title");
 		String content = request.getParameter("content");
+		String scheduledate = request.getParameter("scheduleDate");
+
 
 		ScheduleBean scheduleBean = new ScheduleBean();
 		scheduleBean.setUserName(userName);
@@ -46,6 +49,7 @@ public class ScheduleDeleteServlet extends HttpServlet {
 		scheduleBean.setPlace(place);
 		scheduleBean.setTitle(title);
 		scheduleBean.setContent(content);
+		scheduleBean.setScheduleDate(Date.valueOf(scheduledate));
 
 		ConnectionManager connectionManager = new ConnectionManager();
 
