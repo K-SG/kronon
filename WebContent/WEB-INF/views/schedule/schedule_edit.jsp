@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
- <link rel="stylesheet" href="/kronon/css/schedule_edit.css">
+ <link rel="stylesheet" href="/kronon/css/schedule_new.css">
 <%@ include file="../layout/common/link.jsp" %>
 <title>予定修正</title>
 </head>

@@ -19,7 +19,7 @@ import jp.co.benesse.dataaccess.value.UserBean;
 /**
  * Servlet implementation class UserNewServlet
  */
-@WebServlet("/user/usercreate")
+@WebServlet("/usercreate")
 public class UserCreateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

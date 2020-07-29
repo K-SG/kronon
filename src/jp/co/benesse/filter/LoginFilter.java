@@ -34,7 +34,7 @@ public class LoginFilter implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
 		// セッションが存在しない場合NULLを返す
-		HttpSession session = ((HttpServletRequest) request).getSession(false);
+		HttpSession session = ((HttpServletRequest) request).getSession(true);
 
 		if (session.getAttribute("userId") != null) {
 			// セッションがNULLでなければ、通常どおりの遷移
