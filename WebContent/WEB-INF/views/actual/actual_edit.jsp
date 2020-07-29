@@ -8,7 +8,11 @@
 
  <link rel="stylesheet" href="/kronon/css/actual_new.css">
 <%@ include file="../layout/common/link.jsp" %>
+<<<<<<< HEAD
 <title>実績更新</title>
+=======
+<title>実績修正</title>
+>>>>>>> branch 'actualnewbranch' of https://github.com/SugiKoki/kronon.git
 </head>
 <body>
 
@@ -20,7 +24,11 @@
 		<div class="actual-regist-area">
 		<div class="loose-leaf"><img src="../img/loose_leaf.svg" alt="loose-leaf" id="loose-leaf"></div>
 		  <div class="actual-regist-area-inner">
+<<<<<<< HEAD
 			<div class="actual-regist-font-lev0">実績更新</div>
+=======
+			<div class="actual-regist-font-lev0">実績修正</div>
+>>>>>>> branch 'actualnewbranch' of https://github.com/SugiKoki/kronon.git
 			<input type="hidden" name="scheduleId" value="${scheduleBean.scheduleId}" id="set-actual-id">
 			<div class="actual-regist-border"></div>
 			<div class="table-container">
@@ -131,7 +139,7 @@
 			<div class="close-popup"> <i class="fa fa-2x fa-times"></i> </div>
 			<div class="pop-container-inner">
 			  <div class="message-container-large">
-				<h2 class="message-title">この内容で更新するよ。</h2>
+				<h2 class="message-title">この内容で登録するよ。</h2>
 				<table class="popup-table">
 				  <tr>
 					<th class="actual-pop-th">名前：</th>
