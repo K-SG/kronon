@@ -142,8 +142,9 @@ $(function() {
 			return;
 		}
 
+		alert("["+inputTitle+"]");
 		document.getElementById("input-title").textContent = inputTitle.trim();
-
+		alert("["+inputTitle.trim()+"]");
 		//window.location.href = `../user/actualsearch?scheduleDate=${inputDate}&title=${inputTitle}&year=${yearServlet}&month=${monthServlet}`;
 		$('#search-form').submit();
 	})
