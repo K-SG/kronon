@@ -27,9 +27,9 @@ public class ActualDetailServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		//セッションからIdを取得
+		// セッションからIdを取得
 		HttpSession session = request.getSession();
-		int userId = (int)session.getAttribute("userId");
+		int userId = (int) session.getAttribute("userId");
 
 		int scheduleId = Integer.parseInt(request.getParameter("scheduleId"));
 
@@ -41,15 +41,15 @@ public class ActualDetailServlet extends HttpServlet {
 			Connection connection = connectionManager.getConnection();
 			ScheduleDAO scheduleDAO = new ScheduleDAO(connection);
 
-			//予定が既に削除されている場合
+			// 予定が既に削除されている場合
 			if (scheduleDAO.isDeleted(scheduleId)) {
 				throw new RuntimeException("予定が既に削除されている");
 			}
 
 			scheduleBean = scheduleDAO.getScheduleByScheduleId(scheduleId);
 
-			//ログイン者以外の予定にアクセスできないようにする
-			if(userId != scheduleBean.getUserId()){
+			// ログイン者以外の予定にアクセスできないようにする
+			if (userId != scheduleBean.getUserId()) {
 				throw new RuntimeException("ログイン者以外の予定にアクセスした");
 			}
 
