@@ -123,6 +123,8 @@
 		<input type="hidden" name = "place" value="${scheduleBean.place}">
 		<input type="hidden" name = "title" value="${scheduleBean.title}">
 		<input type="hidden" name = "content" value="${scheduleBean.content}">
+
+
 		<input type="submit" class="ok-button" value="OK">
 
 
