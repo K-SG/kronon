@@ -57,6 +57,7 @@ if (endHour.slice(0, 1) == 0) {
     let title=document.getElementById('title').value;
     let content=document.getElementById('content').value;
     let popFlag;
+    title=title.trim();
 
     let d = new Date(date);
     let weekday = '日月火水木金土'[d.getDay()];
