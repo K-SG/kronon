@@ -47,13 +47,18 @@
 
         <tr>
           <td colspan="2">
-            <c:out value="${scheduleBean.title}" />
+            タイトル：<c:out value="${scheduleBean.title}" />
           </td>
         </tr>
 
         <tr>
           <td colspan="2">
-            <c:out value="${scheduleBean.content}" />
+            内容：<c:out value="${scheduleBean.content}" />
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            コメント：<c:out value="${scheduleBean.comment}" />
           </td>
         </tr>
 
@@ -123,6 +128,8 @@
 		<input type="hidden" name = "place" value="${scheduleBean.place}">
 		<input type="hidden" name = "title" value="${scheduleBean.title}">
 		<input type="hidden" name = "content" value="${scheduleBean.content}">
+
+
 		<input type="submit" class="ok-button" value="OK">
 
 

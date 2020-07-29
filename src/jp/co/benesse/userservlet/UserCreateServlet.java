@@ -23,78 +23,81 @@ import jp.co.benesse.dataaccess.value.UserBean;
 public class UserCreateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//doGetされたものをdoPostに変換
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// doGetされたものをdoPostに変換
 		this.doPost(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String userName = request.getParameter("userName");
-		String mail = request.getParameter("mail");
-		String password = request.getParameter("password");
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
-		String hash = CryptographyLogic.encryptStr(password);
-//		request.setAttribute("userName", userName);
-//		request.setAttribute("mail", mail);
-//		request.setAttribute("password", password);
-
-		ConnectionManager connectionManager = new ConnectionManager();
-
+		int result = 0;
+		String userName = null;
+		String mail = null;
+		String password = null;
+		String hash = null;
+		ConnectionManager connectionManager = null;
+		UserBean userBean = null;
 		UserDAO userDAO = null;
-		try{
-			Connection connection = connectionManager.getConnection();
-			// UserDAOの作成
+		Connection connection = null;
+		RequestDispatcher dispatcher = null;
+		HttpSession session = null;
+
+		try {
+			// リクエストパラメータを取得
+			userName = request.getParameter("userName");
+			mail = request.getParameter("mail");
+			password = request.getParameter("password");
+			hash = CryptographyLogic.encryptStr(password);
+
+			connectionManager = new ConnectionManager();
+			connection = connectionManager.getConnection();
 			userDAO = new UserDAO(connection);
 
-			//メールアドレスかぶりの確認
-			if(userDAO.isBooking(mail)){
-				//かぶっていたらメールアドレス重複のポップアップが出るようにフラグ立て。
-				request.setAttribute("popFlag",1);
+			// メールアドレス重複の確認
+			if (userDAO.isBooking(mail)) {
+				// メールアドレス重複のポップアップが出るようにフラグ立て
+				request.setAttribute("popFlag", 1);
 
-				//アカウント新規登録画面へ戻る。
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/user/user_new.jsp");
+				// アカウント新規登録画面へ戻る。
+				dispatcher = request.getRequestDispatcher("/WEB-INF/views/user/user_new.jsp");
 				dispatcher.forward(request, response);
 				return;
 			}
 
-			//新規登録をするために
-			int result = userDAO.createUser(userName,mail,hash);
-			if(result!=1){
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/error/error.jsp");
-				dispatcher.forward(request, response);
-				return;
+			result = userDAO.createUser(userName, mail, hash);
+
+			if (result != 1) {
+				throw new RuntimeException("アカウントが作成できなかった");
 			}
 
-
-			UserBean userBean = new UserBean();
-
-			userBean = userDAO.findUser(mail,hash);
-			HttpSession session = request.getSession();
-			session.setAttribute("userName",userBean.getUserName());
-			session.setAttribute("userId",userBean.getUserId());
-
-			//新規登録完了ポップアップを出すためのフラグを立てる。
-			request.setAttribute("popFlag",0);
-
+			userBean = new UserBean();
+			userBean = userDAO.findUser(mail, hash);
 			connectionManager.commit();
 
-			//user_new.jsp(アカウント新規作成画面)にforwardする。
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/user/user_new.jsp");
+			session = request.getSession();
+			session.setAttribute("userName", userBean.getUserName());
+			session.setAttribute("userId", userBean.getUserId());
+
+			// 新規登録完了ポップアップを出すためのフラグを立てる。
+			request.setAttribute("popFlag", 0);
+
+			// user_new.jsp(アカウント新規作成画面)にforwardする。
+			dispatcher = request.getRequestDispatcher("/WEB-INF/views/user/user_new.jsp");
 			dispatcher.forward(request, response);
 			return;
-		}
-		catch(RuntimeException e){
-
+		} catch (RuntimeException e) {
 			connectionManager.rollback();
 			e.printStackTrace();
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/error/error.jsp");
-			dispatcher.forward(request, response);
+			response.sendRedirect("../login");
 			return;
-		}
-		finally{
+		} catch (Exception e) {
+			connectionManager.rollback();
+			e.printStackTrace();
+			response.sendRedirect("../login");
+			return;
+		} finally {
 			connectionManager.closeConnection();
 		}
 	}

@@ -31,7 +31,7 @@ $(function () {
 	    	popFlag=2;
 	    }else if(!mail.match(/^[A-Za-z0-9]+[\w\-_]+@[\w\._]+\.\w{2,}$/)){
 	    	popFlag=3;
-        }else if(password1.length < 8 || !password1.match(/([a-z].*[A-Z])|([A-Z].*[a-z])/) || !password1.match(/([a-zA-Z])/) && password1.match(/([0-9])/)){
+        }else if(password1.length < 8 || !(password1.match(/([a-z].*[A-Z])|([A-Z].*[a-z])/)&& password1.match(/([0-9])/)) || !(password1.match(/([a-zA-Z])/) && password1.match(/([0-9])/))){
 	        popFlag=4;
 	    }else if(password1!==password2){
 	        popFlag=5;

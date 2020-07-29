@@ -5,7 +5,6 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -31,45 +30,49 @@ public class ActualSearchServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// セッションスコープからデータ取得
-		HttpSession session = request.getSession();
-//		String userIdStr = (String) session.getAttribute("userId");
-		// int userId = Integer.parseInt(userIdStr);
-//		int userId = 1;
-		 int userId = (Integer)session.getAttribute("userId");
 
-		// リクエストパラメータを取得
-		String scheduleDateStr = request.getParameter("date");
-		String title = request.getParameter("title");
-		String year = request.getParameter("year");
-		String month = request.getParameter("month");
-
-		// 日付の整形
-		if (year.length() == 1) {
-			year = "0" + year;
-		}
-		if (month.length() == 1) {
-			month = "0" + month;
-		}
-
-		// タイトル検索に用いる（検索付きの中日を適当に一つ入れるだけでよい）
-		String dateStr = year + "-" + month + "-" + "15";
-
-		// 遷移元の判定フラグ
-		final String FLAG = "1";
-
-		List<ScheduleBean> scheduleBeanList = new ArrayList<>();
-
-		ConnectionManager connectionManager = new ConnectionManager();
-		ScheduleDAO scheduleDAO;
+		int userId = 0;
+		final String FLAG = "1";// 遷移元の判定フラグ
+		String scheduleDateStr = null;
+		String title = null;
+		String year = null;
+		String month = null;
+		String dateStr = null;
+		String errorMsg = null;
 		Date scheduleDate = null;
 		LocalDate LocalScheduleDate = null;
-
-		// 検索結果0件の場合のエラーメッセージ
-		String errorMsg = null;
+		ConnectionManager connectionManager = null;
+		ScheduleDAO scheduleDAO = null;
+		List<ScheduleBean> scheduleBeanList = null;
+		Connection connection = null;
+		HttpSession session = null;
+		RequestDispatcher dispatcher = null;
 
 		try {
-			Connection connection = connectionManager.getConnection();
+
+			// セッションスコープからデータ取得
+			session = request.getSession();
+			userId = (Integer) session.getAttribute("userId");
+
+			// リクエストパラメータを取得
+			scheduleDateStr = request.getParameter("date");
+			title = request.getParameter("title");
+			year = request.getParameter("year");
+			month = request.getParameter("month");
+
+			// 日付の整形
+			if (year.length() == 1) {
+				year = "0" + year;
+			}
+			if (month.length() == 1) {
+				month = "0" + month;
+			}
+
+			// タイトル検索に用いる（検索付きの中日を適当に一つ入れるだけでよい）
+			dateStr = year + "-" + month + "-" + "15";
+
+			connectionManager = new ConnectionManager();
+			connection = connectionManager.getConnection();
 			scheduleDAO = new ScheduleDAO(connection);
 
 			// AND検索、日付検索、タイトル検索の判定
@@ -83,7 +86,7 @@ public class ActualSearchServlet extends HttpServlet {
 				LocalScheduleDate = LocalDate.parse(dateStr, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 				scheduleBeanList = scheduleDAO.getOneMonthScheduleByTitle(userId, LocalScheduleDate, title);
 			} else {
-				throw new RuntimeException();
+				throw new RuntimeException("不正な検索ワード");
 			}
 
 			if (scheduleBeanList.size() == 0) {
@@ -104,12 +107,17 @@ public class ActualSearchServlet extends HttpServlet {
 				request.setAttribute("year", scheduleDate.toLocalDate().getYear());
 			}
 
-			RequestDispatcher dispatcher = request.getRequestDispatcher("../WEB-INF/views/actual/actual_index.jsp");
+			dispatcher = request.getRequestDispatcher("../WEB-INF/views/actual/actual_index.jsp");
 			dispatcher.forward(request, response);
 			return;
 		} catch (RuntimeException e) {
 			e.printStackTrace();
-			RequestDispatcher dispatcher = request.getRequestDispatcher("../WEB-INF/views/error/error.jsp");
+			dispatcher = request.getRequestDispatcher("../WEB-INF/views/error/error.jsp");
+			dispatcher.forward(request, response);
+			return;
+		} catch (Exception e) {
+			e.printStackTrace();
+			dispatcher = request.getRequestDispatcher("../WEB-INF/views/error/error.jsp");
 			dispatcher.forward(request, response);
 			return;
 		} finally {

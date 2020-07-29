@@ -2,6 +2,7 @@ package jp.co.benesse.scheduleservlet;
 
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.Time;
 
 import javax.servlet.RequestDispatcher;
@@ -27,37 +28,55 @@ public class ScheduleDeleteServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		int scheduleId = Integer.parseInt(request.getParameter("scheduleId"));
-		String userName = request.getParameter("userName");
-		String actualTimeStr = request.getParameter("actualTimeStr");
-		String schduleDateActual = request.getParameter("scheduleDateActual");
-		String startTime = request.getParameter("startTime");
-		String endTime = request.getParameter("endTime");
-		String place = request.getParameter("place");
-		String title = request.getParameter("title");
-		String content = request.getParameter("content");
-
-		ScheduleBean scheduleBean = new ScheduleBean();
-		scheduleBean.setUserName(userName);
-		scheduleBean.setActualTimeStr(actualTimeStr);
-		scheduleBean.setScheduleDateActual(schduleDateActual);
-		scheduleBean.setStartTime(Time.valueOf(startTime));
-		scheduleBean.setEndTime(Time.valueOf(endTime));
-		scheduleBean.setPlace(place);
-		scheduleBean.setTitle(title);
-		scheduleBean.setContent(content);
-
-		ConnectionManager connectionManager = new ConnectionManager();
+		int scheduleId = 0;
+		String userName = null;
+		String actualTimeStr = null;
+		String schduleDateActual = null;
+		String scheduleDateStr = null;
+		String startTime = null;
+		String endTime = null;
+		String place = null;
+		String title = null;
+		String content = null;
+		Date scheduleDate = null;
+		ScheduleBean scheduleBean = null;
+		ConnectionManager connectionManager = null;
+		ScheduleDAO scheduleDAO = null;
+		Connection connection = null;
+		RequestDispatcher dispatcher = null;
 
 		try {
+			// リクエストパラメータを取得
+			scheduleId = Integer.parseInt(request.getParameter("scheduleId"));
+			userName = request.getParameter("userName");
+			actualTimeStr = request.getParameter("actualTimeStr");
+			scheduleDateStr = request.getParameter("scheduleDate");
+			scheduleDate = Date.valueOf(scheduleDateStr);
+			schduleDateActual = request.getParameter("scheduleDateActual");
+			startTime = request.getParameter("startTime");
+			endTime = request.getParameter("endTime");
+			place = request.getParameter("place");
+			title = request.getParameter("title");
+			content = request.getParameter("content");
 
-			Connection connection = connectionManager.getConnection();
-			ScheduleDAO scheduleDAO = new ScheduleDAO(connection);
+			scheduleBean = new ScheduleBean();
+			scheduleBean.setUserName(userName);
+			scheduleBean.setScheduleDate(scheduleDate);
+			scheduleBean.setActualTimeStr(actualTimeStr);
+			scheduleBean.setScheduleDateActual(schduleDateActual);
+			scheduleBean.setStartTime(Time.valueOf(startTime));
+			scheduleBean.setEndTime(Time.valueOf(endTime));
+			scheduleBean.setPlace(place);
+			scheduleBean.setTitle(title);
+			scheduleBean.setContent(content);
 
+			connectionManager = new ConnectionManager();
+			connection = connectionManager.getConnection();
+			scheduleDAO = new ScheduleDAO(connection);
+
+			// 既に削除されている場合
 			if (scheduleDAO.isDeleted(scheduleId)) {
-				RequestDispatcher dispatcher = request.getRequestDispatcher("../WEB-INF/views/error/error.jsp");
-				dispatcher.forward(request, response);
-				return;
+				throw new RuntimeException("既に削除されている");
 			}
 
 			scheduleDAO.deleteSchedule(scheduleId);
@@ -66,14 +85,21 @@ public class ScheduleDeleteServlet extends HttpServlet {
 			request.setAttribute("popFlag", 1);
 			request.setAttribute("scheduleBean", scheduleBean);
 
-			RequestDispatcher dispatcher = request.getRequestDispatcher("../WEB-INF/views/schedule/schedule_detail.jsp");
+			dispatcher = request.getRequestDispatcher("../WEB-INF/views/schedule/schedule_detail.jsp");
 			dispatcher.forward(request, response);
 			return;
-
 		} catch (RuntimeException e) {
 			connectionManager.rollback();
-			throw e;
-
+			e.printStackTrace();
+			dispatcher = request.getRequestDispatcher("../WEB-INF/views/error/error.jsp");
+			dispatcher.forward(request, response);
+			return;
+		} catch (Exception e) {
+			connectionManager.rollback();
+			e.printStackTrace();
+			dispatcher = request.getRequestDispatcher("../WEB-INF/views/error/error.jsp");
+			dispatcher.forward(request, response);
+			return;
 		} finally {
 			connectionManager.closeConnection();
 		}

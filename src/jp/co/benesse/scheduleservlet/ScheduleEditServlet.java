@@ -18,37 +18,52 @@ import jp.co.benesse.dataaccess.value.ScheduleBean;
 public class ScheduleEditServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//doGetされたものをdoPostに変換
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		this.doPost(request, response);
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String scheduleIdStr = request.getParameter("scheduleId");
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
-		//urlに残っているのでtry-catchが必要
-		int scheduleId = Integer.parseInt(scheduleIdStr);
-		ConnectionManager connectionManager = new ConnectionManager();
+		int scheduleId = 0;
+		String scheduleIdStr = null;
+		ConnectionManager connectionManager = null;
+		ScheduleDAO scheduleDAO = null;
+		ScheduleBean scheduleBean = null;
+		Connection connection = null;
+		RequestDispatcher dispatcher = null;
+
 		try {
-			Connection connection = connectionManager.getConnection();
-			ScheduleDAO scheduleDAO = new ScheduleDAO(connection);
-			ScheduleBean scheduleBean = new ScheduleBean();
+			// リクエストパラメータを取得
+			scheduleIdStr = request.getParameter("scheduleId");
+			scheduleId = Integer.parseInt(scheduleIdStr);
+
+			connectionManager = new ConnectionManager();
+			connection = connectionManager.getConnection();
+			scheduleDAO = new ScheduleDAO(connection);
+			scheduleBean = new ScheduleBean();
 			scheduleBean = scheduleDAO.getScheduleByScheduleId(scheduleId);
+
 			request.setAttribute("scheduleBean", scheduleBean);
 
-		} catch(RuntimeException e){
-			//error.jsp（エラー画面）にforwardする
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/error/error.jsp");
+			// schedule_edit.jsp（予定修正画面）にforwardする
+			dispatcher = request.getRequestDispatcher("/WEB-INF/views/schedule/schedule_edit.jsp");
+			dispatcher.forward(request, response);
+			return;
+		} catch (RuntimeException e) {
+			// error.jsp（エラー画面）にforwardする
+			dispatcher = request.getRequestDispatcher("/WEB-INF/views/error/error.jsp");
+			dispatcher.forward(request, response);
+			return;
+		} catch (Exception e) {
+			// error.jsp（エラー画面）にforwardする
+			dispatcher = request.getRequestDispatcher("/WEB-INF/views/error/error.jsp");
 			dispatcher.forward(request, response);
 			return;
 		} finally {
 			connectionManager.closeConnection();
 		}
-
-		//schedule_edit.jsp（予定修正画面）にforwardする
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/schedule/schedule_edit.jsp");
-		dispatcher.forward(request, response);
-		return;
 	}
 
 }

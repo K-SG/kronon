@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
 import java.time.temporal.TemporalAdjusters;
 import java.util.ArrayList;
 import java.util.List;
@@ -34,60 +33,77 @@ public class CalendarServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		HttpSession session = request.getSession();
-		String flag = request.getParameter("flag");
-		String dateStr = request.getParameter("date");
-//		int userId= 1;// (Integer) session.getAttribute("userId");
-		int userId = (Integer) session.getAttribute("userId");
 
-		LocalDate date;
-		List<ScheduleBean> scheduleBeanList = new ArrayList<>();
-
-		ObjectMapper mapper = new ObjectMapper();
-		ConnectionManager connectionManager = new ConnectionManager();
+		int userId = 0;
+		String flag  = null;
+		String dateStr = null;
+		String json = null;
+		String json_replace = null;
+		LocalDate date = null;
+		LocalDate firstDayOfMonth = null;
+		LocalDate lastDayOfMonth = null;
+		ObjectMapper mapper = null;
+		ConnectionManager connectionManager = null;
+		ScheduleDAO scheduleDAO = null;
+		List<ScheduleBean> scheduleBeanList = null;
+		HttpSession session = null;
+		Connection connection = null;
+		RequestDispatcher dispatcher = null;
 
 		try {
-			//いつの月の予定を表示するか
+			//セッションスコープから利用者IDを取得
+			session = request.getSession();
+			userId = (Integer) session.getAttribute("userId");
+
+			//リクエストパラメータを取得
+			flag = request.getParameter("flag");
+			dateStr = request.getParameter("date");
+
+			// いつの月の予定を表示するか
 			if (flag == null || dateStr == null) {
 				date = LocalDate.now();
 			} else if (flag.equals("0")) {// 前月
 				date = LocalDate.parse(dateStr, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-				LocalDate firstDayOfMonth = date.with(TemporalAdjusters.firstDayOfMonth()); // 初日
+				firstDayOfMonth = date.with(TemporalAdjusters.firstDayOfMonth()); // 初日
 				date = firstDayOfMonth.minusDays(1);// 先月の末日
 			} else if (flag.equals("1")) {// 翌月
 				date = LocalDate.parse(dateStr, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-				LocalDate lastDayOfMonth = date.with(TemporalAdjusters.lastDayOfMonth()); // 末日
+				lastDayOfMonth = date.with(TemporalAdjusters.lastDayOfMonth()); // 末日
 				date = lastDayOfMonth.plusDays(1);// 次月の初日
 			} else {// ログイン画面から
 				date = LocalDate.now();
 			}
-		} catch (DateTimeParseException e) {
-			RequestDispatcher dispatcher = request.getRequestDispatcher("../WEB-INF/views/error/error.jsp");
-			dispatcher.forward(request, response);
-			return;
-		}
 
-		try {
-			Connection connection = connectionManager.getConnection();
-			ScheduleDAO scheduleDAO = new ScheduleDAO(connection);
+			connectionManager = new ConnectionManager();
+			connection = connectionManager.getConnection();
+			scheduleDAO = new ScheduleDAO(connection);
+
+			scheduleBeanList = new ArrayList<>();
 			scheduleBeanList = scheduleDAO.tooLongSQLSchedule(date, userId);
 
-			//Beanのリスト→JSON形式の整形
-			String json = mapper.writeValueAsString(scheduleBeanList);
-			String json_replace = json.replaceAll("\"", "krnooon");
+			// Beanのリスト→JSON形式の整形
+			mapper = new ObjectMapper();
+			json = mapper.writeValueAsString(scheduleBeanList);
+			json_replace = json.replaceAll("\"", "krnooon");
 			System.out.println("calendar:"+scheduleBeanList);
 
-			//リクエストスコープにセット
+			// リクエストスコープにセット
 			request.setAttribute("json", json_replace);
 			request.setAttribute("date", date);
 			request.setAttribute("month", date.getMonthValue());
-
 			request.setAttribute("year", date.getYear());
 
-			RequestDispatcher dispatcher = request.getRequestDispatcher("../WEB-INF/views/calendar/schedule_index.jsp");
+			dispatcher = request.getRequestDispatcher("../WEB-INF/views/calendar/schedule_index.jsp");
 			dispatcher.forward(request, response);
+			return;
 		} catch (RuntimeException e) {
-			throw e;
+			e.printStackTrace();
+			response.sendRedirect("../login");
+			return;
+		} catch (Exception e) {
+			e.printStackTrace();
+			response.sendRedirect("../login");
+			return;
 		} finally {
 			connectionManager.closeConnection();
 		}

@@ -27,19 +27,25 @@ public class ActualDetailServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		// セッションからIdを取得
-		HttpSession session = request.getSession();
-		int userId = (int) session.getAttribute("userId");
-
-		int scheduleId = Integer.parseInt(request.getParameter("scheduleId"));
-
-		ConnectionManager connectionManager = new ConnectionManager();
-		ScheduleBean scheduleBean = new ScheduleBean();
+		int userId = 0;
+		int scheduleId = 0;
+		ConnectionManager connectionManager = null;
+		ScheduleBean scheduleBean = null;
+		ScheduleDAO scheduleDAO = null;
+		HttpSession session = null;
+		Connection connection = null;
+		RequestDispatcher dispatcher = null;
 
 		try {
+			// セッションからIdを取得
+			session = request.getSession();
+			userId = (int) session.getAttribute("userId");
+			scheduleId = Integer.parseInt(request.getParameter("scheduleId"));
 
-			Connection connection = connectionManager.getConnection();
-			ScheduleDAO scheduleDAO = new ScheduleDAO(connection);
+			connectionManager = new ConnectionManager();
+			connection = connectionManager.getConnection();
+			scheduleDAO = new ScheduleDAO(connection);
+			scheduleBean = new ScheduleBean();
 
 			// 予定が既に削除されている場合
 			if (scheduleDAO.isDeleted(scheduleId)) {
@@ -55,12 +61,18 @@ public class ActualDetailServlet extends HttpServlet {
 
 			request.setAttribute("scheduleBean", scheduleBean);
 
-			RequestDispatcher dispatcher = request.getRequestDispatcher("../WEB-INF/views/actual/actual_detail.jsp");
+			dispatcher = request.getRequestDispatcher("../WEB-INF/views/actual/actual_detail.jsp");
 			dispatcher.forward(request, response);
 			return;
 
 		} catch (RuntimeException e) {
-			RequestDispatcher dispatcher = request.getRequestDispatcher("../WEB-INF/views/error/error.jsp");
+			e.printStackTrace();
+			dispatcher = request.getRequestDispatcher("../WEB-INF/views/error/error.jsp");
+			dispatcher.forward(request, response);
+			return;
+		} catch (Exception e) {
+			e.printStackTrace();
+			dispatcher = request.getRequestDispatcher("../WEB-INF/views/error/error.jsp");
 			dispatcher.forward(request, response);
 			return;
 		} finally {

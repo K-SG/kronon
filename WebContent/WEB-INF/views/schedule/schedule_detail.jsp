@@ -46,11 +46,11 @@
 				</tr>
 
 				<tr>
-					<td colspan="2"><c:out value="${scheduleBean.title}" /></td>
+					<td colspan="2">タイトル：<c:out value="${scheduleBean.title}" /></td>
 				</tr>
 
 				<tr>
-					<td colspan="2"><c:out value="${scheduleBean.content}" /></td>
+					<td colspan="2">内容：<c:out value="${scheduleBean.content}" /></td>
 				</tr>
 
 			</table>
@@ -129,6 +129,7 @@
 					<input type="hidden" name="place" value="${scheduleBean.place}">
 					<input type="hidden" name="title" value="${scheduleBean.title}">
 					<input type="hidden" name="content" value="${scheduleBean.content}">
+					<input type="hidden" name = "scheduleDate" value="${scheduleBean.scheduleDate}">
 
 					<button type='submit'class="ok-button" >OK</button>
 
@@ -149,7 +150,7 @@
 				<div class="message-container">
 					<p class=create-msg>削除が完了したよ</p>
 				</div>
-				<div class="ok-button next-popup">OK</div>
+				<a href="scheduleshowall?date=${scheduleBean.scheduleDate}"><div class="ok-button next-popup">OK</div></a>
 				<img src="/kronon/img/kronon/kronon_question.png" class="pop-img">
 			</div>
 		</div>
