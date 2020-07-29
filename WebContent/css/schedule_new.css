@@ -187,11 +187,11 @@ article{
 	border-radius : 0.3vw;
 	float: left;
 	width: 15vw;
-	height: 2.0vw;
+	height: 2.2vw;
 	font-family : 小塚ゴシック Pr6N;
 	font-size : 1.0vw;
 	color :  #333;
-	padding-left:1vw;
+	padding-left:0.5vw
 }
 
 /*タイトル*/
@@ -203,13 +203,14 @@ article{
 	border-width : 0.02vw;
 	border-radius : 0.3vw;
 	font-family : 小塚ゴシック Pr6N;
-	font-size : 1.0vw;;
+	font-size : 1.1vw;
+	line-height:1.5vw;
 	color :  #333;
 	width: 37vw;
-	height: 2.2vw;
+	height: 1.6vw;
 	float:left;
 	margin-right:2.5vw;
-	padding:0vw 1vw;
+	padding:0.3vw 0.5vw;
 }
 
 .schedule-regist-area-4 .schedule-regist-font-lev1{
@@ -226,13 +227,14 @@ article{
 	border-radius : 0.3vw;
 	font-family : 小塚ゴシック Pr6N;
 	font-size : 1.1vw;
+	line-height:1.5vw;
 	color :  #333;
 	width: 37vw;
-	height: 6.5vw;
+	height: 5.9vw;
 	float:left;
 	margin-right:2.5vw;
 	margin-top:0vw;
-	padding:0vw 1vw;
+	padding:0.3vw 0.5vw;
 }
 
 /*くろのんバンザイ画像の配置*/
