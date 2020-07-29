@@ -116,7 +116,7 @@
 				<p>内容は保存されないよ。</p>
 				<h2 class="message-title">本当に戻る？</h2>
 			  </div>
-			  <a href="calendar"><div class="ok-button">OK</div></a>
+			  <a href="scheduledatail?scheduleId=${scheduleBean.scheduleId}"><div class="ok-button">OK</div></a>
 			  <div class="ng-button close-popup">キャンセル</div>
 			  <img src="/kronon/img/star/star_angry.png" class="pop-img-top"> </div>
 		  </div>
