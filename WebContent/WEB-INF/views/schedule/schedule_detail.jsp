@@ -75,11 +75,11 @@
 		<div class="flex_test-box">
 			<div class="flex_test-item">
 
-				<a href="/user/scheduleedit?scheduleId=${scheduleBean.scheduleId}"><div class="ok-button">修正</div></a>
+				<a href="scheduleedit?scheduleId=${scheduleBean.scheduleId}"><div class="ok-button">修正</div></a>
 			</div>
 			<div class="flex_test-item">
 
-				<a href="/user/actualedit?scheduleId=${scheduleBean.scheduleId}"><div class="ok-button">実績入力</div></a>
+				<a href="actualnew?scheduleId=${scheduleBean.scheduleId}"><div class="ok-button">実績入力</div></a>
 			</div>
 			<div class="flex_test-item">
 				<div class="ok-button large-popup-button" id="${popFlag}">削除</div>
