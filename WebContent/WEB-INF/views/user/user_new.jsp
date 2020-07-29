@@ -22,7 +22,7 @@
 			<div class="create-user-note">表示名は日本語で15文字以内、パスワードは半角英数字で8～20文字、<br>大文字・小文字・数字を必ず使用して設定してください。</div>
 
 			<!-- <form action="/WEB-INF/views/user/usercreate" method="post" id="user_create_form" class="user_create_form"> -->
-			<form action="http://localhost:8080/kronon/user/usercreate" method="post" class="user_create_form" id="id_create_form" >
+			<form action="http://localhost:8080/kronon/usercreate" method="post" class="user_create_form" id="id_create_form" >
 				<input type="text" name="userName" id="create_name" class="create_textbox" placeholder="表示名" maxlength="15" value=${username }><br>
 				<input type="text" name="mail" id="create_mail" class="create_textbox" placeholder="メールアドレス" maxlength="100" value="${mail}"><br>
 				<input type="password" name="password" id="create_password1" class="create_textbox" placeholder="パスワード" maxlength="20" value=${password }><br>

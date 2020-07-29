@@ -90,6 +90,6 @@ $(function () {
       });
 	  /*登録完了ポップアップのOKボタン押下時の遷移先*/
       $('.next-popup').click(function () {
-        location.href= "calendar";
+        location.href= "/kronon/user/calendar";
       });
 });
