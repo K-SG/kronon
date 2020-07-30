@@ -112,7 +112,7 @@
           <p class=new-msg></p>
         </div>
         <div class="ok-button close-popup">OK</div>
-        <img src="/kronon/img/kronon/kronon_question.png" class="pop-img"> </div>
+        <img src="/kronon/img/kronon/kronon_question.png" class="pop-img kronon-question"> </div>
       </div>
     </div>
    <!--エラーまたは完了ポップアップここまで-------------------------------------------------------------->
@@ -129,7 +129,7 @@
 			  </div>
 			  <a href="scheduledetail?scheduleId=${scheduleBean.scheduleId}"><div class="ok-button">OK</div></a>
 			  <div class="ng-button close-popup">キャンセル</div>
-			  <img src="/kronon/img/star/star_angry.png" class="pop-img-top"> </div>
+			  <img src="/kronon/img/star/star_angry.png" class="pop-img-top star-angry"> </div>
 		  </div>
 		</div>
 		<!--本当に戻りますかポップアップここまで------------------------------------------------------------------->
@@ -171,7 +171,7 @@
 			  </div>
 			  <input type="button" class="ok-button"  id="confirm-ok" value="OK">
 			  <div class="ng-button close-popup">キャンセル</div>
-			  <img src="/kronon/img/star/star_nomal.png" class="pop-img"> </div>
+			  <img src="/kronon/img/star/star_nomal.png" class="pop-img star-nomal"> </div>
 		  </div>
 		</div>
 		<!--内容確認ポップアップここまで----------------------------------------------------------------->
@@ -184,7 +184,7 @@
 					<div class="message-container"><p class=create-msg></p></div>
 					<div class="ok-button scheduleshowall-popup">予定表画面へ</div>
 					<div class="ok-button actualindex-popup">実績一覧へ</div>
-					<img src="/kronon/img/star/star_glass.png" class="pop-img-top">
+					<img src="/kronon/img/star/star_glass.png" class="pop-img-top star-glass">
 				</div>
 			</div>
 		</div>
