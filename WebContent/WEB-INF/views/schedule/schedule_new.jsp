@@ -9,25 +9,36 @@
 <%@ include file="../layout/common/link.jsp" %>
 <title>予定登録</title>
 <script>
-    function selectboxChange() {
-        selindex = document.form.actual-hour.selectedIndex;
-        switch (selindex) {
-          case 12:
-          	document.form.actual-min.selectedIndex=1;
-          	document.form.actual-min.disabled=true;
-            break;
-  		default:
-  			document.form.actual-min.disabled=false;
-        }
-      }
-  </script>
+	    function selectboxChange1() {
+	        let selindex = document.form.starthour.selectedIndex;
+	        switch (selindex) {
+	          case 12:
+	          	document.form.startminutes.selectedIndex=0;
+	          	document.form.startminutes.disabled=true;
+	            break;
+	  		default:
+	  			document.form.startminutes.disabled=false;
+	        }
+	      }
+	    function selectboxChange2() {
+		        let selindex = document.form.endhour.selectedIndex;
+		        switch (selindex) {
+		          case 12:
+		          	document.form.endminutes.selectedIndex=0;
+		          	document.form.endminutes.disabled=true;
+		            break;
+		  		default:
+		  			document.form.endminutes.disabled=false;
+		        }
+		      }
+</script>
 </head>
 <body>
 
 <%@ include file="../layout/common/header.jsp" %>
 
 	<article>
-		<form action="schedulecreate" method="POST" class="schedule-new-form">
+		<form action="schedulecreate" method="POST" class="schedule-new-form" id="form" name="form">
 		<input type="hidden" value="${popFlag}" id="flag">
 		<div class="schedule-regist-area">
 		<div class="loose-leaf"><img src="../img/loose_leaf.svg" alt="loose-leaf" id="loose-leaf"></div>
@@ -45,7 +56,7 @@
 					<div class="schedule-regist-font-lev1">開始時刻<span>*</span></div>
 					<div class="schedule-regist-time">
 					<input type="hidden" value="${scheduleBean.startTime}" id="set-start-time">
-						<select name="startTimeHour" id="new-start-hour">
+						<select name="startTimeHour" id="starthour" onchange="selectboxChange1();">
 							<option value="8">8</option>
 							<option value="9">9</option>
 							<option value="10">10</option>
@@ -64,7 +75,7 @@
 
 					<div class="schedule-regist-time-text">時</div>
 					<div class="schedule-regist-time">
-						<select name="startTimeMin" id="new-start-minutes">
+						<select name="startTimeMin" id="startminutes">
 							<option value="00">00</option>
 							<option value="15">15</option>
 							<option value="30">30</option>
@@ -78,7 +89,7 @@
 					<div class="schedule-regist-font-lev1">終了時刻<span>*</span></div>
 					<div class="schedule-regist-time">
 					<input type="hidden" value="${scheduleBean.endTime}" id="set-end-time">
-						<select name="endTimeHour" id="new-end-hour">
+						<select name="endTimeHour" id="endhour"  onchange="selectboxChange2();">
 							<option value="8">8</option>
 							<option value="9">9</option>
 							<option value="10">10</option>
@@ -97,7 +108,7 @@
 
 					<div class="schedule-regist-time-text">時</div>
 					<div class="schedule-regist-time">
-						<select name="endTimeMin" id="new-end-minutes">
+						<select name="endTimeMin" id="endminutes">
 							<option value="00">00</option>
 							<option value="15">15</option>
 							<option value="30">30</option>
