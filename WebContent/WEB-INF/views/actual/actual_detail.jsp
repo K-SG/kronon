@@ -22,7 +22,7 @@
 
         <tr>
           <td>名前 : <c:out value="${scheduleBean.userName}" /></td>
-          <td id = "actual-time-z">実績時間:<c:out value="${scheduleBean.actualTimeStr}" /></td>
+          <td id = "actual-time-z">実績時間：<c:out value="${scheduleBean.actualTimeStr}" /></td>
         </tr>
 
         <tr>
