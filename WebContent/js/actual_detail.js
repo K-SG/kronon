@@ -11,6 +11,7 @@ $(function () {
 	$('#startTimePop').text(stTime) ;
 	$('#endTimePop').text(edTime) ;
 
+
 	let actualTime = document.getElementById("actual-time-z").textContent;
 	let actualTimeArray = actualTime.substring(5,12).split(/\D/g);
 	let actualHour = Number(actualTimeArray[0]);

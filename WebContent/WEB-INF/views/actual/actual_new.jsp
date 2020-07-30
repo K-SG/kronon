@@ -102,6 +102,7 @@
 		<!-- 戻るボタン -->
 	<div class="cancel-button"><img src="/kronon/img/back_buttom.png" alt="back-buttom" class="back-btn"></div>
 
+
   <!--エラーまたは完了ポップアップ------------------------------------------------------------------->
   <div class="popup-wrapper error-popup">
     <div class="pop-container">

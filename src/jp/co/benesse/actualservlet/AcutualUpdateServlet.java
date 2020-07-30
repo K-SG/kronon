@@ -71,6 +71,7 @@ public class AcutualUpdateServlet extends HttpServlet {
 			}
 			scheduleBean = scheduleDAO.getScheduleByScheduleId(scheduleId);
 
+
 			// 更新しましたポップアップのフラグをセット
 			request.setAttribute("popFlag", popFlag);
 			request.setAttribute("scheduleBean", scheduleBean);

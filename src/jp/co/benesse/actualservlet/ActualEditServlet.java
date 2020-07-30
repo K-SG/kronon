@@ -52,6 +52,7 @@ public class ActualEditServlet extends HttpServlet {
 			scheduleDAO = new ScheduleDAO(connection);
 			scheduleBean = scheduleDAO.getScheduleByScheduleId(scheduleId);
 
+
 			// ログイン者以外の予定にアクセスできないようにする
 			if (userId != scheduleBean.getUserId()) {
 				throw new RuntimeException("ログイン者以外の予定にアクセスした");

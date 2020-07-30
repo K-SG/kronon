@@ -58,7 +58,6 @@ $(function () {
 			  	$('.error-popup').fadeIn();
 			  	return;
 		  }
-
 	}
 
   /*登録ボタンを押した際のエラーチェックとポップアップ表示*/
