@@ -40,7 +40,7 @@ $(function () {
 
 				if(popFlag==='0'){
 				/*実績登録ポップアップ*/
-				$('.create-msg').html('実績を登録したよ！');
+				$('.create-msg').html('実績を更新したよ！');
 				$('.complete-popup').fadeIn();
 				return;
 		  }

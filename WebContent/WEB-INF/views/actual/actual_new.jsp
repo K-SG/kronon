@@ -11,11 +11,9 @@
 <title>実績登録</title>
 </head>
 <body>
-
 <%@ include file="../layout/common/header.jsp" %>
-
 	<article>
-		<form action="acutualupdate" method="post" class="actual-new-form">
+		<form action="acutualupdate" method="post" class="actual-new-form" id="form">
 		<input type="hidden" value="${popFlag}" id="flag">
 		<div class="actual-regist-area">
 		<div class="loose-leaf"><img src="../img/loose_leaf.svg" alt="loose-leaf" id="loose-leaf"></div>
@@ -29,6 +27,7 @@
 			<input type="hidden" value="${scheduleBean.endTime}" id="set-end-time">
 			<input type="hidden" value="${scheduleBean.actualTime}" id="set-actual-time">
 			<input type="hidden" value="${scheduleBean.place}" id="set-place">
+			<input type="hidden" value="0" name="actual-flag">
 			<table class="actual-table">
 			<tr><td id="actual-date"><c:out value="${scheduleBean.scheduleDateActual}"/><span id="startTime" class="startTime"><c:out value="${scheduleBean.startTime}" /></span>～
 			<span id="endTime" class="endTime"><c:out value="${scheduleBean.endTime}" /></span></td><td id="actual-place"></td></tr>
@@ -54,6 +53,18 @@
 							<option value="10">10</option>
 							<option value="11">11</option>
 							<option value="12">12</option>
+							<option value="13">13</option>
+							<option value="14">14</option>
+							<option value="15">15</option>
+							<option value="16">16</option>
+							<option value="17">17</option>
+							<option value="18">18</option>
+							<option value="19">19</option>
+							<option value="20">20</option>
+							<option value="21">21</option>
+							<option value="22">22</option>
+							<option value="23">23</option>
+							<option value="24">24</option>
 						</select>
 				</div>
 				<div class="actual-regist-time-text">時間</div>

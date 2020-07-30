@@ -12,6 +12,7 @@ $(function () {
 	    document.getElementById("date").value=yyyy+'-'+mm+'-'+dd;
 	  }
 
+
 		/*DBと照合した後のポップアップフラグ*/
 		var popFlag = document.getElementById('flag').value;
 
@@ -38,10 +39,10 @@ $(function () {
 				endHour = endHour.substring(1, 2);
 			}
 			/*初期選択がされるようにselectedをつける*/
-				$('#new-start-hour').val(startHour);
-				$('#new-start-minutes').val(startMin);
-				$('#new-end-hour').val(endHour);
-				$('#new-end-minutes').val(endMin);
+				$('#starthour').val(startHour);
+				$('#startminutes').val(startMin);
+				$('#endhour').val(endHour);
+				$('#endminutes').val(endMin);
 				$('#new-place').val(place);
 		}
 
@@ -64,10 +65,10 @@ $(function () {
   /*登録ボタンを押した際のエラーチェックとポップアップ表示*/
   $('#ok-button').click(function () {
 	    let date = document.getElementById('date').value;
-	    let startHour = document.getElementById('new-start-hour').value;
-	    let startMin = document.getElementById('new-start-minutes').value;
-	    let endHour = document.getElementById('new-end-hour').value;
-	    let endMin = document.getElementById('new-end-minutes').value;
+	    let startHour = document.getElementById('starthour').value;
+	    let startMin = document.getElementById('startminutes').value;
+	    let endHour = document.getElementById('endhour').value;
+	    let endMin = document.getElementById('endminutes').value;
 	    let place = document.getElementById('new-place').value;
 	    let title=document.getElementById('title').value;
 	    let content=document.getElementById('content').value;

@@ -8,13 +8,37 @@
  <link rel="stylesheet" href="/kronon/css/schedule_new.css">
 <%@ include file="../layout/common/link.jsp" %>
 <title>予定修正</title>
+<script>
+	    function selectboxChange1() {
+	        let selindex = document.form.starthour.selectedIndex;
+	        switch (selindex) {
+	          case 12:
+	          	document.form.startminutes.selectedIndex=0;
+	          	document.form.startminutes.disabled=true;
+	            break;
+	  		default:
+	  			document.form.startminutes.disabled=false;
+	        }
+	      }
+	    function selectboxChange2() {
+		        let selindex = document.form.endhour.selectedIndex;
+		        switch (selindex) {
+		          case 12:
+		          	document.form.endminutes.selectedIndex=0;
+		          	document.form.endminutes.disabled=true;
+		            break;
+		  		default:
+		  			document.form.endminutes.disabled=false;
+		        }
+		      }
+</script>
 </head>
 <body>
 
 <%@ include file="../layout/common/header.jsp" %>
 
 	<article>
-			<form action="scheduleupdate" method="post" class="schedule-edit-form">
+			<form action="scheduleupdate" method="post" class="schedule-edit-form" name="form">
 		<input type="hidden" id="flag" value="${popFlag}">
 		<div class="schedule-regist-area">
 		  <div class="loose-leaf"><img src="../img/loose_leaf.svg" alt="loose-leaf" id="loose-leaf"></div>
@@ -32,7 +56,7 @@
 					<div class="schedule-regist-font-lev1">開始時刻<span>*</span></div>
 					<div class="schedule-regist-time">
 						<input type="hidden" value="${scheduleBean.startTime}" id="set-start-time">
-						<select name="startTimeHour" id="edit-start-hour">
+						<select name="startTimeHour" id="starthour"  onchange="selectboxChange1();">
 							<option value="8">8</option>
 							<option value="9">9</option>
 							<option value="10">10</option>
@@ -51,7 +75,7 @@
 
 					<div class="schedule-regist-time-text">時</div>
 					<div class="schedule-regist-time">
-						<select name="startTimeMin" id="edit-start-minutes">
+						<select name="startTimeMin" id="startminutes">
 							<option value="00">00</option>
 							<option value="15">15</option>
 							<option value="30">30</option>
@@ -65,7 +89,7 @@
 					<div class="schedule-regist-font-lev1">終了時刻<span>*</span></div>
 					<div class="schedule-regist-time">
 					<input type="hidden" value="${scheduleBean.endTime}" id="set-end-time">
-						<select name="endTimeHour" id="edit-end-hour">
+						<select name="endTimeHour" id="endhour"  onchange="selectboxChange2();">
 							<option value="8">8</option>
 							<option value="9">9</option>
 							<option value="10">10</option>
@@ -84,7 +108,7 @@
 
 					<div class="schedule-regist-time-text">時</div>
 					<div class="schedule-regist-time">
-						<select name="endTimeMin" id="edit-end-minutes">
+						<select name="endTimeMin" id="endminutes">
 							<option value="00">00</option>
 							<option value="15">15</option>
 							<option value="30">30</option>
@@ -174,7 +198,7 @@
 			  </div>
 			  <a href="scheduledetail?scheduleId=${scheduleBean.scheduleId}"><div class="ok-button">OK</div></a>
 			  <div class="ng-button close-popup">キャンセル</div>
-			  <img src="/kronon/img/star/star_angry.png" class="pop-img-top"> </div>
+			  <img src="/kronon/img/star/star_nomal.png" class="pop-img-top"> </div>
 		  </div>
 		</div>
 		<!--本当に戻りますかポップアップここまで------------------------------------------------------------------->
@@ -209,7 +233,7 @@
 			  </div>
 			  <input type="button" class="ok-button"  id="confirm-ok" value="OK">
 			  <div class="ng-button close-popup">キャンセル</div>
-			  <img src="/kronon/img/kronon/kronon_question.png" class="pop-img"> </div>
+			  <img src="/kronon/img/star/star_nomal.png" class="pop-img"> </div>
 		  </div>
 		</div>
 		<!--内容確認ポップアップここまで----------------------------------------------------------------->
@@ -221,7 +245,7 @@
 				<div class="pop-container-inner">
 					<div class="message-container"><p class=create-msg></p></div>
 					<div class="ok-button next-popup">OK</div>
-					<img src="/kronon/img/kronon/kronon_star.png" class="pop-img">
+					<img src="/kronon/img/star/star_nomal.png" class="pop-img">
 				</div>
 			</div>
 		</div>

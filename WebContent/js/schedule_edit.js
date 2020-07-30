@@ -23,18 +23,18 @@ $(function () {
 		  endHour = endHour.substring(1, 2);
 	  }
 	  /*初期選択がされるようにselectedをつける*/
-	  $('#edit-start-hour').val(startHour);
-	  $('#edit-start-minutes').val(startMin);
-	  $('#edit-end-hour').val(endHour);
-	  $('#edit-end-minutes').val(endMin);
+	  $('#starthour').val(startHour);
+	  $('#startminutes').val(startMin);
+	  $('#endhour').val(endHour);
+	  $('#endminutes').val(endMin);
 	  $('#edit-place').val(place);
 
 	/*DBと照合した後のポップアップフラグ*/
 	  let popFlag = document.getElementById('flag').value;
 
-	/*登録が完了した場合*/
+	/*更新が完了した場合*/
 	  if(popFlag === '0'){
-		  $('.create-msg').html('登録が完了したよ！');
+		  $('.create-msg').html('更新が完了したよ！');
 		  $('.complete-popup').fadeIn();
 		  return;
 	  }
@@ -48,10 +48,10 @@ $(function () {
   /*修正ボタンを押した際のエラーチェックとポップアップ表示*/
   $('#ok-button').click(function () {
     let date = document.getElementById('date').value;
-    let startHour = document.getElementById('edit-start-hour').value;
-    let startMin = document.getElementById('edit-start-minutes').value;
-    let endHour = document.getElementById('edit-end-hour').value;
-    let endMin = document.getElementById('edit-end-minutes').value;
+    let startHour = document.getElementById('starthour').value;
+    let startMin = document.getElementById('startminutes').value;
+    let endHour = document.getElementById('endhour').value;
+    let endMin = document.getElementById('endminutes').value;
     let place = document.getElementById('edit-place').value;
     let title=document.getElementById('title').value;
     let content=document.getElementById('content').value;
@@ -130,7 +130,7 @@ $(function () {
       return;
 });
 
-  /*登録完了ポップアップのOKボタン押下時の遷移先*/
+  /*更新完了ポップアップのOKボタン押下時の遷移先*/
   $('.next-popup').click(function () {
   	let scheduleId = document.getElementById('set-schedule-id').value;
     location.href= "scheduledetail?scheduleId="+ scheduleId ;

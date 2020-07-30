@@ -34,6 +34,7 @@ public class AcutualUpdateServlet extends HttpServlet {
 		String actualHourStr = null;
 		String actualMinuteStr = null;
 		String comment = null;
+		String actualFlag = null;
 		ConnectionManager connectionManager = null;
 		ScheduleBean scheduleBean = null;
 		ScheduleDAO scheduleDAO = null;
@@ -46,6 +47,8 @@ public class AcutualUpdateServlet extends HttpServlet {
 			actualHourStr = request.getParameter("actualHour");
 			actualMinuteStr = request.getParameter("actualMinute");
 			comment = request.getParameter("comment");
+			actualFlag = (String) request.getParameter("actual-flag");
+			System.out.println(actualFlag);
 
 			// パラメータの変換・換算
 			actualTime = Integer.parseInt(actualHourStr) * 60 + Integer.parseInt(actualMinuteStr);
@@ -73,10 +76,14 @@ public class AcutualUpdateServlet extends HttpServlet {
 			request.setAttribute("popFlag", popFlag);
 			request.setAttribute("scheduleBean", scheduleBean);
 
+			if(actualFlag.equals("0")){
 			dispatcher = request.getRequestDispatcher("/WEB-INF/views/actual/actual_new.jsp");
 			dispatcher.forward(request, response);
+			}else{
+				dispatcher = request.getRequestDispatcher("/WEB-INF/views/actual/actual_edit.jsp");
+				dispatcher.forward(request, response);
+				}
 			return;
-
 		} catch (RuntimeException e) {
 			connectionManager.rollback();
 			e.printStackTrace();
