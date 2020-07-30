@@ -143,11 +143,10 @@
 	background-color:white;
 	width: 71vw;
 	margin-top: 5vw;
-	margin-left: 25vw;
+	margin-left:14.5vw;
 	border-radius: 10px;
 	padding-top:3vh;
 	padding-bottom:10vh;
-	margin:auto;
 	margin-top:10vh;
 }
 
@@ -179,11 +178,12 @@ table td{
 
 }
 
-.title{
+.titles{
     text-overflow: ellipsis;
     white-space: nowrap;
   	overflow: hidden;/*はみ出た文字を隠す*/
   	width:11vw;
+  	max-width:11vw;
 }
 
 .item{
