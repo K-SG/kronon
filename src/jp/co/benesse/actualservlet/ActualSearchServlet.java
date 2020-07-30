@@ -76,13 +76,13 @@ public class ActualSearchServlet extends HttpServlet {
 			scheduleDAO = new ScheduleDAO(connection);
 
 			// AND検索、日付検索、タイトル検索の判定
-			if (!scheduleDateStr.equals("") && !title.equals("")) {
+			if (!scheduleDateStr.equals("") && !title.trim().equals("")) {
 				scheduleDate = Date.valueOf(scheduleDateStr);
 				scheduleBeanList = scheduleDAO.selectSchedule(userId, scheduleDate, title);
-			} else if (!scheduleDateStr.equals("") && title.equals("")) {
+			} else if (!scheduleDateStr.equals("") && title.trim().equals("")) {
 				scheduleDate = Date.valueOf(scheduleDateStr);
 				scheduleBeanList = scheduleDAO.selectSchedule(userId, scheduleDate);
-			} else if (scheduleDateStr.equals("") && !title.equals("")) {
+			} else if (scheduleDateStr.equals("") && !title.trim().equals("")) {
 				LocalScheduleDate = LocalDate.parse(dateStr, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 				scheduleBeanList = scheduleDAO.getOneMonthScheduleByTitle(userId, LocalScheduleDate, title);
 			} else {
