@@ -65,7 +65,8 @@ public class Calc {
 	 *
 	 * [機 能] 日時表記整形メソッド<br>
 	 * [説 明] 予定日を「MM/dd(曜日)」という書式で返す<br>
-	 * [備 考]
+	 * [備 考] 例外発生時にはRuntimeExceptionにラップして上位に送出する
+	 *
 	 * @param 予定日
 	 * @return 整形された日付の文字列
 	 */
@@ -83,8 +84,8 @@ public class Calc {
 			scheduleDate.getDayOfMonth();
 			return scheduleDate.getMonthValue() + "/" + scheduleDate.getDayOfMonth()
 			+ "(" + dayOfWeek.get(scheduleDate.getDayOfWeek().getValue())+ ")";
-		}catch(IllegalArgumentException e){
-			return "";
+		}catch(NullPointerException e){
+			throw new RuntimeException("引数にnullが渡されました");
 		}
 	}
 
@@ -92,7 +93,7 @@ public class Calc {
 	 *
 	 * [機 能] 日時表記整形メソッド<br>
 	 * [説 明] 予定日を「MM/dd(曜日)」という書式で返す<br>
-	 * [備 考]
+	 * [備 考] 例外発生時にはRuntimeExceptionにラップして上位に送出する
 	 *
 	 * @param 予定日
 	 * @return 整形された日付の文字列
@@ -113,8 +114,8 @@ public class Calc {
 			scheduleDate.getDayOfMonth();
 			return scheduleDate.getYear()+ "/" + scheduleDate.getMonthValue() + "/" + scheduleDate.getDayOfMonth()
 			+ "(" + dayOfWeek.get(scheduleDate.getDayOfWeek().getValue())+ ")";
-		}catch(IllegalArgumentException e){
-			return "";
+		}catch(NullPointerException e){
+			throw new RuntimeException("引数にnullが渡されました");
 		}
 	}
 }
