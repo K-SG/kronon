@@ -1,9 +1,8 @@
 .kronon-banzai img{
-	margin-top: -8vw;
-	float:right;
 	width: 17vw;
-	height:auto;
-	margin-left:3vw;
+	position: fixed;
+	right: 2vw;
+	bottom: 8vh;
 }
 
 
