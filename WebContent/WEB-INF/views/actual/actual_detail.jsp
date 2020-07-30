@@ -26,21 +26,21 @@
         </tr>
 
         <tr>
-          <td><c:out value="${scheduleBean.scheduleDateActual}" />
+          <td>日時：<c:out value="${scheduleBean.scheduleDateActual}" />
             <span id="startTime"><c:out value="${scheduleBean.startTime}" /></span>～
 			<span id="endTime"><c:out value="${scheduleBean.endTime}" /></span>
 		  </td>
 
           	<c:if test="${scheduleBean.place=='0'}" >
-			<td class=show-place1>オフィス</td>
+			<td class=show-place1>場所：オフィス</td>
 			</c:if>
 
 			<c:if test="${scheduleBean.place=='1'}" >
-			<td class=show-place2>在宅</td>
+			<td class=show-place2>場所：在宅</td>
 			</c:if>
 
 			<c:if test="${scheduleBean.place=='2'}" >
-			<td class=show-place3>外出</td>
+			<td class=show-place3>場所：外出</td>
 			</c:if>
 
         </tr>
