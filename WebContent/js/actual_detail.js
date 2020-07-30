@@ -18,7 +18,7 @@ $(function () {
 	let actualTimeMinute = 60*actualHour + actualMinute;
 
 	//実績時間未入力（今回はdefaultで1000を格納）の場合は「-」に書き換え
-	if(actualTimeMinute > 720){
+	if(actualTimeMinute > 1485){
 		document.getElementById("actual-time-z").textContent = "実績時間:　　　―";
 	}
 
