@@ -23,10 +23,10 @@ $(function () {
 		  endHour = endHour.substring(1, 2);
 	  }
 	  /*初期選択がされるようにselectedをつける*/
-	  $('#edit-start-hour').val(startHour);
-	  $('#edit-start-minutes').val(startMin);
-	  $('#edit-end-hour').val(endHour);
-	  $('#edit-end-minutes').val(endMin);
+	  $('#starthour').val(startHour);
+	  $('#startminutes').val(startMin);
+	  $('#endhour').val(endHour);
+	  $('#endminutes').val(endMin);
 	  $('#edit-place').val(place);
 
 	/*DBと照合した後のポップアップフラグ*/
@@ -48,10 +48,10 @@ $(function () {
   /*修正ボタンを押した際のエラーチェックとポップアップ表示*/
   $('#ok-button').click(function () {
     let date = document.getElementById('date').value;
-    let startHour = document.getElementById('edit-start-hour').value;
-    let startMin = document.getElementById('edit-start-minutes').value;
-    let endHour = document.getElementById('edit-end-hour').value;
-    let endMin = document.getElementById('edit-end-minutes').value;
+    let startHour = document.getElementById('starthour').value;
+    let startMin = document.getElementById('startminutes').value;
+    let endHour = document.getElementById('endhour').value;
+    let endMin = document.getElementById('endminutes').value;
     let place = document.getElementById('edit-place').value;
     let title=document.getElementById('title').value;
     let content=document.getElementById('content').value;
