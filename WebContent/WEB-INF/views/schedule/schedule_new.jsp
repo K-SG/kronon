@@ -127,12 +127,14 @@
 			<div class=schedule-regist-button>
 			<!--登録ボタン---->
 				<div class=schedule-regist-button-left>
-				<input type="button" class="ok-button large-popup-button" id="ok-button" value="登録" >
+				<!-- <input type="button" class="ok-button large-popup-button" id="ok-button" value="登録" > -->
+				<div class="ok-button large-popup-button" id="ok-button" >登録</div>
 				</div>
 
 			<!--キャンセルボタン----->
 				<div class=schedule-regist-button-right>
-				<input type="button" class="ok-button" id="cancel-button" value="キャンセル">
+				<!-- <input type="button" class="ok-button" id="cancel-button" value="キャンセル"> -->
+				<div class="ok-button large-popup-button" id="cancel-button" >キャンセル</div>
 				</div>
 			</div>
 			<div class="clear"></div>
@@ -148,7 +150,7 @@
           <p class=new-msg></p>
         </div>
         <div class="ok-button close-popup">OK</div>
-        <img src="/kronon/img/kronon/kronon_komatta.png" class="pop-img"> </div>
+        <img src="/kronon/img/kronon/kronon_komatta.png" class="pop-img komatta-img"> </div>
       </div>
     </div>
    <!--エラーまたは完了ポップアップここまで-------------------------------------------------------------->
@@ -199,7 +201,8 @@
 				  </tr>
 				</table>
 			  </div>
-			  <input type="button" class="ok-button"  id="confirm-ok" value="OK">
+			  <!-- <input type="button" class="ok-button"  id="confirm-ok" value="OK"> -->
+			  <div class="ok-button"  id="confirm-ok" >OK</div>
 			  <div class="ng-button close-popup">キャンセル</div>
 			  <img src="/kronon/img/kronon/kronon_question.png" class="pop-img"> </div>
 		  </div>

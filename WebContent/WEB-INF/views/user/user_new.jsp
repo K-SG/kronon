@@ -49,7 +49,7 @@
 						<div class="pop-container-inner">
 							<div class="message-container"><p class=create-msg></p></div>
 							<div class="ok-button next-popup">OK</div>
-							<img src="/kronon/img/star/star_nomal.png" class="pop-img">
+							<img src="/kronon/img/star/star_nomal.png" class="pop-img-star">
 						</div>
 					</div>
 				</div>
@@ -77,9 +77,10 @@
 									</tr>
 								</table>
 							</div>
-							<input type="submit" class="ok-button" value="OK" />
-							<div class="ng-button close-popup">キャンセル</div>
-							<img src="/kronon/img/star/star_nomal.png" class="pop-img">
+							<div class="ok-button large-pop-ok-buttom" id="submit-user">OK</div>
+							<!-- <div class="ok-button"><input type="submit" class="ok-button-inner" value="OK" /></div> -->
+							<div class="ng-button close-popup large-pop-ok-buttom">キャンセル</div>
+							<img src="/kronon/img/star/star_nomal.png" class="pop-large-img-top">
 						</div>
 					</div>
 				</div>

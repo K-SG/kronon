@@ -281,7 +281,24 @@ article{
 	z-index:101 !important;
 }
 
+/*OKボタン*/
+.ok-button {
+  display: inline-block;
+  width: 10vw;
+  padding: 0.8vw;
+  background-color: #DE9B50;
+  border: none;
+  border-radius: 0.8vw;
+  color: white;
+  margin: auto;
+  cursor: pointer;
+  text-align: center;
+  font-size: 1.5vw;
+}
 
+.komatta-img{
+	width:7vw !important;
+}
 
 footer{
 	z-index:100;
