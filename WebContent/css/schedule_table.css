@@ -111,7 +111,7 @@
 
 .schedule-item {
 	position: absolute;
-	width: 14%;
+	/* width: 14%; */
 	background-color: beige;
 	/*	border:white solid 0.1vw;*/
 	height: 1vw;

@@ -4,7 +4,7 @@
 //表示する期間の設定
 const start_day = "2020-07-01";
 const end_day = "2021-06-30";
-
+///////////////////////////////////////////
 
 
 //スケジュールリストの取得
@@ -17,7 +17,12 @@ let json2 = document.getElementById("name-list");
 let json_replace2 = (json2.value).toString().replace(/krnooon/g,'"');
 let array_json_name = JSON.parse(json_replace2);
 
+//表示人数の取得
+let user_num = array_json_name.length;
 
+//スケジュールの幅の指定
+let margin_width = 100 / (4*user_num+1);
+let schedule_width = margin_width * 3;
 
 //指定された3年間外にアクセスできないように、端では左右ボタンを表示しない
 const date = document.getElementById("scheduleDate").value;
@@ -107,7 +112,7 @@ $(function () {
 	//名前表示
 	const name_container = document.getElementById("name-container");
 	counter = 0;
-	for (let i = 0; i < 5; i++) {
+	for (let i = 0; i < user_num; i++) {
 		//div要素の追加
 		const div = document.createElement("div");
 		$(div).addClass("username");
@@ -117,7 +122,10 @@ $(function () {
 		$(div).addClass(class_name);
 		//名前を追加
 		$(div).text(array_json_name[i]);
-		$("."+class_name).css("left",(19 * i + 5) + "%");
+		//座標指定
+		$("."+class_name).css("left",((margin_width+schedule_width) * i + margin_width) + "%");
+		//幅指定
+		$("."+class_name).css("width",(schedule_width) + "%");
 
 		counter++;
 	}
@@ -125,7 +133,7 @@ $(function () {
 
 	//予定の表示！！
 	counter = 0;
-	for (let i = 0; i < 5; i++) {
+	for (let i = 0; i < user_num; i++) {
 		const length = array_json[i].length;
 		for (let j = 0; j < length; j++) {
 
@@ -171,7 +179,8 @@ $(function () {
 			//開始時間からy座標を決定
 			const start_point = (startTimeMinute - 480) / 720 * 100;
 			$("." + class_name).css("top", start_point + "%");
-			$("." + class_name).css("left", (19 * i + 5) + "%");
+			$("." + class_name).css("left", ((margin_width+schedule_width) * i + margin_width) + "%");
+			$("."+class_name).css("width",(schedule_width) + "%");
 
 			//場所に応じて色付け
 			const place = array_json[i][j].place;
