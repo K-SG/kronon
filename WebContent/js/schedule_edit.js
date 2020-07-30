@@ -32,9 +32,9 @@ $(function () {
 	/*DBと照合した後のポップアップフラグ*/
 	  let popFlag = document.getElementById('flag').value;
 
-	/*登録が完了した場合*/
+	/*更新が完了した場合*/
 	  if(popFlag === '0'){
-		  $('.create-msg').html('登録が完了したよ！');
+		  $('.create-msg').html('更新が完了したよ！');
 		  $('.complete-popup').fadeIn();
 		  return;
 	  }
@@ -130,7 +130,7 @@ $(function () {
       return;
 });
 
-  /*登録完了ポップアップのOKボタン押下時の遷移先*/
+  /*更新完了ポップアップのOKボタン押下時の遷移先*/
   $('.next-popup').click(function () {
   	let scheduleId = document.getElementById('set-schedule-id').value;
     location.href= "scheduledetail?scheduleId="+ scheduleId ;
