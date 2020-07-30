@@ -36,7 +36,7 @@
 						<div class="pop-container-inner">
 							<div class="message-container"><p class=create-msg>メールアドレスが<br>既に登録されているよ！</p></div>
 							<div class="ok-button close-popup">OK</div>
-							<img src="/kronon/img/kronon/kronon_question.png" class="pop-img">
+							<img src="/kronon/img/kronon/kronon_question.png" class="pop-img kronon-question">
 						</div>
 					</div>
 				</div>
@@ -49,7 +49,7 @@
 						<div class="pop-container-inner">
 							<div class="message-container"><p class=create-msg></p></div>
 							<div class="ok-button next-popup">OK</div>
-							<img src="/kronon/img/star/star_nomal.png" class="pop-img-star">
+							<img src="/kronon/img/star/star_nomal.png" class="pop-img-star star-nomal">
 						</div>
 					</div>
 				</div>
@@ -80,7 +80,7 @@
 							<div class="ok-button large-pop-ok-buttom" id="submit-user">OK</div>
 							<!-- <div class="ok-button"><input type="submit" class="ok-button-inner" value="OK" /></div> -->
 							<div class="ng-button close-popup large-pop-ok-buttom">キャンセル</div>
-							<img src="/kronon/img/star/star_nomal.png" class="pop-large-img-top">
+							<img src="/kronon/img/star/star_nomal.png" class="pop-large-img-top star-nomal">
 						</div>
 					</div>
 				</div>
@@ -100,7 +100,7 @@
 						</div>
 						<a href="/kronon/login"><div class="ok-button">OK</div></a>
 						<div class="ng-button close-popup">キャンセル</div>
-						<img src="/kronon/img/star/star_angry.png" class="pop-img-top">
+						<img src="/kronon/img/star/star_angry.png" class="pop-img-top star-angry">
 					</div>
 				</div>
 			</div>
