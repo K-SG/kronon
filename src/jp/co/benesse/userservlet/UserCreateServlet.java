@@ -59,7 +59,7 @@ public class UserCreateServlet extends HttpServlet {
 			if (userDAO.isBooking(mail)) {
 				// メールアドレス重複のポップアップが出るようにフラグ立て
 				request.setAttribute("popFlag", 1);
-				//内容が保持されるように入力情報をセット
+				//内容が保持されるように入力情報をセットする
 				request.setAttribute("username",userName);
 				request.setAttribute("mail",mail);
 				request.setAttribute("password",password);
