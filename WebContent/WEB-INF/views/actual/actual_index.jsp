@@ -81,7 +81,7 @@
 				<tr class = "schedule-actual">
 					<td id = "date-in-table"><c:out value="${scheduleBeanList.scheduleDateActual}" /></td>
 					<td class = "schedule-id" style = "display:none;"><c:out value="${scheduleBeanList.scheduleId}" /></td>
-					<td id = "title" class = "titles"><c:out value="${scheduleBeanList.title}" /></td>
+					<td id = "title" class = "titles"><p><c:out value="${scheduleBeanList.title}" /></p></td>
 					<%-- <td class = "title-and-content contents"><div class = "item"><c:out value="${scheduleBeanList.content}" /></div></td>
 					 --%>
 					 <td class = "title-and-content contents"><p><c:out value="${scheduleBeanList.content}" /></p></td>

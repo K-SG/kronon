@@ -167,6 +167,7 @@ table td{
 	height:10vh;
 	padding:0.5vw;
 	word-wrap: break-word;
+	word-break : break-all;
 }
 
 #date-in-table{
@@ -180,15 +181,18 @@ table td{
 }
 
 .titles{
-    text-overflow: ellipsis;
-    white-space: nowrap;
+/*     text-overflow: ellipsis;
+    white-space: nowrap; */
   	overflow: hidden;/*はみ出た文字を隠す*/
-  	width:11vw;
-  	max-width:11vw;
+  	width:11vw !important;
+  	/* max-width:11vw; */
 }
 
-.item{
-	border:none;
+.titles p{
+	display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
 }
 
 .contents{
