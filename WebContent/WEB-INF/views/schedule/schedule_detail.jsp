@@ -135,7 +135,7 @@
 
 
 				<div class="ng-button close-popup">キャンセル</div>
-				<img src="img/kronon/kronon_question.png" class="pop-img">
+				<img src="/kronon/img/kronon/kronon_question.png" class="pop-img">
 				</form>
 			</div>
 		</div>
