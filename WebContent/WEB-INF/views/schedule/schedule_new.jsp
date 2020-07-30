@@ -84,7 +84,6 @@
 					</div>
 					<div class="schedule-regist-time-text">分</div>
 				</div>
-
 				<div class="schedule-regist-area-1-block">
 					<div class="schedule-regist-font-lev1">終了時刻<span>*</span></div>
 					<div class="schedule-regist-time">

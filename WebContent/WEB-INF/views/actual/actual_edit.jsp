@@ -11,7 +11,6 @@
 <title>実績更新</title>
 </head>
 <body>
-
 <%@ include file="../layout/common/header.jsp" %>
 
 	<article>

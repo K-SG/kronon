@@ -91,7 +91,6 @@
 				<div class=actual-regist-button-left>
 				<input type="button" class="ok-button large-popup-button" id="ok-button" value="登録" >
 				</div>
-
 			<!--キャンセルボタン----->
 				<div class=actual-regist-button-right>
 					<input type="button" class="ok-button cancel-button" id="cancel-button" value="キャンセル">

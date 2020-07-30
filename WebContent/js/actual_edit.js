@@ -24,7 +24,6 @@ $(function () {
 		let popFlag = document.getElementById('flag').value;
 
 		/*ScheduleCreateServlet返ってきたとき、値の保存をする*/
-
 			let date = document.getElementById('set-date').value;
 			let actualTime = document.getElementById('set-actual-time').value;
 			let actualHour = Math.floor(actualTime / 60);
