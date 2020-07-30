@@ -173,7 +173,7 @@
           <p class=new-msg></p>
         </div>
         <div class="ok-button close-popup">OK</div>
-        <img src="/kronon/img/kronon/kronon_komatta.png" class="pop-img komatta-img"> </div>
+        <img src="/kronon/img/kronon/kronon_question.png" class="pop-img komatta-img"> </div>
       </div>
     </div>
    <!--エラーまたは完了ポップアップここまで-------------------------------------------------------------->
@@ -227,7 +227,7 @@
 			  <!-- <input type="button" class="ok-button"  id="confirm-ok" value="OK"> -->
 			  <div class="ok-button"  id="confirm-ok" >OK</div>
 			  <div class="ng-button close-popup">キャンセル</div>
-			  <img src="/kronon/img/kronon/kronon_question.png" class="pop-img"> </div>
+			  <img src="/kronon/img/star/star_nomal.png" class="pop-img"> </div>
 		  </div>
 		</div>
 		<!--内容確認ポップアップここまで----------------------------------------------------------------->
