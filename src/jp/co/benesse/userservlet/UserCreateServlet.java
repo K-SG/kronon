@@ -95,6 +95,7 @@ public class UserCreateServlet extends HttpServlet {
 			connectionManager.commit();
 
 			session = request.getSession();
+			session.setAttribute("userCount", userCount);
 			session.setAttribute("userName", userBean.getUserName());
 			session.setAttribute("userId", userBean.getUserId());
 

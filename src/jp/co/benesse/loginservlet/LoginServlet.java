@@ -31,6 +31,7 @@ public class LoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
+		int userCount = 0;
 		String mail = null;
 		String password = null;
 		String hash = null;
@@ -53,7 +54,7 @@ public class LoginServlet extends HttpServlet {
 			connection = connectionManager.getConnection();
 			userDAO = new UserDAO(connection);
 			userBean = userDAO.findUser(mail, hash);
-			System.out.println(userBean);
+			userCount = userDAO.countUser();
 
 			if (userBean == null) {
 				request.setAttribute("popFlag", 2);
@@ -64,6 +65,7 @@ public class LoginServlet extends HttpServlet {
 			}
 
 			session = request.getSession(true);
+			session.setAttribute("userCount", userCount);
 			session.setAttribute("userId", userBean.getUserId());
 			session.setAttribute("userName", userBean.getUserName());
 

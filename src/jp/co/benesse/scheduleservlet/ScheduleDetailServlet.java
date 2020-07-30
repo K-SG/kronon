@@ -57,9 +57,8 @@ public class ScheduleDetailServlet extends HttpServlet {
 			scheduleBean = new ScheduleBean();
 			scheduleBean = scheduleDAO.getScheduleByScheduleId(scheduleId);
 
-			// ログイン者以外の予定にアクセスできないようにする
-			if (userId != scheduleBean.getUserId()) {
-				throw new RuntimeException("ログイン者以外の予定にアクセスした");
+			if(scheduleBean.getScheduleDate() == null){
+				throw new RuntimeException("存在しない予定にアクセスした");
 			}
 
 			request.setAttribute("scheduleBean", scheduleBean);

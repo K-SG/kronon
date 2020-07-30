@@ -38,6 +38,7 @@ public class ScheduleShowAllServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
+		int userCount = 0;
 		int userId = 0;
 		String flag = null;
 		String calendarDate = null;
@@ -65,6 +66,7 @@ public class ScheduleShowAllServlet extends HttpServlet {
 		try {
 			// セッションスコープから値を取得
 			session = request.getSession();
+			userCount = (Integer) session.getAttribute("userCount");
 			userId = (Integer) session.getAttribute("userId");
 
 			// リクエストパラメータを取得
@@ -106,15 +108,13 @@ public class ScheduleShowAllServlet extends HttpServlet {
 			userNameList = new ArrayList<String>();
 
 			// ログインユーザーの予定を取得
-			if (userId <= 5) {
-				getOneDayScheduleList = scheduleDAO.getOneDaySchedule(scheduleDate, userId);
-				getOneDayScheduleLists.add((ArrayList<ScheduleBean>) getOneDayScheduleList);
-				userName = userDAO.getUserName(userId);
-				userNameList.add(userName);
-			}
+			getOneDayScheduleList = scheduleDAO.getOneDaySchedule(scheduleDate, userId);
+			getOneDayScheduleLists.add((ArrayList<ScheduleBean>) getOneDayScheduleList);
+			userName = userDAO.getUserName(userId);
+			userNameList.add(userName);
 
 			// ログインユーザー以外の予定を取得
-			for (int i = 1; i <= 5; i++) {
+			for (int i = 1; i <= userCount; i++) {
 				if (i != userId) {
 					getOneDayScheduleList = scheduleDAO.getOneDaySchedule(scheduleDate, i);
 					getOneDayScheduleLists.add((ArrayList<ScheduleBean>) getOneDayScheduleList);
@@ -133,7 +133,6 @@ public class ScheduleShowAllServlet extends HttpServlet {
 			jsonNameReplace = jsonName.replaceAll("\"", "krnooon");
 			System.out.println(jsonName);
 
-			// 日付をリクエスト領域にセットする
 			request.setAttribute("displayDate", displayDate);
 			request.setAttribute("scheduleDate", scheduleDate);
 			request.setAttribute("json", jsonReplace);
