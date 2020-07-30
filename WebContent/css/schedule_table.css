@@ -69,6 +69,9 @@
 
 .hanrei-item1 {
 	background-color: #FFD8D6;
+/* 	border-radius:0.1vw;
+	border: 0.2vw solid #FFA8A3;
+	box-sizing: border-box; */
 }
 
 .hanrei-item2 {
@@ -115,6 +118,11 @@
 	padding: 0vw 0;
 	margin: 0vw;
 	cursor: pointer;
+	border-radius:0.1vw;
+	border: 0.2vw solid #AAA;
+	box-sizing: border-box;/* 線がwidthにとっての内側になるように */
+/* 	outline: 0.2vw solid pink;
+    outline-offset: -0.1vw; */
 }
 
 .schedule-item .title {
@@ -137,6 +145,7 @@
 /* カーソルが乗った時 */
 .cell-active {
 	background-color: #FFD5A8 !important;
+	border: 0.2vw solid #DE9B50 !important;
 }
 
 /* ●●:00の線 */
