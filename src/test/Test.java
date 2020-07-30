@@ -18,8 +18,8 @@ public class Test {
 		ConnectionManager connectionManager = new ConnectionManager();
 		Connection connection = connectionManager.getConnection();
 		UserDAO userDAO = new UserDAO(connection);
-		UserBean bean=userDAO.findUser("sugi@gmail.com",  CryptographyLogic.encryptStr("Kronon1122"));
-		assertThat(bean.getUserName(),is("杉"));
+		UserBean bean=userDAO.findUser("kronon@gmail.com",  CryptographyLogic.encryptStr("Kronon1122"));
+		assertThat(bean.getUserName(),is("くろのす"));
 		assertThat(bean.getUserId(),is(1));
 	}
 	@org.junit.Test
@@ -30,7 +30,6 @@ public class Test {
 		int answer = 0;
 		answer = userDAO.createUser("くろのす", "kronon@gmail.com", "Kronon11");
 		assertThat(answer, is(1));
-		System.out.println(answer);
 	}
 	@org.junit.Test
 	public void getUserNameTest(){
@@ -39,8 +38,7 @@ public class Test {
 		UserDAO userDAO = new UserDAO(connection);
 		String answerStr = null;
 		answerStr = userDAO.getUserName(1);
-		assertThat(answerStr, is("杉"));
-		System.out.println(answerStr);
+		assertThat(answerStr, is("くろのす"));
 	}
 	@org.junit.Test
 	public void isBookingTest(){
@@ -48,9 +46,8 @@ public class Test {
 		Connection connection = connectionManager.getConnection();
 		UserDAO userDAO = new UserDAO(connection);
 		Boolean answerFlg;
-		answerFlg = userDAO.isBooking("sugi@gmail.com");
+		answerFlg = userDAO.isBooking("kronon@gmail.com");
 		assertThat(answerFlg, is(true));
-		System.out.println(answerFlg);
 	}
 
 }
