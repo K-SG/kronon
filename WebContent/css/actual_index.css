@@ -156,6 +156,7 @@ table{
 	max-width:60vw;
 	font-size:70%;
 	border-collapse:collapse;
+	table-layout: fixed;
 }
 
 #title-in-thead{
@@ -177,8 +178,8 @@ table td{
 
 #date-in-thead{
 	width:7vw;
-
 }
+
 
 .titles{
 /*     text-overflow: ellipsis;
@@ -197,7 +198,7 @@ table td{
 
 .contents{
 	overflow: hidden;
-	width:16vw;
+	width:16vw ;
 }
 
 .contents p{
@@ -258,7 +259,7 @@ table td{
 #right{
 	position:absolute;
 	top: 16vw;
-	right:10vw;
+	left:87vw;
 	cursor:pointer;
 }
 
