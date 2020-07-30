@@ -198,7 +198,7 @@
 			  </div>
 			  <a href="scheduledetail?scheduleId=${scheduleBean.scheduleId}"><div class="ok-button">OK</div></a>
 			  <div class="ng-button close-popup">キャンセル</div>
-			  <img src="/kronon/img/star/star_nomal.png" class="pop-img-top"> </div>
+			  <img src="/kronon/img/star/star_angry.png" class="pop-img-top"> </div>
 		  </div>
 		</div>
 		<!--本当に戻りますかポップアップここまで------------------------------------------------------------------->
