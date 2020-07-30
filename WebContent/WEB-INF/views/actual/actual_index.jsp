@@ -14,7 +14,7 @@
 	<%@ include file="/WEB-INF/views/layout/common/header.jsp"%>
 <article>
 	<div class="actual-search-area">
-	<form action = "../user/actualsearch" method = "post" id = "search-form" onsubmit="return false;">
+	<form action = "../user/actualsearch" method = "post" id = "search-form">
 		<div class="actual-search-date">
 			<div class="actual-input-font-lev1">日付</div>
 		</div>
