@@ -8,6 +8,19 @@
  <link rel="stylesheet" href="/kronon/css/schedule_new.css">
 <%@ include file="../layout/common/link.jsp" %>
 <title>予定登録</title>
+<script>
+    function selectboxChange() {
+        selindex = document.form.actual-hour.selectedIndex;
+        switch (selindex) {
+          case 12:
+          	document.form.actual-min.selectedIndex=1;
+          	document.form.actual-min.disabled=true;
+            break;
+  		default:
+  			document.form.actual-min.disabled=false;
+        }
+      }
+  </script>
 </head>
 <body>
 
