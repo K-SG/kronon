@@ -71,6 +71,7 @@ public class ScheduleDAO {
 	 * [説 明] 予定を登録する<br>
 	 * ※例外取得時にはRuntimeExceptionにラップし上位に送出する。<br>
 	 * [備 考] なし
+	 *
 	 * @param 予定
 	 * @return 登録件数
 	 */
