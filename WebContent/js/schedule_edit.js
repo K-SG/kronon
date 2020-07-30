@@ -82,7 +82,7 @@ $(function () {
     let lastDayOfMonth = new Date(year, month, 0).getDate();
 //    console.log(date,startHour,startMin,endHour,endMin,place,title,content);
 
-    if(date==""||startHour=='' || startMin=='' || endHour=='' || endMin=='' || place=='' || title==''){
+    if(startHour=='' || startMin=='' || endHour=='' || endMin=='' || place=='' || title==''){
     	popFlag='3';
     }else if(date==""){
     	//存在しない日付にした場合（2020/2/31）など
