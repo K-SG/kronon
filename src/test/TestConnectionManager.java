@@ -19,7 +19,7 @@ public class TestConnectionManager {
 			System.out.println(e.getMessage());
 		}
 	}*/
-	//2
+	//2番
 	@Test
 	public void CMtest2() {
 		try {
