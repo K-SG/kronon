@@ -71,6 +71,7 @@ $(function () {
 	    let place = document.getElementById('new-place').value;
 	    let title=document.getElementById('title').value;
 	    let content=document.getElementById('content').value;
+	    title=title.trim();
 
     let d = new Date(date);
     let weekday = '日月火水木金土'[d.getDay()];
