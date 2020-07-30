@@ -59,7 +59,7 @@
 				<div class="actual-regist-time-text">時間</div>
 				<div class="actual-regist-time">
 						<select name="actualMinute" id="actual-min">
-							<option value="00">00</option>
+							<option value="0">00</option>
 							<option value="15">15</option>
 							<option value="30">30</option>
 							<option value="45">45</option>
@@ -70,7 +70,7 @@
 			<div class="actual-regist-area-4">
 				<div class="actual-regist-font-lev1">コメント</div>
 					<div class="actual-regist-content">
-						<textarea name="comment" id="actual-comment" rows="13" cols="40" maxlength="1440" placeholder="予定の内容を1440字以内で入力してください"> <c:out value="${scheduleBean.comment}" /></textarea>
+						<textarea name="comment" id="actual-comment" rows="13" cols="40" maxlength="1440" placeholder="予定の内容を1440字以内で入力してください"><c:out value="${scheduleBean.comment}" /></textarea>
 					</div>
 				</div>
 		 	</div>
@@ -131,7 +131,7 @@
 			<div class="close-popup"> <i class="fa fa-2x fa-times"></i> </div>
 			<div class="pop-container-inner">
 			  <div class="message-container-large">
-				<h2 class="message-title">この内容で登録するよ。</h2>
+				<h2 class="message-title">この内容で更新するよ。</h2>
 				<table class="popup-table">
 				  <tr>
 					<th class="actual-pop-th">名前：</th>
