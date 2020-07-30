@@ -40,6 +40,7 @@ public class ActualDetailServlet extends HttpServlet {
 			// セッションからIdを取得
 			session = request.getSession();
 			userId = (int) session.getAttribute("userId");
+
 			scheduleId = Integer.parseInt(request.getParameter("scheduleId"));
 
 			connectionManager = new ConnectionManager();

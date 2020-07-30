@@ -41,14 +41,14 @@
 	<div>
 	<div class="title-content">
 	<form action = "../user/actualindex" method = "post" id = "left-form">
-		<img src="../img/left_button.png" alt="left"  id="left" >
+		<img src="../img/left_button.png" alt="left"  id="left"  class="triangle-button">
 		<input type = "hidden" name = "date" value = "${date}">
 		<input type = "hidden" name = "monthFlag" value = "0">
 	</form>
 	</div>
 	<div class="title-content">
 	<form action = "../user/actualindex" method = "post" id = "right-form">
-		<img src="../img/right_button.png" alt="right" id="right" >
+		<img src="../img/right_button.png" alt="right" id="right"  class="triangle-button">
 		<input type = "hidden" name = "date" id = "date_servlet" value = "${date}">
 		<input type = "hidden" name = "monthFlag" value = "1">
 	</form>

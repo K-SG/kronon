@@ -230,16 +230,23 @@ table td{
   color : rgb(51, 51, 51);
 }
 
+/* 月送りボタン共通 */
+.triangle-button {
+	width: 3vw;
+}
+
 /*月送りボタン*/
 #left{
 	position:absolute;
-	left:8vw;
+	top: 16vw;
+	left:10vw;
 	cursor:pointer;
 }
 
 #right{
 	position:absolute;
-	right:8vw;
+	top: 16vw;
+	right:10vw;
 	cursor:pointer;
 }
 
