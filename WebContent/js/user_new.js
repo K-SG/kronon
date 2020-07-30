@@ -92,4 +92,9 @@ $(function () {
       $('.next-popup').click(function () {
         location.href= "/kronon/user/calendar";
       });
+
+      $('#submit-user').click(function(){
+    	   $('#id_create_form').submit();
+    	   return;
+      })
 });
