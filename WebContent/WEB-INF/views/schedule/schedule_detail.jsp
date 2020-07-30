@@ -135,7 +135,7 @@
 
 
 				<div class="ng-button close-popup">キャンセル</div>
-				<img src="/kronon/img/kronon/kronon_question.png" class="pop-img">
+				<img src="/kronon/img/star/star_nomal.png" class="pop-img">
 				</form>
 			</div>
 		</div>
@@ -150,7 +150,7 @@
 					<p class=create-msg>削除が完了したよ</p>
 				</div>
 				<a href="scheduleshowall?date=${scheduleBean.scheduleDate}"><div class="ok-button next-popup">OK</div></a>
-				<img src="/kronon/img/kronon/kronon_question.png" class="pop-img">
+				<img src="/kronon/img/kronon/kronon_star.png" class="pop-img">
 			</div>
 		</div>
 	</div>
