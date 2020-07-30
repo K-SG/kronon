@@ -6,12 +6,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-
  <link rel="stylesheet" href="/kronon/css/actual_new.css">
 <%@ include file="../layout/common/link.jsp" %>
 <title>実績更新</title>
 </head>
 <body>
+
 <%@ include file="../layout/common/header.jsp" %>
 
 	<article>
@@ -91,8 +91,7 @@
 			<div class=actual-regist-button>
 			<!--更新ボタン---->
 				<div class=actual-regist-button-left>
-				<!-- <input type="button" class="ok-button large-popup-button" id="ok-button" value="更新" > -->
-				<div class="ok-button large-popup-button" id="ok-button" >更新</div>
+				<input type="button" class="ok-button large-popup-button" id="ok-button" value="更新" >
 				</div>
 
 			<!--キャンセルボタン----->
@@ -116,7 +115,7 @@
           <p class=new-msg></p>
         </div>
         <div class="ok-button close-popup">OK</div>
-        <img src="/kronon/img/kronon/kronon_question.png" class="pop-img kronon-question"> </div>
+        <img src="/kronon/img/kronon/kronon_komatta.png" class="pop-img"> </div>
       </div>
     </div>
    <!--エラーまたは完了ポップアップここまで-------------------------------------------------------------->
@@ -133,7 +132,7 @@
 			  </div>
 			  <a href="actualdetail?scheduleId=${scheduleBean.scheduleId}"><div class="ok-button">OK</div></a>
 			  <div class="ng-button close-popup">キャンセル</div>
-			  <img src="/kronon/img/star/star_angry.png" class="pop-img-top star-angry"> </div>
+			  <img src="/kronon/img/star/star_angry.png" class="pop-img-top"> </div>
 		  </div>
 		</div>
 		<!--本当に戻りますかポップアップここまで------------------------------------------------------------------->
@@ -177,7 +176,7 @@
 			 <!--  <input type="button" class="ok-button"  id="confirm-ok" value="OK"> -->
 			  <div class="ok-button"  id="confirm-ok" >OK</div>
 			  <div class="ng-button close-popup">キャンセル</div>
-			  <img src="/kronon/img/star/star_nomal.png" class="pop-img star-nomal"> </div>
+			  <img src="/kronon/img/kronon/kronon_question.png" class="pop-img"> </div>
 		  </div>
 		</div>
 		<!--内容確認ポップアップここまで----------------------------------------------------------------->
@@ -188,10 +187,9 @@
 				<div class="close-popup"><i class="fa fa-2x fa-times"></i></div>
 				<div class="pop-container-inner">
 					<div class="message-container"><p class=create-msg></p></div>
-
 					<div class="ok-button scheduleshowall-popup pop-actual">予定表画面へ</div>
 					<div class="ok-button actualindex-popup pop-actual">実績一覧へ</div>
-					<img src="/kronon/img/star/star_glass.png" class="pop-img-top star-glass">
+					<img src="/kronon/img/star/star_glass.png" class="pop-img-top">
 				</div>
 			</div>
 		</div>
