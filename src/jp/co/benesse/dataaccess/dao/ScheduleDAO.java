@@ -213,6 +213,14 @@ public class ScheduleDAO {
 
 		try {
 
+			if (title.contains("%")) {
+				title = title.replace("%", "\\%");
+			}
+
+			if (title.contains("'")) {
+				title = title.replace("'", "\\'");
+			}
+
 			title = "%" + title + "%";
 
 			sql = "SELECT * FROM SCHEDULE INNER JOIN PUBLIC.USER ON PUBLIC.USER.USER_ID = SCHEDULE.USER_ID "
@@ -343,6 +351,14 @@ public class ScheduleDAO {
 		ResultSet resultSet = null;
 
 		try {
+
+			if (title.contains("%")) {
+				title = title.replace("%", "\\%");
+			}
+
+			if (title.contains("'")) {
+				title = title.replace("'", "\\'");
+			}
 
 			title = "%" + title + "%";
 
