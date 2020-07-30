@@ -199,4 +199,45 @@ public class UserDAO {
 			}
 		}
 	}
+
+	/**
+	 * [機 能] 利用者カウントメソッド<br>
+	 * [説 明] テーブルに登録されているUserの人数をカウントする<br>
+	 * ※例外取得時にはRuntimeExceptionにラップし上位に送出する。<br>
+	 * [備 考] なし
+	 *
+	 * @param なし
+	 * @return 登録人数
+	 */
+	public int  countUser(){
+
+		int count = 0;
+		String sql = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+
+		try {
+			sql = "SELECT COUNT(*) FROM public.user";
+
+			preparedStatement = this.connection.prepareStatement(sql);
+
+			resultSet = preparedStatement.executeQuery();
+
+			while (resultSet.next()) {
+				count = resultSet.getInt(1);
+			}
+			return count;
+
+		} catch (SQLException e) {
+			throw new RuntimeException("'user'テーブルのSELECTに失敗しました", e);
+		} finally {
+			try {
+				if (preparedStatement != null) {
+					preparedStatement.close();
+				}
+			} catch (SQLException e) {
+				throw new RuntimeException("ステートメントの解放に失敗しました", e);
+			}
+		}
+	}
 }
