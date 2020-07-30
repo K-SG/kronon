@@ -75,6 +75,7 @@ input[type="text"]:focus {
 .user-create-button-return img {
 	width: min(100vh,5vw);
 	height: auto;
+	cursor: pointer;
 }
 
 .confirmMailView span {

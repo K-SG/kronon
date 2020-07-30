@@ -59,6 +59,10 @@ public class UserCreateServlet extends HttpServlet {
 			if (userDAO.isBooking(mail)) {
 				// メールアドレス重複のポップアップが出るようにフラグ立て
 				request.setAttribute("popFlag", 1);
+				//内容が保持されるように入力情報をセットする
+				request.setAttribute("username",userName);
+				request.setAttribute("mail",mail);
+				request.setAttribute("password",password);
 
 				// アカウント新規登録画面へ戻る。
 				dispatcher = request.getRequestDispatcher("/WEB-INF/views/user/user_new.jsp");
