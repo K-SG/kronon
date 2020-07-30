@@ -84,7 +84,7 @@ public class ScheduleDAO {
 		try {
 			sql = "INSERT INTO SCHEDULE (SCHEDULE_ID,USER_ID,SCHEDULE_DATE,"
 					+ "START_TIME,END_TIME,PLACE,TITLE,CONTENT,ACTUAL_TIME,DELETE_FLAG)"
-					+ "VALUES (NEXTVAL('SEQ_SCHEDULE'),?,?,?,?,?,?,?,1000,'0')";
+					+ "VALUES (NEXTVAL('SEQ_SCHEDULE'),?,?,?,?,?,?,?,10000,'0')";
 			preparedStatement = this.connection.prepareStatement(sql);
 
 			preparedStatement.setInt(1, scheduleBean.getUserId());
