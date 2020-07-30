@@ -185,10 +185,3 @@
 	font-size: 1vw;
 }
 
-/* 戻るボタン */
-.back-btn {
-	width: 4vw;
-	position: fixed;
-	left: 3vw;
-	top: 83vh;
-}

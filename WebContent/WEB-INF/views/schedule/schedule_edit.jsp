@@ -147,19 +147,19 @@
 	<div class="cancel-button"><img src="/kronon/img/back_buttom.png" alt="back-buttom" class="back-btn"></div>
 	<%-- <a href="scheduledetail?scheduleId=${scheduleBean.scheduleId}"> --%>
 
-  <!--エラーまたは完了ポップアップ------------------------------------------------------------------->
-  <div class="popup-wrapper error-popup">
-    <div class="pop-container">
-      <div class="close-popup"> <i class="fa fa-2x fa-times"></i> </div>
-      <div class="pop-container-inner">
-        <div class="message-container">
-          <p class=edit-msg></p>
-        </div>
-        <div class="ok-button close-popup">OK</div>
-        <img src="/kronon/img/kronon/kronon_komatta.png" class="pop-img"> </div>
-      </div>
-    </div>
-   <!--エラーまたは完了ポップアップここまで-------------------------------------------------------------->
+	  <!--エラーまたは完了ポップアップ------------------------------------------------------------------->
+	  <div class="popup-wrapper error-popup">
+	    <div class="pop-container">
+	      <div class="close-popup"> <i class="fa fa-2x fa-times"></i> </div>
+	      <div class="pop-container-inner">
+	        <div class="message-container">
+	          <p class=edit-msg></p>
+	        </div>
+	        <div class="ok-button close-popup">OK</div>
+	        <img src="/kronon/img/kronon/kronon_komatta.png" class="pop-img"> </div>
+	      </div>
+	    </div>
+	   <!--エラーまたは完了ポップアップここまで-------------------------------------------------------------->
 
 
 

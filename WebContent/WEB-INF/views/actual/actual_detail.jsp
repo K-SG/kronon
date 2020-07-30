@@ -67,9 +67,10 @@
     </div>
   </div>
 <div class="kronon-banzai"><img alt="banzai" src="/kronon/img/kronon/kronon_banzai.png"></div>
-<a href="actualindex"><div class="user-create-button-return">
-<img alt="戻る" src="/kronon/img/back_buttom.png"></div>
-</a>
+
+<!-- 戻るボタン -->
+<div><a href="../user/actualindex"><img src="/kronon/img/back_buttom.png" alt="戻る" class="back-btn"></a></div>
+
 
 <div class="flex_test-box">
     <div class="flex_test-item">

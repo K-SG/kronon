@@ -61,10 +61,10 @@
 	<div class="kronon-banzai">
 		<img alt="banzai" src="../img/kronon/kronon_banzai.png">
 	</div>
+
+
 <!-- 戻るボタン -->
-	<a href="scheduleshowall?date=${scheduleBean.scheduleDate}"><div class="user-create-button-return">
-			<img alt="戻る" src="/kronon/img/back_buttom.png"></div>
-	</a>
+	<div><a href="scheduleshowall?date=${scheduleBean.scheduleDate}"><img src="/kronon/img/back_buttom.png" alt="戻る" class="back-btn"></a></div>
 
 
 	<!-- sesseionスコープのuserIDとスケジュールのIDを比較.一致したときのみ表示 -->

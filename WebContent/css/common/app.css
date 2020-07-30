@@ -201,6 +201,7 @@ padding-top:1vh;
 img.logout-icon {
 	padding-top:1vh;
 	width: 100%;
+	cursor:pointer;
 }
 
 
@@ -239,4 +240,11 @@ footer{
 
 }
 
-
+/* 戻るボタン */
+.back-btn {
+	width: 5vw;
+	position: fixed;
+	left: 3vw;
+	top: 81vh;
+	cursor:pointer;
+}

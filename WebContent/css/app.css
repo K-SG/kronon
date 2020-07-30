@@ -217,3 +217,11 @@ footer{
 }
 
 
+/* 戻るボタン */
+.back-btn {
+	width: 5vw;
+	position: fixed;
+	left: 3vw;
+	top: 81vh;
+	cursor:pointer;
+}
