@@ -15,9 +15,9 @@ $(function() {
 	const contents = Array.from(document.getElementsByClassName("contents"));
 
 	for(let i = 0; i < estimateTimes.length; i++){
-		if(contents[i].textContent.length >= 24){
-			contents[i].textContent = contents[i].textContent.substring(0,22) + "...";
-		}
+//		if(contents[i].textContent.length >= 24){
+//			contents[i].textContent = contents[i].textContent.substring(0,22) + "...";
+//		}
 
 		//見積時間を分換算
 		let estimateTimeArray = estimateTimes[i].textContent.split(/\D/g);

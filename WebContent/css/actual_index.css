@@ -192,7 +192,15 @@ table td{
 }
 
 .contents{
+	overflow: hidden;
 	width:16vw;
+}
+
+.contents p{
+	display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
 }
 
 #schedule-date-hidden{
