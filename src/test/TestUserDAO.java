@@ -11,7 +11,7 @@ import jp.co.benesse.dataaccess.crypt.CryptographyLogic;
 import jp.co.benesse.dataaccess.dao.UserDAO;
 import jp.co.benesse.dataaccess.value.UserBean;
 
-public class Test {
+public class TestUserDAO {
 	//UserDAO
 	@org.junit.Test
 	public void userfindTest() {
