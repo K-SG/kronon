@@ -43,4 +43,10 @@ $(function () {
 
     });
 
+//    フォーム送信
+	  $('#schedule-delete-action').click((function(){
+		  $('#schedule-delete-form').submit();
+    	   return;
+	  }))
+
 });

@@ -95,7 +95,7 @@
 	<c:out value="${errorMsg}" />
 </div>
 
-<div id="actual-button" align = center>
+<div id="actual-button" class="ok-button" align = center>
 	実績確認へ
 </div>
 

@@ -155,12 +155,12 @@
 		<!--修正ボタン---->
 
 			<div class=schedule-regist-button-left>
-			<input type="button" class="ok-button large-popup-button" id="ok-button" value="修正" >
+				<div class="ok-button large-popup-button" id="ok-button" >登録</div>
 			</div>
 
 		<!--キャンセルボタン----->
 			<div class=schedule-regist-button-right>
-			<input type="button" class="ok-button cancel-button" id="cancel-button" value="キャンセル">
+				<div class="ok-button large-popup-button" id="cancel-button" >キャンセル</div>
 			</div>
 	  	</div>
 	  	<div class="clear"></div>
@@ -231,7 +231,7 @@
 				  </tr>
 				</table>
 			  </div>
-			  <input type="button" class="ok-button"  id="confirm-ok" value="OK">
+			  <div class="ok-button"  id="confirm-ok" >OK</div>
 			  <div class="ng-button close-popup">キャンセル</div>
 			  <img src="/kronon/img/star/star_nomal.png" class="pop-img"> </div>
 		  </div>

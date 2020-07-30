@@ -36,4 +36,11 @@ $(function () {
 	    window.location.href= "actualindex";
 	  });
 
+//  フォーム送信
+	  $('#actual-delete-action').click((function(){
+		  $('#actual-delete-form').submit();
+  	   return;
+	  }))
+
+
 });

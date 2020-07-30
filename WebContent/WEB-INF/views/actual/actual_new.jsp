@@ -89,12 +89,14 @@
 			<div class=actual-regist-button>
 			<!--登録ボタン---->
 				<div class=actual-regist-button-left>
-				<input type="button" class="ok-button large-popup-button" id="ok-button" value="登録" >
+				<!-- <input type="button" class="ok-button large-popup-button" id="ok-button" value="登録" > -->
+				<div class="ok-button large-popup-button" id="ok-button" >登録</div>
 				</div>
 
 			<!--キャンセルボタン----->
 				<div class=actual-regist-button-right>
-					<input type="button" class="ok-button cancel-button" id="cancel-button" value="キャンセル">
+					<!-- <input type="button" class="ok-button cancel-button" id="cancel-button" value="キャンセル"> -->
+					<div class="ok-button large-popup-button cancel-button" id="cancel-button" >キャンセル</div>
 				</div>
 			</div>
 			<div class="clear"></div>
@@ -169,7 +171,8 @@
 				  </tr>
 				</table>
 			  </div>
-			  <input type="button" class="ok-button"  id="confirm-ok" value="OK">
+			  <!-- <input type="button" class="ok-button"  id="confirm-ok" value="OK"> -->
+			  <div class="ok-button"  id="confirm-ok" >OK</div>
 			  <div class="ng-button close-popup">キャンセル</div>
 			  <img src="/kronon/img/kronon/kronon_question.png" class="pop-img"> </div>
 		  </div>
@@ -182,8 +185,8 @@
 				<div class="close-popup"><i class="fa fa-2x fa-times"></i></div>
 				<div class="pop-container-inner">
 					<div class="message-container"><p class=create-msg></p></div>
-					<div class="ok-button scheduleshowall-popup">予定表画面へ</div>
-					<div class="ok-button actualindex-popup">実績一覧へ</div>
+					<div class="ok-button scheduleshowall-popup pop-actual">予定表画面へ</div>
+					<div class="ok-button actualindex-popup pop-actual">実績一覧へ</div>
 					<img src="/kronon/img/star/star_glass.png" class="pop-img-top">
 				</div>
 			</div>

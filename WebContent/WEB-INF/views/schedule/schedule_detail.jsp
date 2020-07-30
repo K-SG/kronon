@@ -118,7 +118,7 @@
 						</tr>
 					</table>
 				</div>
-				<form action="http://localhost:8080/kronon/user/scheduledelete" method="post">
+				<form action="http://localhost:8080/kronon/user/scheduledelete" method="post" id="schedule-delete-form">
 					<input type="hidden" id="flag" value="${popFlag}">
 					<input type="hidden" name="scheduleId" value="${scheduleBean.scheduleId}">
 					<input type="hidden" name="userName" value="${scheduleBean.userName}">
@@ -131,7 +131,8 @@
 					<input type="hidden" name="content" value="${scheduleBean.content}">
 					<input type="hidden" name = "scheduleDate" value="${scheduleBean.scheduleDate}">
 
-					<button type='submit'class="ok-button" >OK</button>
+					<!-- <button type='submit'class="ok-button" >OK</button> -->
+					<div class="ok-button" id="schedule-delete-action">OK</div>
 
 
 				<div class="ng-button close-popup">キャンセル</div>
