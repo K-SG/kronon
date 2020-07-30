@@ -174,7 +174,7 @@
 			  </div>
 			  <input type="button" class="ok-button"  id="confirm-ok" value="OK">
 			  <div class="ng-button close-popup">キャンセル</div>
-			  <img src="/kronon/img/star/star_nomal.png" class="pop-img"> </div>
+			  <img src="/kronon/img/star/star_glass.png" class="pop-img"> </div>
 		  </div>
 		</div>
 		<!--内容確認ポップアップここまで----------------------------------------------------------------->
