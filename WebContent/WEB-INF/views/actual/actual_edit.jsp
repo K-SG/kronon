@@ -29,6 +29,7 @@
 			<input type="hidden" value="${scheduleBean.endTime}" id="set-end-time">
 			<input type="hidden" value="${scheduleBean.actualTime}" id="set-actual-time">
 			<input type="hidden" value="${scheduleBean.place}" id="set-place">
+			<input type="hidden" value="1" name="actual-flag">
 			<table class="actual-table">
 			<tr><td id="actual-date"><c:out value="${scheduleBean.scheduleDateActual}"/><span id="startTime" class="startTime"><c:out value="${scheduleBean.startTime}" /></span>～
 			<span id="endTime" class="endTime"><c:out value="${scheduleBean.endTime}" /></span></td><td id="actual-place"></td></tr>
