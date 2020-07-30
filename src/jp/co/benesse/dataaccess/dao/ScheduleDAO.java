@@ -734,7 +734,7 @@ public class ScheduleDAO {
 	public boolean isDeleted(int scheduleId) {
 
 		String sql = null;
-		String deleteFlag = null;
+		String deleteFlag = "";
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
 
