@@ -84,7 +84,6 @@
 					</div>
 					<div class="schedule-regist-time-text">分</div>
 				</div>
-
 				<div class="schedule-regist-area-1-block">
 					<div class="schedule-regist-font-lev1">終了時刻<span>*</span></div>
 					<div class="schedule-regist-time">
@@ -174,7 +173,7 @@
           <p class=new-msg></p>
         </div>
         <div class="ok-button close-popup">OK</div>
-        <img src="/kronon/img/kronon/kronon_komatta.png" class="pop-img komatta-img"> </div>
+        <img src="/kronon/img/kronon/kronon_question.png" class="pop-img komatta-img kronon-question"> </div>
       </div>
     </div>
    <!--エラーまたは完了ポップアップここまで-------------------------------------------------------------->
@@ -192,7 +191,7 @@
 			  </div>
 			  <a href="calendar"><div class="ok-button">OK</div></a>
 			  <div class="ng-button close-popup">キャンセル</div>
-			  <img src="/kronon/img/star/star_angry.png" class="pop-img-top"> </div>
+			  <img src="/kronon/img/star/star_angry.png" class="pop-img-top star-angry"> </div>
 		  </div>
 		</div>
 		<!--本当に戻りますかポップアップここまで------------------------------------------------------------------->
@@ -228,10 +227,11 @@
 			  <!-- <input type="button" class="ok-button"  id="confirm-ok" value="OK"> -->
 			  <div class="ok-button"  id="confirm-ok" >OK</div>
 			  <div class="ng-button close-popup">キャンセル</div>
-			  <img src="/kronon/img/kronon/kronon_question.png" class="pop-img"> </div>
+			  <img src="/kronon/img/star/star_nomal.png" class="pop-img star-nomal"> </div>
 		  </div>
 		</div>
 		<!--内容確認ポップアップここまで----------------------------------------------------------------->
+
 
 <!--登録完了ポップアップ------------------------------------------------------------------->
 		<div class="popup-wrapper complete-popup">
@@ -240,7 +240,7 @@
 				<div class="pop-container-inner">
 					<div class="message-container"><p class=create-msg></p></div>
 					<div class="ok-button next-popup">OK</div>
-					<img src="/kronon/img/kronon/kronon_star.png" class="pop-img">
+					<img src="/kronon/img/kronon/kronon_star.png" class="pop-img kronon-star">
 				</div>
 			</div>
 		</div>

@@ -32,6 +32,7 @@ public class UserCreateServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
+		int userCount = 0;
 		int result = 0;
 		String userName = null;
 		String mail = null;
@@ -59,14 +60,23 @@ public class UserCreateServlet extends HttpServlet {
 			if (userDAO.isBooking(mail)) {
 				// メールアドレス重複のポップアップが出るようにフラグ立て
 				request.setAttribute("popFlag", 1);
-				//内容が保持されるように入力情報をセットする
-				request.setAttribute("username",userName);
-				request.setAttribute("mail",mail);
-				request.setAttribute("password",password);
+				// 内容が保持されるように入力情報をセットする
+				request.setAttribute("username", userName);
+				request.setAttribute("mail", mail);
+				request.setAttribute("password", password);
 
 				// アカウント新規登録画面へ戻る。
 				dispatcher = request.getRequestDispatcher("/WEB-INF/views/user/user_new.jsp");
 				dispatcher.forward(request, response);
+				return;
+			}
+
+			userCount = userDAO.countUser();
+
+			//五人以上の利用者登録を無効
+			if (userCount >= 5) {
+				System.out.println("作りすぎ");
+				response.sendRedirect("login");
 				return;
 			}
 
@@ -94,12 +104,12 @@ public class UserCreateServlet extends HttpServlet {
 		} catch (RuntimeException e) {
 			connectionManager.rollback();
 			e.printStackTrace();
-			response.sendRedirect("../login");
+			response.sendRedirect("login");
 			return;
 		} catch (Exception e) {
 			connectionManager.rollback();
 			e.printStackTrace();
-			response.sendRedirect("../login");
+			response.sendRedirect("login");
 			return;
 		} finally {
 			connectionManager.closeConnection();

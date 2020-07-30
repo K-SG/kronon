@@ -46,7 +46,7 @@ pageEncoding="UTF-8"%>
           <p class=login_msg>メールアドレス・パスワードが違うよ。</p>
         </div>
         <div class="ok-button close-popup">OK</div>
-        <img src="img/kronon/kronon_question.png" class="pop-img"> </div>
+        <img src="img/kronon/kronon_question.png" class="pop-img kronon-question"> </div>
       </div>
     </div>
    <!--エラーポップアップここまで-------------------------------------------------------------->

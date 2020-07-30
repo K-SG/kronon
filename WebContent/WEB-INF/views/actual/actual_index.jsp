@@ -116,7 +116,7 @@
 					<p>日付の入力がおかしいよ</p>
 			</div>
 			<div class="ok-button close-popup">OK</div>
-			<img src="../img/kronon/kronon_question.png" class="pop-img">
+			<img src="../img/kronon/kronon_question.png" class="pop-img kronon-question">
 		</div>
 	</div>
 </div>
@@ -132,7 +132,7 @@
 					<p>日付かタイトルを入力してね</p>
 			</div>
 			<div class="ok-button close-popup">OK</div>
-			<img src="../img/kronon/kronon_question.png" class="pop-img">
+			<img src="../img/kronon/kronon_question.png" class="pop-img kronon-question">
 		</div>
 	</div>
 </div>

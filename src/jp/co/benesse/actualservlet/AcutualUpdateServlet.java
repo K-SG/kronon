@@ -69,8 +69,8 @@ public class AcutualUpdateServlet extends HttpServlet {
 			if (result != 1) {
 				throw new RuntimeException("更新できていない");
 			}
-
 			scheduleBean = scheduleDAO.getScheduleByScheduleId(scheduleId);
+
 
 			// 更新しましたポップアップのフラグをセット
 			request.setAttribute("popFlag", popFlag);

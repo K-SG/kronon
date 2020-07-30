@@ -12,6 +12,7 @@
 </head>
 <body>
 
+
 <%@ include file="/WEB-INF/views/layout/common/header.jsp" %>
 <article>
 
@@ -136,7 +137,7 @@
 
 
       <div class="ng-button close-popup">キャンセル</div>
-      <img src="/kronon/img/kronon/kronon_question.png" class="pop-img"> </div>
+      <img src="/kronon/img/star/star_nomal.png" class="pop-img star-nomal"> </div>
       </form>
   </div>
 </div>
@@ -150,7 +151,7 @@
         <p>削除が完了したよ！</p>
       </div>
     <div class="ok-button next-popup">OK</div>
-       <img src="/kronon/img/kronon/kronon_question.png" class="pop-img">
+       <img src="/kronon/img/kronon/kronon_star.png" class="pop-img kronon-star">
     </div>
   </div>
 </div>
