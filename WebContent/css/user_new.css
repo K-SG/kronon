@@ -1,5 +1,11 @@
 @CHARSET "UTF-8";
 
+article{
+  background-image: url(/kronon/img/background_img.png) !important;
+  background-size: cover;
+  height:80vh;
+}
+
 .create-user-content {
 	text-align: center;
 	font-size: 1.4vw;
