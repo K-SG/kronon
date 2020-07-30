@@ -85,7 +85,7 @@ article{
 /*OKボタン*/
 .ok-button {
   display: inline-block;
-  width: 10vw;
+  width: 10vw !important;
   padding: 0.8vw;
   background-color: #DE9B50;
   border: none;
@@ -100,7 +100,7 @@ article{
 /*NGボタン*/
 .ng-button {
   display: inline-block;
-  width: 10vw;
+  width: 10vw !important;
   padding: 0.8vw;
   background-color: #DE9B50;
 	opacity:0.5;
