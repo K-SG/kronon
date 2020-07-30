@@ -41,9 +41,9 @@ public class TestCalc {
 
 	@Test
 	public void testConvertActualDate() {
-		LocalDate date = LocalDate.now();
+		LocalDate date = Date.valueOf("2020-07-27").toLocalDate();
 		String s = Calc.convertActualDate(date);
-		assertThat(s,is("7/28(火)"));
+		assertThat(s,is("7/27(月)"));
 	}
 	@Test
 	public void testConvertActualDate2() {
@@ -53,7 +53,7 @@ public class TestCalc {
 	}
 /*	@Test
 	public void testConvertActualDate3() {
-		Date date = Date.valueOf("2020-47-28");
+		Date date = null;
 		String s = Calc.convertActualDate(date);
 		assertThat(s,is("RuntimeException"));
 	}*/

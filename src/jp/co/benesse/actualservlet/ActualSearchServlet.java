@@ -89,6 +89,9 @@ public class ActualSearchServlet extends HttpServlet {
 				throw new RuntimeException("不正な検索ワード");
 			}
 
+			for(ScheduleBean s : scheduleBeanList){
+				System.out.println(s);
+			}
 			if (scheduleBeanList.size() == 0) {
 				errorMsg = "検索結果は0件でした";
 				request.setAttribute("errorMsg", errorMsg);
