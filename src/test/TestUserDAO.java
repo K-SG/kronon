@@ -57,6 +57,6 @@ public class TestUserDAO {
 		UserDAO userDAO = new UserDAO(connection);
 		List<Integer> countUser = null;
 		countUser = userDAO.countUser();
-		assertThat(countUser.size(), is(6));//listが5件返される
+		assertThat(countUser.size(), is(5));//listが5件返される
 	}
 }
