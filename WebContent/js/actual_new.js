@@ -63,7 +63,7 @@ $(function () {
     	popFlag='5';
     }
     if(popFlag==='3'){
-        $('.new-msg').html('実績時間を入力してね');
+        $('.new-msg').html('実績時間を入力してね！');
         $('.error-popup').fadeIn();
         return;
     }else if(popFlag==='5'){

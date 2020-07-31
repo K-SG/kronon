@@ -128,7 +128,7 @@
 			<div class="close-popup"><img src="/kronon/img/close_button_orange.png" alt="閉じる" class="back-button"></div>
 			<div class="pop-container-inner">
 			  <div class="message-container">
-				<p>内容は保存されないよ。</p>
+				<p>内容は保存されないよ！</p>
 				<h2 class="message-title">本当に戻る？</h2>
 			  </div>
 			  <a href="scheduledetail?scheduleId=${scheduleBean.scheduleId}"><div class="ok-button">OK</div></a>
@@ -145,7 +145,7 @@
 			<div class="close-popup"> <img src="/kronon/img/close_button_orange.png" alt="閉じる" class="back-button"> </div>
 			<div class="pop-container-inner">
 			  <div class="message-container-large">
-				<h2 class="message-title">この内容で登録するよ。</h2>
+				<h2 class="message-title">この内容で登録するよ！</h2>
 				<table class="popup-table">
 				  <tr>
 					<th class="actual-pop-th">名前：</th>
