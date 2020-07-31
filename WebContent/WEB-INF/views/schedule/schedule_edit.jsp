@@ -155,7 +155,7 @@
 		<!--修正ボタン---->
 
 			<div class=schedule-regist-button-left>
-				<div class="ok-button large-popup-button" id="ok-button" >登録</div>
+				<div class="ok-button large-popup-button" id="ok-button" >修正</div>
 			</div>
 
 		<!--キャンセルボタン----->
