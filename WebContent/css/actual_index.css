@@ -266,7 +266,8 @@ table td{
 /*エラーメッセージ*/
 #error-message{
 	margin-left:25vw;
-	margin-top: 5vw;
+	margin-top: 6vw;
+	margin-bottom:1.5vw;
 	color:#454545;
 }
 
@@ -280,7 +281,12 @@ table td{
 }
 
 #kronon-prin-img{
-	float:right;
-	transform:scale(0.6);
+	/* float:right;
+	transform:scale(0.6); */
+	position:absolute;
+	right:4vw;
+	bottom:4vw;
+	width:25vw;
+
 }
 
