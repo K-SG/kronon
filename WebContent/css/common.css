@@ -72,6 +72,13 @@ article{
   width: 9vw;
 }
 
+/*この内容で○○するよポップアップ*/
+.star-nomal{
+  right: 0vw !important;
+  bottom: 0vw !important;
+  width: 6vw !important;
+}
+
 .pop-img-star{
   background-image: url(image.png);
   background-repeat: no-repeat;
