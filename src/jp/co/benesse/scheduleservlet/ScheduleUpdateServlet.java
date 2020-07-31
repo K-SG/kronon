@@ -62,9 +62,17 @@ public class ScheduleUpdateServlet extends HttpServlet {
 			scheduleId = Integer.parseInt(scheduleIdStr);
 			scheduleDate = request.getParameter("scheduleDate");
 			startTimeHour = request.getParameter("startTimeHour");
+			if(startTimeHour.equals("20")){
+			startTimeMin = "00";
+			}else{
 			startTimeMin = request.getParameter("startTimeMin");
+			}
 			endTimeHour = request.getParameter("endTimeHour");
+			if(endTimeHour.equals("20")){
+			endTimeMin = "00";
+			}else{
 			endTimeMin = request.getParameter("endTimeMin");
+			}
 			place = request.getParameter("place");
 			title = request.getParameter("title");
 			content = request.getParameter("content");
@@ -143,8 +151,9 @@ public class ScheduleUpdateServlet extends HttpServlet {
 			dispatcher.forward(request, response);
 			return;
 		} finally {
-			connectionManager.closeConnection();
+//			connectionManager.closeConnection();
 		}
+
 
 	}
 

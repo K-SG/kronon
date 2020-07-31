@@ -157,7 +157,7 @@
 			<!--キャンセルボタン----->
 				<div class=schedule-regist-button-right>
 				<!-- <input type="button" class="ok-button" id="cancel-button" value="キャンセル"> -->
-				<div class="ok-button large-popup-button" id="cancel-button" >キャンセル</div>
+				<div class="ok-button large-popup-button cancel-button" id="cancel-button" >キャンセル</div>
 				</div>
 			</div>
 			<div class="clear"></div>
