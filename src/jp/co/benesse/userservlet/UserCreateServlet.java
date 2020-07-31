@@ -79,6 +79,7 @@ public class UserCreateServlet extends HttpServlet {
 				//５人以上はアカウント作れないよ。管理者に問い合わせて削除してもらってね
 				popFlag = "3";
 				request.setAttribute("popFlag", popFlag);
+				request.setAttribute("preUserCount", userCount);
 				dispatcher = request.getRequestDispatcher("/WEB-INF/views/login/login.jsp");
 				dispatcher.forward(request, response);
 				return;
