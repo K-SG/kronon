@@ -1,5 +1,9 @@
 /* CSS Document */
 /* @import url(sanitize.css); */
+/*枠線*/
+:focus {
+    outline: none;
+}
 
 /*本体*/
 body {
@@ -112,11 +116,6 @@ ul.nav li {
   display: inline-block;
   text-align: center;
   font-size:min(3.5vh,2vw);
-  padding-top:2vh;
-  padding-bottom:2vh;
-  padding-right:2vh;
-  padding-left:2vh;
-  margin-top: 0;
 }
 
 
@@ -124,6 +123,10 @@ ul.nav li a {
 	display: block;
 	text-decoration:none;
 	color:#FFFFFF;
+	padding-top:2vh;
+   	padding-bottom:2vh;
+   	padding-right:2vh;
+   	padding-left:2vh;
 }
 
 ul.nav li:hover {
