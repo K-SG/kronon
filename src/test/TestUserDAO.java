@@ -5,6 +5,7 @@ import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
 
 import java.sql.Connection;
+import java.util.List;
 
 import jp.co.benesse.dataaccess.cm.ConnectionManager;
 import jp.co.benesse.dataaccess.crypt.CryptographyLogic;
@@ -49,5 +50,13 @@ public class TestUserDAO {
 		answerFlg = userDAO.isBooking("kronon@gmail.com");
 		assertThat(answerFlg, is(true));
 	}
-
+	@org.junit.Test
+	public void userCountTest(){
+		ConnectionManager connectionManager = new ConnectionManager();
+		Connection connection = connectionManager.getConnection();
+		UserDAO userDAO = new UserDAO(connection);
+		List<Integer> countUser = null;
+		countUser = userDAO.countUser();
+		assertThat(countUser.size(), is(6));//listが5件返される
+	}
 }
