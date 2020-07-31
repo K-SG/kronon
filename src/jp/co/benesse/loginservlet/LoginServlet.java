@@ -23,9 +23,38 @@ public class LoginServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/views/login/login.jsp");
-		dispatcher.forward(request, response);
-		return;
+
+		int preUserCount = 0;
+		ConnectionManager connectionManager = null;
+		UserDAO userDAO = null;
+		Connection connection = null;
+		RequestDispatcher dispatcher = null;
+		HttpSession session = null;
+
+		try {
+			connectionManager = new ConnectionManager();
+			connection = connectionManager.getConnection();
+			userDAO = new UserDAO(connection);
+			preUserCount = userDAO.countUser();
+
+			session = request.getSession();
+			session.setAttribute("preUserCount", preUserCount);
+
+			dispatcher = request.getRequestDispatcher("WEB-INF/views/login/login.jsp");
+			dispatcher.forward(request, response);
+			return;
+
+		} catch (RuntimeException e) {
+			e.printStackTrace();
+			response.sendRedirect("login");
+			return;
+		} catch (Exception e) {
+			e.printStackTrace();
+			response.sendRedirect("login");
+			return;
+		} finally {
+			connectionManager.closeConnection();
+		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
