@@ -223,11 +223,11 @@
 				  </tr>
 				  <tr>
 					<th>タイトル：</th>
-					<td id="title-msg"></td>
+					<td id="title-msg" class="new-line"></td>
 				  </tr>
 				  <tr>
 					<th class="last-table">内容：</th>
-					<td class="last-table" id="content-msg"></td>
+					<td class="last-table new-line" id="content-msg"></td>
 				  </tr>
 				</table>
 			  </div>

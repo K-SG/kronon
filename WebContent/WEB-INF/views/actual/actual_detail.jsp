@@ -47,20 +47,14 @@
         </tr>
 
         <tr>
-          <td colspan="2">
-            タイトル：<c:out value="${scheduleBean.title}" />
-          </td>
+          <td colspan="2" >タイトル：<c:out value="${scheduleBean.title}" /></td>
         </tr>
 
         <tr>
-          <td colspan="2">
-            内容：<c:out value="${scheduleBean.content}" />
-          </td>
+          <td colspan="2" >内容：<c:out value="${scheduleBean.content}" /></td>
         </tr>
         <tr>
-          <td colspan="2">
-            コメント：<c:out value="${scheduleBean.comment}" />
-          </td>
+          <td colspan="2"  class="new-line" >コメント：<c:out value="${scheduleBean.comment}" /></td>
         </tr>
 
       </table>
@@ -115,7 +109,7 @@
 
           <tr>
             <th class="last-table">コメント：</th>
-            <td class="last-table"><c:out value="${scheduleBean.comment}" /></td>
+            <td class="last-table new-line"><c:out value="${scheduleBean.comment}" /></td>
           </tr>
         </table>
       </div>

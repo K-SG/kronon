@@ -40,8 +40,12 @@
 .schedule_detail td{
   padding: 1vw;
   border: 0.2vw white solid;
-  	word-wrap: break-word;
-	word-break : break-all;
+  word-wrap: break-word;
+  word-break : break-all;
+}
+
+.new-line{
+	white-space: pre-wrap;
 }
 
 .show-place1{

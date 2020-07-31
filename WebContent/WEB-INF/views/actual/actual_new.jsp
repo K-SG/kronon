@@ -169,7 +169,7 @@
 				  </tr>
 				  	<tr>
 					<th class="last-table actual-pop-th">コメント：</th>
-					<td class="last-table" id="comment-msg"></td>
+					<td class="last-table new-line" id="comment-msg"></td>
 				  </tr>
 				</table>
 			  </div>

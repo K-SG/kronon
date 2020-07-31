@@ -209,9 +209,7 @@
 							</tr>
 							<tr>
 								<th class="actual-pop-th">タイトル：</th>
-								<td id="title-msg"><p>
-										<c:out value="${scheduleBean.title}" />
-									</p></td>
+								<td id="title-msg"><p><c:out value="${scheduleBean.title}" /></p></td>
 							</tr>
 							<tr>
 								<th class="actual-pop-th">内容：</th>
@@ -221,7 +219,7 @@
 							</tr>
 							<tr>
 								<th class="last-table actual-pop-th">コメント：</th>
-								<td class="last-table" id="comment-msg"></td>
+								<td class="last-table new-line" id="comment-msg"></td>
 							</tr>
 						</table>
 					</div>

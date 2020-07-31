@@ -46,11 +46,11 @@
 				</tr>
 
 				<tr>
-					<td colspan="2">タイトル：<c:out value="${scheduleBean.title}" /></td>
+					<td class="new-line" colspan="2">タイトル：<c:out value="${scheduleBean.title}" /></td>
 				</tr>
 
 				<tr>
-					<td colspan="2">内容：<c:out value="${scheduleBean.content}" /></td>
+					<td class="new-line" colspan="2">内容：<c:out value="${scheduleBean.content}" /></td>
 				</tr>
 
 			</table>
@@ -109,11 +109,11 @@
 						</tr>
 						<tr>
 							<th>タイトル：</th>
-							<td><span class="actual-input-area-4"><c:out value="${scheduleBean.title}" /></span></td>
+							<td class="new-line"><span class="actual-input-area-4"><c:out value="${scheduleBean.title}" /></span></td>
 						</tr>
 						<tr>
 							<th class="last-table">内容：</th>
-							<td class="last-table"><span class="actual-input-area-4"><c:out
+							<td class="last-table new-line"><span class="actual-input-area-4"><c:out
 									value="${scheduleBean.content}" /></span></td>
 						</tr>
 					</table>
