@@ -29,7 +29,6 @@ pageEncoding="UTF-8"%>
         <input type="button" class="login-button" value="ログイン">
         </form>
 
-
       <div class="login_account">
         アカウントを持っていないかな？
       </div>

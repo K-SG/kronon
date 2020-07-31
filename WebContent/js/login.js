@@ -17,7 +17,6 @@ $(function () {
 	  	}
 	});
 
-
   /*新規登録ボタンを押下した際のユーザー数チェックとポップアップ表示*/
 
   $('.register-button').click(function () {
