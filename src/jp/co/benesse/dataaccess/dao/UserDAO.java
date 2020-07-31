@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import jp.co.benesse.dataaccess.value.UserBean;
 
@@ -202,31 +204,34 @@ public class UserDAO {
 
 	/**
 	 * [機 能] 利用者カウントメソッド<br>
-	 * [説 明] テーブルに登録されているUserの人数をカウントする<br>
+	 * [説 明] テーブルに登録されているUserのIdを取得する<br>
 	 * ※例外取得時にはRuntimeExceptionにラップし上位に送出する。<br>
 	 * [備 考] なし
 	 *
 	 * @param なし
-	 * @return 登録人数
+	 * @return 利用者IDリスト
 	 */
-	public int  countUser(){
+	public List<Integer>  countUser(){
 
-		int count = 0;
+		int userId = 0;
 		String sql = null;
+		List<Integer> userIdList = null;
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
 
 		try {
-			sql = "SELECT COUNT(*) FROM public.user";
+			sql = "SELECT USER_ID FROM PUBLIC.USER ORDER BY USER_ID";
 
 			preparedStatement = this.connection.prepareStatement(sql);
 
 			resultSet = preparedStatement.executeQuery();
 
+			userIdList = new ArrayList<>();
 			while (resultSet.next()) {
-				count = resultSet.getInt(1);
+				userId = resultSet.getInt("USER_ID");
+				userIdList.add(userId);
 			}
-			return count;
+			return userIdList;
 
 		} catch (SQLException e) {
 			throw new RuntimeException("'user'テーブルのSELECTに失敗しました", e);

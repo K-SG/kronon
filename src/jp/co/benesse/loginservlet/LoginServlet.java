@@ -35,7 +35,7 @@ public class LoginServlet extends HttpServlet {
 			connectionManager = new ConnectionManager();
 			connection = connectionManager.getConnection();
 			userDAO = new UserDAO(connection);
-			preUserCount = userDAO.countUser();
+			preUserCount = userDAO.countUser().size();
 
 			session = request.getSession();
 			session.setAttribute("preUserCount", preUserCount);
@@ -83,7 +83,7 @@ public class LoginServlet extends HttpServlet {
 			connection = connectionManager.getConnection();
 			userDAO = new UserDAO(connection);
 			userBean = userDAO.findUser(mail, hash);
-			userCount = userDAO.countUser();
+			userCount = userDAO.countUser().size();
 
 			if (userBean == null) {
 				request.setAttribute("popFlag", 2);
