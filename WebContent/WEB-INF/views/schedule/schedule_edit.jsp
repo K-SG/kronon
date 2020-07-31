@@ -8,30 +8,6 @@
  <link rel="stylesheet" href="/kronon/css/schedule_new.css">
 <%@ include file="../layout/common/link.jsp" %>
 <title>予定修正</title>
-<script>
-	    function selectboxChange1() {
-	        let selindex = document.form.starthour.selectedIndex;
-	        switch (selindex) {
-	          case 12:
-	          	document.form.startminutes.selectedIndex=0;
-	          	document.form.startminutes.disabled=true;
-	            break;
-	  		default:
-	  			document.form.startminutes.disabled=false;
-	        }
-	      }
-	    function selectboxChange2() {
-		        let selindex = document.form.endhour.selectedIndex;
-		        switch (selindex) {
-		          case 12:
-		          	document.form.endminutes.selectedIndex=0;
-		          	document.form.endminutes.disabled=true;
-		            break;
-		  		default:
-		  			document.form.endminutes.disabled=false;
-		        }
-		      }
-</script>
 </head>
 <body>
 
