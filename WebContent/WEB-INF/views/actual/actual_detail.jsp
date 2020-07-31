@@ -12,7 +12,6 @@
 </head>
 <body>
 
-
 <%@ include file="/WEB-INF/views/layout/common/header.jsp" %>
 <article>
 

@@ -199,6 +199,6 @@
 	</article>
 <%@ include file="../layout/common/footer.jsp" %>
 <script src="/kronon/js/actual_new.js"></script>
-<script src="js/common.js"></script>
+<script src="/kronon/js/common/common.js"></script>
 </body>
 </html>
