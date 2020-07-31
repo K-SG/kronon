@@ -59,6 +59,7 @@ public class ScheduleShowAllServlet extends HttpServlet {
 		List<String> userNameList = null;
 		List<ArrayList<ScheduleBean>> getOneDayScheduleLists = null;
 		List<ScheduleBean> getOneDayScheduleList = null;
+		List<Integer> userIdList = null;
 		Connection connection = null;
 		HttpSession session = null;
 		RequestDispatcher dispatcher = null;
@@ -111,14 +112,15 @@ public class ScheduleShowAllServlet extends HttpServlet {
 			getOneDayScheduleList = scheduleDAO.getOneDaySchedule(scheduleDate, userId);
 			getOneDayScheduleLists.add((ArrayList<ScheduleBean>) getOneDayScheduleList);
 			userName = userDAO.getUserName(userId);
+			userIdList = userDAO.countUser();
 			userNameList.add(userName);
 
 			// ログインユーザー以外の予定を取得
-			for (int i = 1; i <= userCount; i++) {
-				if (i != userId) {
-					getOneDayScheduleList = scheduleDAO.getOneDaySchedule(scheduleDate, i);
+			for (int i = 0; i < userIdList.size(); i++) {
+				if (userIdList.get(i) != userId) {
+					getOneDayScheduleList = scheduleDAO.getOneDaySchedule(scheduleDate, userIdList.get(i));
 					getOneDayScheduleLists.add((ArrayList<ScheduleBean>) getOneDayScheduleList);
-					userName = userDAO.getUserName(i);
+					userName = userDAO.getUserName(userIdList.get(i));
 					userNameList.add(userName);
 				}
 			}
