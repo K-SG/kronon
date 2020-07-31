@@ -67,7 +67,6 @@ input[type="text"]:focus {
     font-size: 1.5vw;
 }
 
-
 .register-button {
   display: inline-block;
   width: 15.5vw;
@@ -81,4 +80,5 @@ input[type="text"]:focus {
   margin-bottom: 8vh;
   cursor: pointer;
   font-size: 1.5vw;
+  text-align: center;
 }
