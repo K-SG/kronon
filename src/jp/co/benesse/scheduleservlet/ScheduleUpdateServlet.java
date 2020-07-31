@@ -154,6 +154,7 @@ public class ScheduleUpdateServlet extends HttpServlet {
 //			connectionManager.closeConnection();
 		}
 
+
 	}
 
 }
