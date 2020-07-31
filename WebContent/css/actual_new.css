@@ -5,6 +5,11 @@ article{
 	margin-bottom:10vw;;
 }
 
+textarea::placeholder {
+  color: #AAA !important;
+  font-weight: normal !important;
+}
+
 /*予定登録ルーズリーフエリアの枠*/
 .actual-regist-area
 {

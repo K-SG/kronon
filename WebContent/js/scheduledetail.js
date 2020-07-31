@@ -13,7 +13,7 @@ $(function () {
 
 	//実績時間未入力（今回はdefaultで10000を格納）の場合は「-」に書き換え
 	if(actualTimeMinute > 1500){
-		document.getElementById("actual-time-z").textContent = "実績時間：　　　―";
+		document.getElementById("actual-time-z").textContent = "実績時間：　　―";
 	}
 
 	const stTime = startTime.substring(0,5);
