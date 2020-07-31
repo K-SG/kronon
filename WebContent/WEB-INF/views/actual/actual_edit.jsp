@@ -91,7 +91,7 @@
 			<div class=actual-regist-button>
 			<!--更新ボタン---->
 				<div class=actual-regist-button-left>
-				<input type="button" class="ok-button large-popup-button" id="ok-button" value="更新" >
+					<div class="ok-button large-popup-button" id="ok-button" >更新</div>
 				</div>
 
 			<!--キャンセルボタン----->
