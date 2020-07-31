@@ -229,7 +229,7 @@
 					<div class="ok-button" id="confirm-ok">OK</div>
 					<div class="ng-button close-popup">キャンセル</div>
 					<img src="/kronon/img/star/star_nomal.png"
-						class="pop-img star-nomal">
+						class="pop-large-img-top star-nomal">
 				</div>
 			</div>
 		</div>
