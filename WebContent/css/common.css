@@ -176,8 +176,15 @@ article{
 	opacity:0.5;
   cursor: pointer;
 }
-
-
+/*閉じるボタン画像*/
+.back-button{
+  position: absolute;
+  top: 2vw;
+  right: 2vw;
+  opacity:0.5;
+  cursor: pointer;
+  width:2vw;
+}
 
 
 .popup-table{
