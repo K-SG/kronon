@@ -76,7 +76,9 @@ article{
 .star-nomal{
   right: 0vw !important;
   bottom: 0vw !important;
-  width: 6vw !important;
+  margin-top: 3vh;
+  margin-left: 1vw;
+  width: 5vw !important;
 }
 
 .pop-img-star{
