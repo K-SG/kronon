@@ -30,7 +30,7 @@
 	</div>
 	<div class="popup-wrapper back-popup">
   <div class="pop-container">
-    <div class="close-popup"> <i class="fa fa-2x fa-times"></i> </div>
+    <div class="close-popup"> <img src="/kronon/img/close_button_orange.png" alt="閉じる" class="back-button"> </div>
     <div class="pop-container-inner">
       <div class="message-container">
         <p> </p><br>
