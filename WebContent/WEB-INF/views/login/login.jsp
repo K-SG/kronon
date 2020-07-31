@@ -56,7 +56,7 @@ pageEncoding="UTF-8"%>
   </div>
     </article>
 
-    <script src="js/common.js"></script>
+    <script src="js/common/common.js"></script>
     <script src="js/login.js"></script>
   </body>
   </html>

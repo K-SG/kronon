@@ -151,3 +151,25 @@ $(function () {
   });
 
 });
+function selectboxChange1() {
+    let selindex = document.form.starthour.selectedIndex;
+    switch (selindex) {
+      case 12:
+      	document.form.startminutes.selectedIndex=0;
+      	document.form.startminutes.disabled=true;
+        break;
+		default:
+			document.form.startminutes.disabled=false;
+    }
+  }
+function selectboxChange2() {
+        let selindex = document.form.endhour.selectedIndex;
+        switch (selindex) {
+          case 12:
+          	document.form.endminutes.selectedIndex=0;
+          	document.form.endminutes.disabled=true;
+            break;
+  		default:
+  			document.form.endminutes.disabled=false;
+        }
+      }
