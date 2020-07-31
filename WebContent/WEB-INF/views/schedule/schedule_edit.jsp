@@ -218,7 +218,7 @@
 		<!--登録完了ポップアップ------------------------------------------------------------------->
 		<div class="popup-wrapper complete-popup">
 			<div class="pop-container">
-				<div class="close-popup"><img src="/kronon/img/close_button_orange.png" alt="閉じる" class="back-button"></i></div>
+				<div class="close-popup"><img src="/kronon/img/close_button_orange.png" alt="閉じる" class="back-button"></div>
 				<div class="pop-container-inner">
 					<div class="message-container"><p class=create-msg></p></div>
 					<div class="ok-button next-popup">OK</div>

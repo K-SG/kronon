@@ -4,12 +4,9 @@
 <!DOCTYPE html>
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link href="/kronon/css/app.css" rel="stylesheet" type="text/css">
-<link href="/kronon/css/common.css" rel="stylesheet" type="text/css">
-<link href="../css/common.css" rel="stylesheet" type="text/css">
+<link href="/kronon/css/common/app.css" rel="stylesheet" type="text/css">
+<link href="/kronon/css/common/common.css" rel="stylesheet" type="text/css">
 <link href="/kronon/css/user_new.css" rel="stylesheet" type="text/css">
-<link href="../css/user_new.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <head>
 <title>アカウント作成</title>
@@ -109,9 +106,7 @@
 		<div class="user-create-button-return"><img alt="戻る" src="/kronon/img/back_buttom.png" class="back-popup-button"></div>
 	</article>
 
-	<script src="js/common.js"></script>
-	<script src="../js/common.js"></script>
+	<script src="js/common/common.js"></script>
 	<script src="js/user_new.js"></script>
-	<script src="../js/user_new.js"></script>
 </body>
 </html>
