@@ -77,7 +77,6 @@ public class UserCreateServlet extends HttpServlet {
 			//五人以上の利用者登録を無効
 			if (userCount >= 5) {
 				//５人以上はアカウント作れないよ。管理者に問い合わせて削除してもらってね
-				//というポップアップを表示するフラグをセット
 				popFlag = "3";
 				request.setAttribute("popFlag", popFlag);
 				dispatcher = request.getRequestDispatcher("/WEB-INF/views/login/login.jsp");
