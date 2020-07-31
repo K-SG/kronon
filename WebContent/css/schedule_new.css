@@ -243,14 +243,10 @@ textarea::placeholder {
 
 /*くろのんバンザイ画像の配置*/
 .kronon-banzai img{
-	position:absolute;
-	top:16.5vw;
-	left:53vw;
 	width: 17vw;
-}
-
-.kronon-banzai{
-	position:fixed;
+	position: fixed;
+	right: 2vw;
+	bottom: 6vh;
 }
 
 /*ボタン配置*/
@@ -301,6 +297,7 @@ textarea::placeholder {
   text-align: center;
   font-size: 1.5vw;
 }
+
 
 .komatta-img{
 	width:7vw !important;

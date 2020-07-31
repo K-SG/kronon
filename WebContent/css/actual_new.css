@@ -274,20 +274,13 @@ textarea::placeholder {
 	padding:0.5vw 0.5vw;
 }
 
-/*くろのんバンザイ画像の配置*/
+/* ばんざいくろのん */
 .kronon-banzai img{
-	position:absolute;
-	/* top:18vw; */
-	top:16.5vw;
-	left:53vw;
 	width: 17vw;
-
+	position: fixed;
+	right: 2vw;
+	bottom: 6vh;
 }
-
-.kronon-banzai{
-	position:fixed;
-}
-
 
 /*ボタン配置*/
 .actual-regist-button{

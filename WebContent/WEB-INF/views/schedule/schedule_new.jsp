@@ -145,8 +145,6 @@
 			</div>
 		  </div>
 
-			<div class="kronon-banzai"><img alt="banzai" src="/kronon/img/kronon/kronon_banzai.png"></div>
-
 			<div class=schedule-regist-button>
 			<!--登録ボタン---->
 				<div class=schedule-regist-button-left>
@@ -163,6 +161,9 @@
 			<div class="clear"></div>
 	 	 </div>
 	</form>
+
+	<div class="kronon-banzai"><img alt="banzai" src="/kronon/img/kronon/kronon_banzai.png"></div>
+
 
   <!--エラーまたは完了ポップアップ------------------------------------------------------------------->
   <div class="popup-wrapper error-popup">

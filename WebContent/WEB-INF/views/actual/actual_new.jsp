@@ -85,7 +85,7 @@
 					</div>
 				</div>
 		 	</div>
-			<div class="kronon-banzai"><img alt="banzai" src="/kronon/img/kronon/kronon_banzai.png"></div>
+			<!-- <div class="kronon-banzai"><img alt="banzai" src="/kronon/img/kronon/kronon_banzai.png"></div> -->
 			<div class=actual-regist-button>
 			<!--登録ボタン---->
 				<div class=actual-regist-button-left>
@@ -104,6 +104,7 @@
 		<!-- 戻るボタン -->
 	<div class="cancel-button"><img src="/kronon/img/back_buttom.png" alt="back-buttom" class="back-btn"></div>
 
+	<div class="kronon-banzai"><img alt="banzai" src="/kronon/img/kronon/kronon_banzai.png"></div>
 
   <!--エラーまたは完了ポップアップ------------------------------------------------------------------->
   <div class="popup-wrapper error-popup">
