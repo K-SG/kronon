@@ -1,4 +1,28 @@
+function selectboxChange1() {
+        let selindex = document.form.starthour.selectedIndex;
+        switch (selindex) {
+          case 12:
+          	document.form.startminutes.selectedIndex=0;
+          	document.form.startminutes.disabled=true;
+            break;
+  		default:
+  			document.form.startminutes.disabled=false;
+        }
+}
+function selectboxChange2() {
+	        let selindex = document.form.endhour.selectedIndex;
+	        switch (selindex) {
+	          case 12:
+	          	document.form.endminutes.selectedIndex=0;
+	          	document.form.endminutes.disabled=true;
+	            break;
+	  		default:
+	  			document.form.endminutes.disabled=false;
+	        }
+}
+
 $(function () {
+
 
 	window.onload = function () {
 		/*変更前の情報を事前に入力された状態にしておくために必要な変数*/
@@ -12,6 +36,13 @@ $(function () {
 	  let place = document.getElementById('set-place').value;
 
 	  console.log(startHour,startMin,endMin);
+
+	  if(endHour=="20"){
+		  document.form.endminutes.selectedIndex=0;
+    	document.form.endminutes.disabled=true;
+	  }else{
+		  document.form.endminutes.disabled=false;
+	  }
 
 	  /*すべての初期選択を外す*/
 	  $('select option').attr('selected', false);
