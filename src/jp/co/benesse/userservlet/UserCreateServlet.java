@@ -76,11 +76,12 @@ public class UserCreateServlet extends HttpServlet {
 
 			//五人以上の利用者登録を無効
 			if (userCount >= 5) {
-				System.out.println("作りすぎ");
 				//５人以上はアカウント作れないよ。管理者に問い合わせて削除してもらってね
 				//というポップアップを表示するフラグをセット
-				popFlag = "";
-				response.sendRedirect("login");
+				popFlag = "3";
+				request.setAttribute("popFlag", popFlag);
+				dispatcher = request.getRequestDispatcher("/WEB-INF/views/login/login.jsp");
+				dispatcher.forward(request, response);
 				return;
 			}
 
