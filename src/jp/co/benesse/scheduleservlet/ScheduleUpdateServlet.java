@@ -65,7 +65,7 @@ public class ScheduleUpdateServlet extends HttpServlet {
 			if(startTimeHour.equals("20")){
 			startTimeMin = "00";
 			}else{
-			startTimeMin = request.getParameter("endTimeMin");
+			startTimeMin = request.getParameter("startTimeMin");
 			}
 			endTimeHour = request.getParameter("endTimeHour");
 			if(endTimeHour.equals("20")){
