@@ -184,8 +184,8 @@ padding-top:1vh;
 .nav .nav-right-img a:after{
   content: "";
   position: absolute;
-  top: -5vh;
-  right: -3vw;
+  top: -4vh;
+  right: -2.5vw;
   display: inline-block;
   pointer-events: none;
   width: 6vh;
