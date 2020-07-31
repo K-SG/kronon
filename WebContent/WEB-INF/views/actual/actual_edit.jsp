@@ -148,8 +148,8 @@
 						<p class=new-msg></p>
 					</div>
 					<div class="ok-button close-popup">OK</div>
-					<img src="/kronon/img/kronon/kronon_komatta.png"
-						class="pop-img kronon-komatta">
+					<img src="/kronon/img/kronon/kronon_question.png"
+						class="pop-img kronon-question">
 				</div>
 			</div>
 		</div>
