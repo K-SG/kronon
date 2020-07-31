@@ -148,7 +148,7 @@
 		<div class="pop-container">
 			<div class="pop-container-inner">
 				<div class="message-container">
-					<p class=create-msg>削除が完了したよ</p>
+					<p class=create-msg>削除が完了したよ！</p>
 				</div>
 				<a href="scheduleshowall?date=${scheduleBean.scheduleDate}"><div class="ok-button next-popup">OK</div></a>
 				<img src="/kronon/img/kronon/kronon_star.png" class="pop-img kronon-star">

@@ -11,7 +11,7 @@ $(function () {
     	}
 
 	if(popFlag == 3){
-		$('.login_msg').html('５人以上は<br>アカウント作れないよ<br>管理者に問い合わせて削除してもらってね');
+		$('.login_msg').html('５人以上は<br>アカウント作れないよ<br>管理者に問い合わせて削除してもらってね！');
 	  	$('.error-popup').fadeIn();
 	  	return;
 	  	}
@@ -23,7 +23,7 @@ $(function () {
 	    let preUserCount = document.getElementById('preUserCount').value;
 	    console.log(preUserCount);
 	    if(preUserCount>=5){
-	    	$('.login_msg').html('５人以上は<br>アカウント作れないよ<br>管理者に問い合わせて削除してもらってね');
+	    	$('.login_msg').html('５人以上は<br>アカウント作れないよ<br>管理者に問い合わせて削除してもらってね！');
 		  	$('.error-popup').fadeIn();
 		  	return;
 	    }
@@ -47,7 +47,7 @@ $(function () {
     }
 
     if(popFlag == 1){
-      $('.login_msg').html('入力されていない<br>項目があるよ');
+      $('.login_msg').html('入力されていない<br>項目があるよ！');
       $('.error-popup').fadeIn();
       popFlag = 0;
       return;

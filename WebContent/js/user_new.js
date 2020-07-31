@@ -61,7 +61,7 @@ $(function () {
 	        return;
 	      }
 	    if(popFlag==2){
-	        $('.create-msg').html('入力されていない<br>項目があるよ');
+	        $('.create-msg').html('入力されていない<br>項目があるよ！');
 	        $('.create-popup').fadeIn();
 	        return;
 	      }

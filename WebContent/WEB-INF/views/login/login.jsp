@@ -45,7 +45,7 @@ pageEncoding="UTF-8"%>
       <div class="close-popup"> <img src="/kronon/img/close_button_orange.png" alt="閉じる" class="back-button"></div>
       <div class="pop-container-inner">
         <div class="message-container">
-          <p class=login_msg>メールアドレス・パスワードが違うよ。</p>
+          <p class=login_msg>メールアドレス・パスワードが違うよ！</p>
         </div>
         <div class="ok-button close-popup">OK</div>
         <img src="img/kronon/kronon_question.png" class="pop-img kronon-question"> </div>

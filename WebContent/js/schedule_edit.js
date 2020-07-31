@@ -39,7 +39,7 @@ $(function () {
 		  return;
 	  }
 	  if(popFlag === '1'){
-		  $('.edit-msg').html('予定がかぶってるよ');
+		  $('.edit-msg').html('予定がかぶってるよ！');
 		  $('.error-popup').fadeIn();
 		  return;
 	  }
@@ -108,11 +108,11 @@ $(function () {
     }
 
     if(popFlag==='3'){
-        $('.edit-msg').html('入力されていない<br>項目があるよ');
+        $('.edit-msg').html('入力されていない<br>項目があるよ！');
         $('.error-popup').fadeIn();
         return;
     }else if(popFlag==='4'){
-        $('.edit-msg').html('日付や時間の入力が<br>おかしいよ');
+        $('.edit-msg').html('日付や時間の入力が<br>おかしいよ！');
         $('.error-popup').fadeIn();
         return;
     }else if(popFlag==='5'){
