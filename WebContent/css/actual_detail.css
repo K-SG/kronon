@@ -1,11 +1,22 @@
 @CHARSET "UTF-8";
 
-.kronon-banzai img{
+/* .kronon-banzai img{
 	margin-top: -19vw;
 	float:right;
 	width: 17vw;
 	height:auto;
 	margin-left:3vw;
+} */
+
+.kronon-banzai img{
+	width: 17vw;
+	position: fixed;
+	right: 2vw;
+	bottom: 6vh;
+}
+
+.kronon-banzai{
+	position:fixed;
 }
 
 .flex_test-box {

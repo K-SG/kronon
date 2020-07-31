@@ -167,7 +167,7 @@
   <!--エラーまたは完了ポップアップ------------------------------------------------------------------->
   <div class="popup-wrapper error-popup">
     <div class="pop-container">
-      <div class="close-popup"> <i class="fa fa-2x fa-times"></i> </div>
+      <div class="close-popup"> <img src="/kronon/img/close_button_orange.png" alt="閉じる" class="back-button"> </div>
       <div class="pop-container-inner">
         <div class="message-container">
           <p class=new-msg></p>
@@ -183,7 +183,7 @@
 			<!--本当に戻りますかポップアップ------------------------------------------------------------------->
 		<div class="popup-wrapper cancel-popup">
 		  <div class="pop-container">
-			<div class="close-popup"> <i class="fa fa-2x fa-times"></i> </div>
+			<div class="close-popup"><img src="/kronon/img/close_button_orange.png" alt="閉じる" class="back-button"> </div>
 			<div class="pop-container-inner">
 			  <div class="message-container">
 				<p>内容は保存されないよ。</p>
@@ -201,7 +201,7 @@
 		<!--内容確認ポップアップ----------------------------------------------------------------->
 		<div class="popup-wrapper confirm-popup2" id="confirm-popup2">
 		  <div class="pop-container pop-container-large">
-			<div class="close-popup"> <i class="fa fa-2x fa-times"></i> </div>
+			<div class="close-popup"> <img src="/kronon/img/close_button_orange.png" alt="閉じる" class="back-button"> </div>
 			<div class="pop-container-inner">
 			  <div class="message-container-large">
 				<h2 class="message-title">この内容で登録するよ。</h2>
@@ -236,7 +236,7 @@
 <!--登録完了ポップアップ------------------------------------------------------------------->
 		<div class="popup-wrapper complete-popup">
 			<div class="pop-container">
-				<div class="close-popup"><i class="fa fa-2x fa-times"></i></div>
+				<div class="close-popup"><img src="/kronon/img/close_button_orange.png" alt="閉じる" class="back-button"></div>
 				<div class="pop-container-inner">
 					<div class="message-container"><p class=create-msg></p></div>
 					<div class="ok-button next-popup">OK</div>

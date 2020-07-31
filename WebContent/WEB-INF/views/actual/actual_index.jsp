@@ -111,7 +111,7 @@
 <div id = "error1" class="popup-wrapper error-popup">
 	<div class="pop-container">
 		<div class="close-popup">
-			<i class="fa fa-2x fa-times"></i>
+			<img src="/kronon/img/close_button_orange.png" alt="閉じる" class="back-button">
 		</div>
 		<div class="pop-container-inner">
 			<div class="message-container">
@@ -127,7 +127,7 @@
 <div id = "error2"  class="popup-wrapper error-popup">
 	<div class="pop-container">
 		<div class="close-popup">
-			<i class="fa fa-2x fa-times"></i>
+			<img src="/kronon/img/close_button_orange.png" alt="閉じる" class="back-button">
 		</div>
 		<div class="pop-container-inner">
 			<div class="message-container">

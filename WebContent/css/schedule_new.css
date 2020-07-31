@@ -240,12 +240,14 @@ article{
 /*くろのんバンザイ画像の配置*/
 .kronon-banzai img{
 	position:absolute;
-	top:18vw;
+	top:16.5vw;
 	left:53vw;
 	width: 17vw;
-
 }
 
+.kronon-banzai{
+	position:fixed;
+}
 
 /*ボタン配置*/
 .schedule-regist-button{
