@@ -5,6 +5,10 @@ article{
 	padding-bottom:5vw;
 }
 
+textarea::placeholder {
+  color: #AAA!important;
+}
+
 /*予定登録ルーズリーフエリアの枠*/
 .schedule-regist-area
 {
