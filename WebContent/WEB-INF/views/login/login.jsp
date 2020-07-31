@@ -27,15 +27,18 @@ pageEncoding="UTF-8"%>
         <input type="password" name="password" id="login_pass" class="login_textbox" placeholder="パスワード" maxlength = "20"><br>
         <input type="hidden" id="flag" value="${popFlag}">
         <input type="button" class="login-button" value="ログイン">
-      </form>
+        </form>
+
 
       <div class="login_account">
         アカウントを持っていないかな？
       </div>
 
-      <form action="usernew">
-        <input type="submit" class="register-button" value="新規登録">
+      <form action="usernew" id="next-page">
+        <input type="hidden" id="preUserCount" value="${preUserCount}">
+        <input class="register-button" value="新規登録">
       </form>
+
 
   <!--エラーポップアップ------------------------------------------------------------------->
   <div class="popup-wrapper error-popup">

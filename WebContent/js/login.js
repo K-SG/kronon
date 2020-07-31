@@ -9,7 +9,27 @@ $(function () {
     	$('.error-popup').fadeIn();
     	return;
     	}
-    });
+
+	if(popFlag == 3){
+		$('.login_msg').html('５人以上は<br>アカウント作れないよ<br>管理者に問い合わせて削除してもらってね');
+	  	$('.error-popup').fadeIn();
+	  	return;
+	  	}
+	});
+
+
+  /*新規登録ボタンを押下した際のユーザー数チェックとポップアップ表示*/
+
+  $('.register-button').click(function () {
+	    let preUserCount = document.getElementById('preUserCount').value;
+	    console.log(preUserCount);
+	    if(preUserCount>=5){
+	    	$('.login_msg').html('５人以上は<br>アカウント作れないよ<br>管理者に問い合わせて削除してもらってね');
+		  	$('.error-popup').fadeIn();
+		  	return;
+	    }
+	    $('#next-page').submit();
+	  });
 
   /*ログインボタンを押下した際の空白エラーチェックとポップアップ表示*/
   $('.login-button').click(function () {
