@@ -31,17 +31,17 @@
 			<span id="endTime"><c:out value="${scheduleBean.endTime}" /></span>
 		  </td>
 
-          	<c:if test="${scheduleBean.place=='0'}" >
+          <c:if test="${scheduleBean.place=='0'}" >
 			<td class=show-place1>場所：オフィス</td>
-			</c:if>
+		　</c:if>
 
-			<c:if test="${scheduleBean.place=='1'}" >
+		　<c:if test="${scheduleBean.place=='1'}" >
 			<td class=show-place2>場所：在宅</td>
-			</c:if>
+		　</c:if>
 
-			<c:if test="${scheduleBean.place=='2'}" >
+		　<c:if test="${scheduleBean.place=='2'}" >
 			<td class=show-place3>場所：外出</td>
-			</c:if>
+		　</c:if>
 
         </tr>
 
@@ -52,6 +52,7 @@
         <tr>
           <td colspan="2" >内容：<c:out value="${scheduleBean.content}" /></td>
         </tr>
+
         <tr>
           <td colspan="2"  class="new-line" >コメント：<c:out value="${scheduleBean.comment}" /></td>
         </tr>
@@ -67,13 +68,13 @@
 
 
 <div class="flex_test-box">
-    <div class="flex_test-item">
+  <div class="flex_test-item">
     <a href="actualedit?scheduleId=${scheduleBean.scheduleId}"><div class="ok-button">修正</div></a>
-    </div>
+  </div>
 
-    <div class="flex_test-item">
-       <div class="ok-button large-popup-button">削除</div>
-    </div>
+  <div class="flex_test-item">
+    <div class="ok-button large-popup-button">削除</div>
+  </div>
 </div>
 
 
@@ -100,11 +101,11 @@
           <tr>
 			<th>タイトル：</th>
 			<td><c:out value="${scheduleBean.title}" /></td>
-			</tr>
-			<tr>
+		  </tr>
+		  <tr>
 			<th>内容：</th>
 			<td><c:out value="${scheduleBean.content}" /></td>
-		</tr>
+		  </tr>
 
           <tr>
             <th class="last-table">コメント：</th>
@@ -124,13 +125,10 @@
 		<input type="hidden" name = "title" value="${scheduleBean.title}">
 		<input type="hidden" name = "content" value="${scheduleBean.content}">
 
-
-		<!-- <input type="submit" class="ok-button" value="OK"> -->
 		<div class="ok-button" id="actual-delete-action">OK</div>
 
-
-      <div class="ng-button close-popup">キャンセル</div>
-      <img src="/kronon/img/star/star_nomal.png" class="pop-large-img-top star-nomal"> </div>
+      	<div class="ng-button close-popup">キャンセル</div>
+      	<img src="/kronon/img/star/star_nomal.png" class="pop-large-img-top star-nomal"> </div>
       </form>
   </div>
 </div>
