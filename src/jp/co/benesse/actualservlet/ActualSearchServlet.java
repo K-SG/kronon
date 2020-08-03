@@ -97,6 +97,8 @@ public class ActualSearchServlet extends HttpServlet {
 			// リクエストスコープにセット
 			request.setAttribute("flag", FLAG);
 			request.setAttribute("scheduleBeanList", scheduleBeanList);
+			request.setAttribute("title", title);
+			request.setAttribute("scheduleDateStr", scheduleDateStr);
 
 			// 「yyyy年MM月の検索結果」表示用
 			if (scheduleDateStr.equals("")) {

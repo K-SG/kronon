@@ -19,14 +19,14 @@
 			<div class="actual-input-font-lev1">日付</div>
 		</div>
 		<div class="actual-search-date-area">
-			<input name="date" type="date" id = "input-date"/>
+			<input name="date" type="date" id = "input-date" value = "${scheduleDateStr}"/>
 		</div>
 
 		<div class="actual-search-title">
 			<div class="actual-input-font-lev1">タイトル</div>
 		</div>
 		<div class="actual-search-title-area">
-			<input name="title" type="text" maxlength="100" id = "input-title"/>
+			<input name="title" type="text" maxlength="100" id = "input-title" value = "${title}"/>
 		</div>
 		<div class="search-button">
 		<input type = "hidden" name = "year" id = "year" value = "${year}">
