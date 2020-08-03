@@ -129,7 +129,7 @@ tbody td:last-child {
 }
 /* 祝日 */
 td.holiday {
-	background-color: #F8E0E1;
+	background-color: #F8E0E1 !important;
 }
 
 td.disabled {
