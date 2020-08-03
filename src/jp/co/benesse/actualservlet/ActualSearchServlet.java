@@ -102,8 +102,8 @@ public class ActualSearchServlet extends HttpServlet {
 
 			// 「yyyy年MM月の検索結果」表示用
 			if (scheduleDateStr.equals("")) {
-				request.setAttribute("month", month);
-				request.setAttribute("year", year);
+				request.setAttribute("month", Integer.parseInt(month));
+				request.setAttribute("year", Integer.parseInt(year));
 			} else {
 				request.setAttribute("month", scheduleDate.toLocalDate().getMonthValue());
 				request.setAttribute("year", scheduleDate.toLocalDate().getYear());

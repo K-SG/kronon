@@ -27,6 +27,9 @@ import jp.co.benesse.dataaccess.value.ScheduleBean;
 
 @WebServlet("/user/scheduleshowall")
 public class ScheduleShowAllServlet extends HttpServlet {
+	LocalDate START_DATE = LocalDate.of(2020, 8, 1);
+	LocalDate END_DATE = LocalDate.of(2023, 7, 31);
+
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -80,8 +83,11 @@ public class ScheduleShowAllServlet extends HttpServlet {
 			getOneDayScheduleList = new ArrayList<>();
 
 			if (flag == null) {
-				if (calendarDate != null) {
+				if (calendarDate != null ) {
 					scheduleDate = LocalDate.parse(calendarDate, DateTimeFormatter.ofPattern("yyyy-MM-dd")); // 日付取得
+					if(scheduleDate.isBefore( START_DATE )||scheduleDate.isAfter( END_DATE )){
+						throw new RuntimeException("日付エラー");//例外処理
+					}
 				} else {
 					scheduleDate = LocalDate.now();// 今日の日付取得
 				}
