@@ -6,7 +6,7 @@ pageEncoding="UTF-8"%>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <%@ include file="../layout/common/link.jsp" %>
   <link rel="stylesheet" href="./css/login.css">
-  <title>ログイン画面</title>
+  <title>ログイン</title>
 </head>
 <body>
   <article>

@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="/kronon/css/actual_detail.css" rel="stylesheet" type="text/css">
 <%@ include file="../layout/common/link.jsp" %>
-<title>実績詳細画面</title>
+<title>実績詳細</title>
 
 </head>
 <body>
