@@ -93,7 +93,7 @@ $(function () {
     let weekday = '日月火水木金土'[d.getDay()];
     //リリース年と月の取得
     let releaseYear = 2020;
-    let releaseMonth = 7;
+    let releaseMonth = 8;
     //サービス終了年と月の取得
     let releaseLastYear = 2023;
     let releaseLastMonth = 8;
