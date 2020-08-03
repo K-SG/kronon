@@ -17,6 +17,7 @@ public class UserDAO {
 
 	/**
 	 * コンストラクタ
+	 *
 	 * @param connection
 	 */
 	public UserDAO(Connection connection) {
@@ -32,11 +33,14 @@ public class UserDAO {
 	 * @param ユーザー名、メールアドレス、パスワード
 	 * @return 登録件数
 	 */
-	public int createUser(String userName,String mail, String password){
+	public int createUser(String userName, String mail, String password) {
 
 		int result = 0;
 		String sql = null;
 		PreparedStatement preparedStatement = null;
+
+		userName = userName.replace("%", "％");
+		userName = userName.replace("'", "’");
 
 		try {
 
@@ -50,19 +54,19 @@ public class UserDAO {
 
 			result = preparedStatement.executeUpdate();
 			return result;
-	} catch (SQLException e) {
-		throw new RuntimeException("'user'テーブルのINSERTに失敗しました", e);
-	} finally {
-		try {
-			if (preparedStatement != null) {
-				preparedStatement.close();
-			}
 		} catch (SQLException e) {
-			throw new RuntimeException("ステートメントの解放に失敗しました", e);
-		}
+			throw new RuntimeException("'user'テーブルのINSERTに失敗しました", e);
+		} finally {
+			try {
+				if (preparedStatement != null) {
+					preparedStatement.close();
+				}
+			} catch (SQLException e) {
+				throw new RuntimeException("ステートメントの解放に失敗しました", e);
+			}
 
+		}
 	}
-}
 
 	/**
 	 * [機 能] ユーザー情報取得メソッド<br>
@@ -73,7 +77,7 @@ public class UserDAO {
 	 * @param メールアドレス、パスワード
 	 * @return ユーザーインスタンス（格納されているのはユーザーIDとユーザー名のみ）
 	 */
-	public UserBean findUser(String mail ,String password){
+	public UserBean findUser(String mail, String password) {
 
 		int userId = 0;
 		String sql = null;
@@ -92,26 +96,26 @@ public class UserDAO {
 
 			resultSet = preparedStatement.executeQuery();
 
-			while(resultSet.next()) {
+			while (resultSet.next()) {
 				userId = resultSet.getInt("USER_ID");
 				userName = resultSet.getString("USER_NAME");
 				userBean = new UserBean();
 				userBean.setUserId(userId);
 				userBean.setUserName(userName);
 			}
-		return userBean;
-	} catch (SQLException e) {
-		throw new RuntimeException("userテーブルのSELECTに失敗しました", e);
-	} finally {
-		try {
-			if (preparedStatement != null) {
-				preparedStatement.close();
-			}
+			return userBean;
 		} catch (SQLException e) {
-			throw new RuntimeException("ステートメントの解放に失敗しました", e);
+			throw new RuntimeException("userテーブルのSELECTに失敗しました", e);
+		} finally {
+			try {
+				if (preparedStatement != null) {
+					preparedStatement.close();
+				}
+			} catch (SQLException e) {
+				throw new RuntimeException("ステートメントの解放に失敗しました", e);
+			}
 		}
 	}
-}
 
 	/**
 	 * [機 能] ユーザー名取得メソッド<br>
@@ -122,7 +126,7 @@ public class UserDAO {
 	 * @param メールアドレス
 	 * @return メアド重複判定フラグ（重複があればtrueを返す）
 	 */
-	public String getUserName(int userId){
+	public String getUserName(int userId) {
 
 		String sql = null;
 		String userName = null;
@@ -140,7 +144,7 @@ public class UserDAO {
 			if (resultSet.next()) {
 				userName = resultSet.getString("USER_NAME");
 			}
-			if(userName==null){
+			if (userName == null) {
 				throw new RuntimeException("ユーザーが存在しませんでした");
 			}
 			return userName;
@@ -166,7 +170,7 @@ public class UserDAO {
 	 * @param メールアドレス
 	 * @return メアド重複判定フラグ（重複があればtrueを返す）
 	 */
-	public Boolean  isBooking(String mail){
+	public Boolean isBooking(String mail) {
 
 		int count = 0;
 		String sql = null;
@@ -211,7 +215,7 @@ public class UserDAO {
 	 * @param なし
 	 * @return 利用者IDリスト
 	 */
-	public List<Integer>  countUser(){
+	public List<Integer> countUser() {
 
 		int userId = 0;
 		String sql = null;

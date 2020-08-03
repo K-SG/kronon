@@ -79,7 +79,21 @@ public class ScheduleDAO {
 
 		int result = 0;
 		String sql = null;
+		String tmp1 = null;
+		String tmp2 = null;
 		PreparedStatement preparedStatement = null;
+
+		tmp1 = scheduleBean.getTitle();
+		tmp1 = tmp1.replace("%", "％");
+		tmp1 = tmp1.replace("'", "’");
+		scheduleBean.setTitle(tmp1);
+
+		if (scheduleBean.getContent() != null) {
+			tmp2 = scheduleBean.getContent();
+			tmp2 = tmp2.replace("%", "％");
+			tmp2 = tmp2.replace("'", "’");
+			scheduleBean.setTitle(tmp2);
+		}
 
 		try {
 			sql = "INSERT INTO SCHEDULE (SCHEDULE_ID,USER_ID,SCHEDULE_DATE,"
@@ -92,8 +106,8 @@ public class ScheduleDAO {
 			preparedStatement.setTime(3, scheduleBean.getStartTime());
 			preparedStatement.setTime(4, scheduleBean.getEndTime());
 			preparedStatement.setString(5, scheduleBean.getPlace());
-			preparedStatement.setString(6, scheduleBean.getTitle());
-			preparedStatement.setString(7, scheduleBean.getContent());
+			preparedStatement.setString(6, tmp1);
+			preparedStatement.setString(7, tmp2);
 
 			result = preparedStatement.executeUpdate();
 
@@ -126,6 +140,14 @@ public class ScheduleDAO {
 		int result = 0;
 		String sql = null;
 		PreparedStatement preparedStatement = null;
+
+		title = title.replace("%", "％");
+		title = title.replace("'", "’");
+
+		if (content != null) {
+			content = content.replace("%", "％");
+			content = content.replace("'", "’");
+		}
 
 		try {
 			sql = "UPDATE SCHEDULE SET (SCHEDULE_DATE,START_TIME,END_TIME,PLACE,TITLE,CONTENT) "
@@ -170,6 +192,11 @@ public class ScheduleDAO {
 		String sql = null;
 		PreparedStatement preparedStatement = null;
 
+		if (comment != null) {
+			comment = comment.replace("%", "％");
+			comment = comment.replace("'", "’");
+		}
+
 		try {
 
 			sql = "UPDATE SCHEDULE SET (ACTUAL_TIME,COMMENT) " + "= (?,?) WHERE SCHEDULE_ID = ?";
@@ -213,14 +240,8 @@ public class ScheduleDAO {
 
 		try {
 
-			if (title.contains("%")) {
-				title = title.replace("%", "\\%");
-			}
-
-			if (title.contains("'")) {
-				title = title.replace("'", "\\'");
-			}
-
+			title = title.replace("%", "\\%");
+			title = title.replace("'", "’");
 			title = "%" + title + "%";
 
 			sql = "SELECT * FROM SCHEDULE INNER JOIN PUBLIC.USER ON PUBLIC.USER.USER_ID = SCHEDULE.USER_ID "
@@ -352,14 +373,8 @@ public class ScheduleDAO {
 
 		try {
 
-			if (title.contains("%")) {
-				title = title.replace("%", "\\%");
-			}
-
-			if (title.contains("'")) {
-				title = title.replace("'", "\\'");
-			}
-
+			title = title.replace("%", "\\%");
+			title = title.replace("'", "’");
 			title = "%" + title + "%";
 
 			sql = "SELECT * FROM SCHEDULE INNER JOIN PUBLIC.USER ON PUBLIC.USER.USER_ID = SCHEDULE.USER_ID "
