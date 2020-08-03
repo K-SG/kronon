@@ -1,281 +1,267 @@
 /* CSS Document */
 /* @import url(sanitize.css); */
-
-article{
-	margin-bottom:10vw;;
+article {
+	margin-bottom: 10vw;;
 }
 
 textarea::placeholder {
-  color: #AAA !important;
-  font-weight: normal !important;
+	color: #AAA !important;
+	font-weight: normal !important;
 }
 
 /*予定登録ルーズリーフエリアの枠*/
-.actual-regist-area
-{
+.actual-regist-area {
 	background-repeat: no-repeat;
-	margin:0;
-	padding:0;
-	margin-left:25vw;
+	margin: 0;
+	padding: 0;
+	margin-left: 25vw;
 	width: 50vw;
 	background-size: 95%;
-	top:0vw;
-	position:relative;
-	margin-bottom:2vw;
+	top: 0vw;
+	position: relative;
+	margin-bottom: 2vw;
 }
 
-
-.actual-regist-area-inner{
-	width:50vw;
-	position:absolute;
-	top:0vw;
-	left:2.0vw;
-	z-index:11;
+.actual-regist-area-inner {
+	width: 50vw;
+	position: absolute;
+	top: 0vw;
+	left: 2.0vw;
+	z-index: 11;
 }
 
-#loose-leaf{
-	width:50vw;
-	position:absolute;
-	top:0vw;
-	left:0vw;
-	z-index:10;
+#loose-leaf {
+	width: 50vw;
+	position: absolute;
+	top: 0vw;
+	left: 0vw;
+	z-index: 10;
 }
 
 /*[予定登録]の文字*/
-.actual-regist-font-lev0
-{
-	font-family : UD デジタル 教科書体 NK-B;
-	font-weight : bold;
-	font-size : 1.8vw;
-	color : #333333;
-	color : rgb(51, 51, 51);
+.actual-regist-font-lev0 {
+	font-family: UD デジタル 教科書体 NK-B;
+	font-weight: bold;
+	font-size: 1.8vw;
+	color: #333333;
+	color: rgb(51, 51, 51);
 	width: 95%;;
 	height: 2.5vw;
 	text-align: center;
-	padding-top:2.5vw;
-	float:left;
+	padding-top: 2.5vw;
+	float: left;
 }
 
 /*[予定登録]の下線*/
-.actual-regist-border
-{
-	border-bottom:solid #333 0.1vw;
+.actual-regist-border {
+	border-bottom: solid #333 0.1vw;
 	width: 40vw;
-	margin-left:4.5vw;
-	float:left;
+	margin-left: 4.5vw;
+	float: left;
 }
 
-.table-container{
+.table-container {
 	float: left;
 }
 
 /*1段目:日付・時刻のエリア*/
 .actual-regist-area-1 {
-	margin-top:0.5vw;
+	margin-top: 0.5vw;
 	width: 45vw;
 	height: 4.4vw;;
-	float:right;
+	float: right;
 	text-align: left;
 }
 
-.table-container{
-	float:right;
-	text-align:left;
+.table-container {
+	float: right;
+	text-align: left;
 	width: 45vw;
 	/* height: 11vw; */
-	font-size : 1.1vw;
-	line-height:1.5vw;
+	font-size: 1.1vw;
+	line-height: 1.5vw;
 }
 
-.actual-table{
-  table-layout: fixed;
-  border-collapse: collapse;
-  border:0.02vw solid #666;
-  margin-top:1vw;
-  background-color:#FEF0DE;
-  color:#333;
-  /* width:35vw; */
+.actual-table {
+	table-layout: fixed;
+	border-collapse: collapse;
+	border: 0.02vw solid #666;
+	margin-top: 1vw;
+	background-color: #FEF0DE;
+	color: #333;
+	/* width:35vw; */
 }
 
-.actual-table td{
-	border:0.02vw solid #666;
-	height:2.8vw;
-	padding:0vw 1vw;
+.actual-table td {
+	border: 0.02vw solid #666;
+	height: 2.8vw;
+	padding: 0vw 1vw;
 	word-wrap: break-word;
-	word-break : break-all;
+	word-break: break-all;
 }
 
-#actual-date{
-	width:22vw;
+#actual-date {
+	width: 22vw;
 }
 
-.actual-place{
+.actual-place {
 	/* width:15vw: */
+	
 }
 
-
-.actual-title{
-	width:37vw;
-	height:2.5vw !important;
-
+.actual-title {
+	width: 37vw;
+	height: 2.5vw !important;
 }
 
-.actual-title p{
+.actual-title p {
 	display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 1;
-    overflow: hidden;
-    margin-top:0.5vw !important;
-    margin-bottom:0.5vw !important;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 1;
+	overflow: hidden;
+	margin-top: 0.5vw !important;
+	margin-bottom: 0.5vw !important;
 }
 
-.actual-naiyou{
+.actual-naiyou {
 	/* height:4vw !important; */
 	overflow: hidden;
-	width:37vw;
+	width: 37vw;
 }
 /* ２行まで表示。2行以上になる場合は…を表示 */
-.actual-naiyou p{
+.actual-naiyou p {
 	display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
-    overflow: hidden;
-    margin-top:0.5vw !important;
-    margin-bottom:0.5vw !important;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+	overflow: hidden;
+	margin-top: 0.5vw !important;
+	margin-bottom: 0.5vw !important;
 }
 
 /*1段目のエリアの各エリアの実績時間*/
 .actual-regist-area-1-block {
 	width: 14vw;
 	/* height: 4.8vw; */
-	float:left;
+	float: left;
 	text-align: left;
 	margin-top: 1vw;
 }
 
 /*4段目:内容のエリア*/
 .actual-regist-area-4 {
-	margin-top:0.5vw;
+	margin-top: 0.5vw;
 	width: 45vw;
 	height: 7.0vw;;
-	float:right;
+	float: right;
 	text-align: left;
 }
 
-
 /*日付などのフォント*/
-.actual-regist-font-lev1
-{
-  font-family : UD デジタル 教科書体 NK-B;
-  font-weight : bold;
-  font-size : 1.2vw;;
-  color : #333333;
-  color : rgb(51, 51, 51);
-  margin:0;
-  padding:0;
-  height:2.0vw;
+.actual-regist-font-lev1 {
+	font-family: UD デジタル 教科書体 NK-B;
+	font-weight: bold;
+	font-size: 1.2vw;;
+	color: #333333;
+	color: rgb(51, 51, 51);
+	margin: 0;
+	padding: 0;
+	height: 2.0vw;
 }
 
 /*必須マーク*/
-.actual-regist-font-lev1 span
-{
-  font-family : 小塚ゴシック Pr6N;
-  font-size : 1.2vw;
-  color : #FF1002;
-  color : rgb(255, 16, 2);
+.actual-regist-font-lev1 span {
+	font-family: 小塚ゴシック Pr6N;
+	font-size: 1.2vw;
+	color: #FF1002;
+	color: rgb(255, 16, 2);
 }
 
-
 /*日付入力枠*/
-.actual-regist-date-area input
-{
-	border-style : Solid;
-	border-color : #333333;
-	border-color : rgba(51, 51, 51, 1);
-	border-width : 0.02vw;
-	border-radius : 0.3vw;
-	font-family : 小塚ゴシック Pr6N;
-	font-size : 1.0vw;
-	color :  #333;
+.actual-regist-date-area input {
+	border-style: Solid;
+	border-color: #333333;
+	border-color: rgba(51, 51, 51, 1);
+	border-width: 0.02vw;
+	border-radius: 0.3vw;
+	font-family: 小塚ゴシック Pr6N;
+	font-size: 1.0vw;
+	color: #333;
 	width: 10vw;
 	height: 2.0vw;
 	float: left;
-	padding-left:1vw;
+	padding-left: 1vw;
 }
 /*開始時刻/終了時刻の[時間]と[分]のプルダウン*/
-.actual-regist-time select
-{
-	border-style : Solid;
-	border-color : #333333;
-	border-color : rgba(51, 51, 51, 1);
-	border-width : 0.02vw;
-	border-radius : 0.3vw;
+.actual-regist-time select {
+	border-style: Solid;
+	border-color: #333333;
+	border-color: rgba(51, 51, 51, 1);
+	border-width: 0.02vw;
+	border-radius: 0.3vw;
 	float: left;
 	width: 3.5vw;
 	height: 2.0vw;
-	font-family : 小塚ゴシック Pr6N;
-	font-size : 1.0vw;
-	color :  #333;
-	padding-left:0.2vw;
+	font-family: 小塚ゴシック Pr6N;
+	font-size: 1.0vw;
+	color: #333;
+	padding-left: 0.2vw;
 }
 /*開始時刻/終了時刻の[時]と[分]の文字*/
 .actual-regist-time-text {
-	font-family : UD デジタル 教科書体 NK-B;
-	font-weight : bold;
-	font-size : 1vw;
-	color : #333333;
-	color : rgb(51, 51, 51);
+	font-family: UD デジタル 教科書体 NK-B;
+	font-weight: bold;
+	font-size: 1vw;
+	color: #333333;
+	color: rgb(51, 51, 51);
 	float: left;
 	width: 2vw;
 	height: 2.5vw;;
-	margin-top:0.5vw;
-	padding-left:0.5vw;
-	padding-right:0.8vw;
+	margin-top: 0.5vw;
+	padding-left: 0.5vw;
+	padding-right: 0.8vw;
 }
 
 /*場所*/
-.actual-regist-place select
-{
-	border-style : Solid;
-	border-color : #333333;
-	border-color : rgba(51, 51, 51, 1);
-	border-width : 0.02vw;
-	border-radius : 0.3vw;
+.actual-regist-place select {
+	border-style: Solid;
+	border-color: #333333;
+	border-color: rgba(51, 51, 51, 1);
+	border-width: 0.02vw;
+	border-radius: 0.3vw;
 	float: left;
 	width: 15vw;
 	height: 2.0vw;
-	font-family : 小塚ゴシック Pr6N;
-	font-size : 1.0vw;
-	color :  #333;
-	padding-left:1vw;
+	font-family: 小塚ゴシック Pr6N;
+	font-size: 1.0vw;
+	color: #333;
+	padding-left: 1vw;
 }
 
-.actual-regist-area-4 .actual-regist-font-lev1{
-	height:1.5vw;
+.actual-regist-area-4 .actual-regist-font-lev1 {
+	height: 1.5vw;
 }
 
 /*内容*/
-.actual-regist-content textarea
-{
-	border-style : Solid;
-	border-color : #333333;
-	border-color : rgba(51, 51, 51, 1);
-	border-width : 0.02vw;
-	border-radius : 0.3vw;
-	font-family : 小塚ゴシック Pr6N;
-	font-size : 1.1vw;
-	line-height:1.5vw;
-	color :  #333;
+.actual-regist-content textarea {
+	border-style: Solid;
+	border-color: #333333;
+	border-color: rgba(51, 51, 51, 1);
+	border-width: 0.02vw;
+	border-radius: 0.3vw;
+	font-family: 小塚ゴシック Pr6N;
+	font-size: 1.1vw;
+	line-height: 1.5vw;
+	color: #333;
 	width: 37vw;
 	height: 5.5vw;
-	float:left;
-	margin-right:2.5vw;
-	margin-top:0vw;
-	padding:0.5vw 0.5vw;
+	float: left;
+	margin-right: 2.5vw;
+	margin-top: 0vw;
+	padding: 0.5vw 0.5vw;
 }
 
 /* ばんざいくろのん */
-.kronon-banzai img{
+.kronon-banzai img {
 	width: 17vw;
 	position: fixed;
 	right: 2vw;
@@ -283,8 +269,8 @@ textarea::placeholder {
 }
 
 /*ボタン配置*/
-.actual-regist-button{
-	float:left;
+.actual-regist-button {
+	float: left;
 }
 /* 戻るボタン */
 .back-btn {
@@ -292,77 +278,74 @@ textarea::placeholder {
 	position: fixed;
 	left: 3vw;
 	top: 83vh;
-	cursor:pointer;
+	cursor: pointer;
 }
 /*登録*/
-.actual-regist-button-left{
-	position:absolute;
-	left:10vw;
-	top:32vw;;
-	float:left;
+.actual-regist-button-left {
+	position: absolute;
+	left: 10vw;
+	top: 32vw;;
+	float: left;
 }
 /*キャンセル*/
-.actual-regist-button-right{
-		position:absolute;
-	right:10vw;
-	top:32vw;
+.actual-regist-button-right {
+	position: absolute;
+	right: 10vw;
+	top: 32vw;
 }
 
-.clear{
-	clear:both;
-	height:38vw;
+.clear {
+	clear: both;
+	height: 38vw;
 }
 
-.message-container-large{
-	color: #000000;
-}
-.pop-container{
+.message-container-large {
 	color: #000000;
 }
 
-.popup-table td{
-	width:50vw !important;
+.pop-container {
+	color: #000000;
+}
+
+.popup-table td {
+	width: 50vw !important;
 }
 /* thが二行にわたってしまう部分があったので広げました */
-.actual-pop-th{
-	width:15vw !important;
+.actual-pop-th {
+	width: 15vw !important;
 	word-wrap: break-word;
-	word-break : break-all;
-
+	word-break: break-all;
 }
 
-#title-msg p{
+#title-msg p {
 	display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 1;
-    overflow: hidden;
-    padding:0;
-    margin:0;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 1;
+	overflow: hidden;
+	padding: 0;
+	margin: 0;
 }
 
-#content-msg p{
+#content-msg p {
 	display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
-    overflow: hidden;
-    padding:0;
-    margin:0;
-    min-height:1.5vw !important;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+	overflow: hidden;
+	padding: 0;
+	margin: 0;
+	min-height: 1.5vw !important;
 }
-
 
 /* footerよりも上に来るように */
-.popup-wrapper{
-	z-index:101 !important;
+.popup-wrapper {
+	z-index: 101 !important;
 }
 
-
-.pop-actual{
-	margin-left:0.8vw !important;
-	margin-right:0.8vw !important;
+.pop-actual {
+	margin-left: 0.8vw !important;
+	margin-right: 0.8vw !important;
 }
 
-
-footer{
-	z-index:100;
+footer {
+	z-index: 100;
 }

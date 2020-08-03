@@ -1,110 +1,101 @@
-
-
 /*実績検索の枠*/
-.actual-search-area
-{
-  background : #FFEEDB;
-  background : rgba(255, 238, 219, 1);
-  border-style : Solid;
-  border-color : #DE9B50;
-  border-color : rgba(222, 155, 80, 1);
-  border-width : 2px;
-  position : absolute ;
-  border-radius : 10px;
-  -moz-border-radius : 10px;
-  -webkit-border-radius : 10px;
-	margin-left:14.4vw;
+.actual-search-area {
+	background: #FFEEDB;
+	background: rgba(255, 238, 219, 1);
+	border-style: Solid;
+	border-color: #DE9B50;
+	border-color: rgba(222, 155, 80, 1);
+	border-width: 2px;
+	position: absolute;
+	border-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	margin-left: 14.4vw;
 	width: 69vw;
 	height: 8vh;
-	float:left;
-	padding-left:2vw;
+	float: left;
+	padding-left: 2vw;
 }
-
 
 /*日付検索*/
 .actual-search-date {
-	float:left;
+	float: left;
 	width: 3vw;
 	margin-left: 4vw;
-	margin-top:2vh;
+	margin-top: 2vh;
 }
 /*日付検索入力枠*/
-.actual-search-date-area input
-{
-	border-style : Solid;
-	border-color : #333333;
-	border-color : rgba(51, 51, 51, 1);
-	border-width : 1px;
-	border-radius : 5px;
-	-moz-border-radius : 5px;
-	-webkit-border-radius : 5px;
-	font-family : 小塚ゴシック Pr6N;
-	font-size : 2vh;
-	color :  #888888;
+.actual-search-date-area input {
+	border-style: Solid;
+	border-color: #333333;
+	border-color: rgba(51, 51, 51, 1);
+	border-width: 1px;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	font-family: 小塚ゴシック Pr6N;
+	font-size: 2vh;
+	color: #888888;
 	width: 10vw;
 	height: 4vh;
 	float: left;
-	margin-top:2vh;
-	margin-left:1vh;
-
+	margin-top: 2vh;
+	margin-left: 1vh;
 }
 /*タイトル検索*/
-.actual-search-title{
-	float:left;
+.actual-search-title {
+	float: left;
 	width: 4vw;
 	margin-left: 2vw;
-	margin-top:2vh;
+	margin-top: 2vh;
 }
+
 .actual-search-title-area input {
-	border-style : Solid;
-	border-color : #333333;
-	border-color : rgba(51, 51, 51, 1);
-	border-width : 1px;
-	border-radius : 5px;
-	-moz-border-radius : 5px;
-	-webkit-border-radius : 5px;
-	font-family : 小塚ゴシック Pr6N;
-	font-size : 2vh;
-	color :  #888888;
+	border-style: Solid;
+	border-color: #333333;
+	border-color: rgba(51, 51, 51, 1);
+	border-width: 1px;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	font-family: 小塚ゴシック Pr6N;
+	font-size: 2vh;
+	color: #888888;
 	width: 25vw;
 	height: 4vh;
 	float: left;
-	margin-top:2vh;
-	margin-left:3vh;
-
+	margin-top: 2vh;
+	margin-left: 3vh;
 }
-
 
 /*検索ボタン*/
 .search-button {
-  display: inline-block;
-  width: 7vw;
-  height:3vh;
-
-  background-color: #DE9B50;
-  border: none;
-  border-radius: 0.3vw;
-  color: white;
-  margin-left: 6vh;
-  cursor: pointer;
-  text-align: center;
-  font-size: 1.5vw;
-  float:left;
-  padding-top:0.8vh;
-  padding-left:2.5vh;
-  font-size:2.5vh;
-  padding-bottom:0.5vh;
-  margin-top:2vh;
-
+	display: inline-block;
+	width: 7vw;
+	height: 3vh;
+	background-color: #DE9B50;
+	border: none;
+	border-radius: 0.3vw;
+	color: white;
+	margin-left: 6vh;
+	cursor: pointer;
+	text-align: center;
+	font-size: 1.5vw;
+	float: left;
+	padding-top: 0.8vh;
+	padding-left: 2.5vh;
+	font-size: 2.5vh;
+	padding-bottom: 0.5vh;
+	margin-top: 2vh;
 }
+
 .search-button img {
-	width:3vh;
-
+	width: 3vh;
 }
 
-.word{
-	float:left;
-	margin-left:0.9vw;
+.word {
+	float: left;
+	margin-left: 0.9vw;
 }
 
 /*「実績確認へ」ボタン*/
@@ -123,124 +114,120 @@
 } */
 
 /*実績詳細へ*/
-.schedule-actual{
-	 cursor: pointer;
+.schedule-actual {
+	cursor: pointer;
 }
 
-#actual-title{
-	margin-top:3vh;
-	margin-bottom:3vh;
+#actual-title {
+	margin-top: 3vh;
+	margin-bottom: 3vh;
 }
 
-#actual-result{
-	margin-top:3vh;
-	margin-bottom:3vh;
+#actual-result {
+	margin-top: 3vh;
+	margin-bottom: 3vh;
 }
-
 
 /*見出しと一覧*/
-#actual-content{
-	color:#454545;
-	background-color:white;
+#actual-content {
+	color: #454545;
+	background-color: white;
 	width: 71vw;
 	margin-top: 5vw;
-	margin-left:14.5vw;
+	margin-left: 14.5vw;
 	border-radius: 10px;
-	padding-top:3vh;
-	padding-bottom:10vh;
-	margin-top:10vh;
+	padding-top: 3vh;
+	padding-bottom: 10vh;
+	margin-top: 10vh;
 }
 
-table{
-	width:60vw;
-	max-width:60vw;
-	font-size:70%;
-	border-collapse:collapse;
+table {
+	width: 60vw;
+	max-width: 60vw;
+	font-size: 70%;
+	border-collapse: collapse;
 	table-layout: fixed;
 }
 
-#title-in-thead{
-	width:11vw;
+#title-in-thead {
+	width: 11vw;
 }
 
-
-table td{
-	height:10vh;
-	padding:0.5vw;
+table td {
+	height: 10vh;
+	padding: 0.5vw;
 	word-wrap: break-word;
-	word-break : break-all;
+	word-break: break-all;
 }
 
-#date-in-table{
-	width:7vw;
-	text-align:center;
+#date-in-table {
+	width: 7vw;
+	text-align: center;
 }
 
-#date-in-thead{
-	width:7vw;
+#date-in-thead {
+	width: 7vw;
 }
 
-
-.titles{
-/*     text-overflow: ellipsis;
+.titles {
+	/*     text-overflow: ellipsis;
     white-space: nowrap; */
-  	overflow: hidden;/*はみ出た文字を隠す*/
-  	width:11vw !important;
-  	/* max-width:11vw; */
+	overflow: hidden; /*はみ出た文字を隠す*/
+	width: 11vw !important;
+	/* max-width:11vw; */
 }
 
-.titles p{
+.titles p {
 	display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 1;
-    overflow: hidden;
-}
-
-.contents{
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 1;
 	overflow: hidden;
-	width:16vw ;
 }
 
-.contents p{
+.contents {
+	overflow: hidden;
+	width: 16vw;
+}
+
+.contents p {
 	display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
-    overflow: hidden;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+	overflow: hidden;
 }
 
-#schedule-date-hidden{
-	display:none;
+#schedule-date-hidden {
+	display: none;
 }
 
-.cell-active{
-	background : #FFEEDB;
-  	background : rgba(255, 238, 219, 1);
+.cell-active {
+	background: #FFEEDB;
+	background: rgba(255, 238, 219, 1);
 }
 
-.time{
-	width:9vw;
-	max-width:9vw;
-	text-align:center;
+.time {
+	width: 9vw;
+	max-width: 9vw;
+	text-align: center;
 }
 
-#input-date,#input-title{
-	color:#000;
+#input-date, #input-title {
+	color: #000;
 }
 
-.hyphen{
-	color:#454545!important;
+.hyphen {
+	color: #454545 !important;
 }
 
 /*フォントサイズ*/
-.actual-input-font-lev1
-{
-  font-family : UD デジタル 教科書体 NK-B;
-  font-weight : bold;
-  font-size : 2.7vh;
-  width : 10vh;
-  margin-top:0.5vh;
-  color : #333333;
-  color : rgb(51, 51, 51);
+.actual-input-font-lev1 {
+	font-family: UD デジタル 教科書体 NK-B;
+	font-weight: bold;
+	font-size: 2.7vh;
+	width: 10vh;
+	margin-top: 0.5vh;
+	color: #333333;
+	color: rgb(51, 51, 51);
 }
 
 /* 月送りボタン共通 */
@@ -249,44 +236,42 @@ table td{
 }
 
 /*月送りボタン*/
-#left{
-	position:absolute;
+#left {
+	position: absolute;
 	top: 16vw;
-	left:10vw;
-	cursor:pointer;
+	left: 10vw;
+	cursor: pointer;
 }
 
-#right{
-	position:absolute;
+#right {
+	position: absolute;
 	top: 16vw;
-	left:87vw;
-	cursor:pointer;
+	left: 87vw;
+	cursor: pointer;
 }
 
 /*エラーメッセージ*/
-#error-message{
-	margin-left:25vw;
+#error-message {
+	margin-left: 25vw;
 	margin-top: 6vw;
-	margin-bottom:1.5vw;
-	color:#454545;
+	margin-bottom: 1.5vw;
+	color: #454545;
 }
 
 /*トップに戻るボタン*/
-#to-top-button{
-	 transform: scale(0.7);
-	 margin-right:7.5vw;
-	 margin-bottom:12vw;
-	 opacity: 0.8;
-	 position: fixed;
+#to-top-button {
+	transform: scale(0.7);
+	margin-right: 7.5vw;
+	margin-bottom: 12vw;
+	opacity: 0.8;
+	position: fixed;
 }
 
-#kronon-prin-img{
+#kronon-prin-img {
 	/* float:right;
 	transform:scale(0.6); */
-	position:absolute;
-	right:4vw;
-	bottom:4vw;
-	width:25vw;
-
+	position: absolute;
+	right: 4vw;
+	bottom: 4vw;
+	width: 25vw;
 }
-

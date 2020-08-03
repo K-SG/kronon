@@ -1,36 +1,36 @@
 @CHARSET "UTF-8";
 
-article{
-  background-image: url(/kronon/img/background_img.png) !important;
-  background-size: cover;
-  height:80vh;
+article {
+	background-image: url(/kronon/img/background_img.png) !important;
+	background-size: cover;
+	height: 80vh;
 }
 
-.login{
+.login {
 	text-align: center;
 	color: white;
-    font-size: 1.4vw;
+	font-size: 1.4vw;
 }
 
-.login_title{
+.login_title {
 	font-size: 2.5vw;
 	margin-top: -6vh;
 }
 
-.logo_login{
+.logo_login {
 	width: 10vw;
 }
 
-.login_company{
+.login_company {
 	margin-top: -2.5vh;
 	margin-bottom: 2.5vh;
 }
 
-.login_account{
+.login_account {
 	margin-bottom: 2vh;
 }
 
-.login_textbox{
+.login_textbox {
 	border-radius: 0.8vw;
 	border: none;
 	height: 6vh;
@@ -41,44 +41,44 @@ article{
 }
 
 input::-webkit-input-placeholder {
-    color: #999999;
-    padding-left: 0vw;
-    font-size: 1vw;
+	color: #999999;
+	padding-left: 0vw;
+	font-size: 1vw;
 }
 
 input[type="text"]:focus {
-  outline: 0;
+	outline: 0;
 }
 
 .login-button {
-	border-style:none;
-    display: inline-block;
+	border-style: none;
+	display: inline-block;
 	width: 30vw;
 	height: 7vh;
 	background-color: #DE9B50;
-	opacity:0.5;
+	opacity: 0.5;
 	border-radius: 0.8vw;
 	color: white;
 	margin-top: 0.7vh;
 	margin-bottom: 8vh;
 	cursor: pointer;
-    padding-top: 0.5vh;
-    border: solid white;
-    font-size: 1.5vw;
+	padding-top: 0.5vh;
+	border: solid white;
+	font-size: 1.5vw;
 }
 
 .register-button {
-  display: inline-block;
-  width: 15.5vw;
-  height: 7vh;
-  background-color: #DE9B50;
-  opacity:0.5;
-  border: solid white;
-  border-radius: 0.8vw;
-  color: white;
-  margin-top: 0.7vh;
-  margin-bottom: 8vh;
-  cursor: pointer;
-  font-size: 1.5vw;
-  text-align: center;
+	display: inline-block;
+	width: 15.5vw;
+	height: 7vh;
+	background-color: #DE9B50;
+	opacity: 0.5;
+	border: solid white;
+	border-radius: 0.8vw;
+	color: white;
+	margin-top: 0.7vh;
+	margin-bottom: 8vh;
+	cursor: pointer;
+	font-size: 1.5vw;
+	text-align: center;
 }

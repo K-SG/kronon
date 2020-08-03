@@ -69,7 +69,7 @@
 
 .hanrei-item1 {
 	background-color: #FFD8D6;
-/* 	border-radius:0.1vw;
+	/* 	border-radius:0.1vw;
 	border: 0.2vw solid #FFA8A3;
 	box-sizing: border-box; */
 }
@@ -118,23 +118,23 @@
 	padding: 0vw 0;
 	margin: 0vw;
 	cursor: pointer;
-	border-radius:0.1vw;
+	border-radius: 0.1vw;
 	border: 0.2vw solid #AAA;
-	box-sizing: border-box;/* 線がwidthにとっての内側になるように */
-/* 	outline: 0.2vw solid pink;
+	box-sizing: border-box; /* 線がwidthにとっての内側になるように */
+	/* 	outline: 0.2vw solid pink;
     outline-offset: -0.1vw; */
 }
 
 .schedule-item .title {
 	text-align: center;
 	font-size: 1vw;
-	line-height: 1.2vw;/* 行間も含めた文字の高さ */
+	line-height: 1.2vw; /* 行間も含めた文字の高さ */
 	color: #666;
 	margin-top: 0.2vw;
 	padding: 0 1vw;
 	padding-top: 0.2vw;
-	overflow: hidden;/* 縦方向にはみ出た場合は表示しないように */
-	word-wrap: break-word;/* 半角の文字列が入っても横方向にはみ出ないように */
+	overflow: hidden; /* 縦方向にはみ出た場合は表示しないように */
+	word-wrap: break-word; /* 半角の文字列が入っても横方向にはみ出ないように */
 }
 
 /* schedule_udの情報　表示しない */
@@ -184,4 +184,3 @@
 	height:20%;*/
 	font-size: 1vw;
 }
-
