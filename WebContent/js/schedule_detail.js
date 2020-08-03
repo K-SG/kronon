@@ -1,5 +1,4 @@
 $(function () {
-
 	let startTime = document.getElementById("startTime").textContent;
 	let endTime = document.getElementById("endTime").textContent;
 	let startTimee = document.getElementById("startTimee").textContent;
@@ -37,16 +36,14 @@ $(function () {
 	});
 
 	/*ポップアップを閉じる*/
-	  $('.close-popup').click(function () {
-      $('.confirm-popup').fadeOut();
-      $('.error-popup').fadeOut();
-
+	$('.close-popup').click(function () {
+		$('.confirm-popup').fadeOut();
+		$('.error-popup').fadeOut();
     });
-
-//    フォーム送信
-	  $('#schedule-delete-action').click((function(){
-		  $('#schedule-delete-form').submit();
-    	   return;
-	  }))
+	//フォーム送信
+	$('#schedule-delete-action').click((function(){
+		$('#schedule-delete-form').submit();
+		return;
+	}))
 
 });
