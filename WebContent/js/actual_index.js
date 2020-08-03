@@ -15,9 +15,6 @@ $(function() {
 	const contents = Array.from(document.getElementsByClassName("contents"));
 
 	for(let i = 0; i < estimateTimes.length; i++){
-//		if(contents[i].textContent.length >= 24){
-//			contents[i].textContent = contents[i].textContent.substring(0,22) + "...";
-//		}
 
 		//見積時間を分換算
 		let estimateTimeArray = estimateTimes[i].textContent.split(/\D/g);
@@ -84,7 +81,7 @@ $(function() {
 
 
 	//リリース月より遡れなくする
-	if(dateServlet.substring(0,7) == "2020-07"){
+	if(dateServlet.substring(0,7) == "2020-08"){
 		$('#left').css('display','none');
 	}
 
@@ -143,7 +140,6 @@ $(function() {
 		}
 
 		document.getElementById("input-title").textContent = inputTitle.trim();
-		//window.location.href = `../user/actualsearch?scheduleDate=${inputDate}&title=${inputTitle}&year=${yearServlet}&month=${monthServlet}`;
 		$('#search-form').submit();
 	})
 
