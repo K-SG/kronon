@@ -105,4 +105,8 @@ $(function() {
 		$('.complete-popup').fadeOut();
 	});
 
+	$('#actual-back-button').click(function(){
+		$('#actual-back-form').submit();
+	})
+
 });

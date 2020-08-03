@@ -151,10 +151,10 @@
 			<p>内容は保存されないよ！</p>
 			<h2 class="message-title">本当に戻る？</h2>
 		  </div>
-		  <a href="actualdetail?scheduleId=${scheduleBean.scheduleId}">
-		    <div class="ok-button">OK</div>
-		  </a>
-		  <div class="ng-button close-popup">キャンセル</div>
+		  <form action="actualdetail?scheduleId=${scheduleBean.scheduleId}" method="post" id="actual-back-form">
+		    <div class="ok-button" id="actual-back-button">OK</div>
+		    <div class="ng-button close-popup">キャンセル</div>
+		  </form>
 		  <img src="/kronon/img/star/star_angry.png" class="pop-img-top star-angry">
 		</div>
 	  </div>
