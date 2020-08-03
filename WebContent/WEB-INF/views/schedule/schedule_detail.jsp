@@ -8,7 +8,7 @@
 <link href="/kronon/css/scheduledetail.css" rel="stylesheet"
 	type="text/css">
 <%@ include file="../layout/common/link.jsp"%>
-<title>予定詳細画面</title>
+<title>予定詳細</title>
 
 </head>
 <body>
