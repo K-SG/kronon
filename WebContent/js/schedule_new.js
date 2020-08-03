@@ -161,18 +161,7 @@ $(function() {
 });
 
 // 20時選択したとき分のプルダウンが0に
-function selectboxChange1() {
-	let selindex = document.form.starthour.selectedIndex;
-	switch (selindex) {
-	case 12:
-		document.form.startminutes.selectedIndex = 0;
-		document.form.startminutes.disabled = true;
-		break;
-	default:
-		document.form.startminutes.disabled = false;
-	}
-}
-function selectboxChange2() {
+function selectboxChange() {
 	let selindex = document.form.endhour.selectedIndex;
 	switch (selindex) {
 	case 12:

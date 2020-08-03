@@ -30,7 +30,7 @@
 		    <div class="schedule-regist-font-lev1">開始時刻<span>*</span></div>
 		    <div class="schedule-regist-time">
 		      <input type="hidden" value="${scheduleBean.startTime}" id="set-start-time">
-			  <select name="startTimeHour" id="starthour"  onchange="selectboxChange1();">
+			  <select name="startTimeHour" id="starthour">
 			    <option value="8">8</option>
 			    <option value="9">9</option>
 			    <option value="10">10</option>
@@ -43,7 +43,6 @@
 			    <option value="17">17</option>
 			    <option value="18">18</option>
 			    <option value="19">19</option>
-			    <option value="20">20</option>
 			  </select>
 		    </div>
 
@@ -63,7 +62,7 @@
 		    <div class="schedule-regist-font-lev1">終了時刻<span>*</span></div>
 	        <div class="schedule-regist-time">
 		      <input type="hidden" value="${scheduleBean.endTime}" id="set-end-time">
-		      <select name="endTimeHour" id="endhour"  onchange="selectboxChange2();">
+		      <select name="endTimeHour" id="endhour"  onchange="selectboxChange();">
 		        <option value="8">8</option>
 			    <option value="9">9</option>
 			    <option value="10">10</option>
