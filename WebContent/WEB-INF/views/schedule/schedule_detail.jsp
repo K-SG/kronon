@@ -76,76 +76,70 @@
   </c:if>
 
   <!--内容確認ポップアップ----------------------------------------------------------------->
-   <div class="popup-wrapper confirm-popup">
-		<div class="pop-container pop-container-large">
-			<div class="close-popup">
-				<img src="/kronon/img/close_button_orange.png" alt="閉じる" class="back-button">
-			</div>
-			<div class="pop-container-inner">
-				<div class="message-container-large">
-					<h2 class="message-title">この内容を本当に削除する？</h2>
-					<table class="popup-table">
-						<tr>
-							<th class="th">名前：</th>
-							<td><c:out value="${scheduleBean.userName}" /></td>
-						</tr>
-						<tr>
-							<th>予定日時：</th>
-							<td><c:out value="${scheduleBean.scheduleDateActual}" /> <span
-						id="startTimee"><c:out value="${scheduleBean.startTime}" /></span>～
-						<span id="endTimee"><c:out value="${scheduleBean.endTime}" /></span></td>
-						</tr>
-						<tr>
-							<th>タイトル：</th>
-							<td class="new-line"><span class="actual-input-area-4"><c:out value="${scheduleBean.title}" /></span></td>
-						</tr>
-						<tr>
-							<th class="last-table">内容：</th>
-							<td class="last-table new-line"><span class="actual-input-area-4"><c:out
-									value="${scheduleBean.content}" /></span></td>
-						</tr>
-					</table>
-				</div>
-				<form action="http://localhost:8080/kronon/user/scheduledelete" method="post" id="schedule-delete-form">
-					<input type="hidden" id="flag" value="${popFlag}">
-					<input type="hidden" name="scheduleId" value="${scheduleBean.scheduleId}">
-					<input type="hidden" name="userName" value="${scheduleBean.userName}">
-					<input type="hidden" name="actualTimeStr" value="${scheduleBean.actualTimeStr}">
-					<input type="hidden" name="scheduleDateActual" value="${scheduleBean.scheduleDateActual}">
-					<input type="hidden" name="startTime" value="${scheduleBean.startTime}">
-					<input type="hidden" name="endTime" value="${scheduleBean.endTime}">
-					<input type="hidden" name="place" value="${scheduleBean.place}">
-					<input type="hidden" name="title" value="${scheduleBean.title}">
-					<input type="hidden" name="content" value="${scheduleBean.content}">
-					<input type="hidden" name = "scheduleDate" value="${scheduleBean.scheduleDate}">
+  <div class="popup-wrapper confirm-popup">
+    <div class="pop-container pop-container-large">
+	  <div class="close-popup"><img src="/kronon/img/close_button_orange.png" alt="閉じる" class="back-button"></div>
+	  <div class="pop-container-inner">
+        <div class="message-container-large">
+	      <h2 class="message-title">この内容を本当に削除する？</h2>
+		  <table class="popup-table">
+		    <tr>
+		      <th class="th">名前：</th>
+		      <td><c:out value="${scheduleBean.userName}" /></td>
+		    </tr>
+		    <tr>
+		      <th>予定日時：</th>
+			  <td><c:out value="${scheduleBean.scheduleDateActual}" />
+		        <span id="startTimee"><c:out value="${scheduleBean.startTime}" /></span>～
+			    <span id="endTimee"><c:out value="${scheduleBean.endTime}" /></span>
+		      </td>
+		    </tr>
+		    <tr>
+		      <th>タイトル：</th>
+		      <td class="new-line"><span class="actual-input-area-4"><c:out value="${scheduleBean.title}" /></span></td>
+		    </tr>
+		    <tr>
+		      <th class="last-table">内容：</th>
+		      <td class="last-table new-line">
+		        <span class="actual-input-area-4"><c:out value="${scheduleBean.content}" /></span>
+			  </td>
+		    </tr>
+		  </table>
+        </div>
+	    <form action="http://localhost:8080/kronon/user/scheduledelete" method="post" id="schedule-delete-form">
+	      <input type="hidden" id="flag" value="${popFlag}">
+	      <input type="hidden" name="scheduleId" value="${scheduleBean.scheduleId}">
+	      <input type="hidden" name="userName" value="${scheduleBean.userName}">
+	      <input type="hidden" name="actualTimeStr" value="${scheduleBean.actualTimeStr}">
+	      <input type="hidden" name="scheduleDateActual" value="${scheduleBean.scheduleDateActual}">
+	      <input type="hidden" name="startTime" value="${scheduleBean.startTime}">
+	      <input type="hidden" name="endTime" value="${scheduleBean.endTime}">
+	      <input type="hidden" name="place" value="${scheduleBean.place}">
+	      <input type="hidden" name="title" value="${scheduleBean.title}">
+	      <input type="hidden" name="content" value="${scheduleBean.content}">
+	      <input type="hidden" name = "scheduleDate" value="${scheduleBean.scheduleDate}">
+		  <div class="ok-button" id="schedule-delete-action">OK</div>
+          <div class="ng-button close-popup">キャンセル</div>
+	      <img src="/kronon/img/star/star_nomal.png" class="pop-large-img-top star-nomal">
+	    </form>
+	  </div>
+    </div>
+  </div>
+  <!--内容確認ポップアップここまで----------------------------------------------------------------->
 
-					<!-- <button type='submit'class="ok-button" >OK</button> -->
-					<div class="ok-button" id="schedule-delete-action">OK</div>
-
-
-				<div class="ng-button close-popup">キャンセル</div>
-				<img src="/kronon/img/star/star_nomal.png" class="pop-large-img-top star-nomal">
-				</form>
-			</div>
+  <!--削除完了ポップアップ------------------------------------------------------------------->
+  <div class="popup-wrapper error-popup complete-popup">
+    <div class="pop-container">
+	  <div class="pop-container-inner">
+		<div class="message-container">
+		  <p class=create-msg>削除が完了したよ！</p>
 		</div>
-	</div>
-	<!--内容確認ポップアップここまで----------------------------------------------------------------->
-
-	<!--削除完了ポップアップ------------------------------------------------------------------->
-	<div class="popup-wrapper error-popup complete-popup">
-		<div class="pop-container">
-			<div class="pop-container-inner">
-				<div class="message-container">
-					<p class=create-msg>削除が完了したよ！</p>
-				</div>
-				<a href="scheduleshowall?date=${scheduleBean.scheduleDate}"><div class="ok-button next-popup">OK</div></a>
-				<img src="/kronon/img/kronon/kronon_star.png" class="pop-img kronon-star">
-			</div>
-		</div>
-	</div>
-	<!--削除完了ポップアップここまで-------------------------------------------------------------->
-
-
+		<a href="scheduleshowall?date=${scheduleBean.scheduleDate}"><div class="ok-button next-popup">OK</div></a>
+		<img src="/kronon/img/kronon/kronon_star.png" class="pop-img kronon-star">
+	  </div>
+    </div>
+  </div>
+  <!--削除完了ポップアップここまで-------------------------------------------------------------->
 
 </article>
 <%@ include file="/WEB-INF/views/layout/common/footer.jsp"%>
