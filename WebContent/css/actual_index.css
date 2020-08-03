@@ -274,4 +274,13 @@ table td {
 	right: 4vw;
 	bottom: 4vw;
 	width: 25vw;
+	display:none;
+}
+
+#scrollTop{
+	display:none;
+}
+
+#actual-button{
+	display:none;
 }
