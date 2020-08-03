@@ -27,8 +27,8 @@ import jp.co.benesse.dataaccess.value.ScheduleBean;
 
 @WebServlet("/user/scheduleshowall")
 public class ScheduleShowAllServlet extends HttpServlet {
-	LocalDate START_DATE = LocalDate.of(2020, 7, 1);
-	LocalDate END_DATE = LocalDate.of(2022, 6, 30);
+	LocalDate START_DATE = LocalDate.of(2020, 8, 1);
+	LocalDate END_DATE = LocalDate.of(2023, 7, 31);
 
 	private static final long serialVersionUID = 1L;
 
