@@ -7,38 +7,37 @@
 	height:auto;
 	margin-left:3vw;
 } */
-
-.kronon-banzai img{
+.kronon-banzai img {
 	width: 17vw;
 	position: fixed;
 	right: 2vw;
 	bottom: 6vh;
 }
 
-.kronon-banzai{
-	position:fixed;
+.kronon-banzai {
+	position: fixed;
 }
 
 .flex_test-box {
 	margin-left: 2vw;
-    display: flex;              /* フレックスボックスにする */
-    justify-content:center;
-    align-items: center;
-    margin-top: -8vw;
+	display: flex; /* フレックスボックスにする */
+	justify-content: center;
+	align-items: center;
+	margin-top: -8vw;
 }
 
 .flex_test-item {
-    padding: 1vw;
-    margin:  1vw;              /* 外側の余白 */
+	padding: 1vw;
+	margin: 1vw; /* 外側の余白 */
 }
 
 .user-create-button-return {
-	float:left;
+	float: left;
 	margin-left: 5vw;
 	margin-top: -8vw;
-
 }
+
 .user-create-button-return img {
-	width: min(100vh,5vw);
+	width: min(100vh, 5vw);
 	height: auto;
 }

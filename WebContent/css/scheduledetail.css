@@ -1,38 +1,38 @@
-.kronon-banzai img{
+.kronon-banzai img {
 	width: 17vw;
 	position: fixed;
 	right: 2vw;
 	bottom: 6vh;
 }
 
-
 .flex_test-box {
 	margin: auto;
-    display: flex;              /* フレックスボックスにする */
-    justify-content:center;
-    align-items: center;
-    margin-top: -8vw;
+	display: flex; /* フレックスボックスにする */
+	justify-content: center;
+	align-items: center;
+	margin-top: -8vw;
 }
 
 .flex_test-item {
-    padding: 1vw;
-    margin:  1vw;              /* 外側の余白 */
+	padding: 1vw;
+	margin: 1vw; /* 外側の余白 */
 }
 
 .user-create-button-return {
-	float:left;
+	float: left;
 	margin-left: 5vw;
 	margin-top: -8vw;
 }
+
 .user-create-button-return img {
-	width: min(50vw,5vw);
+	width: min(50vw, 5vw);
 	height: auto;
 }
 
 .actual-input-area-3 {
 	float: left;
 	width: 22vw;
-/* 	overflow: hidden;はみ出た文字を隠す
+	/* 	overflow: hidden;はみ出た文字を隠す
 	display: -webkit-box;...表示
 	-webkit-box-orient: vertical;...表示
 	-webkit-line-clamp: 1;...表示(2行目の最後に「...をつける」)	 */
@@ -41,11 +41,8 @@
 .actual-input-area-4 {
 	float: left;
 	width: 22vw;
-/* 	overflow: hidden;はみ出た文字を隠す
+	/* 	overflow: hidden;はみ出た文字を隠す
 	display: -webkit-box;...表示
 	-webkit-box-orient: vertical;...表示
 	-webkit-line-clamp: 2;...表示(2行目の最後に「...をつける」)	 */
-
 }
-
-
