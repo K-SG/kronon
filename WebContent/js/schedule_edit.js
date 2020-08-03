@@ -69,7 +69,7 @@ $(function() {
 			let releaseMonth = 8;
 			// サービス終了年と月の取得
 			let releaseLastYear = 2023;
-			let releaseLastMonth = 8;
+			let releaseLastMonth = 7;
 			// 年、月、日をそれぞれ取得
 			let year = date.substring(0, 4);
 			let month = date.substring(5, 7);
