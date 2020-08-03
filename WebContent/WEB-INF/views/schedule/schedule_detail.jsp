@@ -1,94 +1,82 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link href="/kronon/css/scheduledetail.css" rel="stylesheet"
-	type="text/css">
+<link href="/kronon/css/scheduledetail.css" rel="stylesheet" type="text/css">
 <%@ include file="../layout/common/link.jsp"%>
 <title>予定詳細</title>
-
 </head>
 <body>
-
 <%@ include file="/WEB-INF/views/layout/common/header.jsp"%>
 <article>
 
-	<div class=white-text>
-		<div class=blackboard>
-			<table class=schedule_detail>
+  <div class=white-text>
+    <div class=blackboard>
+	  <table class=schedule_detail>
+		<tr>
+		  <td>名前 : <c:out value="${scheduleBean.userName}" /></td>
+		  <td id = "actual-time-z">実績時間：<c:out value="${scheduleBean.actualTimeStr}" /></td>
+		</tr>
 
-				<tr>
-					<td>名前 : <c:out value="${scheduleBean.userName}" /></td>
-					<td id = "actual-time-z">実績時間：<c:out value="${scheduleBean.actualTimeStr}" /></td>
-				</tr>
+		<tr>
+		  <td>日時：<c:out value="${scheduleBean.scheduleDateActual}" />
+		    <span id="startTime"><c:out value="${scheduleBean.startTime}" /></span>～
+			<span id="endTime"><c:out value="${scheduleBean.endTime}" /></span>
+		  </td>
 
-				<tr>
-					<td>日時：<c:out value="${scheduleBean.scheduleDateActual}" />
-					<span id="startTime"><c:out value="${scheduleBean.startTime}" /></span>～
-						<span id="endTime"><c:out value="${scheduleBean.endTime}" /></span></td>
+		  <!-- 作業場所に応じて色変化 -->
+		  <c:if test="${scheduleBean.place=='0'}">
+			<td class=show-place1>場所：オフィス</td>
+		  </c:if>
 
-				<!-- 作業場所に応じて色変化 -->
-					<c:if test="${scheduleBean.place=='0'}">
-						<td class=show-place1>場所：オフィス</td>
-					</c:if>
+		  <c:if test="${scheduleBean.place=='1'}">
+			<td class=show-place2>場所：在宅</td>
+		  </c:if>
 
-					<c:if test="${scheduleBean.place=='1'}">
-						<td class=show-place2>場所：在宅</td>
-					</c:if>
+		  <c:if test="${scheduleBean.place=='2'}">
+			<td class=show-place3>場所：外出</td>
+		  </c:if>
 
-					<c:if test="${scheduleBean.place=='2'}">
-						<td class=show-place3>場所：外出</td>
-					</c:if>
+		</tr>
 
-				</tr>
+		<tr>
+		  <td class="new-line" colspan="2">タイトル：<c:out value="${scheduleBean.title}" /></td>
+		</tr>
 
-				<tr>
-					<td class="new-line" colspan="2">タイトル：<c:out value="${scheduleBean.title}" /></td>
-				</tr>
-
-				<tr>
-					<td class="new-line" colspan="2">内容：<c:out value="${scheduleBean.content}" /></td>
-				</tr>
-
-			</table>
-
-		</div>
+		<tr>
+		  <td class="new-line" colspan="2">内容：<c:out value="${scheduleBean.content}" /></td>
+		</tr>
+	  </table>
 	</div>
-<!-- くろのんの画像 -->
-	<div class="kronon-banzai">
-		<img alt="banzai" src="../img/kronon/kronon_banzai.png">
-	</div>
+  </div>
+  <!-- くろのんの画像 -->
+  <div class="kronon-banzai"><img alt="banzai" src="../img/kronon/kronon_banzai.png"></div>
 
+  <!-- 戻るボタン -->
+  <div><a href="scheduleshowall?date=${scheduleBean.scheduleDate}"><img src="/kronon/img/back_buttom.png" alt="戻る" class="back-btn"></a></div>
 
-<!-- 戻るボタン -->
-	<div><a href="scheduleshowall?date=${scheduleBean.scheduleDate}"><img src="/kronon/img/back_buttom.png" alt="戻る" class="back-btn"></a></div>
+  <!-- sesseionスコープのuserIDとスケジュールのIDを比較.一致したときのみ表示 -->
+  <c:set var="loginUserId" value="${sessionScope.userId}" />
+  <c:set var="scheduleUserId" value="${scheduleBean.userId}" />
 
+  <c:if test="${loginUserId == scheduleUserId }">
+    <div class="flex_test-box">
+      <div class="flex_test-item">
+        <a href="scheduleedit?scheduleId=${scheduleBean.scheduleId}"><div class="ok-button">修正</div></a>
+	  </div>
+	  <div class="flex_test-item">
+	    <a href="actualnew?scheduleId=${scheduleBean.scheduleId}"><div class="ok-button">実績入力</div></a>
+	  </div>
+      <div class="flex_test-item">
+        <div class="ok-button large-popup-button" id="${popFlag}">削除</div>
+      </div>
+    </div>
+  </c:if>
 
-	<!-- sesseionスコープのuserIDとスケジュールのIDを比較.一致したときのみ表示 -->
-	<c:set var="loginUserId" value="${sessionScope.userId}" />
-	<c:set var="scheduleUserId" value="${scheduleBean.userId}" />
-
-	<c:if test="${loginUserId == scheduleUserId }">
-		<div class="flex_test-box">
-			<div class="flex_test-item">
-
-				<a href="scheduleedit?scheduleId=${scheduleBean.scheduleId}"><div class="ok-button">修正</div></a>
-			</div>
-			<div class="flex_test-item">
-
-				<a href="actualnew?scheduleId=${scheduleBean.scheduleId}"><div class="ok-button">実績入力</div></a>
-			</div>
-			<div class="flex_test-item">
-				<div class="ok-button large-popup-button" id="${popFlag}">削除</div>
-			</div>
-		</div>
-	</c:if>
-
-	<!--内容確認ポップアップ----------------------------------------------------------------->
-	<div class="popup-wrapper confirm-popup">
+  <!--内容確認ポップアップ----------------------------------------------------------------->
+   <div class="popup-wrapper confirm-popup">
 		<div class="pop-container pop-container-large">
 			<div class="close-popup">
 				<img src="/kronon/img/close_button_orange.png" alt="閉じる" class="back-button">
@@ -162,6 +150,6 @@
 </article>
 <%@ include file="/WEB-INF/views/layout/common/footer.jsp"%>
 <script src="js/common/common.js"></script>
-<script src="js/schedule_detail.js"></script>
+<script src="/kronon/js/schedule_detail.js"></script>
 </body>
 </html>

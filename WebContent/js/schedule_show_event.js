@@ -1,4 +1,3 @@
-
 $(function () {
 
 	$('.schedule-item').hover(

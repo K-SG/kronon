@@ -94,7 +94,7 @@ $(function () {
 	}
 /////////罫線ここまで/////////////////////////////////////////////////////////////////////////
 
-//	時刻表示
+	//時刻表示
 	counter = 0;
 	for (let i = 0; i < 13; i++) {
 		const p = document.createElement("p");
@@ -188,17 +188,14 @@ $(function () {
 				//div.setAttribute("class", "office");
 				$("." + class_name).css("background-color","#FFD8D6");
 				$("." + class_name).css("border-color","#FFA8A3");//#FFC0BD
-				//$("." + class_name).css("outline-color","#FFD8D6");
 			}else if(place === "1"){
 				//div.setAttribute("class", "home");
 				$("." + class_name).css("background-color","#FFF08D");
 				$("." + class_name).css("border-color","#FFE959");//#FFEC73
-				//$("." + class_name).css("outline-color","#FFD8D6");
 			}else if(place === "2"){
 				//div.setAttribute("class", "away");
 				$("." + class_name).css("background-color","#E1FBFF");
 				$("." + class_name).css("border-color","#ADF4FF");//#C7F8FF
-				//$("." + class_name).css("outline-color","#FFD8D6");
 			}
 
 			counter++;

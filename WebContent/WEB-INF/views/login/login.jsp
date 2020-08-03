@@ -11,7 +11,6 @@ pageEncoding="UTF-8"%>
 <body>
   <article>
     <div class="login">
-
       <div class="login_title">
         予定管理システム～くろのん～
       </div>
@@ -27,7 +26,7 @@ pageEncoding="UTF-8"%>
         <input type="password" name="password" id="login_pass" class="login_textbox" placeholder="パスワード" maxlength = "20"><br>
         <input type="hidden" id="flag" value="${popFlag}">
         <input type="button" class="login-button" value="ログイン">
-        </form>
+      </form>
 
       <div class="login_account">
         アカウントを持っていないかな？
@@ -39,24 +38,24 @@ pageEncoding="UTF-8"%>
       </form>
 
 
-  <!--エラーポップアップ------------------------------------------------------------------->
-  <div class="popup-wrapper error-popup">
-    <div class="pop-container">
-      <div class="close-popup"> <img src="/kronon/img/close_button_orange.png" alt="閉じる" class="back-button"></div>
-      <div class="pop-container-inner">
-        <div class="message-container">
-          <p class=login_msg>メールアドレス・パスワードが違うよ！</p>
+  	  <!--エラーポップアップ------------------------------------------------------------------->
+      <div class="popup-wrapper error-popup">
+        <div class="pop-container">
+          <div class="close-popup"> <img src="/kronon/img/close_button_orange.png" alt="閉じる" class="back-button"></div>
+          <div class="pop-container-inner">
+            <div class="message-container">
+              <p class=login_msg>メールアドレス・パスワードが違うよ！</p>
+            </div>
+            <div class="ok-button close-popup">OK</div>
+            <img src="img/kronon/kronon_question.png" class="pop-img kronon-question">
+          </div>
         </div>
-        <div class="ok-button close-popup">OK</div>
-        <img src="img/kronon/kronon_question.png" class="pop-img kronon-question"> </div>
       </div>
+      <!--エラーポップアップここまで-------------------------------------------------------------->
     </div>
-   <!--エラーポップアップここまで-------------------------------------------------------------->
+  </article>
 
-  </div>
-    </article>
-
-    <script src="js/common/common.js"></script>
-    <script src="js/login.js"></script>
-  </body>
-  </html>
+  <script src="js/common/common.js"></script>
+  <script src="js/login.js"></script>
+</body>
+</html>
