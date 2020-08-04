@@ -33,15 +33,15 @@
 
           <c:if test="${scheduleBean.place=='0'}" >
 			<td class=show-place1>場所：オフィス</td>
-		　</c:if>
+		  </c:if>
 
-		　<c:if test="${scheduleBean.place=='1'}" >
+		  <c:if test="${scheduleBean.place=='1'}" >
 			<td class=show-place2>場所：在宅</td>
-		　</c:if>
+		  </c:if>
 
-		　<c:if test="${scheduleBean.place=='2'}" >
+		  <c:if test="${scheduleBean.place=='2'}" >
 			<td class=show-place3>場所：外出</td>
-		　</c:if>
+		  </c:if>
 
         </tr>
 
