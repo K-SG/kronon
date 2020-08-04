@@ -11,7 +11,7 @@ $(function () {
 
 	$('.schedule-item').click(function(){
 		var id = $(this).children('.schedule_id').text();
-		window.location.href='../user/scheduledetail?scheduleId='+id;//calendar.html
+		window.location.href='../user/scheduledetail?scheduleId='+id;l
 	})
 
 	//前日へ

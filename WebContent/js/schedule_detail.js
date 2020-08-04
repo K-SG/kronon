@@ -27,7 +27,6 @@ $(function () {
 	/*DBと照合した後のエラーポップアップ表示*/
 	$(document).ready(function () {
 		let popFlag = document.getElementById('flag').value;
-		console.log(popFlag);
 		/*登録が完了した場合*/
 		  if(popFlag == 1){
 		  	$('.complete-popup').fadeIn();

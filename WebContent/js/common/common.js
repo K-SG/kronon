@@ -5,8 +5,6 @@ $(function() {
 		});
 //共通パーツ
 //基本的にここをさわらない
-
-// JavaScript Document
 $(function () {
   $('.small-popup-button').click(function () {
     $('.error-popup').fadeIn();

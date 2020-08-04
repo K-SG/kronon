@@ -26,7 +26,6 @@ $(function() {
 			let endMin = endTime.substring(3, 5);
 			let place = document.getElementById('set-place').value;
 
-			console.log(startHour, startMin, endMin);
 
 			/* すべての初期選択を外す */
 			$('select option').attr('selected', false);

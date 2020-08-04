@@ -32,7 +32,6 @@ $(function() {
 		/* すべての初期選択を外す */
 		$('select option').attr('selected', false);
 		/* 初期選択がされるようにselectedをつける */
-		console.log(actualHour, actualMin);
 
 		$('#actual-hour').val(actualHour);
 		$('#actual-min').val(actualMin);

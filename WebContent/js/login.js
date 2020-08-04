@@ -21,7 +21,6 @@ $(function () {
 
   $('.register-button').click(function () {
 	    let preUserCount = document.getElementById('preUserCount').value;
-	    console.log(preUserCount);
 	    if(preUserCount>=5){
 	    	$('.login_msg').html('５人以上は<br>アカウント作れないよ<br>管理者に問い合わせて削除してもらってね！');
 		  	$('.error-popup').fadeIn();
