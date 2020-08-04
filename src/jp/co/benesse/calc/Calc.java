@@ -45,7 +45,7 @@ public class Calc {
 		LocalTime endLocal = null;
 		Duration duration = null;
 
-		try{
+		try {
 			start = scheduleBean.getStartTime();
 			end = scheduleBean.getEndTime();
 			startLocal = start.toLocalTime();
@@ -55,7 +55,7 @@ public class Calc {
 			estimateTimeStr = estimateMinutes / 60 + "時間" + estimateMinutes % 60 + "分";
 
 			return estimateTimeStr;
-		}catch(NullPointerException e){
+		} catch (NullPointerException e) {
 			return "";
 		}
 
@@ -70,8 +70,8 @@ public class Calc {
 	 * @param 予定日
 	 * @return 整形された日付の文字列
 	 */
-	public static String convertActualDate(LocalDate scheduleDate){
-		Map<Integer,String> dayOfWeek = new HashMap<>();
+	public static String convertActualDate(LocalDate scheduleDate) {
+		Map<Integer, String> dayOfWeek = new HashMap<>();
 		dayOfWeek.put(1, "月");
 		dayOfWeek.put(2, "火");
 		dayOfWeek.put(3, "水");
@@ -79,12 +79,12 @@ public class Calc {
 		dayOfWeek.put(5, "金");
 		dayOfWeek.put(6, "土");
 		dayOfWeek.put(7, "日");
-		try{
+		try {
 			scheduleDate.getMonthValue();
 			scheduleDate.getDayOfMonth();
-			return scheduleDate.getMonthValue() + "/" + scheduleDate.getDayOfMonth()
-			+ "(" + dayOfWeek.get(scheduleDate.getDayOfWeek().getValue())+ ")";
-		}catch(NullPointerException e){
+			return scheduleDate.getMonthValue() + "/" + scheduleDate.getDayOfMonth() + "("
+					+ dayOfWeek.get(scheduleDate.getDayOfWeek().getValue()) + ")";
+		} catch (NullPointerException e) {
 			throw new RuntimeException("引数にnullが渡されました");
 		}
 	}
@@ -98,9 +98,9 @@ public class Calc {
 	 * @param 予定日
 	 * @return 整形された日付の文字列
 	 */
-	public static String convertActualDate(Date sqlScheduleDate){
+	public static String convertActualDate(Date sqlScheduleDate) {
 		LocalDate scheduleDate = null;
-		Map<Integer,String> dayOfWeek = new HashMap<>();
+		Map<Integer, String> dayOfWeek = new HashMap<>();
 		dayOfWeek.put(1, "月");
 		dayOfWeek.put(2, "火");
 		dayOfWeek.put(3, "水");
@@ -108,13 +108,13 @@ public class Calc {
 		dayOfWeek.put(5, "金");
 		dayOfWeek.put(6, "土");
 		dayOfWeek.put(7, "日");
-		try{
+		try {
 			scheduleDate = sqlScheduleDate.toLocalDate();
 			scheduleDate.getMonthValue();
 			scheduleDate.getDayOfMonth();
-			return scheduleDate.getYear()+ "/" + scheduleDate.getMonthValue() + "/" + scheduleDate.getDayOfMonth()
-			+ "(" + dayOfWeek.get(scheduleDate.getDayOfWeek().getValue())+ ")";
-		}catch(NullPointerException e){
+			return scheduleDate.getYear() + "/" + scheduleDate.getMonthValue() + "/" + scheduleDate.getDayOfMonth()
+					+ "(" + dayOfWeek.get(scheduleDate.getDayOfWeek().getValue()) + ")";
+		} catch (NullPointerException e) {
 			throw new RuntimeException("引数にnullが渡されました");
 		}
 	}

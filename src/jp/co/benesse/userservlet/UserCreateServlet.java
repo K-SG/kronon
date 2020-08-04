@@ -74,9 +74,9 @@ public class UserCreateServlet extends HttpServlet {
 
 			userCount = userDAO.countUser().size();
 
-			//五人以上の利用者登録を無効
+			// 五人以上の利用者登録を無効
 			if (userCount >= 5) {
-				//５人以上はアカウント作れないよ。管理者に問い合わせて削除してもらってね
+				// ５人以上はアカウント作れないよ。管理者に問い合わせて削除してもらってね
 				popFlag = "3";
 				request.setAttribute("popFlag", popFlag);
 				request.setAttribute("preUserCount", userCount);
@@ -109,12 +109,10 @@ public class UserCreateServlet extends HttpServlet {
 			return;
 		} catch (RuntimeException e) {
 			connectionManager.rollback();
-			e.printStackTrace();
 			response.sendRedirect("login");
 			return;
 		} catch (Exception e) {
 			connectionManager.rollback();
-			e.printStackTrace();
 			response.sendRedirect("login");
 			return;
 		} finally {

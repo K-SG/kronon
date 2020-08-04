@@ -27,8 +27,8 @@ import jp.co.benesse.dataaccess.value.ScheduleBean;
 
 @WebServlet("/user/scheduleshowall")
 public class ScheduleShowAllServlet extends HttpServlet {
-	LocalDate START_DATE = LocalDate.of(2020, 8, 1);
-	LocalDate END_DATE = LocalDate.of(2023, 7, 31);
+	final LocalDate START_DATE = LocalDate.of(2020, 8, 1);
+	final LocalDate END_DATE = LocalDate.of(2023, 7, 31);
 
 	private static final long serialVersionUID = 1L;
 
@@ -41,7 +41,6 @@ public class ScheduleShowAllServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		int userCount = 0;
 		int userId = 0;
 		String flag = null;
 		String calendarDate = null;
@@ -70,23 +69,21 @@ public class ScheduleShowAllServlet extends HttpServlet {
 		try {
 			// セッションスコープから値を取得
 			session = request.getSession();
-			userCount = (Integer) session.getAttribute("userCount");
 			userId = (Integer) session.getAttribute("userId");
 
 			// リクエストパラメータを取得
 			flag = request.getParameter("flag");
 			calendarDate = request.getParameter("date");
 			dateStr = request.getParameter("scheduleDate");
-			System.out.println("flag" + flag);
 
 			getOneDayScheduleLists = new ArrayList<>();
 			getOneDayScheduleList = new ArrayList<>();
 
 			if (flag == null) {
-				if (calendarDate != null ) {
+				if (calendarDate != null) {
 					scheduleDate = LocalDate.parse(calendarDate, DateTimeFormatter.ofPattern("yyyy-MM-dd")); // 日付取得
-					if(scheduleDate.isBefore( START_DATE )||scheduleDate.isAfter( END_DATE )){
-						throw new RuntimeException("日付エラー");//例外処理
+					if (scheduleDate.isBefore(START_DATE) || scheduleDate.isAfter(END_DATE)) {
+						throw new RuntimeException("日付エラー");// 例外処理
 					}
 				} else {
 					scheduleDate = LocalDate.now();// 今日の日付取得
@@ -135,11 +132,9 @@ public class ScheduleShowAllServlet extends HttpServlet {
 			mapper = new ObjectMapper();
 			json = mapper.writeValueAsString(getOneDayScheduleLists);
 			jsonReplace = json.replaceAll("\"", "krnooon");
-			System.out.println(json);
 
 			jsonName = mapper.writeValueAsString(userNameList);
 			jsonNameReplace = jsonName.replaceAll("\"", "krnooon");
-			System.out.println(jsonName);
 
 			request.setAttribute("displayDate", displayDate);
 			request.setAttribute("scheduleDate", scheduleDate);
@@ -147,16 +142,15 @@ public class ScheduleShowAllServlet extends HttpServlet {
 			request.setAttribute("json_name", jsonNameReplace);
 			request.setAttribute("userNameList", userNameList);
 			request.setAttribute("getOneDayScheduleList", getOneDayScheduleList);
+
 			dispatcher = request.getRequestDispatcher("../WEB-INF/views/schedule/schedule_show.jsp");
 			dispatcher.forward(request, response);
 			return;
 		} catch (RuntimeException e) {
-			e.printStackTrace();
 			dispatcher = request.getRequestDispatcher("../WEB-INF/views/error/error.jsp");
 			dispatcher.forward(request, response);
 			return;
 		} catch (Exception e) {
-			e.printStackTrace();
 			dispatcher = request.getRequestDispatcher("../WEB-INF/views/error/error.jsp");
 			dispatcher.forward(request, response);
 			return;

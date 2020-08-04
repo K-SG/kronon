@@ -1,4 +1,5 @@
 package jp.co.benesse.dataaccess.value;
+
 import java.sql.Date;
 import java.sql.Time;
 
@@ -70,11 +71,11 @@ public class ScheduleBean {
 	 */
 	private String jsonDate;
 
-
 	/**
 	 * コンストラクタ
 	 */
-	public ScheduleBean() {}
+	public ScheduleBean() {
+	}
 
 	/**
 	 * コンストラクタ
@@ -113,99 +114,131 @@ public class ScheduleBean {
 		this.comment = comment;
 		this.deleteFlag = deleteFlag;
 	}
+
 	public int getScheduleId() {
 		return scheduleId;
 	}
+
 	public void setScheduleId(int scheduleId) {
 		this.scheduleId = scheduleId;
 	}
+
 	public int getUserId() {
 		return userId;
 	}
+
 	public void setUserId(int userId) {
 		this.userId = userId;
 	}
+
 	public Date getScheduleDate() {
 		return scheduleDate;
 	}
+
 	public void setScheduleDate(Date scheduleDate) {
 		this.scheduleDate = scheduleDate;
 	}
+
 	public String getScheduleDateActual() {
 		return scheduleDateActual;
 	}
+
 	public void setScheduleDateActual(String scheduleDateActual) {
 		this.scheduleDateActual = scheduleDateActual;
 	}
+
 	public Time getStartTime() {
 		return startTime;
 	}
+
 	public void setStartTime(Time startTime) {
 		this.startTime = startTime;
 	}
+
 	public Time getEndTime() {
 		return endTime;
 	}
+
 	public void setEndTime(Time endTime) {
 		this.endTime = endTime;
 	}
+
 	public String getPlace() {
 		return place;
 	}
+
 	public void setPlace(String place) {
 		this.place = place;
 	}
+
 	public String getTitle() {
 		return title;
 	}
+
 	public void setTitle(String title) {
 		this.title = title;
 	}
+
 	public String getContent() {
 		return content;
 	}
+
 	public void setContent(String content) {
 		this.content = content;
 	}
+
 	public int getActualTime() {
 		return actualTime;
 	}
+
 	public void setActualTime(int actualTime) {
 		this.actualTime = actualTime;
 	}
+
 	public String getActualTimeStr() {
 		return actualTimeStr;
 	}
+
 	public void setActualTimeStr(String actualTimeStr) {
 		this.actualTimeStr = actualTimeStr;
 	}
+
 	public String getComment() {
 		return comment;
 	}
+
 	public void setComment(String comment) {
 		this.comment = comment;
 	}
+
 	public String getDeleteFlag() {
 		return deleteFlag;
 	}
+
 	public void setDeleteFlag(String deleteFlag) {
 		this.deleteFlag = deleteFlag;
 	}
+
 	public String getUserName() {
 		return userName;
 	}
+
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
+
 	public String getEstimateTime() {
 		return estimateTime;
 	}
+
 	public void setEstimateTime(String estimateTime) {
 		this.estimateTime = estimateTime;
 	}
+
 	public String getJsonDate() {
 		return jsonDate;
 	}
+
 	public void setJsonDate(String jsonDate) {
 		this.jsonDate = jsonDate;
 	}

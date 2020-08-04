@@ -38,7 +38,7 @@ public class ScheduleEditServlet extends HttpServlet {
 		HttpSession session = null;
 
 		try {
-			//セッションスコープから値を取得
+			// セッションスコープから値を取得
 			session = request.getSession();
 			userId = (int) session.getAttribute("userId");
 

@@ -41,6 +41,7 @@ public class UserDAO {
 
 		userName = userName.replace("%", "％");
 		userName = userName.replace("'", "’");
+		userName = userName.replace('"', '”');
 
 		try {
 

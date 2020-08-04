@@ -89,13 +89,11 @@ public class ScheduleDeleteServlet extends HttpServlet {
 			return;
 		} catch (RuntimeException e) {
 			connectionManager.rollback();
-			e.printStackTrace();
 			dispatcher = request.getRequestDispatcher("../WEB-INF/views/error/error.jsp");
 			dispatcher.forward(request, response);
 			return;
 		} catch (Exception e) {
 			connectionManager.rollback();
-			e.printStackTrace();
 			dispatcher = request.getRequestDispatcher("../WEB-INF/views/error/error.jsp");
 			dispatcher.forward(request, response);
 			return;

@@ -35,7 +35,7 @@ public class CalendarServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		int userId = 0;
-		String flag  = null;
+		String flag = null;
 		String dateStr = null;
 		String json = null;
 		String json_replace = null;
@@ -51,11 +51,11 @@ public class CalendarServlet extends HttpServlet {
 		RequestDispatcher dispatcher = null;
 
 		try {
-			//セッションスコープから利用者IDを取得
+			// セッションスコープから利用者IDを取得
 			session = request.getSession();
 			userId = (Integer) session.getAttribute("userId");
 
-			//リクエストパラメータを取得
+			// リクエストパラメータを取得
 			flag = request.getParameter("flag");
 			dateStr = request.getParameter("date");
 
@@ -85,7 +85,6 @@ public class CalendarServlet extends HttpServlet {
 			mapper = new ObjectMapper();
 			json = mapper.writeValueAsString(scheduleBeanList);
 			json_replace = json.replaceAll("\"", "krnooon");
-			System.out.println("calendar:"+scheduleBeanList);
 
 			// リクエストスコープにセット
 			request.setAttribute("json", json_replace);
@@ -97,11 +96,9 @@ public class CalendarServlet extends HttpServlet {
 			dispatcher.forward(request, response);
 			return;
 		} catch (RuntimeException e) {
-			e.printStackTrace();
 			response.sendRedirect("../login");
 			return;
 		} catch (Exception e) {
-			e.printStackTrace();
 			response.sendRedirect("../login");
 			return;
 		} finally {

@@ -45,11 +45,9 @@ public class LoginServlet extends HttpServlet {
 			return;
 
 		} catch (RuntimeException e) {
-			e.printStackTrace();
 			response.sendRedirect("login");
 			return;
 		} catch (Exception e) {
-			e.printStackTrace();
 			response.sendRedirect("login");
 			return;
 		} finally {
@@ -79,7 +77,6 @@ public class LoginServlet extends HttpServlet {
 			connectionManager = new ConnectionManager();
 			userBean = new UserBean();
 
-			System.out.println(hash);
 			connection = connectionManager.getConnection();
 			userDAO = new UserDAO(connection);
 			userBean = userDAO.findUser(mail, hash);
@@ -102,11 +99,9 @@ public class LoginServlet extends HttpServlet {
 			return;
 
 		} catch (RuntimeException e) {
-			e.printStackTrace();
 			response.sendRedirect("login");
 			return;
 		} catch (Exception e) {
-			e.printStackTrace();
 			response.sendRedirect("login");
 			return;
 		} finally {

@@ -29,6 +29,7 @@ public class ScheduleUpdateServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+
 		int scheduleId = 0;
 		int userId = 0;
 		int result = 0;
@@ -62,23 +63,20 @@ public class ScheduleUpdateServlet extends HttpServlet {
 			scheduleId = Integer.parseInt(scheduleIdStr);
 			scheduleDate = request.getParameter("scheduleDate");
 			startTimeHour = request.getParameter("startTimeHour");
-			if(startTimeHour.equals("20")){
-			startTimeMin = "00";
-			}else{
-			startTimeMin = request.getParameter("startTimeMin");
+			if (startTimeHour.equals("20")) {
+				startTimeMin = "00";
+			} else {
+				startTimeMin = request.getParameter("startTimeMin");
 			}
 			endTimeHour = request.getParameter("endTimeHour");
-			if(endTimeHour.equals("20")){
-			endTimeMin = "00";
-			}else{
-			endTimeMin = request.getParameter("endTimeMin");
+			if (endTimeHour.equals("20")) {
+				endTimeMin = "00";
+			} else {
+				endTimeMin = request.getParameter("endTimeMin");
 			}
 			place = request.getParameter("place");
 			title = request.getParameter("title");
 			content = request.getParameter("content");
-
-			System.out.println(scheduleId + "," + scheduleDate + "," + startTimeHour + "," + startTimeMin + ","
-					+ endTimeHour + "," + endTimeMin + "," + place + "," + title + "," + content);
 
 			date = Date.valueOf(scheduleDate);
 			startTime = Time.valueOf(startTimeHour + ":" + startTimeMin + ":00");
@@ -105,10 +103,8 @@ public class ScheduleUpdateServlet extends HttpServlet {
 
 			// 予定が重複しているかをチェック
 			check = scheduleDAO.isBooking(scheduleBean);
-			System.out.println(check+"ブッキングしていたら");
 
 			if (check) {
-				System.out.println("trueで入ってるよ！ブッキングなう");
 				request.setAttribute("popFlag", 1);// 予定重複フラグ
 				request.setAttribute("scheduleBean", scheduleBean);
 				request.setAttribute("startTimeHour", startTimeHour);// 開始時間
@@ -123,7 +119,6 @@ public class ScheduleUpdateServlet extends HttpServlet {
 
 			result = scheduleDAO.updateSchedule(scheduleId, date, startTime, endTime, title, content, place);
 
-			System.out.println(result+"updateできたよ");
 			if (result != 1) {
 				throw new RuntimeException("予定修正に失敗");
 			}
@@ -140,21 +135,16 @@ public class ScheduleUpdateServlet extends HttpServlet {
 
 		} catch (RuntimeException e) {
 			connectionManager.rollback();
-			e.printStackTrace();
 			dispatcher = request.getRequestDispatcher("/WEB-INF/views/error/error.jsp");
 			dispatcher.forward(request, response);
 			return;
 		} catch (Exception e) {
 			connectionManager.rollback();
-			e.printStackTrace();
 			dispatcher = request.getRequestDispatcher("/WEB-INF/views/error/error.jsp");
 			dispatcher.forward(request, response);
 			return;
 		} finally {
-//			connectionManager.closeConnection();
+			connectionManager.closeConnection();
 		}
-
-
 	}
-
 }

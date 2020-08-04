@@ -16,14 +16,16 @@ import javax.servlet.http.HttpServletResponse;
 public class UserNewServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//doGetされたものをdoPostに変換
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// doGetされたものをdoPostに変換
 		this.doPost(request, response);
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//user_new.jsp(アカウント新規作成画面)にforwardする。
-		request.setAttribute("popFlag",7);
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// user_new.jsp(アカウント新規作成画面)にforwardする。
+		request.setAttribute("popFlag", 7);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/user/user_new.jsp");
 		dispatcher.forward(request, response);
 		return;

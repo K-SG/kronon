@@ -84,12 +84,10 @@ public class ActualIndexServlet extends HttpServlet {
 			dispatcher.forward(request, response);
 			return;
 		} catch (RuntimeException e) {
-			e.printStackTrace();
 			dispatcher = request.getRequestDispatcher("../WEB-INF/views/error/error.jsp");
 			dispatcher.forward(request, response);
 			return;
 		} catch (Exception e) {
-			e.printStackTrace();
 			dispatcher = request.getRequestDispatcher("../WEB-INF/views/error/error.jsp");
 			dispatcher.forward(request, response);
 			return;

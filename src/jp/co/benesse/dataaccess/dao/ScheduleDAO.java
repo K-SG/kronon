@@ -86,12 +86,14 @@ public class ScheduleDAO {
 		tmp1 = scheduleBean.getTitle();
 		tmp1 = tmp1.replace("%", "％");
 		tmp1 = tmp1.replace("'", "’");
+		tmp1 = tmp1.replace('"', '”');
 		scheduleBean.setTitle(tmp1);
 
 		if (scheduleBean.getContent() != null) {
 			tmp2 = scheduleBean.getContent();
 			tmp2 = tmp2.replace("%", "％");
 			tmp2 = tmp2.replace("'", "’");
+			tmp2 = tmp2.replace('"', '”');
 			scheduleBean.setTitle(tmp2);
 		}
 
@@ -143,10 +145,12 @@ public class ScheduleDAO {
 
 		title = title.replace("%", "％");
 		title = title.replace("'", "’");
+		title = title.replace('"', '”');
 
 		if (content != null) {
 			content = content.replace("%", "％");
 			content = content.replace("'", "’");
+			content = content.replace('"', '”');
 		}
 
 		try {
@@ -195,6 +199,7 @@ public class ScheduleDAO {
 		if (comment != null) {
 			comment = comment.replace("%", "％");
 			comment = comment.replace("'", "’");
+			comment = comment.replace('"', '”');
 		}
 
 		try {
@@ -242,6 +247,8 @@ public class ScheduleDAO {
 
 			title = title.replace("%", "\\%");
 			title = title.replace("'", "’");
+			title = title.replace('"', '”');
+
 			title = "%" + title + "%";
 
 			sql = "SELECT * FROM SCHEDULE INNER JOIN PUBLIC.USER ON PUBLIC.USER.USER_ID = SCHEDULE.USER_ID "
@@ -375,6 +382,7 @@ public class ScheduleDAO {
 
 			title = title.replace("%", "\\%");
 			title = title.replace("'", "’");
+			title = title.replace('"', '”');
 			title = "%" + title + "%";
 
 			sql = "SELECT * FROM SCHEDULE INNER JOIN PUBLIC.USER ON PUBLIC.USER.USER_ID = SCHEDULE.USER_ID "
@@ -518,10 +526,12 @@ public class ScheduleDAO {
 		ResultSet resultSet = null;
 
 		try {
-			if (title.contains("%")) {
-				title = title.replace("%", "\\%");
-			}
+
+			title = title.replace("%", "％");
+			title = title.replace("'", "’");
+			title = title.replace('"', '”');
 			title = "%" + title + "%";
+
 			lastDayOfMonth = scheduleDate.with(TemporalAdjusters.lastDayOfMonth()); // 末日
 			firstDayOfMonth = scheduleDate.with(TemporalAdjusters.firstDayOfMonth()); // 初日
 			sqlLastDayOfMonth = Date.valueOf(lastDayOfMonth);

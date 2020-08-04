@@ -67,7 +67,7 @@ public class ActualDeleteServlet extends HttpServlet {
 			connection = connectionManager.getConnection();
 			scheduleDAO = new ScheduleDAO(connection);
 
-			//既に削除されている場合
+			// 既に削除されている場合
 			if (scheduleDAO.isDeleted(scheduleId)) {
 				throw new RuntimeException("予定が既に削除されている");
 			}
@@ -84,13 +84,11 @@ public class ActualDeleteServlet extends HttpServlet {
 
 		} catch (RuntimeException e) {
 			connectionManager.rollback();
-			e.printStackTrace();
 			dispatcher = request.getRequestDispatcher("../WEB-INF/views/error/error.jsp");
 			dispatcher.forward(request, response);
 			return;
 		} catch (Exception e) {
 			connectionManager.rollback();
-			e.printStackTrace();
 			dispatcher = request.getRequestDispatcher("../WEB-INF/views/error/error.jsp");
 			dispatcher.forward(request, response);
 			return;

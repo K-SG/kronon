@@ -11,8 +11,7 @@ import java.sql.SQLException;
  * [備 考] なし<br>
  * [環 境] OpenJDK 11 <br>
  *
- * @author [作 成] 2020/07/16 山崎和樹
- *          [修 正]
+ * @author [作 成] 2020/07/16 山崎和樹 [修 正]
  */
 public class ConnectionManager {
 	/**
@@ -40,26 +39,28 @@ public class ConnectionManager {
 	 */
 	private static final String PASSWORD = "postgresql";
 
-	public ConnectionManager(){
+	public ConnectionManager() {
 		try {
 			Class.forName(DRIVER_NAME);
 		} catch (ClassNotFoundException e) {
 			throw new RuntimeException("ドライバーのロードに失敗しました", e);
 		}
 	}
+
 	/**
 	 *
 	 * [機 能] コネクション取得メソッド<br>
 	 * [説 明] コネクションを取得し、返却する。<br>
-	 *        ※例外取得時にはRuntimeExceptionにラップし上位に送出する。<br>
+	 * ※例外取得時にはRuntimeExceptionにラップし上位に送出する。<br>
 	 * [備 考] なし
+	 *
 	 * @return コネクション
 	 */
 	public Connection getConnection() {
 		if (connection == null) {
 			try {
 				connection = DriverManager.getConnection(URL, USER, PASSWORD);
-				//コミットモードの設定
+				// コミットモードの設定
 				connection.setAutoCommit(false);
 			} catch (SQLException e) {
 				throw new RuntimeException("データベースの接続に失敗しました", e);
@@ -72,12 +73,14 @@ public class ConnectionManager {
 	 *
 	 * [機 能] <br>
 	 * [説 明] コネクションを切断する。<br>
-	 *         ※例外取得時にはRuntimeExceptionにラップし上位に送出する。<br>
+	 * ※例外取得時にはRuntimeExceptionにラップし上位に送出する。<br>
 	 * [備 考] なし
 	 */
 	public void closeConnection() {
 		try {
-			if (connection != null) {connection.close();}
+			if (connection != null) {
+				connection.close();
+			}
 		} catch (SQLException e) {
 			throw new RuntimeException("データベースの切断に失敗しました", e);
 		}
@@ -87,12 +90,14 @@ public class ConnectionManager {
 	 *
 	 * [機 能] コミットメソッド<br>
 	 * [説 明] トランザクションをコミットする。<br>
-	 *         ※例外取得時にはRuntimeExceptionにラップし上位に送出する。<br>
+	 * ※例外取得時にはRuntimeExceptionにラップし上位に送出する。<br>
 	 * [備 考] なし
 	 */
 	public void commit() {
 		try {
-			if (connection != null) {connection.commit();}
+			if (connection != null) {
+				connection.commit();
+			}
 		} catch (SQLException e) {
 			throw new RuntimeException("トランザクションのコミットに失敗しました", e);
 		}
@@ -102,12 +107,14 @@ public class ConnectionManager {
 	 *
 	 * [機 能] <br>
 	 * [説 明] トランザクションをロールバックする。<br>
-	 *         ※例外取得時にはRuntimeExceptionにラップし上位に送出する。<br>
+	 * ※例外取得時にはRuntimeExceptionにラップし上位に送出する。<br>
 	 * [備 考] なし
 	 */
 	public void rollback() {
 		try {
-			if (connection != null) {connection.rollback();}
+			if (connection != null) {
+				connection.rollback();
+			}
 		} catch (SQLException e) {
 			throw new RuntimeException("トランザクションのロールバックに失敗しました", e);
 		}

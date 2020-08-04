@@ -56,16 +56,16 @@ public class ScheduleCreateServlet extends HttpServlet {
 			// リクエストパラメータを取得
 			scheduleDate = request.getParameter("scheduleDate");
 			startTimeHour = request.getParameter("startTimeHour");
-			if(startTimeHour.equals("20")){
-			startTimeMin = "00";
-			}else{
-			startTimeMin = request.getParameter("startTimeMin");
+			if (startTimeHour.equals("20")) {
+				startTimeMin = "00";
+			} else {
+				startTimeMin = request.getParameter("startTimeMin");
 			}
 			endTimeHour = request.getParameter("endTimeHour");
-			if(endTimeHour.equals("20")){
-			endTimeMin = "00";
-			}else{
-			endTimeMin = request.getParameter("endTimeMin");
+			if (endTimeHour.equals("20")) {
+				endTimeMin = "00";
+			} else {
+				endTimeMin = request.getParameter("endTimeMin");
 			}
 			place = request.getParameter("place");
 			title = request.getParameter("title");
@@ -115,13 +115,11 @@ public class ScheduleCreateServlet extends HttpServlet {
 			return;
 
 		} catch (RuntimeException e) {
-			e.printStackTrace();
 			connectionManager.rollback();
 			dispatcher = request.getRequestDispatcher("/WEB-INF/views/error/error.jsp");
 			dispatcher.forward(request, response);
 			return;
 		} catch (Exception e) {
-			e.printStackTrace();
 			connectionManager.rollback();
 			dispatcher = request.getRequestDispatcher("/WEB-INF/views/error/error.jsp");
 			dispatcher.forward(request, response);
@@ -129,7 +127,6 @@ public class ScheduleCreateServlet extends HttpServlet {
 		} finally {
 			connectionManager.closeConnection();
 		}
-
 
 	}
 

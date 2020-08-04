@@ -52,7 +52,6 @@ public class ActualEditServlet extends HttpServlet {
 			scheduleDAO = new ScheduleDAO(connection);
 			scheduleBean = scheduleDAO.getScheduleByScheduleId(scheduleId);
 
-
 			// ログイン者以外の予定にアクセスできないようにする
 			if (userId != scheduleBean.getUserId()) {
 				throw new RuntimeException("ログイン者以外の予定にアクセスした");
@@ -64,12 +63,10 @@ public class ActualEditServlet extends HttpServlet {
 			dispatcher.forward(request, response);
 			return;
 		} catch (RuntimeException e) {
-			e.printStackTrace();
 			dispatcher = request.getRequestDispatcher("../WEB-INF/views/error/error.jsp");
 			dispatcher.forward(request, response);
 			return;
 		} catch (Exception e) {
-			e.printStackTrace();
 			dispatcher = request.getRequestDispatcher("../WEB-INF/views/error/error.jsp");
 			dispatcher.forward(request, response);
 			return;
