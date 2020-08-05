@@ -95,7 +95,7 @@
 		  <div class="actual-regist-area-4">
 		    <div class="actual-regist-font-lev1">コメント</div>
 			<div class="actual-regist-content">
-			  <textarea name="comment" id="actual-comment" rows="13" cols="40" maxlength="1440" placeholder="予定の内容を1440字以内で入力してください"><c:out value="${scheduleBean.comment}" /></textarea>
+			  <textarea name="comment" id="actual-comment" rows="13" cols="40" maxlength="1440" placeholder="コメントを1440字以内で入力してください"><c:out value="${scheduleBean.comment}" /></textarea>
 			</div>
 		  </div>
 		</div>
